@@ -1,4 +1,4 @@
-# Cursos sobre virtualización con KVM/LibVirt
+# Cursos sobre virtualización con KVM/libvirt
 
-* [Curso 1: Introducción a la virtualización con KVM/LibVirt usando virt-manager](curso1/README.md)
-* [Curso 2: Profundización en la virtualización con KVM/LibVirt](curso2/README.md)
+* [Curso 1: Introducción a la virtualización con KVM/libvirt usando virt-manager](curso1)
+* [Curso 2: Profundización en la virtualización con KVM/libvirt](curso2)
