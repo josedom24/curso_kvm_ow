@@ -8,7 +8,7 @@ La emulación es una técnica en la que un software imita por completo una arqui
 
 Dado que la emulación requiere traducir cada instrucción y operación de hardware a nivel de software, su rendimiento suele ser **significativamente más bajo** en comparación con la virtualización, donde la CPU ejecuta directamente las instrucciones sin necesidad de traducción.  
 
-Ejemplos: QEMU, Microsoft Virtual PC, ...
+* **Ejemplos**: QEMU, Microsoft Virtual PC, ...
 
 ## Virtualización completa o por hardware
 
@@ -44,8 +44,10 @@ La paravirtualización ofrece **mayor rendimiento** que la virtualización compl
 O también llamada **virtualización a nivel de sistema operativo**, o **virtualización basada en contenedores**. Es un método de virtualización en el que, sobre el núcleo del sistema operativo se ejecuta una capa de virtualización que permite que existan múltiples instancias aisladas de espacios de usuario. A cada espacio de usuario aislado lo llamamos **contenedor**. Por lo tanto, un contenedor es un conjunto de procesos aislados, que se ejecutan en un servidor, y que acceden a un sistema de ficheros propio, tienen una configuración red propio y accede a los recursos del host (memoria y CPU).
 Podemos hacer la siguiente clasificación de contenedores:
 
-* **Contenedores de Sistemas**: El uso que se hace de ellos es muy similar al que hacemos sobre una máquina virtual: se accede a ellos (normalmente por ssh), se instalan servicios, se actualizan, ejecutan un conjunto de procesos, ... Ejemplo: LXC(Linux Container).
-* **Contenedores de Aplicación**: Se suelen usar para el despliegue de aplicaciones web Ejemplo: Docker, Podman, ...
+* **Contenedores de Sistemas**: El uso que se hace de ellos es muy similar al que hacemos sobre una máquina virtual: se accede a ellos (normalmente por ssh), se instalan servicios, se actualizan, ejecutan un conjunto de procesos, ... 
+    * **Ejemplo**: LXC(Linux Container).
+* **Contenedores de Aplicación**: Se suelen usar para el despliegue de aplicaciones web. 
+    * **Ejemplo**: Docker, Podman, ...
 
 
 
