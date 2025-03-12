@@ -3,8 +3,7 @@
 1. Introducción a a la virtualización con KVM/libvirt
     * ¿Qué es la virtualización?
 	* Tipos de virtualización
-	* Introducción a QEMU/KVM
-	* Introducción a libvirt
+	* Introducción a QEMU/KVM y libvirt
 
 2. Instalación de KVM/libvirt
     * Preparación del escenario de instalación
@@ -34,6 +33,7 @@
     * Clonación completa a partir de plantillas
     * Clonación enlazada a partir de plantillas
     * Instantáneas de máquinas virtuales
+    * Backups de máquinas virtuales
 
 6. Gestión de redes
     * Introducción a la gestión de redes

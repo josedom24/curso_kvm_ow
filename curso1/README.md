@@ -3,10 +3,9 @@
 1. Introducción a a la virtualización con KVM/libvirt
     * ¿Qué es la virtualización?
 	* Tipos de virtualización
-	* Introducción a QEMU/KVM
-	* Introducción a libvirt
+	* Introducción a QEMU/KVM y libvirt
 
-2. Instalación de virt-manager
+2. Introducción a virt-manager
     * Preparación del escenario de instalación
     * Instalación de virt-manager
     * Tipos de conexiones a libvirt
