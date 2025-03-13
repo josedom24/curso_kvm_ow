@@ -9,7 +9,7 @@
     * Preparación del escenario de instalación
     * Instalación de virt-manager
     * Tipos de conexiones a libvirt
-    * Primeros pasos con virt-manager
+    * Recursos disponibles en virt-manager
 
 3. Creación de máquinas virtuales con virt-manager
     * Creación de máquinas virtuales Linux
