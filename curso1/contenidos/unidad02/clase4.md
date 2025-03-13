@@ -16,7 +16,7 @@ Esta red es de tipo **NAT** y sus características son las siguientes:
 
 IMAGEN CARACTERÍSTICAS DE LAS RED DEFAULT
 
-## Almacenamiento disponibles
+## Almacenamiento disponible
 
 Otro elemento que podemos gestionar son los grupos de almacenamiento que tenemos en la conexión. Por defecto tenemos un grupo llamado `default`, donde se guardaban las imágenes de discos. En un primer momento cada grupo corresponde a un directorio de nuestro sistema de fichero. El grupo `default` corresponde al directorio `/var/lib/libvirt/images` que es el directorio donde se guardarán los ficheros correspondientes a las imágenes de los discos de las máquinas virtuales.
 
