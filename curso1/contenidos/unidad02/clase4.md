@@ -14,7 +14,7 @@ Esta red es de tipo **NAT** y sus características son las siguientes:
 * El host proporciona un **servidor DHCP** que configurará de forma automática las máquinas virtuales que estén conectada a ella.
 * El host proporcionará un **servidor DNS** que las máquinas virtuales utilizarán para la resolución de nombres.
 
-IMAGEN CARACTERÍSTICAS DE LAS RED DEFAULT
+![img](img/virt-manager4.png)
 
 ## Almacenamiento disponible
 
@@ -26,13 +26,13 @@ Para que virt-manager acceda a los ficheros de nuestro sistema de fichero tenemo
 
 1. Pulsamos el botón de añadir grupo:
 
-    IMAGEN AÑADIR
+    ![img](img/virt-manager5.png)
 
 2. Indicamos un nombre, el tipo de grupo, en nuestro caso **dir: Directorio del Sistema de Archivos** (podemos comprobar que en realidad un grupo de almacenamiento puede ser otro tipo de elemento según el tipo de almacenamiento que estemos utilizando) y el directorio al que vamos a acceder.
 
-    IMAGEN AÑADIR GRUPO
+    ![img](img/virt-manager6.png)
 
- Finalmente tenemos nuestros dos grupos de almacenamiento:
+Finalmente tenemos nuestros dos grupos de almacenamiento:
 
- IMAGEN DOS GRUPOS
+![img](img/virt-manager7.png)
 
