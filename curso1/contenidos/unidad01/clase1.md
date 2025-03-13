@@ -36,7 +36,7 @@ Como desventajas podríamos señalar:
 
 ## Conceptos de virtualización
 
-* **host o anfitrión**: Es el sistema operativo que ejecuta el software de virtualización. El anfitrión controla el hardware real.
-* **guest, invitado o huésped**: Es el sistema operativo virtualizado.
+* **Host o Anfitrión**: Es el sistema operativo que ejecuta el software de virtualización. El anfitrión controla el hardware real.
+* **Guest, Invitado o Huésped**: Es el sistema operativo virtualizado.
 * **Hipervisor**: El software de virtualización.
 
