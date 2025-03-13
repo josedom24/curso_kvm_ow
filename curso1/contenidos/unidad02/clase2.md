@@ -32,5 +32,5 @@ La última instrucción nos permite aplicar los cambios sin reiniciar la máquin
 
 ## Vista general de virt-manager
 
-![img](img/virt-manager.png)
+![img](img/virt-manager1.png)
 

@@ -23,8 +23,8 @@ Con la opción **Archivo->Nueva conexión...** podemos dar de alta una nueva con
 
 Si pulsamos con el botón derecho del ratón sobre la conexión QEMU/KVM, además de distintas opciones, como *Nueva*, *Desconectar*,..., encontramos la opción **Detalles** (esta opción también se puede elegir en el menú **Editar -> Detalle de la conexión**):
 
-IMAGEN DETALLE DE LA CONEXIÓN
+![img](img/virt-manager2.png)
 
 Al elegir el detalle de la conexión, podemos comprobar que es una conexión local privilegiada. Nos conectamos a la URI `qemu:///system`. Además está configurada para que se conecte de forma automática cada vez que iniciamos la aplicación:
 
-IMAGEN CONEXIÓN PRIVILEGIADA
+![img](img/virt-manager3.png)
