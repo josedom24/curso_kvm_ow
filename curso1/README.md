@@ -42,6 +42,8 @@
     * Configuración de red en las máquinas virtuales
 
 7. Temas adicionales
+    * Acceso a la máquina virtual usando la consola serie (sudo systemctl start getty@ttyS0)
     * Conexión local no privilegiada a libvirt
     * Conexión remota a libvirt
+    * Migración de máquinas virtuales
     * Gestión de máquinas virtuales con cockpit
