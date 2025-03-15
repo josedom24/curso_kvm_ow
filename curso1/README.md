@@ -15,7 +15,7 @@
     * [Creación de máquinas virtuales Linux](contenidos/unidad03/clase1.md)
     * [Características de las máquinas virtuales](contenidos/unidad03/clase2.md)
     * [Gestión de máquinas virtuales](contenidos/unidad03/clase3.md)
-    * Detalles de las máquinas virtuales
+    * [Detalles de las máquinas virtuales](contenidos/unidad03/clase4.md)
     * Creación de máquinas virtuales Windows
     * Acceso a las máquinas virtuales desde el exterior
 
