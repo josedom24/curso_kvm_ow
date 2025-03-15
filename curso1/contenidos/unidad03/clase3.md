@@ -9,7 +9,7 @@ Para elegir las distintas opciones que tenemos para gestionar nuestras máquinas
 * **Apagar**: En este menú tenemos varias opciones (todas estas opciones también se pueden elegir en el **botón 4 del menú**):
 	* **Reiniciar**: Reinicia la máquina.
 	* **Apagar**: Apaga la máquina. También podemos usar el **botón 3 del menú**.
-	* **Forzar Reajuste**: Apaga la máquina simulando que se pulsa el botón **reset**.
+	* **Forzar Reinicio**: Fuerza elk reinicio de la máquina.
 	* **Forzar apagado**: Fuerza el apagado de la máquina.
 	* **Guardar**: Guarda el estado de la máquina en memoria. Para recuperar la máquina escogemos la opción **Reanudar**.
 * **Clonar**: Crea una nueva máquina a partir de esta.
