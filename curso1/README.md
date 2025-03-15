@@ -13,6 +13,7 @@
 
 3. Creación de máquinas virtuales con virt-manager
     * Creación de máquinas virtuales Linux
+    * Características de las máquinas virtuales
     * Gestión de máquinas virtuales
     * Detalles de las máquinas virtuales
     * Creación de máquinas virtuales Windows
