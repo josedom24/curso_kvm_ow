@@ -1,8 +1,8 @@
 # Creación de máquinas virtuales Linux
 
-Vamos a estudiar los pasos fundamentales para la creación de una máquina virtual. En este caso vamos a crear una máquina virtual con el sistema operativo GNU/Linux Ubuntu. 
+Vamos a estudiar los pasos fundamentales para la creación de una máquina virtual. En este caso vamos a crear una máquina virtual con el sistema operativo GNU/Linux Debian. 
 
-Antes de empezar la creación de la nueva máquina, hemos copiado en el grupo de almacenamiento **isos** (directorio `~/Descargas/isos`) una imagen ISO para la instalación de Ubuntu:
+Antes de empezar la creación de la nueva máquina, hemos copiado en el grupo de almacenamiento **isos** (directorio `~/Descargas/isos`) una imagen ISO para la instalación de Debian:
 
 ![virt-manager](img/virt-manager7.png)
 
@@ -14,7 +14,7 @@ A continuación seguimos los pasos del asistente para la creación de la máquin
 
 ## Elegir la fuente de instalación del sistema operativo
 
-Elegimos como fuente de instalación: instalación local desde una imagen ISO que se montará en un CDROM. En este apartado también podemos escoger la arquitectura de la máquina que vamos a utilizar.
+Elegimos como fuente de instalación: **instalación local desde una imagen ISO** que se montará en un CDROM.
 
 ![virt-manager](img/virt-manager8.png)
 
@@ -39,7 +39,7 @@ En este paso, habilitamos el almacenamiento para la nueva máquina, indicando el
 
 ## Resumen y selección de red
 
-Por último, aparece un resumen de las características de la máquina que vamos a crear. Además, podemos indicar el nombre y seleccionar la red a la que queremos que se conecte (en nuestro caso, la red de tipo NAT `default`). Si la red no está activa, nos dará la opción de activarla.
+Por último, aparece un resumen de las características de la máquina que vamos a crear. Además, podemos indicar el nombre y seleccionar la red a la que queremos que se conecte (en nuestro caso, la red de tipo NAT `default`). Si la red no está activa, nos dará la opción de activarla. Ademas podemos elegir una opción para *Personalizar la configuración antes de instalar*. 
 
 ![virt-manager](img/virt-manager12.png)
 

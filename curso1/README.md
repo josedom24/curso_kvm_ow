@@ -40,4 +40,7 @@
     * Gestión de Redes Puentes (Públicas)
     * Configuración de red en las máquinas virtuales
 
-
+7. Temas adicionales
+    * Conexión local no privilegiada a libvirt
+    * Conexión remota a libvirt
+    * Gestión de máquinas virtuales con cockpit
