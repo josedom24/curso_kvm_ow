@@ -13,8 +13,8 @@
 
 3. Creación de máquinas virtuales con virt-manager
     * [Creación de máquinas virtuales Linux](contenidos/unidad03/clase1.md)
-    * Características de las máquinas virtuales
-    * Gestión de máquinas virtuales
+    * [Características de las máquinas virtuales](contenidos/unidad03/clase2.md)
+    * [Gestión de máquinas virtuales](contenidos/unidad03/clase3.md)
     * Detalles de las máquinas virtuales
     * Creación de máquinas virtuales Windows
     * Acceso a las máquinas virtuales desde el exterior
