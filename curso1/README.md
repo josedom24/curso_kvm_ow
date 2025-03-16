@@ -16,8 +16,9 @@
     * [Características de las máquinas virtuales](contenidos/unidad03/clase2.md)
     * [Gestión de máquinas virtuales](contenidos/unidad03/clase3.md)
     * [Detalles de las máquinas virtuales](contenidos/unidad03/clase4.md)
-    * Creación de máquinas virtuales Windows
-    * Acceso a las máquinas virtuales desde el exterior
+    * [Creación de máquinas virtuales Windows (1ª parte)](contenidos/unidad03/clase5.md)
+    * [Creación de máquinas virtuales Windows (2ª parte)](contenidos/unidad03/clase6.md)
+    * [Acceso a las máquinas virtuales desde el exterior](contenidos/unidad03/clase7.md)
 
 4. Gestión del almacenamiento en virt-manager
     * Introducción al almacenamiento

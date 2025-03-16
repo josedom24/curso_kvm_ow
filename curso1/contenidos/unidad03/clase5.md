@@ -1,4 +1,4 @@
-# Creación de máquinas virtuales Windows
+# Creación de máquinas virtuales Windows (1ª parte)
 
 En un apartado anterior hemos visto los pasos fundamentales para la creación de una máquina virtual Linux. Para crear una máquina virtual con un sistema operativo tipo Windows se siguen los mismos pasos, pero tenemos que tener en cuenta que Windows no tiene soporte nativo para dispositivos VirtIO. Por lo tanto, a la hora de crear una máquina virtual Windows tendremos que añadir los controladores de dispositivos (drivers) necesarios para que Windows identifique los dispositivos VirtIO que definamos en la máquina virtual.
 
@@ -6,13 +6,13 @@ En este caso, el proyecto Fedora proporciona controladores de dispositivos de so
 
 ## ISO de los controladores de dispositivo VirtIO para Windows
 
-Podemos bajar la última versión de los drivers VirtIO para Windows en el siguiente [enlace](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.iso) y copiar la ISO al grupo de almacenamiento **isos**, es decir, en el directorio `~/Descargas/isos`. También hemos copiado a ese directorio una ISO para la instalación de Windows 11.
+Podemos bajar la última versión de los drivers VirtIO para Windows en el siguiente [enlace](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.iso) y copiar la ISO al grupo de almacenamiento **isos**, es decir, en el directorio `~/Descargas/isos`. También hemos copiado a ese directorio una ISO para la instalación de Windows 10.
 
 ![virt-manager](img/virt-manager15.png)
 
-Creamos la nueva máquina virtual Windows
+## Creación de la máquina virtual
 
-Teniendo en cuenta los siguiente:
+Creamos la nueva máquina virtual Windows, teniendo en cuenta los siguiente:
 
 * Elegimos una imagen ISO para instalar una versión de Windows y seleccionamos la variante del sistema operativo que estamos instalando.
 * Configuramos la CPU y la RAM para tener recursos suficientes.
@@ -28,7 +28,7 @@ El primer cambio será elegir el driver VirtIO para el disco. Como observamos se
 
 ![virt-manager](img/virt-manager17.png)
 
-A continuación, cambiamos el driver de la tarjeta de red. Del mismo modo, observamos que ha escogido un modelo *e1000e*, compatible con Windows, pero del mismo modo nos ofrece menos rendimiento que la opción **VirtIO**. cuando hagamos el cambio, volvemos a pulsar sobre el botón **Aplicar**. **Nota: Como hemos comentado Windows no es compatible con este modelo de tarjeta de red, por lo que durante la instalación no tendremos conexión a internet. Si necesitamos tener conexión, podríamos dejar el modelo escogido por defecto, y posteriormente modificar la configuración de la tarjeta.**
+A continuación, cambiamos el driver de la tarjeta de red. Del mismo modo, observamos que ha escogido un modelo *e1000e*, compatible con Windows, pero del mismo modo nos ofrece menos rendimiento que la opción **VirtIO**. Cuando hagamos el cambio, volvemos a pulsar sobre el botón **Aplicar**. **Nota: Como hemos comentado Windows no es compatible con este modelo de tarjeta de red, por lo que durante la instalación no tendremos conexión a internet. Si necesitamos tener conexión, podríamos dejar el modelo escogido por defecto, y posteriormente modificar la configuración de la tarjeta.**
 
 ![virt-manager](img/virt-manager18.png)
 
