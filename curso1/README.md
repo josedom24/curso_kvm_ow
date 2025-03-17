@@ -21,8 +21,8 @@
     * [Acceso a las máquinas virtuales desde el exterior](contenidos/unidad03/clase7.md)
 
 4. Gestión del almacenamiento en virt-manager
-    * Introducción al almacenamiento en virt-manager
-    * Gestión de Pools de almacenamiento
+    * [Introducción al almacenamiento en virt-manager](contenidos/unidad04/clase1.md)
+    * Gestión de grupos de almacenamiento
     * Gestión de volúmenes de almacenamiento
     * Trabajar con volúmenes en las máquinas virtuales
 
