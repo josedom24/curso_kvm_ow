@@ -1,6 +1,6 @@
 # Creación de máquinas virtuales Windows (2ª parte)
 
-Una vez que hemos realizado la instalación del sistema operativo, podemos comprobar que la máquina no tiene acceso a internet, ya que tenemos que cargar los drivers de la tarjeta VirtIO:
+Una vez que hemos realizado la instalación del sistema operativo, podemos comprobar que la máquina no tiene acceso a internet, ya que tenemos que cargar los drivers de la tarjeta de red VirtIO que hemos configurado:
 
 ## Configuración de la red
 
