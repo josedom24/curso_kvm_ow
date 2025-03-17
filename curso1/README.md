@@ -33,10 +33,11 @@
 
 6. Gestión de redes en virt-manager
     * Introducción a la gestión de redes
-    * Definición de Redes Virtuales (Privadas)
-    * Gestión de Redes Virtuales
-    * Creación de un Puente Externo con Linux Bridge
-    * Gestión de Redes Puentes (Públicas)
+    * Definición de redes virtuales de tipo NAT
+    * Definición de redes virtuales aisladas y muy aisladas
+    * Gestión de redes virtuales
+    * Creación de un puente externo
+    * Gestión de redes puentes
     * Configuración de red en las máquinas virtuales
 
 7. Temas adicionales
