@@ -35,11 +35,11 @@ Aunque **QEMU/KVM** proporciona herramientas para gestionar máquinas virtuales,
 Al ser una API genérica, **libvirt** puede ser utilizada por [diversas aplicaciones](https://libvirt.org/apps.html), tanto de línea de comandos como interfaces gráficas y herramientas web. Algunas de las más destacadas son:
 
 * **`virsh`**: Cliente de línea de comandos oficial de libvirt. Proporciona una shell interactiva para gestionar máquinas virtuales, redes y almacenamiento.  
-* **Virt-Manager**: Interfaz gráfica que facilita la creación, configuración y administración de máquinas virtuales.  
+* **virt-manager**: Interfaz gráfica que facilita la creación, configuración y administración de máquinas virtuales.  
 * **`virtinst`**: Conjunto de herramientas que incluye `virt-install`, `virt-clone` y `virt-xml`, útiles para la instalación y clonación de máquinas virtuales.  
-* **Virt-Viewer**: Aplicación que permite conectarse a la consola gráfica de una máquina virtual a través de protocolos como **SPICE o VNC**.  
+* **virt-viewer**: Aplicación que permite conectarse a la consola gráfica de una máquina virtual a través de protocolos como **SPICE o VNC**.  
 
-En este curso utilizaremos **Virt-Manager** para gestionar los recursos virtualizados.
+En este curso utilizaremos **virt-manager** para gestionar los recursos virtualizados.
 
 ### Formato XML en libvirt
 
