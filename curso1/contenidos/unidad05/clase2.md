@@ -26,3 +26,28 @@ A continuación vamos a crear un nuevo volumen a partir de la imagen base (backi
 
 Para no complicar la creación de volúmenes con backing store vamos a indicar el tamaño del nuevo volumen igual al de la imagen base.
 
+Podemos comprobar el tamaño de la imagen base, accediendo a la lista de volúmenes:
+
+IMAGEN TAMAÑO IMAGEN BASE
+
+A continuación para crear un nuevo volumen a partir de la imagen base, lo creamos indicando el ficherod e la imagen base (backing store):
+
+IMAGEN CREACIÓN VOLUMEN BACKING STORE
+
+## Creación de la nueva máquina virtual
+
+Por último, usando virt-manager, durante el asistente de creación de la máquina, elegimos la opción **Manual install**, ya que no vamos a usar una imagen ISO:
+
+![volumen](img/volumen9.png)
+
+Y posteriormente, escogemos el volumen que tenemos creado:
+
+![volumen](img/volumen4.png)
+
+Otra forma, sería escogiendo la opción **Importar imagen de disco existente** en la creación de la máquina:
+
+![plantilla](img/plantilla7.png)
+
+Y eligiendo el volumen en siguiente paso:
+
+![plantilla](img/plantilla8.png)
