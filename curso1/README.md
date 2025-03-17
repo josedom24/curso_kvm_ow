@@ -32,11 +32,10 @@
     * [Instantáneas de máquinas virtuales](contenidos/unidad05/clase3.md)
 
 6. Gestión de redes en virt-manager
-    * Introducción a la gestión de redes
-    * Definición de redes virtuales de tipo NAT
-    * Definición de redes virtuales aisladas y muy aisladas
-    * Gestión de redes virtuales
-    * Creación de un puente externo
+    * [Introducción a la gestión de redes](contenidos/unidad06/clase1.md)
+    * [Definición de redes virtuales de tipo NAT](contenidos/unidad06/clase2.md)
+    * [Definición de redes virtuales aisladas y muy aisladas](contenidos/unidad06/clase3.md)
+    * [Creación de un puente externo](contenidos/unidad06/clase4.md)
     * Gestión de redes puentes
     * Configuración de red en las máquinas virtuales
 
