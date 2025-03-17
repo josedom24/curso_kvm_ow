@@ -27,9 +27,9 @@
     * [Trabajar con volúmenes en las máquinas virtuales](contenidos/unidad04/clase4.md)
 
 5. Clonación e instantáneas de maquinas virtuales
-    * Clonación completa de máquinas virtuales
-    * Clonación enlazada de máquinas virtuales
-    * Instantáneas de máquinas virtuales
+    * [Clonación completa de máquinas virtuales](contenidos/unidad05/clase1.md)
+    * [Clonación enlazada de máquinas virtuales](contenidos/unidad05/clase2.md)
+    * [Instantáneas de máquinas virtuales](contenidos/unidad05/clase3.md)
 
 6. Gestión de redes en virt-manager
     * Introducción a la gestión de redes
