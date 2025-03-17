@@ -36,8 +36,9 @@
     * [Definición de redes virtuales de tipo NAT](contenidos/unidad06/clase2.md)
     * [Definición de redes virtuales aisladas y muy aisladas](contenidos/unidad06/clase3.md)
     * [Creación de un puente externo](contenidos/unidad06/clase4.md)
-    * Gestión de redes puentes
-    * Configuración de red en las máquinas virtuales
+    * [Gestión de redes puentes](contenidos/unidad06/clase5.md)
+    * [Configuración de red en las máquinas virtuales](contenidos/unidad06/clase6.md)
+    * Ejemplo: configuración de red en máquinas virtuales
 
 7. Temas adicionales
     * Acceso a la máquina virtual usando la consola serie (sudo systemctl start getty@ttyS0)
