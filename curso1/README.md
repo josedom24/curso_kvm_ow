@@ -22,9 +22,9 @@
 
 4. Gestión del almacenamiento en virt-manager
     * [Introducción al almacenamiento en virt-manager](contenidos/unidad04/clase1.md)
-    * Gestión de grupos de almacenamiento
-    * Gestión de volúmenes de almacenamiento
-    * Trabajar con volúmenes en las máquinas virtuales
+    * [Gestión de grupos de almacenamiento](contenidos/unidad04/clase2.md)
+    * [Gestión de volúmenes de almacenamiento](contenidos/unidad04/clase3.md)
+    * [Trabajar con volúmenes en las máquinas virtuales](contenidos/unidad04/clase4.md)
 
 5. Clonación e instantáneas de maquinas virtuales
     * Clonación de máquinas virtuales
