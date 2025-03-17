@@ -19,7 +19,7 @@ Como podemos ver, existen diferentes tipos de almacenamiento compatibles con vir
 * **Almacenamiento basado en sistemas de ficheros**: Estos métodos almacenan las imágenes de disco como archivos dentro de un sistema de ficheros. Algunos ejemplos son:
 
     * **dir**: Directorios locales donde se almacenan ficheros de imagen de disco (el que usaremos en este curso).
-    * **nfs**: Comparticiones de red montadas desde un servidor NFS.
+    * **nfs**: Sistema de fichero compartido en red desde un servidor NFS.
     * **glusterfs**: Sistema distribuido de almacenamiento en red.
 
 ## Volúmenes de almacenamiento (Storage Volumes)
