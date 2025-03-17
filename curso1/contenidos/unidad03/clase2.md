@@ -14,7 +14,7 @@ Y además, podemos comprobar que la máquina tiene acceso a internet:
 
 ## Recursos hardware
 
-Podemos comprobar el modelo de proceso, el tamaño de la memoria y la capacidad de red, entrando en la opción **Acerca de** dentro de la configuración:
+Podemos comprobar el modelo de procesador, el tamaño de la memoria y la capacidad del disco, entrando en la opción **Acerca de** dentro de la configuración:
 
 ![características](img/caracteristica2.png)
 
