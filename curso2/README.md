@@ -1,4 +1,4 @@
-# Curso: Profundización en la virtualización con KVM/libvirt
+# Curso: Profundización a la virtualización con KVM/libvirt
 
 1. Introducción a a la virtualización con KVM/libvirt
     * ¿Qué es la virtualización?
