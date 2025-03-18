@@ -10,7 +10,7 @@ El protocolo más habitual para trabajar con máquinas Linux es ssh. Podemos ins
 
 Una vez que sabemos la ip de la máquina:
 
-![agent](img/agent4.png)
+![acceso](img/acceso1.png)
 
 Desde nuestro equipo podemos acceder a esta máquina por ssh indicando el nombre de usuario y la ip:
 
@@ -26,13 +26,13 @@ En este ejemplo voy a usar el cliente Remmina.
 
 Hay que indicar que las versiones más sencillas como Windows 10 Home no tienen la posibilidad del acceso remoto, por lo tanto, vamos a utilizar una versión Windows 10 Pro. Lo primero que tenemos que hacer es configurar Windows para permitir el acceso remoto. Para ello elegimos Inicio > Configuración  > Sistema > Escritorio remoto y activa Habilitar escritorio remoto.
 
-![acceso](img/acceso1.png)
+![acceso](img/acceso2.png)
 
 A continuación, configuramos el cliente remmina con una nueva conexión, indicando la ip de la máquina, el usuario y la contraseña y la resolución de pantalla:
 
-![acceso](img/acceso2.png)
+![acceso](img/acceso3.png)
 
 Y ya podemos conectar para acceder a la máquina:
 
-![acceso](img/acceso3.png)
+![acceso](img/acceso4.png)
 

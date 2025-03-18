@@ -10,11 +10,11 @@ La máquina que hemos creado se conecta, por defecto, a la red `default`. Esta r
 
 Y además, podemos comprobar que la máquina tiene acceso a internet:
 
-![características](img/caracteristica3.png)
+![características](img/caracteristica2.png)
 
 ## Recursos hardware
 
 Podemos comprobar el modelo de procesador, el tamaño de la memoria y la capacidad del disco, entrando en la opción **Acerca de** dentro de la configuración:
 
-![características](img/caracteristica2.png)
+![características](img/caracteristica3.png)
 

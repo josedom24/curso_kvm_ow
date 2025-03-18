@@ -2,7 +2,7 @@
 
 Para elegir las distintas opciones que tenemos para gestionar nuestras máquinas, pulsamos sobre el botón derecho en la máquina:
 
-![virt-manager](img/virt-manager14.png)
+![virt-manager](img/gestion.png)
 
 * **Ejecutar**: Si la máquina está parada, la inicia. También podemos usar el **botón 1 del menú**.
 * **Pausa**: Pausa la ejecución de la máquina virtual. Podremos reanudar la ejecución con la opción **Reanudar**. También podemos usar el **botón 2 del menú**.
