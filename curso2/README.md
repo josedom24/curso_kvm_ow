@@ -7,10 +7,8 @@
 
 2. Instalación de KVM/libvirt
     * Preparación del escenario de instalación
-    * Instalación de QEMU/KVM + libvirt
-    * Conexión local no privilegiada a libvirt
-    * Conexión local privilegiada a libvirt
-    * Conexión remota a libvirt
+    * [Instalación de QEMU/KVM + libvirt](contenidos/unidad02/clase2.md)
+    * [Recursos disponibles en QEMU/KVM + libvirt](contenidos/unidad02/clase3.md)
 
 3. Creación de máquinas virtuales
     * Creación de máquinas virtuales con virt-install
@@ -42,3 +40,9 @@
     * Creación de un Puente Externo con Linux Bridge
     * Gestión de Redes Puentes (Públicas)
     * Configuración de red en las máquinas virtuales
+
+7. Temas adicionales
+    * Acceso a la máquina virtual usando la consola serie (sudo systemctl start getty@ttyS0)
+    * Conexión local no privilegiada a libvirt
+    * Conexión remota a libvirt
+    * Migración de máquinas virtuales

@@ -34,3 +34,52 @@ libvirt proporciona varios mecanismos para conectarse a un hipervisor QEMU/KVM:
 * **Conexión remota a libvirt**: Este método permite administrar un hipervisor QEMU/KVM en otro equipo a través de la red. Se usa en entornos de gestión centralizada o administración remota. Se pueden usar varios protocolos para el acceso, pero el más común es ssh.
 
     * URL de conexión: `qemu+ssh://<usuario>@<dirección  máquina remota>/system`.
+
+## Ejemplos de conexión a QEMU/KVM
+
+Vamos a usar la utilidad `virsh`, que nos proporciona una shell completa para el manejo de libvirt. Con el comando `list` mostramos las máquinas virtuales que hemos creado.
+
+Con un usuario sin privilegios ejecutamos:
+
+```
+usuario@kvm:~$ virsh list
+```
+
+Estaríamos haciendo una conexión local con un usuario no privilegiado (estaríamos conectando con la URI `qemu:///session` y estaríamos mostrando las máquinas virtuales de este usuario.
+
+Si por el contrario, como `root` ejecutamos:
+
+```
+root@kvm:~# virsh list
+```
+
+Estaríamos haciendo una conexión local privilegiada (estaríamos conectando con la URI `qemu:///system`) y mostraríamos las máquinas virtuales del sistema.
+
+Si queremos que un usuario sin privilegios pueda hacer conexiones privilegiadas, el usuario debe pertenecer el grupo `libvirt`,, para realizar esta comprobación ejecutamos la siguiente instrucción con nuestro usuario sin privilegio:
+
+```
+usuario@kvm:~$ group
+```
+
+Y comprobamos que en la lista de grupos aparece `libvirt`. Si no pertenece a dicho grupo lo añadimos:
+
+```
+usuario@kvm:~$ sudo usermod -aG libvirt $USER
+usuario@kvm:~$ newgrp libvirt
+```
+
+La última instrucción nos permite aplicar los cambios sin reiniciar la máquina.
+
+Para que el usuario `usuario` haga una conexión privilegiada tendrá que indicar explícitamente la conexión a la URI `qemu:///system`:
+
+```
+usuario@kvm:~$ virsh -c qemu:///system list
+```
+
+Para no tner que especificar siempre el parámetro de conexión podemos crear una variable de entorno llamada `LIBVIRT_DEFAULT_URI` de la siguiente forma:
+
+```
+usuario@kvm:~$ export LIBVIRT_DEFAULT_URI='qemu:///system'
+```
+
+Nota: Suponemos que durante el curso, tendremos está variable definida y los comandos se ejecutarán desde un usuario sin privilegios.

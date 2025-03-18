@@ -1,39 +1,50 @@
+# Recursos disponibles en QEMU/KVM + libvirt
 
-
-## Conexión a QEMU/KVM
-
-Vamos a usar la utilidad `virsh`, que nos proporciona una shell completa para el manejo de libvirt. Con el comando `list` mostramos las máquinas virtuales que hemos creado.
-
-Con un usuario sin privilegios ejecutamos:
+En este curso vamos a trabajar realizando conexiones locales privilegiadas, por lo tanto si queremos ver todas las máquinas creadas en el sistema debemos ejecutar:
 
 ```
-usuario@kvm:~$ virsh list
+usuario@kvm:~$ export LIBVIRT_DEFAULT_URI='qemu:///system'
+usuario@kvm:~$ virsh list --all
 ```
 
-Estaríamos haciendo una conexión local con un usuario no privilegiado (estaríamos conectando con la URI `qemu:///session` y estaríamos mostrando las máquinas virtuales de este usuario.
+La opción `--all` muestra las máquinas que se están ejecutando y las que están paradas.
 
-Si por el contrario, como `root` ejecutamos:
+## Redes disponibles
 
-```
-root@kvm:~# virsh list
-```
-
-Estaríamos haciendo una conexión local privilegiada (estaríamos conectando con la URI `qemu:///system`) y mostraríamos las máquinas virtuales del sistema.
-
-Si queremos que un usuario sin privilegios pueda hacer conexiones privilegiadas, el usuario debe pertenecer el grupo `libvirt`:
+Cuando instalamos QEMU/KVM + libvirt se crea una red por defecto de tipo NAT. Para verla, ejecutamos la siguiente instrucción:
 
 ```
-root@kvm:~# adduser usuario libvirt
+usuario@kvm:~$ irsh net-list --all
+ Name      State    Autostart   Persistent
+--------------------------------------------
+ default   active   yes         yes
+
+```
+La opción `--all` muestra las redes activas e inactivas.
+
+Si el estado estuviera en inactivo, para iniciarla, ejecutaríamos:
+
+```
+usuario@kvm:~$ virsh net-start default 
+La red default se ha iniciado
 ```
 
-Para que el usuario `usuario` haga una conexión privilegiada tendrá que indicar explícitamente la conexión a la URI `qemu:///system`:
+Si fuera necesario, es recomendable activar la propiedad de **Incio autómatico**, para que se inicie de forma automática después de reiniciar el host, para ello:
 
 ```
-usuario@kvm:~$ virsh -c qemu:///system list
+usuario@kvm:~$ virsh net-autostart default
+La red default ha sido marcada para iniciarse automáticamente
 ```
 
-De forma alternativa y según la [wiki de Debian](https://wiki.debian.org/es/KVM#M.2BAOE-quinas_virtuales_del_usuario_y_del_sistema), podemos usar la variable de entorno `LIBVIRT_DEFAULT_URI` con el siguiente comando:
+Aunque estudiaremos la redes con profundidad en el módulo correspondiente, podemos señalar que las máquinas virtuales que se conecten a esta red, tendrán las siguientes características:
 
-```bash
-export LIBVIRT_DEFAULT_URI='qemu:///system'
-```
+* Tomarán una dirección IP de forma dinámica en el rango `192.168.122.2` - `192.168.122.254`. Es decir, existe un servidor DHCP (que se encuentra en el host) asignando de forma dinámica el direccionamiento.
+* La puerta de enlace será la dirección IP `192.168.122.1` que corresponde al host. Está dirección también corresponde al servidor DNS que tiene configurado (que también se encuentra en el host).
+* La máquina virtual estará conectada a un Linux Bridge (switch virtual) llamado `virbr0` por la que se conectará al host.
+* El host hará de router/nat para que la máquina tenga conectividad al exterior.
+
+Por defecto, las nuevas máquinas que creemos se conectarán a esta red.
+
+## Almacenamiento disponible
+
+Estudiaremos en profundidad el almacenamiento con el que podemos trabajar en el módulo correspondiente. En este momento, indicar que los ficheros correspondientes a las imágenes de discos de las nuevas máquinas virtuales que creemos se guardarán, por defecto, en el directorio `/var/lib/libvirt/images`.
