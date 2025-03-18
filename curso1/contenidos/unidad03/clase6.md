@@ -34,3 +34,4 @@ También podemos comprobar el modelo del procesador, el tamaño de la memoria y 
 
 ## Instalación de Windows 11
 
+TO DO
