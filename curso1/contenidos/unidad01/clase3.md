@@ -30,6 +30,8 @@ Aunque **QEMU/KVM** proporciona herramientas para gestionar máquinas virtuales,
 
 [**libvirt**](https://libvirt.org/) es una API de virtualización de código abierto que proporciona una interfaz unificada para controlar diferentes hipervisores. Incluye un demonio (`libvirtd`), una API estable y herramientas de gestión que simplifican la administración de máquinas virtuales. Está diseñada principalmente para entornos de virtualización nativos de Linux, como **KVM, LXC y Xen**, aunque también ofrece soporte para otros hipervisores como **VMware ESXi y Microsoft Hyper-V**.  
 
+![libvirt](img/Libvirtsupport.svg)
+
 ### Aplicaciones para gestionar libvirt
 
 Al ser una API genérica, **libvirt** puede ser utilizada por [diversas aplicaciones](https://libvirt.org/apps.html), tanto de línea de comandos como interfaces gráficas y herramientas web. Algunas de las más destacadas son:
