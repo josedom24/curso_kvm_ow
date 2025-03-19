@@ -10,13 +10,11 @@ El protocolo más habitual para trabajar con máquinas Linux es ssh. Podemos ins
 
 Una vez que sabemos la ip de la máquina:
 
-![acceso](img/acceso1.png)
+![acceso](img/detalles9.png)
 
 Desde nuestro equipo podemos acceder a esta máquina por ssh indicando el nombre de usuario y la ip:
 
-```
-$ ssh usuario@...
-```
+![acceso](img/acceso1.png)
 
 ## Acceso por RDP a una máquina Windows
 
