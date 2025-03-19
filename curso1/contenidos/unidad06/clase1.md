@@ -9,7 +9,7 @@ Tenemos dos grandes grupos de redes que podemos configurar:
 
 Recordemos un **puente o bridge/switch** es un dispositivo de interconexión de redes. La gestión de redes de libvirt se basa en el concepto de **switch virtual**, para ello utiliza **Linux Bridge**, que es un software que nos permite crear bridge virtuales con la misma funcionalidad que un bridge físico.
 
-## Tipos de Redes Virtuales (Privadas)
+## Redes Virtuales (Privadas)
 
 La clasificación dependerá de la configuración que hagamos a la **Red Virtual**:
 
