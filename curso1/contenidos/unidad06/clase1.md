@@ -49,7 +49,9 @@ Es un Red Virtual Aislada, en la que el host no está conectado a las máquians 
 
 En este tipo de red se suele configurar la red de las máquinas virtuales de forma estática.
 
-## Redes Puente (Públicas) conectadas a un bridge externo
+## Redes Puente (Públicas)
+
+### Redes Puente (Públicas) conectadas a un bridge externo
 
 En este caso necesitamos crear un bridge virtual (normalmente llamado `br0`) al que conectaremos la máquina física y las máquinas virtuales. En este caso las máquinas virtuales estarán en la misma red red que el host y estarán conectadas directamente al router de esta red, tomando la configuración dhcp (si la hubiera) del mismo modo que la toma el host.
 
