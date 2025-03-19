@@ -12,7 +12,7 @@
 
 3. Creación de máquinas virtuales
     * Creación de máquinas virtuales con virt-install
-    * Creación de máquinas virtuales Windows
+    * Creación de máquinas virtuales Windows con virt-install
     * Características de las máquinas virtuales
     * Gestión de máquinas virtuales con virsh
     * Definición XML de una máquina virtual
@@ -42,6 +42,7 @@
     * Configuración de red en las máquinas virtuales
 
 7. Temas adicionales
+    * Definición de una máquina virtual con virsh
     * Acceso a la máquina virtual usando la consola serie (sudo systemctl start getty@ttyS0)
     * Conexión local no privilegiada a libvirt
     * Conexión remota a libvirt
