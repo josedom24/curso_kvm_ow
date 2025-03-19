@@ -25,10 +25,9 @@ Si no pertenece a dicho grupo lo añadimos:
 
 ```
 sudo usermod -aG libvirt $USER
-newgrp libvirt
 ```
 
-La última instrucción nos permite aplicar los cambios sin reiniciar la máquina.
+Y reiniciamos el sistema.
 
 ## Vista general de virt-manager
 
