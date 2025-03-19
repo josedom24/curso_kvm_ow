@@ -35,7 +35,7 @@ libvirt proporciona varios mecanismos para conectarse a un hipervisor QEMU/KVM:
 
     * URL de conexión: `qemu+ssh://<usuario>@<dirección  máquina remota>/system`.
 
-## Ejemplos de conexión a QEMU/KVM
+## Ejemplos de conexión a libvirt 
 
 Vamos a usar la utilidad `virsh`, que nos proporciona una shell completa para el manejo de libvirt. Con el comando `list` mostramos las máquinas virtuales que hemos creado.
 
