@@ -1,6 +1,6 @@
 # Gestión de redes puentes
 
-Con virt-manager no podemos crear Redes Puentes como veíamos anteriormente con las redes privadas. sin embargo, en la configuración de las tarjetas de red de las máquinas virtuales, podemos indicar que no se conecten una red privada configurado el puente externo al que estará conectada.
+Con virt-manager no podemos crear Redes Puentes como veíamos anteriormente con las redes privadas. Sin embargo, en la configuración de las tarjetas de red de las máquinas virtuales, podemos indicar que no se conecten una red privada, configurado el puente externo al que estará conectada o indicando el dispositivo físico que se va a utilizar 
 
 ## Creación de una máquina virtual conectado al puente externo br0
 
@@ -18,3 +18,6 @@ IMAGEN
 
 En el próximo apartado aprenderemos a añadir nuevas interfaces de red a las máquinas virtuales y evidentemente en esa operación podremos configurar la nueva interfaz para que se conecte a un puente externo.
 
+## Creación de una máquina virtual conectada al exterior compartiendo la interfaz física del host
+
+En este caso 
