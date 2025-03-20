@@ -43,7 +43,7 @@ Por lo tanto tienen las mismas características que una Red Virtual de tipo NAT,
 
 ### Redes Virtuales muy aisladas (Very Isolated)
 
-Es un Red Virtual Aislada, en la que el host no está conectado a las máquians virtuales. Por lo tanto,no tenemos servidor DNS ni DHCP para ser utilizados por las máquinas. Al ser aislada, tampoco tienen salida al exterior.
+Es un Red Virtual Aislada, en la que el host no está conectado a las máquinas virtuales. Por lo tanto,no tenemos servidor DNS ni DHCP para ser utilizados por las máquinas. Al ser aislada, tampoco tienen salida al exterior.
 
 ![red_muy_aislada](img/red_muy_aislada.drawio.png)
 
