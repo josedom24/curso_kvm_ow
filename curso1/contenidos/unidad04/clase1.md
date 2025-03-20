@@ -5,7 +5,7 @@ El almacenamiento es un aspecto fundamental en la virtualización, ya que permit
 ## Grupos de almacenamiento (Storage Pools)
 Los grupos de almacenamiento en virt-manager son espacios lógicos donde se almacenan las imágenes de disco de las máquinas virtuales. 
 
-IMAGEN TIPOS DE GRUPO DE ALMACENAMIENTO
+![tipos](img/tipos.png)
 
 Como podemos ver, existen diferentes tipos de almacenamiento compatibles con virt-manager, que se pueden clasificar en dos categorías principales:
 
