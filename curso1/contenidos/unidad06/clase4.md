@@ -37,7 +37,7 @@ También podemos modificar en cualquier momento a la red o al puente al que esta
 
 ![configuración](img/configuracion7.png)
 
-Para eliminar la interfaz de red desde `virt-manager` simplemente pulsaríamos con el botón derecho sobre el dispositivo de red en la vista detalle, y pulsaríamos sobre **Eliminar Hardware**.
+Para eliminar la interfaz de red desde virt-manager simplemente pulsaríamos con el botón derecho sobre el dispositivo de red en la vista detalle, y pulsaríamos sobre **Eliminar Hardware**.
 
 
 
