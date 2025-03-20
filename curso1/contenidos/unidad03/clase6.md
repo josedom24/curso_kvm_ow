@@ -16,8 +16,8 @@ Y escogemos la unidad del CDROM donde hemos montado los drivers VirtIO y elegimo
 
 Usando el mismo procedimiento configuramos los drivers de los elementos hardware que no están dando alguna indicación de error en la configuración:
 
-* Controladora simple de comunicaciones PCI
-* Dispositivo PCI
+* Controladora simple de comunicaciones PCI, que corresponde a un dispositivo **VirtIO Serial Driver**, que es un controlador de comunicaciones serie.
+* Dispositivo PCI, que corresponde a un dispositivo **VirtIO Balloon Driver**, que es un controlador que permite la gestión dinámica de la memoria en máquinas virtuales bajo KVM/QEMU.
 
 ## Características de las máquina Windows que hemos creado
 
