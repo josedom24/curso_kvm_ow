@@ -22,6 +22,6 @@ La máquina clon que hemos creado es igual a la original. La nueva máquina cont
 
 ![clonación](img/clonacion4.png)
 
-Podemos acceder a la máquina y cambiar el fichero `/etc/hostname` para cambiar el nombre de la máquina, pero todavía tendríamos mucha información repetida entre las dos máquinas. 
+Podemos acceder a la máquina y cambiar el nombre de la máquina modificando el fichero `/etc/hostname` o desde el apartado de configuración **Acerca de**, pero todavía tendríamos mucha información repetida entre las dos máquinas. 
 
 
