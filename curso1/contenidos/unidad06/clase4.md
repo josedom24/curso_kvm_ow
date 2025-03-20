@@ -1,60 +1,47 @@
-# Creación de un puente externo
+# Configuración de red en las máquinas virtuales
 
-Un bridge externo es un bridge virtual que estará conectado al router de la red local. El bridge se creará en el servidor donde estamos virtualizando (host). El host estará conectado a este bridge para tener conectividad al exterior. Veamos un esquema:
+Todas las máquinas que hemos creado durante el curso se han conectado de forma predeterminada a la red `default`. 
 
-![bridge externo](img/red_bridge_externo.drawio.png)
+Sin embargo, en este apartado vamos a aprender algunas cosas nuevas: a crear máquinas virtuales conectadas a otras redes definidas por el usuario y a añadir interfaces de red a máquinas virtuales ya existentes.
 
-* El bridge que vamos a crear lo vamos a llamar `br0`.
-* En el host aparecerá una interfaz de red con el mismo nombre que representa la conexión al bridge. Está interfaz de red se configurará de forma estática o dinámica (si la red local tiene un servidor DHCP).
-* En el ejemplo vemos que la interfaz física de red es `eth0` que estará conectada a `br0` para que el host tenga conectividad al exterior. Esa interfaz de red no tendrá asignada dirección IP.
-* Posteriormente veremos como podemos conectar las máquinas virtuales a este bridge de tal manera que tomaran direcciones IP en el mismo direccionamiento que el host.
+## Crear máquinas virtuales conectada a una red existente
 
-**Nota: Si conectamos al bridge una interfaz de tipo wifi podemos tener problemas de conectividad. No todas las tarjetas inalámbricas permiten la conexión a puentes virtuales.**
+Desde virt-manager, durante el asistente de creación de la máquina, el el último paso, podemos escoger la red a la que nos vamos a conectar:
 
-## Creación de un bridge externo con NetworkManager
+![configuración](img/configuracion1.png)
 
-**NetworkManager** es una utilidad de gráfica para simplificar el uso de redes en sistemas Linux. Normalmente la tenemos instaladas con sistemas Linux con entornos gráficos como Gnome. Junto a esa utilidad tenemos otra que se puede ejecutar con el comando `nm-connection-editor`, y que se llama **Configuración avanzada de redes**:
+También podemos escoger el puente virtual al que nos queremos conectar:
 
-![Network Manager](img/networkmanager1.png)
+![configuración](img/configuracion2.png)
 
-Si lo ejecutamos accedemos a la siguiente pantalla:
+## Añadir nuevas interfaces de red a máquinas virtuales
 
-![Network Manager](img/networkmanager2.png)
+Desde virt-manager elegimos la opción **Añadir nuevo hardware** en la vista detalle de la máquina y podemos añadir una nueva conexión indicando la red:
 
-Donde vemos la conexión de red cableada (o de wifi) que tenemos y los bridge virtuales que se han creado cuando hemos estado trabajando con las redes en libvirt. Pulsando el botón +, podemos de alta nueva conexión. Añadiremos una conexión de tipo **Puente**:
+![configuración](img/configuracion5.png)
 
-![Network Manager](img/networkmanager3.png)
+O indicando el puente virtual donde nos vamos a conectar:
 
-Y podemos indicar el nombre de la conexión, el nombre del puente que estamos creando, y a continuación vamos a añadirle una conexión al bridge que será la interfaz de red física del host que está actualmente conectada al exterior.
+![configuración](img/configuracion6.png)
 
-![Network Manager](img/networkmanager4.png)
+También podemos modificar en cualquier momento a la red o al puente al que estamos conectado, modificando la interfaz de red desde la vista detalles:
 
-Añadimos un conexión **Cableada** que será la interfaz física del host (en mi caso `enp1s0`):
+![configuración](img/configuracion7.png)
 
-![Network Manager](img/networkmanager5.png)
+Para eliminar la interfaz de red desde `virt-manager` simplemente pulsaríamos con el botón derecho sobre el dispositivo de red en la vista detalle, y pulsaríamos sobre **Eliminar Hardware**.
 
-![Network Manager](img/networkmanager6.png)
+## Consideraciones finales
 
-Finalmente borramos la conexión cableada que tenemos actualmente:
+* Si conectamos una máquina virtual a una **Red de tipo Aislada**, tendremos que configurar de forma estática la interfaz y poner el mismo direccionamiento que hemos configurado para el host. Por ejemplo, para la red `red_aislada` usamos el direccionamiento `192.168.123.0/224` y la dirección que le asignamos al host fue `192.168.123.1`. Otras máquinas conectadas a esta red tendrán que estar configurada con el mismo direccionamiento.
+* Si conectamos una máquina virtual a una **Red de tipo Muy Aislada**, tendremos que configurar de forma estática la interfaz y poner el direccionamiento que nos interese. Normalmente todas las máquinas conectada a esta red tendrán el mismo direccionamiento para que tengan conectividad entre ellas.
+* Si conectamos a una **Red de tipo Bridge conectada a un bridge externo**, la máquina virtual se configurará con el mismo direccionamiento que el host. En mis caso, trabajo con la red local `172.22.0.0/16`, si conecto la máquina `prueba2` (tiene instalada un Ubuntu con NetworkManager) al bridge externo `br0`, tomará la siguiente configuración:
 
-![Network Manager](img/networkmanager7.png)
+	```
+	virsh -c qemu:///system attach-interface prueba2 bridge br0 --model virtio --persistent
+	La interfaz ha sido asociada exitosamente
+	```
 
-Y en unos segundos, se conectará de forma automática a la conexión **Puente Externo**:
+	Iniciamos la máquina y comprobamos como la interfaz que acabamos de añadir se configura con el direccionamiento de la red local. Esta en la misma red que el host:
 
-![Network Manager](img/networkmanager8.png) 
+	![configuración](img/configuracion8.png)
 
-Comprobamos la configuración de red del host:
-
-```
-$ ip a
-2: enp1s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast master br0 state UP group default qlen 1000
-    link/ether 52:54:00:22:d7:3f brd ff:ff:ff:ff:ff:ff
-...
-7: br0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
-    link/ether 92:d8:69:79:60:69 brd ff:ff:ff:ff:ff:ff
-    inet 192.168.121.168/24 brd 192.168.121.255 scope global dynamic noprefixroute br0
-       valid_lft 3459sec preferred_lft 3459sec
-...
-```
-
-Comprobamos que la interfaz física `enp1s0` no tiene dirección IP, ya que está conectada al bridge. La interfaz de red `br0` representa la conexión del bridge que ha tomado una ip del servidor DHCP de la red local (esta dirección IP será diferente a la que tenía anteriormente la interfaz física).
