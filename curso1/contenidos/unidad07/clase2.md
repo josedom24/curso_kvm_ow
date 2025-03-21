@@ -28,3 +28,7 @@ El procedimiento para crear una nueva máquina virtual es similar al descrito en
 
     IMAGEN SELECCIONAR REDES
 
+* Una vez instalada la máquina virtual, esta se conecta a la red de usuario de QEMU ([SLIRP](https://wiki.qemu.org/Documentation/Networking#User_Networking_.28SLIRP.29)) que configura la máquina con la dirección IP `10.0.2.15`, su puerta de enlace, que es el anfitrión (la máquina física) es la dirección IP `10.0.2.2` y configura un servidor DNS en la dirección IP `10.0.2.3`. Esta red permite que la máquina tenga acceso a internet, pero no tendrá conectividad con el anfitrión u otras máquinas que creemos.
+
+    IMAGEN CONEXIÓN RED
+
