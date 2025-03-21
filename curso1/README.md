@@ -40,7 +40,7 @@
 
 7. Temas adicionales
     * [Acceso a la máquina virtual usando la consola serie](contenidos/unidad07/clase1.md)
-    * Conexión local no privilegiada a libvirt
+    * [Conexión local no privilegiada a libvirt](contenidos/unidad07/clase2.md)
     * Conexión remota a libvirt
     * Migración de máquinas virtuales
     * Gestión de máquinas virtuales con cockpit
