@@ -22,11 +22,9 @@ Podemos crear una instantánea con la máquina en ejecución o con la máquina p
 ![instantanea](img/instantanea3.png)
 
 
-Si hemos tenido un problema en nuestra máquina y hemos eliminado nuestra carpeta importante:
+Si hemos tenido un problema en nuestra máquina y hemos eliminado nuestra carpeta importante, podemos recuperar la instantánea y volver al estado anterior.
 
 ![instantanea](img/instantanea4.png)
-
-Podemos recuperar la instantánea y volver al estado anterior.
 
 Puede ser muy interesante tomar instantáneas periódicamente a una máquina virtual. Si tenemos cualquier problema con la máquina podemos volver a un estado estable anterior.
 Esta característica puede ser muy útil, ya que nos permite experimentar con la máquina, y si tenemos algún problema, podemos volver al estado original y no tener que eliminar la máquina.
