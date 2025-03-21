@@ -27,7 +27,7 @@ IMAGEN DISPOSITIVO SERIE
 Dentro de la máquina virtual (Linux), se debe iniciar el servicio que permite la conexión a la consola serie:  
 
 ```
-systemctl enable --now getty@ttyS0
+$ sudo systemctl enable --now getty@ttyS0
 ```
 
 * **`getty`** (abreviatura de "get TTY") es el proceso encargado de gestionar una terminal de login en Linux.  
