@@ -39,7 +39,7 @@
     * Ejemplos de configuración de red en máquinas virtuales
 
 7. Temas adicionales
-    * Acceso a la máquina virtual usando la consola serie (sudo systemctl start getty@ttyS0)
+    * [Acceso a la máquina virtual usando la consola serie](contenidos/unidad07/clase1.md)
     * Conexión local no privilegiada a libvirt
     * Conexión remota a libvirt
     * Migración de máquinas virtuales
