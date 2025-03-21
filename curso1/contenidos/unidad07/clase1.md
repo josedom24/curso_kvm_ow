@@ -1,30 +1,38 @@
-Sí, para acceder a la consola serie en una máquina virtual o un servidor sin interfaz gráfica, es necesario iniciar el servicio:  
+# Acceso a la máquina virtual usando la consola serie
 
-```bash
-systemctl start getty@ttyS0
+Hasta ahora, hemos accedido a las máquinas virtuales desde la consola gráfica usando **SPICE** o **VNC**, que proporcionan una experiencia similar a tener un monitor conectado a la máquina virtual. 
+
+* **SPICE**: Protocolo optimizado para gráficos, permite aceleración, copiar/pegar, audio, redirección de USB.
+* **VNC**: Protocolo de acceso remoto gráfico, más simple pero sin integración con el SO. Menos eficiente que SPICE.
+
+Sin embargo, en algunos escenarios, puede ser más conveniente o incluso necesario acceder a la máquina virtual mediante **una consola serie**.  Este modo de acceso es en modo texto, no necesita entorno gráfico, ideal para administración remota y sistemas sin interfaz de usuario.
+
+## ¿Para qué es necesario el acceso serie a una máquina KVM?
+
+El acceso a través de **una consola serie** es útil en los siguientes casos:  
+
+* **Servidores sin interfaz gráfica**: En entornos donde no hay un escritorio disponible (como servidores), el acceso por SPICE o VNC no es viable, pero una consola serie permite administrar el sistema de forma eficiente.  
+* **Recuperación de sistemas**: Si la máquina virtual no arranca correctamente o hay problemas con los controladores gráficos, la consola serie permite acceder al sistema sin depender de una interfaz gráfica.  
+* **Administración remota y automatización**: Algunas herramientas de gestión remota pueden acceder más fácilmente a la consola serie que a una interfaz gráfica, lo que facilita la automatización de tareas.  
+* **Menor consumo de recursos**: Una consola serie consume **mucho menos** CPU y memoria que SPICE o VNC, lo que la hace ideal para máquinas virtuales con pocos recursos.  
+
+## Dispositivo de hardware 
+
+Para poder acceder a una máquina virtual mediante consola serie, la máquina debe tener configurado un **puerto serie virtual**, que en KVM se representa como **virtio-serial** o un dispositivo `ttyS0`. 
+
+IMAGEN DISPOSITIVO SERIE
+
+## Configuración del sistema operativo
+
+Dentro de la máquina virtual (Linux), se debe iniciar el servicio que permite la conexión a la consola serie:  
+
 ```
-
-### 🔹 **¿Qué hace este servicio?**  
-- **`getty`** (abreviatura de "get TTY") es el proceso encargado de gestionar una terminal de login en Linux.  
-- **`ttyS0`** es el primer puerto serie en un sistema Linux (el equivalente a `COM1` en Windows).  
-
-Cuando ejecutas `systemctl start getty@ttyS0`, estás lanzando un **proceso de login en la consola serie**, lo que permite conectarte a la máquina a través de un puerto serie o una consola virtual en KVM/QEMU.
-
-### 🔹 **¿Por qué es necesario para la consola serie?**  
-Por defecto, el sistema solo inicia sesiones `getty` en **TTYs virtuales** (`tty1`, `tty2`, etc.), pero no en la consola serie (`ttyS0`). Al habilitar `getty@ttyS0`, permites que la máquina acepte logins a través del puerto serie.
-
-### 🔹 **Casos de uso comunes**  
-1. **Máquinas virtuales** en KVM/QEMU o Proxmox, donde se accede a la VM mediante una consola serie.  
-2. **Servidores sin interfaz gráfica**, donde el acceso se realiza por **puerto serie físico** o `virsh console`.  
-3. **Sistemas embebidos o en modo recuperación**, donde solo tienes acceso a una consola serie.  
-
-### 🔹 **Cómo habilitarlo permanentemente**  
-Si necesitas que `getty@ttyS0` se inicie automáticamente en cada arranque, usa:
-
-```bash
 systemctl enable --now getty@ttyS0
 ```
 
-Esto asegura que siempre tengas acceso a la consola serie sin necesidad de iniciar manualmente el servicio.
+* **`getty`** (abreviatura de "get TTY") es el proceso encargado de gestionar una terminal de login en Linux.  
+* **`ttyS0`** es el primer puerto serie en un sistema Linux.  
 
-Si estás usando KVM/QEMU y necesitas configurar el acceso serie, dime más detalles y te ayudo. 🚀
+Por lo tanto estamos lanzando un **proceso de login en la consola serie**, lo que permite conectarte a la máquina a través de un puerto serie o una consola virtual en KVM/QEMU.
+
+IMAGEN ACCESO SERIE
