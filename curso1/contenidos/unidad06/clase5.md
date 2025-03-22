@@ -24,11 +24,13 @@ A continuación vamos a conectar las dos máquinas a la red aislada llamada `red
 
     ![ejemplo](img/ejemplo1_4.png)
 
-* Realizamos la misma operación en la máquina Windows:
+* Realizamos la misma operación en la máquina Windows. Además deshabilitamos el cortafuegos para que nos permita hacer las posteriores comprobaciones:
 
     ![ejemplo](img/ejemplo1_5.png)
     
     ![ejemplo](img/ejemplo1_6.png)
+
+    ![ejemplo](img/ejemplo1_7.png)
 
 ### Comprobación de funcionamiento
 
