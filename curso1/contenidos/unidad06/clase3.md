@@ -43,17 +43,18 @@ Y en unos segundos, se conectará de forma automática a la conexión **Puente E
 
 ![Network Manager](img/networkmanager8.png) 
 
-Comprobamos la configuración de red del host:
+Comprobamos la configuración de red del host, ejecutando desde el terminal:
 
 ```
 $ ip a
-2: enp1s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast master br0 state UP group default qlen 1000
-    link/ether 52:54:00:22:d7:3f brd ff:ff:ff:ff:ff:ff
+
+ip a
+2: enp1s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel master br0 state UP group default qlen 1000
+    link/ether 52:54:00:03:8c:8f brd ff:ff:ff:ff:ff:ff
 ...
-7: br0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
-    link/ether 92:d8:69:79:60:69 brd ff:ff:ff:ff:ff:ff
-    inet 192.168.121.168/24 brd 192.168.121.255 scope global dynamic noprefixroute br0
-       valid_lft 3459sec preferred_lft 3459sec
+7: br0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default qlen 1000
+    link/ether 4e:34:25:6e:1b:84 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.100.200/24 brd 192.168.100.255 scope global dynamic noprefixroute br0
 ...
 ```
 
