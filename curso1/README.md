@@ -38,6 +38,7 @@
     * [Configuración de red en las máquinas virtuales](contenidos/unidad06/clase4.md)
     * Ejemplo 1: Trabajando con redes virtuales privadas
     * Ejemplo 2: Trabajando con redes puentes públicas
+    * Ejemplo 3: Configuración de un router/NAT
 
 7. Temas adicionales
     * [Acceso a la máquina virtual usando la consola serie](contenidos/unidad07/clase1.md)
