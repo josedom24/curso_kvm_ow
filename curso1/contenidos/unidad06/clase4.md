@@ -16,22 +16,21 @@ También podemos escoger el puente virtual al que nos queremos conectar. En el a
 
 La última opción sería conectar la máquina al exterior compartiendo la interfaz física del host. Para ello, en el apartado **Selección de Red** elegimos la opción **Macvtap device...** y en la casilla **Nombre del dispositivo** indicamos el nombre de la tarjeta de red física del anfitrión que vamos a usar para conectar la máquina virtual al exterior.
 
-
-IMAGEN
+![configuración](img/configuracion3.png)
 
 ## Añadir nuevas interfaces de red a máquinas virtuales
 
-Desde virt-manager elegimos la opción **Añadir nuevo hardware** en la vista detalle de la máquina y podemos añadir una nueva conexión indicando la red:
+Desde virt-manager elegimos la opción **Añadir nuevo hardware** en la vista detalle de la máquina y podemos añadir una nueva conexión indicando la red, el puente al que se tiene que conectar o a la interfaz que va a utilizar para conectarse al exterior:
 
-![configuración](img/configuracion5.png)
+![configuración](img/configuracion4.png)
 
 O indicando el puente virtual donde nos vamos a conectar:
 
-![configuración](img/configuracion6.png)
+![configuración](img/configuracion5.png)
 
 O indicando la interfaz de red del host que vamos a utilizar para conectar la máquina virtual al exterior:
 
-IMAGEN
+![configuración](img/configuracion6.png)
 
 También podemos modificar en cualquier momento a la red o al puente al que estamos conectado, modificando la interfaz de red desde la vista detalles:
 
