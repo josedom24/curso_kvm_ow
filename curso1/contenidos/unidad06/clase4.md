@@ -24,17 +24,9 @@ Desde virt-manager elegimos la opción **Añadir nuevo hardware** en la vista de
 
 ![configuración](img/configuracion4.png)
 
-O indicando el puente virtual donde nos vamos a conectar:
-
-![configuración](img/configuracion5.png)
-
-O indicando la interfaz de red del host que vamos a utilizar para conectar la máquina virtual al exterior:
-
-![configuración](img/configuracion6.png)
-
 También podemos modificar en cualquier momento a la red o al puente al que estamos conectado, modificando la interfaz de red desde la vista detalles:
 
-![configuración](img/configuracion7.png)
+![configuración](img/configuracion5.png)
 
 Para eliminar la interfaz de red desde virt-manager simplemente pulsaríamos con el botón derecho sobre el dispositivo de red en la vista detalle, y pulsaríamos sobre **Eliminar Hardware**.
 
