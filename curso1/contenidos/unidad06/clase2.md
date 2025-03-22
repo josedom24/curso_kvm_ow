@@ -50,7 +50,7 @@ Pulsamos sobre el botón de añadir una nueva red, indicamos el **Nombre**, en e
 
 * **Configuración IPv4**: 
     * Elegimos la opción de **Habilitar IPv4**, indicando la dirección de **Red** con la que vamos a trabajar. La primera dirección será la dirección IP del anfitrión en esta red y la puerta de enlace de las máquinas virtuales conectadas a esta red.
-    * En este caso y según nuestras necesidades podemos habilitar o no el servidor DHCP.
+    * En este caso y según nuestras necesidades podemos habilitar o no el servidor DHCP (No vamos a habilitar el servidor DHCP para realizar un ejercicio posteriormente).
 * **Configuración IPv6**: Si queremos trabajar con IPv6 podemos seleccionar la opción **Habilitar IPv6**.
 * **Nombre de dominio DNS**: Esta opción permiten definir cómo se asignará el dominio a las máquinas virtuales conectadas a esa red, funciona de la misma manera que en las redes de tipo NAT.
     

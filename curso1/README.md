@@ -36,7 +36,8 @@
     * [Definición de redes](contenidos/unidad06/clase2.md)
     * [Creación de un puente externo](contenidos/unidad06/clase3.md)
     * [Configuración de red en las máquinas virtuales](contenidos/unidad06/clase4.md)
-    * Ejemplos de configuración de red en máquinas virtuales
+    * Ejemplo 1: Trabajando con redes virtuales privadas
+    * Ejemplo 2: Trabajando con redes puentes públicas
 
 7. Temas adicionales
     * [Acceso a la máquina virtual usando la consola serie](contenidos/unidad07/clase1.md)
