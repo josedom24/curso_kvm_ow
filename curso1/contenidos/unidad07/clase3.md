@@ -13,7 +13,7 @@ Se va producir una conexión ssh entre la máquina cliente y el servidor donde s
 Vamos a partir del siguiente escenario:
 
 * Máquina **cliente** donde tenemos instalado virt-manager y vamos a conectarnos a una máquina remota.
-* Maquina **servidor** donde se ejecuta el demonio de livbirt. el usuario de está máquina se llama `usuario`.
+* Maquina **servidor** donde se ejecuta el demonio de libvirt. El usuario de esta máquina se llama `usuario`.
 
 Para poder acceder por ssh al servidor remoto sin que nos pida contraseña es necesario otro método de autentificación. en este caso vamos a usar el método de calves ssh, para ello realizamos los siguiente pasos:
 
