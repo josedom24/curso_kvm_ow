@@ -1,6 +1,6 @@
 #  Conexión remota a libvirt
 
-En virt-amangar podemos crear una conexión que nos permita acceder al demonio libvirt que se está ejecutando en un servidor remoto.
+En virt-manager podemos crear una conexión que nos permita acceder al demonio libvirt que se está ejecutando en un servidor remoto.
 
 Este método permite administrar un hipervisor QEMU/KVM en otro equipo a través de la red. Se usa en entornos de gestión centralizada o administración remota. Se pueden usar varios protocolos para el acceso, pero el más común es ssh.
 
