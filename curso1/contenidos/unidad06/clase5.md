@@ -32,8 +32,13 @@ A continuación vamos a conectar las dos máquinas a la red aislada llamada `red
 
     ![ejemplo](img/ejemplo1_7.png)
 
-### Comprobación de funcionamiento
-
 A continuación, arrancamos las máquinas y vamos a realizar algunas comprobaciones:
 
-* 
+* Desde la máquina Linux tenemos conectividad con la máquina Windows y con el host, pero no tenemos conectividad con el exterior:
+
+    ![ejemplo](img/ejemplo1_8.png)
+
+* Del mismo desde la máquina windows tenemos conectividad con la máquina Linux t el host, pero tampoco con el exterior:
+
+    ![ejemplo](img/ejemplo1_9.png)
+
