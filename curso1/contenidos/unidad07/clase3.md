@@ -27,7 +27,7 @@ Para poder acceder por ssh al servidor remoto sin que nos pida contraseña es ne
 
     Además podremos definir una **Frase de paso (passphrase)**, una contraseña que se pedirá al usar la clave privada.
 
-2. Para que con nuestra clave privada podamos autentificarnos al conectarnos con ssh con el servidor, tenemos que copiar nuestra clave pública en el servidor. Copiaremos el contenido de la clave pública en el fichero `~/.ssh/authorized_keys` del usuario del servidor con el que vamos a realizar la conexión. Para ello usamos la instrucción `ssh-copy-id` desde el cliente, indicando la clave pública que vamos a copiar:
+2. Para que con nuestra clave privada podamos autentificarnos al conectarnos por ssh con el servidor, tenemos que copiar nuestra clave pública en el servidor. Copiaremos el contenido de la clave pública en el fichero `~/.ssh/authorized_keys` del usuario del servidor con el que vamos a realizar la conexión. Para ello usamos la instrucción `ssh-copy-id` desde el cliente, indicando la clave pública que vamos a copiar:
 
     ```
     $ ssh-copy-id -i .ssh/id_rsa.pub usuario@<dirección del servidor>
