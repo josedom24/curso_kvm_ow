@@ -12,7 +12,7 @@ Se va producir una conexión ssh entre la máquina cliente y el servidor donde s
 
 Vamos a partir del siguiente escenario:
 
-* Máquina **cliente** donde tenemos intalado virt-manager y vamos a conectarnos a una máquina remota.
+* Máquina **cliente** donde tenemos instalado virt-manager y vamos a conectarnos a una máquina remota.
 * Maquina **servidor** donde se ejecuta el demonio de livbirt. el usuario de está máquina se llama `usuario`.
 
 Para poder acceder por ssh al servidor remoto sin que nos pida contraseña es necesario otro método de autentificación. en este caso vamos a usar el método de calves ssh, para ello realizamos los siguiente pasos:
@@ -20,7 +20,7 @@ Para poder acceder por ssh al servidor remoto sin que nos pida contraseña es ne
 1. En la máquina cliente, xon un usuario sin privilegios, generamos un par de claves ssh, una pública y otra privada, para ello:
 
     ```
-    $ ssh-keygen
+    $ ssh-keygen -t rsa
     ```
 
     Tendremos que indicar la ubicación y el nombre de las claves (se guardarán en el directorio `.ssh` en el home del usuario), se recomienda dejar el nombre que viene por defecto: `id_rsa.pub` la clave pública y `id_rsa` la clave privada.
@@ -43,10 +43,10 @@ Para poder acceder por ssh al servidor remoto sin que nos pida contraseña es ne
 
 Desde virt-manager podemos crear una nueva conexión no privilegiada, eligiendo la opción **Archivo - Añadir conexión...**, eligiendo como **Hipervisor** la opción **QEMU/KVM** y eligiendo la opción **Conectar a anfitrión remoto por SSH** indicando el usuario y el nombre o dirección ip del servidor.
 
-El usuario que indicamos será al que hemos copiado nuesta clave pública. Además si es un usuario sin privilegio deberá pertenecer al grupo `libvirt` en el servidor para poder gestionar recursos virtualizados en el modo privilegiado.
+El usuario que indicamos será al que hemos copiado nuestra clave pública. Además si es un usuario sin privilegio deberá pertenecer al grupo `libvirt` en el servidor para poder gestionar recursos virtualizados en el modo privilegiado.
 
-IMAGEN NUEVA CONEXIÓN
+![remoto](img/remoto1.png)
 
 Si el servidor al que hemos conectado tenía ya creadas máquinas virtuales la podremos ver nuestra nueva conexión. Además todas las operaciones que hagamos en esta conexión se realizarán en el servidor remoto.
 
-IMAGEN ACCESO REMOTO
+![remoto](img/remoto2.png)
