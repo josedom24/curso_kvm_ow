@@ -42,3 +42,25 @@ A continuación, arrancamos las máquinas y vamos a realizar algunas comprobacio
 
     ![ejemplo](img/ejemplo1_9.png)
 
+## Trabajando con la red muy aislada
+
+En este último ejemplo modificamos la configuración de las interfaces de red de las máquinas para conectarlas con la red muy aislada llamada `red-muy-aislada`. En este caso, el host no está conectado a esta red y podemos utilizar el direccionamiento que queramos, teniendo en cuenta que las dos máquinas tienen que tener el mismo para que tengan conectividad. En este ejemplo vamos a usar el direccionamiento `172.22.0.0/16`.
+
+*  Modificamos la configuración de la máquina Linux para conectarla a la red muy aislada, y configuramos la interfaz de red de forma manual con el direccionamiento que hemos indicado:
+
+    ![ejemplo](img/ejemplo1_10.png)
+
+    ![ejemplo](img/ejemplo1_11.png)
+
+* En la máquina Windows hacemos la misma operación:
+
+    ![ejemplo](img/ejemplo1_12.png)
+
+    ![ejemplo](img/ejemplo1_13.png)
+
+Y finalmente comprobamos que tenemos conectividad entre las máquinas pero no tenemos conectividad al exterior.
+
+![ejemplo](img/ejemplo1_14.png)
+![ejemplo](img/ejemplo1_15.png)
+
+
