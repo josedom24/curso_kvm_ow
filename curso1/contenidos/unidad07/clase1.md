@@ -20,7 +20,7 @@ El acceso a través de **una consola serie** es útil en los siguientes casos:
 
 Para poder acceder a una máquina virtual mediante consola serie, la máquina debe tener configurado un **puerto serie virtual**, que en KVM se representa como **virtio-serial** o un dispositivo `ttyS0`. 
 
-IMAGEN DISPOSITIVO SERIE
+![serie](img/serie1.png)
 
 ## Configuración del sistema operativo
 
@@ -35,4 +35,4 @@ $ sudo systemctl enable --now getty@ttyS0
 
 Por lo tanto estamos lanzando un **proceso de login en la consola serie**, lo que permite conectarte a la máquina a través de un puerto serie o una consola virtual en KVM/QEMU.
 
-IMAGEN ACCESO SERIE
+![serie](img/serie2.png)
