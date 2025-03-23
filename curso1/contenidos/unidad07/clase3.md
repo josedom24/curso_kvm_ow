@@ -1,4 +1,4 @@
-#  Conexión remota a libvirt
+i#  Conexión remota a libvirt
 
 En virt-manager podemos crear una conexión que nos permita acceder al demonio libvirt que se está ejecutando en un servidor remoto.
 
@@ -47,6 +47,6 @@ El usuario que indicamos será al que hemos copiado nuestra clave pública. Adem
 
 ![remoto](img/remoto1.png)
 
-Si el servidor al que hemos conectado tenía ya creadas máquinas virtuales la podremos ver nuestra nueva conexión. Además todas las operaciones que hagamos en esta conexión se realizarán en el servidor remoto.
+Si el servidor al que hemos conectado tenía ya creadas máquinas virtuales la podremos ver en la nueva conexión. Además todas las operaciones que hagamos en esta conexión se realizarán en el servidor remoto.
 
 ![remoto](img/remoto2.png)
