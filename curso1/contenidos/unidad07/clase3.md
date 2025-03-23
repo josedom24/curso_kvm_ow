@@ -17,7 +17,7 @@ Vamos a partir del siguiente escenario:
 
 Para poder acceder por ssh al servidor remoto sin que nos pida contraseña es necesario otro método de autentificación. En este caso vamos a usar el método de calaves ssh, para ello realizamos los siguientes pasos:
 
-1. En la máquina cliente, xon un usuario sin privilegios, generamos un par de claves ssh, una pública y otra privada, para ello:
+1. En la máquina cliente, con un usuario sin privilegios, generamos un par de claves ssh, una pública y otra privada, para ello:
 
     ```
     $ ssh-keygen -t rsa
