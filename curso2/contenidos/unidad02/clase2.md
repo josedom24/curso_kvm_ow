@@ -12,7 +12,7 @@ sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients
 
 Podemos obtener las versiones de las aplicaciones que hemos instalado (en mi caso en una distribución Linux Ubuntu 24.04) ejecutando:
 ```
-virsh version
+usuario@kvm:~$ virsh version
 Compiled against library: libvirt 10.0.0
 Using library: libvirt 10.0.0
 Using API: QEMU 10.0.0
