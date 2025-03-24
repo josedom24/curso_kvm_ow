@@ -40,6 +40,7 @@ virt-builder debian-12 \
   --size 10G \
   --format qcow2 \
   --output /var/lib/libvirt/images/debian-12.qcow2 \
+  --hostname mimaquina \
   --install "openssh-server,vim" \
   --root-password password:asdasd \
   --run-command "sed -i 's/^XKBLAYOUT=.*/XKBLAYOUT=\"es\"/' /etc/default/keyboard" \
