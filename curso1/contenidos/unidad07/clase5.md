@@ -24,10 +24,10 @@ Finalmente, accedemos desde un navegador en `https://<IP_DEL_SERVIDOR>:9090/`
 
 ## Funcionalidades de Cockpit para KVM
 
-🔹 **Crear nuevas máquinas virtuales** con opciones de almacenamiento y red.  
-🔹 **Administrar discos, snapshots y configuraciones de las VMs**.  
-🔹 **Iniciar, detener, reiniciar y eliminar máquinas virtuales**.  
-🔹 **Conectar a la consola de una VM** sin necesidad de `virt-manager`.  
-🔹 **Gestionar redes y puentes virtuales (bridges)** para las VMs.  
-🔹 **Monitorizar el uso de CPU, RAM y almacenamiento de las VMs**.  
+* **Crear nuevas máquinas virtuales** con opciones de almacenamiento y red.  
+* **Administrar discos, snapshots y configuraciones de las VMs**.  
+* **Iniciar, detener, reiniciar y eliminar máquinas virtuales**.  
+* **Conectar a la consola de una VM** sin necesidad de `virt-manager`.  
+* **Gestionar redes y puentes virtuales (bridges)** para las VMs.  
+* **Monitorizar el uso de CPU, RAM y almacenamiento de las VMs**.  
 
