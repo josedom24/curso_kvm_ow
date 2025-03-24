@@ -45,7 +45,7 @@ Con un usuario sin privilegios ejecutamos:
 usuario@kvm:~$ virsh list
 ```
 
-Estaríamos haciendo una conexión local con un usuario no privilegiado (estaríamos conectando con la URI `qemu:///session` y estaríamos mostrando las máquinas virtuales de este usuario.
+Estaríamos haciendo una conexión local con un usuario no privilegiado (estaríamos conectando con la URI `qemu:///session`) y estaríamos mostrando las máquinas virtuales de este usuario.
 
 Si por el contrario, como `root` ejecutamos:
 
@@ -55,7 +55,7 @@ root@kvm:~# virsh list
 
 Estaríamos haciendo una conexión local privilegiada (estaríamos conectando con la URI `qemu:///system`) y mostraríamos las máquinas virtuales del sistema.
 
-Si queremos que un usuario sin privilegios pueda hacer conexiones privilegiadas, el usuario debe pertenecer el grupo `libvirt`,, para realizar esta comprobación ejecutamos la siguiente instrucción con nuestro usuario sin privilegio:
+Si queremos que un usuario sin privilegios pueda hacer conexiones privilegiadas, el usuario debe pertenecer el grupo `libvirt`. Para realizar esta comprobación ejecutamos la siguiente instrucción con nuestro usuario sin privilegio:
 
 ```
 usuario@kvm:~$ group
@@ -65,10 +65,8 @@ Y comprobamos que en la lista de grupos aparece `libvirt`. Si no pertenece a dic
 
 ```
 usuario@kvm:~$ sudo usermod -aG libvirt $USER
-usuario@kvm:~$ newgrp libvirt
 ```
-
-La última instrucción nos permite aplicar los cambios sin reiniciar la máquina.
+Y finalmente reiniciamos la máquina para que tenga efecto dicho cambio.
 
 Para que el usuario `usuario` haga una conexión privilegiada tendrá que indicar explícitamente la conexión a la URI `qemu:///system`:
 
@@ -76,10 +74,11 @@ Para que el usuario `usuario` haga una conexión privilegiada tendrá que indica
 usuario@kvm:~$ virsh -c qemu:///system list
 ```
 
-Para no tner que especificar siempre el parámetro de conexión podemos crear una variable de entorno llamada `LIBVIRT_DEFAULT_URI` de la siguiente forma:
+Para no tener que especificar siempre el parámetro de conexión podemos crear una variable de entorno llamada `LIBVIRT_DEFAULT_URI` de la siguiente forma:
 
 ```
 usuario@kvm:~$ export LIBVIRT_DEFAULT_URI='qemu:///system'
+usuario@kvm:~$ virsh list
 ```
 
 Nota: Suponemos que durante el curso, tendremos está variable definida y los comandos se ejecutarán desde un usuario sin privilegios.

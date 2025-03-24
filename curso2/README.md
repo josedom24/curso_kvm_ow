@@ -43,7 +43,7 @@
 
 7. Temas adicionales
     * Definición de una máquina virtual con virsh
-    * Acceso a la máquina virtual usando la consola serie (sudo systemctl start getty@ttyS0)
+    * Acceso a la máquina virtual usando la consola serie
     * Conexión local no privilegiada a libvirt
     * Conexión remota a libvirt
     * Migración de máquinas virtuales

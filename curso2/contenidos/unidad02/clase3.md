@@ -14,7 +14,7 @@ La opción `--all` muestra las máquinas que se están ejecutando y las que est�
 Cuando instalamos QEMU/KVM + libvirt se crea una red por defecto de tipo NAT. Para verla, ejecutamos la siguiente instrucción:
 
 ```
-usuario@kvm:~$ irsh net-list --all
+usuario@kvm:~$ virsh net-list --all
  Name      State    Autostart   Persistent
 --------------------------------------------
  default   active   yes         yes
