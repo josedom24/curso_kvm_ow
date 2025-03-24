@@ -44,7 +44,7 @@ virt-builder debian-12 \
   --root-password password:asdasd \
   --run-command "sed -i 's/^XKBLAYOUT=.*/XKBLAYOUT=\"es\"/' /etc/default/keyboard" \
   --run-command "dpkg-reconfigure -f noninteractive keyboard-configuration" \
-  --firstboot-command "apt update && apt upgrade -y" \
+  --firstboot-command "dpkg-reconfigure openssh-server" \
   --run-command "sed -i 's/enp2/enp1s0/g' /etc/network/interfaces"
 
 
