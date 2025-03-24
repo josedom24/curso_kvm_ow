@@ -46,3 +46,9 @@ virt-builder debian-12 \
   --run-command "dpkg-reconfigure -f noninteractive keyboard-configuration" \
   --firstboot-command "apt update && apt upgrade -y" \
   --run-command "sed -i 's/enp2/enp1s0/g' /etc/network/interfaces"
+
+
+https://devtechs.readthedocs.io/en/latest/topics/virtualization/qemu-kvm/virt-builder.html
+
+
+sudo apt install libguestfs-tools
