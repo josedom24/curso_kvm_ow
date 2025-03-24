@@ -17,6 +17,8 @@
     * Gestión de máquinas virtuales con virsh
     * Definición XML de una máquina virtual
     * Modificación de la definición de una máquina virtual
+    * Acceso a las máquinas virtuales desde el exterior
+        * Acceso a la máquina virtual usando la consola serie
 
 4. Gestión del almacenamiento
     * Introducción al almacenamiento
@@ -43,7 +45,8 @@
 
 7. Temas adicionales
     * Definición de un dominio con virsh
-    * Acceso a la máquina virtual usando la consola serie
+    * Despliegue automatizado de máquinas virtuales con virt-builder
+    * Despliegue automatizado de máquinas virtuales usando cloud-init
     * Conexión local no privilegiada a libvirt
     * Conexión remota a libvirt
     * Migración de máquinas virtuales
