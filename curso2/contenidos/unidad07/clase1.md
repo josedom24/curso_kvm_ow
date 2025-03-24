@@ -1,4 +1,4 @@
-# Definición de una máquina virtual con virsh
+# Definición de un dominio con virsh
 
 En `virsh`, las máquinas virtuales se gestionan como **dominios**. Un dominio es una instancia de una máquina virtual administrada por Libvirt, con una configuración definida en un archivo XML.  
 
@@ -31,17 +31,18 @@ Archivo XML:
 ```
 
 ## Definir e iniciar un dominio con virsh  
-Una vez creado el archivo XML, se usa el siguiente comando para **definir** la máquina virtual en Libvirt:  
-```bash
+Una vez creado el archivo XML, se usa el siguiente comando para **definir** la máquina virtual en libvirt:  
+
+```
 virsh define vm.xml
 ```
 Esto registra el dominio, pero no lo inicia. Para iniciarlo, usa:  
-```bash
+```
 virsh start mi-vm
 ```
 
 Si se desea crear un dominio de manera temporal (no persistente), se puede usar:  
-```bash
+```
 virsh create vm.xml
 ```
 Este dominio existirá solo hasta que se apague.

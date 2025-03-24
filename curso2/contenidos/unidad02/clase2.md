@@ -81,4 +81,16 @@ usuario@kvm:~$ export LIBVIRT_DEFAULT_URI='qemu:///system'
 usuario@kvm:~$ virsh list
 ```
 
-Nota: Suponemos que durante el curso, tendremos está variable definida y los comandos se ejecutarán desde un usuario sin privilegios.
+También podemos modificar el fichero de configuración `/etc/libvirt/libvirt.conf` y descomentar la línea:
+
+```
+uri_default = "qemu:///system"
+```
+
+Y posteriormente reinciar libvirt:
+
+```
+usuario@kvm:~$ sudo systemctl restart libvirtd
+```
+
+Nota: Suponemos que durante el curso, tendremos está variable definida o habremos modificado la configuración de libvirt para que los comandos se ejecuten desde un usuario sin privilegios.

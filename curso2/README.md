@@ -42,8 +42,11 @@
     * Configuración de red en las máquinas virtuales
 
 7. Temas adicionales
-    * Definición de una máquina virtual con virsh
+    * Definición de un dominio con virsh
     * Acceso a la máquina virtual usando la consola serie
     * Conexión local no privilegiada a libvirt
     * Conexión remota a libvirt
     * Migración de máquinas virtuales
+
+8. Bibliografía
+    * https://wiki.archlinux.org/title/Libvirt
