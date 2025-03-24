@@ -31,3 +31,18 @@ virt-install --connect qemu:///system \
     --vcpus 1 \
     --graphics none --console pty,target_type=serial \
     --extra-args="console=ttyS0,115200n8"
+
+
+
+
+
+virt-builder debian-12 \
+  --size 10G \
+  --format qcow2 \
+  --output /var/lib/libvirt/images/debian-12.qcow2 \
+  --install "openssh-server,vim" \
+  --root-password password:asdasd \
+  --run-command "sed -i 's/^XKBLAYOUT=.*/XKBLAYOUT=\"es\"/' /etc/default/keyboard" \
+  --run-command "dpkg-reconfigure -f noninteractive keyboard-configuration" \
+  --firstboot-command "apt update && apt upgrade -y" \
+  --run-command "sed -i 's/enp2/enp1s0/g' /etc/network/interfaces"
