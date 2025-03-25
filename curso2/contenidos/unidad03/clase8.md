@@ -12,12 +12,17 @@ Una vez que sabemos la ip de la máquina:
 
 ```
 usuario@kvm:~$ virsh domifaddr debian12
+virsh domifaddr debian12
+ Name       MAC address          Protocol     Address
+-------------------------------------------------------------------------------
+ vnet0      52:54:00:49:1c:8f    ipv4         192.168.122.59/24
+
 ```
 
 Desde nuestro equipo podemos acceder a esta máquina por ssh indicando el nombre de usuario y la ip:
 
 ```
-usuario@kvm:~$ ssh usuario@<direccion_ip_máquina_virtual>
+usuario@kvm:~$ ssh usuario@192.168.122.59
 ```
 
 ## Acceso por RDP a una máquina Windows
