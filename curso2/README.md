@@ -18,7 +18,7 @@
     * [Modificación de la definición de una máquina virtual](contenidos/unidad03/clase5.md)
     * [Acceso a la máquina virtual usando la consola serie](contenidos/unidad03/clase6.md)
     * [Creación de máquinas virtuales Windows con virt-install](contenidos/unidad03/clase7.md)
-    * Acceso a las máquinas virtuales desde el exterior
+    * [Acceso a las máquinas virtuales desde el exterior](contenidos/unidad03/clase8.md)
     
 
 4. Gestión del almacenamiento
