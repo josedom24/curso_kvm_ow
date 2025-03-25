@@ -53,9 +53,7 @@ La información que tenemos que proporcionar a `virt-install` para la creación 
 
 Podemos indicar muchos más parámetros a la hora de crear la nueva máquina. Puedes obtener toda la información en la [documentación oficial](https://github.com/virt-manager/virt-manager/blob/main/man/virt-install.rst) de la aplicación. Iremos usando, a lo largo del curso, diferentes parámetros de esta herramienta.
 
-
-
-A continuación, se iniciará la máquina y se abrirá una terminal en la aplicación `virt-viewer` para que realicemos la instalación:
+A continuación, se iniciará la máquina y se abrirá la aplicación `virt-viewer` que nos permitirá conectarnos por VNC/SPICE a la máquina para que realicemos la instalación:
 
 ![virt-install](img/virt-install1.png)
 

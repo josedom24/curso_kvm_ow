@@ -11,8 +11,8 @@
     * [Recursos disponibles en QEMU/KVM + libvirt](contenidos/unidad02/clase3.md)
 
 3. Creación de máquinas virtuales
-    * Creación de máquinas virtuales con virt-install
-    * Creación de máquinas virtuales Windows con virt-install
+    * [Creación de máquinas virtuales con virt-install](contenidos/unidad03/clase1.md)
+    * [Creación de máquinas virtuales Windows con virt-install](contenidos/unidad03/clase2.md)
     * Características de las máquinas virtuales
     * Gestión de máquinas virtuales con virsh
     * Definición XML de una máquina virtual
