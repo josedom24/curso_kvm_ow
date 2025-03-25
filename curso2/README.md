@@ -14,8 +14,8 @@
     * [Creación de máquinas virtuales con virt-install](contenidos/unidad03/clase1.md)
     * [Características de las máquinas virtuales](contenidos/unidad03/clase2.md)
     * [Gestión de máquinas virtuales con virsh](contenidos/unidad03/clase3.md)
-    * Definición XML de una máquina virtual
-    * Modificación de la definición de una máquina virtual
+    * [Definición XML de una máquina virtual](contenidos/unidad03/clase4.md)
+    * [Modificación de la definición de una máquina virtual](contenidos/unidad03/clase5.md)
     * [Creación de máquinas virtuales Windows con virt-install](contenidos/unidad03/clase6.md)
     * Acceso a las máquinas virtuales desde el exterior
         * Acceso a la máquina virtual usando la consola serie
