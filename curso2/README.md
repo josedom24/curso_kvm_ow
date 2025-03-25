@@ -24,7 +24,7 @@
 4. Gestión del almacenamiento
     * Introducción al almacenamiento
     * Introducción al almacenamiento en KVM/libvirt
-    * Gestión de Pools de almacenamiento
+    * Gestión de pools de almacenamiento
     * Gestión de volúmenes de almacenamiento
     * Trabajar con volúmenes en las máquinas virtuales
 
