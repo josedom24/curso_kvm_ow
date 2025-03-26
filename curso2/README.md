@@ -22,8 +22,7 @@
     
 
 4. Gestión del almacenamiento
-    * Introducción al almacenamiento
-    * Introducción al almacenamiento en KVM/libvirt
+    * [Introducción al almacenamiento en KVM/libvirt](contenidos/unidad04/clase1.md)
     * [Gestión de pools de almacenamiento](contenidos/unidad04/clase2.md)
     * [Gestión de volúmenes de almacenamiento con virsh](contenidos/unidad04/clase3.md)
     * [Gestión de volúmenes de almacenamiento con herramientas específicas](contenidos/unidad04/clase4.md)
