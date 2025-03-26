@@ -35,12 +35,15 @@
     * [Instantáneas de máquinas virtuales](contenidos/unidad05/clase4.md)
 
 6. Gestión de redes
-    * Introducción a la gestión de redes
-    * Definición de Redes Virtuales (Privadas)
-    * Gestión de Redes Virtuales
-    * Creación de un Puente Externo con Linux Bridge
-    * Gestión de Redes Puentes (Públicas)
-    * Configuración de red en las máquinas virtuales
+    * [Introducción a la gestión de redes](contenidos/unidad06/clase1.md)
+    * [Definición de Redes Virtuales (Privadas)](contenidos/unidad06/clase2.md)
+    * [Gestión de Redes Virtuales](contenidos/unidad06/clase3.md)
+    * [Creación de un Puente Externo con Linux Bridge](contenidos/unidad06/clase4.md)
+    * [Gestión de Redes Puentes (Públicas)](contenidos/unidad06/clase5.md)
+    * [Configuración de red en las máquinas virtuales](contenidos/unidad06/clase6.md)
+    * Ejemplo 1: Trabajando con redes puentes públicas
+    * Ejemplo 2: Trabajando con redes virtuales privadas
+    * Ejemplo 3: Configuración de un router/NAT
 
 7. Temas adicionales
     * Definición de un dominio con virsh
