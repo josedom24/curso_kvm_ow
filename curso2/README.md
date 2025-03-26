@@ -29,12 +29,10 @@
     * [Trabajar con volúmenes en las máquinas virtuales](contenidos/unidad04/clase5.md)
 
 5. Clonación e instantáneas de maquinas virtuales
-    * Clonación de máquinas virtuales
-    * Plantillas de máquinas virtuales
-    * Clonación completa a partir de plantillas
-    * Clonación enlazada a partir de plantillas
-    * Instantáneas de máquinas virtuales
-    * Backups de máquinas virtuales
+    * [Clonación de máquinas virtuales](contenidos/unidad05/clase1.md)
+    * [Plantillas de máquinas virtuales](contenidos/unidad05/clase2.md)
+    * [Clonación a partir de plantillas](contenidos/unidad05/clase3.md)
+    * [Instantáneas de máquinas virtuales](contenidos/unidad05/clase4.md)
 
 6. Gestión de redes
     * Introducción a la gestión de redes
