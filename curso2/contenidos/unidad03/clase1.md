@@ -21,13 +21,13 @@ Para crear la nueva máquina con esas características, ejecutamos con usuario s
 
 ```
 usuario@kvm:~$ virt-install --connect qemu:///system \
-			            --virt-type kvm \
-			            --name debian12 \
-			            --cdrom /var/lib/libvirt/images/debian-12.10.0-amd64-netinst.iso \
-			            --os-variant debian12 \
-			            --disk size=10 \
-			            --memory 1024 \
-			            --vcpus 1
+			    --virt-type kvm \
+			    --name debian12 \
+			    --cdrom /var/lib/libvirt/images/debian-12.10.0-amd64-netinst.iso \
+			    --os-variant debian12 \
+			    --disk size=10 \
+			    --memory 1024 \
+			    --vcpus 1
 ```			 
 
 La información que tenemos que proporcionar a `virt-install` para la creación de la nueva máquina virtual será la siguiente:
