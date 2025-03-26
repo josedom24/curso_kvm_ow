@@ -1,52 +1,38 @@
-i#  Conexión remota a libvirt
+# Conexión local no privilegiada a libvirt
 
-En virt-manager podemos crear una conexión que nos permita acceder al demonio libvirt que se está ejecutando en un servidor remoto.
+Durante todo el curso hemos hecho uso de la conexión privilegiada a libvirt y por tanto es el superusuario el que ha gestionado los recursos virtualizados.
 
-Este método permite administrar un hipervisor QEMU/KVM en otro equipo a través de la red. Se usa en entornos de gestión centralizada o administración remota. Se pueden usar varios protocolos para el acceso, pero el más común es ssh.
+En este apartado vamos a comprobar que un usuario sin privilegio puede crear sus máquinas virtuales. Para ello realizará una conexión local a libvirt usando la URI `qemu:///session`. En este modo de conexión, el usuario no tiene permisos para crear conexiones de red, por lo que se limita su uso de la red no privilegiada de QEMU ([SLIRP](https://wiki.qemu.org/Documentation/Networking#User_Networking_.28SLIRP.29)) que es útil para casos simples, pero que tiene bajo rendimiento y es poco configurable. 
 
-Para realizar este tipo de conexión usaremos la siguiente URI: `qemu+ssh://<usuario>@<dirección  máquina remota>/system`.
+## Configuración de virt-manager para una conexión no privilegiada
 
-Se va producir una conexión ssh entre la máquina cliente y el servidor donde se ejecuta libvirt. Por lo tanto hay que configurar las máquinas para que el usuario de la máquina "cliente" pueda acceder por ssh al servidor remoto con el usuario `usuario`, sin que se se le pida la contraseña.
+Desde virt-manager podemos crear una nueva conexión no privilegiada, eligiendo la opción **Archivo - Añadir conexión...** y eligiendo como **Hipervisor** la opción **QEMU/LMV sesión de usuario**.
 
-## Configuración de ssh para el acceso sin contraseñas
+![usuario](img/usuario1.png)
 
-Vamos a partir del siguiente escenario:
+Si seleccionamos la conexión que acabamos de añadir y escogemos la opción **Detalles** podemos fijarnos en los siguientes aspectos:
 
-* Máquina **cliente** donde tenemos instalado virt-manager y vamos a conectarnos a una máquina remota.
-* Maquina **servidor** donde se ejecuta el demonio de libvirt. El usuario de esta máquina se llama `usuario`.
+* No tenemos configurada ninguna red virtual y si intentamos crear una nueva nos va a dar un error, ya que el usuario sin privilegio no puede crear nuevas redes.
 
-Para poder acceder por ssh al servidor remoto sin que nos pida contraseña es necesario otro método de autentificación. En este caso vamos a usar el método de calaves ssh, para ello realizamos los siguientes pasos:
+    ![usuario](img/usuario2.png)
 
-1. En la máquina cliente, con un usuario sin privilegios, generamos un par de claves ssh, una pública y otra privada, para ello:
+* Tenemos un grupo de almacenamiento llamado `default` de tipo directorio, donde observamos que los ficheros de imágenes de discos de las máquinas virtuales se guardarán en un directorio edl usuario. En mi caso que uso el usuario llamado `usuario` este directorio sería: `/home/usuario/.local/share/libvirt/images`.
 
-    ```
-    $ ssh-keygen -t rsa
-    ```
+    ![usuario](img/usuario3.png)
 
-    Tendremos que indicar la ubicación y el nombre de las claves (se guardarán en el directorio `.ssh` en el home del usuario), se recomienda dejar el nombre que viene por defecto: `id_rsa.pub` la clave pública y `id_rsa` la clave privada.
+## Creación de una máquina virtual
 
-    Además podremos definir una **Frase de paso (passphrase)**, una contraseña que se pedirá al usar la clave privada.
+El procedimiento para crear una nueva máquina virtual es similar al descrito en apartados anteriores a este apartado, teniendo en cuenta los siguientes aspectos:
 
-2. Para que con nuestra clave privada podamos autentificarnos al conectarnos por ssh con el servidor, tenemos que copiar nuestra clave pública en el servidor. Copiaremos el contenido de la clave pública en el fichero `~/.ssh/authorized_keys` del usuario del servidor al que nos vamos a conectar. Para ello usamos la instrucción `ssh-copy-id` desde el cliente, indicando la clave pública que vamos a copiar:
+* Aunque nos da la opción de conectar la máquina virtual a un puente externo a conectarla al exterior compartiendo una interfaz física (macvtap), sólo  podemos conectarla a la red de usuario, opción **Modo usuario de creación de redes**.
 
-    ```
-    $ ssh-copy-id -i .ssh/id_rsa.pub usuario@<dirección del servidor>
-    ```
+    ![usuario](img/usuario4.png)
 
-3. Comprobamos que podemos hacer una conexión desde el cliente al servidor sin que me pida la contraseña:
+* Una vez instalada la máquina virtual, esta se conecta a la red de usuario de QEMU ([SLIRP](https://wiki.qemu.org/Documentation/Networking#User_Networking_.28SLIRP.29)) que configura la máquina con la dirección IP `10.0.2.15`, su puerta de enlace, que es el anfitrión (la máquina física) es la dirección IP `10.0.2.2` y configura un servidor DNS en la dirección IP `10.0.2.3`. Esta red permite que la máquina tenga acceso a internet, pero no tendrá conectividad con el anfitrión u otras máquinas que creemos.
 
-    ```
-    ssh usuario@<dirección del servidor>
-    ```
+    ![usuario](img/usuario5.png)
 
-## Configuración de virt-manager para una conexión remota
+* Podemos observar como se ha creado un nuevo volumen que corresponde al disco de la máquina en el grupo de almacenamiento `default` de la conexión no privilegiada.
 
-Desde virt-manager podemos crear una nueva conexión remota, eligiendo la opción **Archivo - Añadir conexión...**, eligiendo como **Hipervisor** la opción **QEMU/KVM** y eligiendo la opción **Conectar a anfitrión remoto por SSH** indicando el usuario y el nombre o dirección ip del servidor.
+    ![usuario](img/usuario6.png)
 
-El usuario que indicamos será al que hemos copiado nuestra clave pública. Además si es un usuario sin privilegio deberá pertenecer al grupo `libvirt` en el servidor para poder gestionar recursos virtualizados en el modo privilegiado.
-
-![remoto](img/remoto1.png)
-
-Si el servidor al que hemos conectado tenía ya creadas máquinas virtuales la podremos ver en la nueva conexión. Además todas las operaciones que hagamos en esta conexión se realizarán en el servidor remoto.
-
-![remoto](img/remoto2.png)
