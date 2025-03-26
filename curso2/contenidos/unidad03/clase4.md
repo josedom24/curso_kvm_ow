@@ -25,23 +25,21 @@ Veamos algunos elementos de la definición:
 Veamos un ejemplo hasta aquí:
 
 ```
-domain type='kvm' id='6'>
+<domain type='kvm' id='1'>
   <name>debian12</name>
-  <uuid>a88eebdc-8a00-4b9d-bf48-cbed7bb448d3</uuid>
+  <uuid>ee863982-20a4-4e65-9207-a17065bff934</uuid>
   ...
   <memory unit='KiB'>1048576</memory>
   <currentMemory unit='KiB'>1048576</currentMemory>
   <vcpu placement='static'>1</vcpu>
   ...
   <os>
-    <type arch='x86_64' machine='pc-q35-5.2'>hvm</type>
+    <type arch='x86_64' machine='pc-q35-8.2'>hvm</type>
     <boot dev='hd'/>
   </os>
   ...
-  <cpu mode='custom' match='exact' check='full'>
-    <model fallback='forbid'>Cooperlake</model>
-    <vendor>Intel</vendor>
-    ...
+  <cpu mode='host-passthrough' check='none' migratable='on'/>
+  ...
 ```
 
 A continuación nos encontramos la etiqueta `<devices>` donde se definen los distintos dispositivos hardware que forman parte de la máquina. Veamos algunos ejemplos:
@@ -50,9 +48,11 @@ A continuación nos encontramos la etiqueta `<devices>` donde se definen los dis
 
 ```
     <disk type='file' device='disk'>
-      <driver name='qemu' type='qcow2'/>
-      <source file='/var/lib/libvirt/images/debian12.qcow2'/>
+      <driver name='qemu' type='qcow2' discard='unmap'/>
+      <source file='/var/lib/libvirt/images/debian12.qcow2' index='2'/>
+      <backingStore/>
       <target dev='vda' bus='virtio'/>
+      <alias name='virtio-disk0'/>
       <address type='pci' domain='0x0000' bus='0x04' slot='0x00' function='0x0'/>
     </disk>
 ```
@@ -61,9 +61,11 @@ A continuación nos encontramos la etiqueta `<devices>` donde se definen los dis
 
 ```
     <interface type='network'>
-      <mac address='52:54:00:8a:50:d1'/>
-      <source network='default'/>
+      <mac address='52:54:00:66:e7:6a'/>
+      <source network='default' portid='ead4fb3d-b176-4808-ae6a-6833add52200' bridge='virbr0'/>
+      <target dev='vnet0'/>
       <model type='virtio'/>
+      <alias name='net0'/>
       <address type='pci' domain='0x0000' bus='0x01' slot='0x00' function='0x0'/>
     </interface>
 ```
