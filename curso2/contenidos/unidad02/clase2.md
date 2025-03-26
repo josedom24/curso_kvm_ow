@@ -3,7 +3,7 @@
 Para trabajar con el sistema de virtualización QEMU/KVM + libvirt en nuestra distribución Linux Debian/Ubuntu, vamos a instalar los siguientes paquetes:
 
 ```
-sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients
+usuario@kvm:~$ sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients
 ```
 
 * `qemu-kvm`: Virtualización con KVM.
@@ -58,7 +58,7 @@ Estaríamos haciendo una conexión local privilegiada (estaríamos conectando co
 Si queremos que un usuario sin privilegios pueda hacer conexiones privilegiadas, el usuario debe pertenecer el grupo `libvirt`. Para realizar esta comprobación ejecutamos la siguiente instrucción con nuestro usuario sin privilegio:
 
 ```
-usuario@kvm:~$ group
+usuario@kvm:~$ groups
 ```
 
 Y comprobamos que en la lista de grupos aparece `libvirt`. Si no pertenece a dicho grupo lo añadimos:
@@ -81,16 +81,4 @@ usuario@kvm:~$ export LIBVIRT_DEFAULT_URI='qemu:///system'
 usuario@kvm:~$ virsh list
 ```
 
-También podemos modificar el fichero de configuración `/etc/libvirt/libvirt.conf` y descomentar la línea:
-
-```
-uri_default = "qemu:///system"
-```
-
-Y posteriormente reinciar libvirt:
-
-```
-usuario@kvm:~$ sudo systemctl restart libvirtd
-```
-
-Nota: Suponemos que durante el curso, tendremos está variable definida o habremos modificado la configuración de libvirt para que los comandos se ejecuten desde un usuario sin privilegios.
+Nota: Suponemos que durante el curso, tendremos está variable definida para realizar conexiones privilegiadas desde un usuario sin privilegios.
