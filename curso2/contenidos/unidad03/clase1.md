@@ -66,7 +66,9 @@ usuario@kvm:~$ virsh start mi-vm
 ```
 Y para acceder a él podemos usar la aplicación `virt-viewer`:
 
+```
 usuario@kvm:~$ virt-viewer mi-vm
+```
 
 Si se desea crear un dominio de manera temporal (no persistente), se puede usar:  
 ```
