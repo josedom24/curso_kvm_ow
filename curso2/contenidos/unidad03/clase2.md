@@ -63,7 +63,7 @@ Inter:         974Mi          0B       974Mi
 
 ## Almacenamiento
 
-Un **Pool de almacenamiento** es un recurso de almacenamiento. Lo más usual es tener pools de almacenamiento que sean locales, por ejemplo un directorio. Pode efecto tenemos el un pool llamado `images`, que corresponde con el directorio `/usr/lib/libvirt/images` y donde se guardarán los ficheros correspondientes a las imágenes de disco.
+Un **Pool de almacenamiento** es un recurso de almacenamiento. Lo más usual es tener pools de almacenamiento que sean locales, por ejemplo un directorio. Pode efecto tenemos el un pool llamado `default`, que corresponde con el directorio `/usr/lib/libvirt/images` y donde se guardarán los ficheros correspondientes a las imágenes de disco.
 
 Podemos ver los pools de almacenamiento, que tenemos creado, ejecutando:
 
@@ -71,16 +71,16 @@ Podemos ver los pools de almacenamiento, que tenemos creado, ejecutando:
 usuario@kvm:~$ virsh pool-list 
  Name     State    Autostart
 ------------------------------
- images   active   yes
+ default   active   yes
 
 ```
 
 Un **volumen** es un medio de almacenamiento que podemos crear en un pool de almacenamiento en kvm. Si el pool de almacenamiento es de tipo *dir*, entonces el volumen será un fichero de imagen.
 
-Veamos el volumen que se ha creado el pool `images`:
+Veamos el volumen que se ha creado el pool `default`:
 
 ```
-usuario@kvm:~$ virsh vol-list images
+usuario@kvm:~$ virsh vol-list default
  Name                               Path
 ----------------------------------------------------------------------------------------------
  debian-12.10.0-amd64-netinst.iso   /var/lib/libvirt/images/debian-12.10.0-amd64-netinst.iso
