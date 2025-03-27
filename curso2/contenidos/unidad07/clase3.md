@@ -1,0 +1,1 @@
+# Despliegue automatizado de máquinas virtuales con virt-builder
