@@ -2,7 +2,7 @@
 
 En el punto anterior hemos definido un dominio desde su definición XML, esto nos aporta la posibilidad de ajustar lo máximo posible la configuración de la máquina, además nos facilita la creación de máquinas virtuales de forma automatizada.
 
-Sin embargo, como hemos visto tenemos que crear nosotros mismos la imagen de disco y tenemos que conocer muy bien la estructura CML de configuración de la máquina. 
+Sin embargo, como hemos visto tenemos que crear nosotros mismos la imagen de disco y tenemos que conocer muy bien la estructura XML de configuración de la máquina. 
 
 En este apartado, vamos a crear las máquinas virtuales o dominios con la aplicación `virt-install`, que nos facilita la creación e instalación de las máquinas. Lo primero que tenemos que hacer es instalar el paquete `virtinst`, que además de este programa, tiene otras utilidades que iremos usando a los largo del curso.
 
