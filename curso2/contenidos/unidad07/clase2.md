@@ -24,7 +24,7 @@ usuario@kvm:~$ sudo virt-builder debian-12 \
 ```
 El funcionamiento de la herramienta es el siguiente: 
 
-* Hemos indicado una **plantilla** llamada `debian-12` que se ha descargado de un repositorio y la ha descomprimido. Las plantillas descargadas se almacenan en caché en el directorio home del usuario actual con la siguiente ruta: `$HOME/.cache/virt-builder`. Podemos visualizar las plantillas que tenemos descargadas con la instrucción `virt-builder --print-cache` y borrar todas las plantillas que tenemos guardadas con `virt-builder --delete-cache`.
+* Hemos indicado una **plantilla** llamada `debian-12` que se ha descargado de un repositorio y la ha descomprimido. Podemos ver todas las plantillas ejecutando `virt-builder -l`. Las plantillas descargadas se almacenan en caché en el directorio home del usuario actual con la siguiente ruta: `$HOME/.cache/virt-builder`. Podemos visualizar las plantillas que tenemos descargadas con la instrucción `virt-builder --print-cache` y borrar todas las plantillas que tenemos guardadas con `virt-builder --delete-cache`.
 * A partir de la plantilla ha creado un fichero de imagen con el formato indicado (`--format`), lo ha redimensionado la imagen con `virt-resize` al tamaño que hemos indicado con el parámetro `size` y lo ha guardado en el path indicado con el parámtro `--output`.
 * A continuación ha modificado la configuración de la imagen, aunque toda la configuración que hemos indicado no es imprescindible, hemos realizado los siguientes cambios:
     * Hemos indicado el hostname de la máquina (parámetro `--hostname`).
