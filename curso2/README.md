@@ -47,6 +47,7 @@
     * Ejemplo 3: Configuración de un router/NAT
 
 7. Temas adicionales
+    * [Creación de máquinas virtuales por red](contenidos/unidad07/clase1.md)
     * Despliegue automatizado de máquinas virtuales con virt-builder
     * Despliegue automatizado de máquinas virtuales usando cloud-init
     * Conexión local no privilegiada a libvirt
