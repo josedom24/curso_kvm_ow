@@ -26,14 +26,14 @@ La instrucción que vamos a ejecutar sería la siguiente:
 
 ```
 usuario@kvm:~$ virt-install --connect qemu:///system \
-      --virt-type kvm \
-      --name debian12-red \
-      --location http://deb.debian.org/debian/dists/bookworm/main/installer-amd64/ \
-      --os-variant debian12 \
-      --disk size=10 \
-      --memory 1024 \
-      --vcpus 1 \
-      --graphics none --console pty,target_type=serial \
-      --extra-args="console=ttyS0,115200n8"
+                      --virt-type kvm \
+                      --name debian12-red \
+                      --location http://deb.debian.org/debian/dists/bookworm/main/installer-amd64/ \
+                      --os-variant debian12 \
+                      --disk size=10 \
+                      --memory 1024 \
+                      --vcpus 1 \
+                      --graphics none --console pty,target_type=serial \
+                      --extra-args="console=ttyS0,115200n8"
 ```
 
