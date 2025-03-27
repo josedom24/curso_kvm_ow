@@ -1,100 +1,75 @@
-# Modificación de la definición de una máquina virtual
+# Definición XML de una máquina virtual
 
-La configuración de una máquina virtual en `libvirt` se define mediante un documento XML que describe todos sus atributos y recursos asignados. Este archivo especifica parámetros esenciales como el nombre, el UUID, la cantidad de memoria y vCPUs, los dispositivos de almacenamiento y red, la configuración de entrada/salida, el hipervisor utilizado y otras propiedades avanzadas. 
+Las características, opciones y dispositivos hardware de una máquina virtual están estructuradas con el lenguajes de marcas XML. De la misma forma las características de los distintos recursos con los que podemos trabajar (redes, pools de almacenamiento, volúmenes) también están definidos con XML.
 
-Podemos modificar esta configuración de dos maneras:  
+## Esquema XML de una máquina virtual
 
-1. **Edición manual del XML:** Usando `virsh edit <nombre_vm>`, que abre el archivo XML en un editor de texto. Este método permite realizar cualquier cambio, pero requiere cuidado para mantener una sintaxis válida. Una vez guardado, `libvirt` valida el archivo antes de aplicar los cambios.
-2. **Uso de comandos específicos de `virsh`:** Permiten modificar parámetros individuales sin necesidad de editar directamente el XML, lo que reduce el riesgo de errores.  
-
-* **Cambios dinámicos (en caliente):** Aplicables sin detener la máquina virtual, como la asignación de vCPUs adicionales (si el hipervisor lo permite) o la conexión de discos y redes.  
-* **Cambios persistentes:** Afectan la definición almacenada de la máquina virtual y permanecen tras un reinicio.  
-* **Cambios que requieren apagado:** Algunas modificaciones estructurales, como la asignación de memoria fija o cambios en el tipo de bus de almacenamiento, requieren detener la máquina antes de aplicarse.  
-* **Cambios que requieren reinicio:** Algunas modificaciones, como la actualización de ciertos parámetros de CPU o la modificación de controladores de dispositivos, solo se activan después de un reinicio de la máquina virtual.  
- 
-Veamos algunos ejemplos:
-
-## Modificar el nombre de una máquina virtual
-
-En este caso la modificación la vamos a realizar con el comando `virsh domrename`, que modificará internamente la definición XML. Este cambio requiere que la máquina esté parada.
+Para obtener la definición XML de una máquina virtual, ejecutamos la siguiente instrucción:
 
 ```
-usuario@kvm:~$ virsh domrename debian12 maquina_linux
-Domain 'debian12' XML configuration edited.
+usuario@kvm:~$ virsh dumpxml debian12
 ```
 
-## Modificar la asignación de vCPU
+Veamos algunos elementos de la definición:
 
-Suponemos que la máquina está parada. Comprobamos el número de vCPU asignadas a la máquina:
+* El documento XML empieza con la etiqueta `<domain>` donde se indica el tipo de virtualización utilizada para gestionar la máquina y su identificador si la máquina está ejecutándose..
+* El nombre de la máquina se indica con la etiqueta `<name>`.
+* La etiqueta `<currentMemory>` nos indica la memoria asignada actualmente a la máquina. Podemos modificar esta memoria asignada sin reiniciar la máquina hasta el límite indicado por la etiqueta `<memory>`. Por lo tanto, el valor asignado a `<memory>` no puede ser menor que el valor asociado a `<currentMemory>`.
 
-```
-usuario@kvm:~$ virsh vcpucount maquina_linux
-```
+	En este ejemplo, los dos valores son iguales porque al crear la máquina con `virt-install` usamos el parámetro `--memory` y se asigna el valor indicado a los dos parámetros. Más adelante estudiaremos como modificar estos parámetros.
 
-Podemos editar la configuración XML y cambiar el valor de la etiqueta `<vcpu>`:
+* La vCPU asignadas la encontramos definida en la etiqueta `<vcpu>`.
+* Con la etiqueta `<os>` tenemos información de la arquitectura de la máquina virtualizada, además con las etiquetas `<boot>` indicamos el orden de arranque entre distintos dispositivos.
+* La información de la CPU la encontramos en la etiqueta `<cpu>`.
 
-```
-usuario@kvm:~$ virsh edit maquina_linux
-...
-  <vcpu placement='static'>2</vcpu>
-...
-```
-
-Y volvemos a comprobar la información de la máquina:
+Veamos un ejemplo hasta aquí:
 
 ```
-usuario@kvm:~$ virsh vcpucount maquina_linux
-```
-
-También podemos modificar este parámetro usando la siguiente instrucción que modifica directamente la definición XML:
-
-```
-usuario@kvm:~$ virsh setvcpus mi-vm 4 --config
-```
-
-La parámetro `--config` modifica la configuración persistente de la máquina virtual para que el cambio se mantenga tras un reinicio.
-
-Si la máquina está funcionando (**modifcación en caliente**) podemos usar la instrucción:
-
-```
-usuario@kvm:~$ virsh setvcpus mi-vm 2 --live --config
-```
-
-El parámetro `--live` aplica el cambio solo en la ejecución actual de la máquina virtual. Si indicamos el parámetro `--config` el cambio se mantendrá después del reinicio.
-
-
-## Modificar la asignación de memoria RAM
-
-Volvemos a suponer que la máquina está parada. Podemos editar la configuración XML y modificar las dos etiquetas relacionadas con la memoria:
-
-* `<memory>`: Valor máximo de RAM que podemos asignar a la máquina "en caliente" (funcionando).
-* `<currentMemory>`: Cantidad de memoria asignada a la máquina.
-
-Por ejemplo, dejamos la asignación de memoria en un 1 Gb, y cambiamos la memoria máxima a 3 Gb:
-
-```
-usuario@kvm:~$ virsh edit maquina_linux
-...
-  <memory unit='KiB'>3145728</memory>
+<domain type='kvm' id='1'>
+  <name>debian12</name>
+  <uuid>ee863982-20a4-4e65-9207-a17065bff934</uuid>
+  ...
+  <memory unit='KiB'>1048576</memory>
   <currentMemory unit='KiB'>1048576</currentMemory>
-...
+  <vcpu placement='static'>1</vcpu>
+  ...
+  <os>
+    <type arch='x86_64' machine='pc-q35-8.2'>hvm</type>
+    <boot dev='hd'/>
+  </os>
+  ...
+  <cpu mode='host-passthrough' check='none' migratable='on'/>
+  ...
 ```
 
-Podemos comprobar el cambio:
+A continuación nos encontramos la etiqueta `<devices>` donde se definen los distintos dispositivos hardware que forman parte de la máquina. Veamos algunos ejemplos:
+
+* Los discos se definen con la etiqueta `<disk>`. Encontramos información del tipo (en este caso fichero), tipo del fichero (en este caso qcow2), ruta donde se encuentra el fichero,... Es importante señalar que, por defecto, se configura el disco con un controlador **VirtIO** (`bus='virtio`), es decir, es un dispositivo paravirtualizado que nos ofrece mayor rendimiento. Veamos la definición del disco:
 
 ```
-usuario@kvm:~$ virsh dominfo maquina_linux
-...
-Memoria máxima: 3145728 KiB
-Memoria utilizada: 1048576 KiB
-...
+    <disk type='file' device='disk'>
+      <driver name='qemu' type='qcow2' discard='unmap'/>
+      <source file='/var/lib/libvirt/images/debian12.qcow2' index='2'/>
+      <backingStore/>
+      <target dev='vda' bus='virtio'/>
+      <alias name='virtio-disk0'/>
+      <address type='pci' domain='0x0000' bus='0x04' slot='0x00' function='0x0'/>
+    </disk>
 ```
 
-Ahora iniciamos la máquina y podemos cambiar "en caliente" la memoria de la máquina hasta un máximo de 3 Gb, para ello vamos a usar el comando `virsh setmem`.
+* Las interfaces de red se definen con la etiqueta `<interface>`. Encontramos información como la mac, la red a la que está conectada (en este caso la red `default`),... También observamos que el modelo de la tarjeta es **VirtIO** (`<model type='virtio'/>`), de nuevo se configura un dispositivo paravirtualizado de alto rendimiento.
 
 ```
-usuario@kvm:~$ virsh start maquina_linux
-usuario@kvm:~$ virsh setmem maquina_linux 2048M --live --config
-usuario@kvm:~$ virsh dominfo maquina_linux
+    <interface type='network'>
+      <mac address='52:54:00:66:e7:6a'/>
+      <source network='default' portid='ead4fb3d-b176-4808-ae6a-6833add52200' bridge='virbr0'/>
+      <target dev='vnet0'/>
+      <model type='virtio'/>
+      <alias name='net0'/>
+      <address type='pci' domain='0x0000' bus='0x01' slot='0x00' function='0x0'/>
+    </interface>
 ```
 
+* Si nos fijamos en otros dispositivos podremos encontrar la definición del teclado, del ratón, el adaptador gráfico, controladores PCI, CDROM, ...
+
+Iremos estudiando más elementos de la definición XML de una máquina virtual, pero podéis profundizar en el formato en la documentación oficial: [Domain XML format](https://libvirt.org/formatdomain.html).

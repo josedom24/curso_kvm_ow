@@ -11,14 +11,15 @@
     * [Recursos disponibles en QEMU/KVM + libvirt](contenidos/unidad02/clase3.md)
 
 3. Creación de máquinas virtuales
-    * [Creación de máquinas virtuales con virt-install](contenidos/unidad03/clase1.md)
-    * [Características de las máquinas virtuales](contenidos/unidad03/clase2.md)
-    * [Gestión de máquinas virtuales con virsh](contenidos/unidad03/clase3.md)
-    * [Definición XML de una máquina virtual](contenidos/unidad03/clase4.md)
-    * [Modificación de la definición de una máquina virtual](contenidos/unidad03/clase5.md)
-    * [Acceso a la máquina virtual usando la consola serie](contenidos/unidad03/clase6.md)
-    * [Creación de máquinas virtuales Windows con virt-install](contenidos/unidad03/clase7.md)
-    * [Acceso a las máquinas virtuales desde el exterior](contenidos/unidad03/clase8.md)
+    * [Definición de un dominio con virsh](contenidos/unidad03/clase1.md)
+    * [Creación de máquinas virtuales con virt-install](contenidos/unidad03/clase2.md)
+    * [Características de las máquinas virtuales](contenidos/unidad03/clase3.md)
+    * [Gestión de máquinas virtuales con virsh](contenidos/unidad03/clase4.md)
+    * [Definición XML de una máquina virtual](contenidos/unidad03/clase5.md)
+    * [Modificación de la definición de una máquina virtual](contenidos/unidad03/clase6.md)
+    * [Acceso a la máquina virtual usando la consola serie](contenidos/unidad03/clase7.md)
+    * [Creación de máquinas virtuales Windows con virt-install](contenidos/unidad03/clase8.md)
+    * [Acceso a las máquinas virtuales desde el exterior](contenidos/unidad03/clase9.md)
     
 
 4. Gestión del almacenamiento
@@ -46,12 +47,8 @@
     * Ejemplo 3: Configuración de un router/NAT
 
 7. Temas adicionales
-    * Definición de un dominio con virsh
     * Despliegue automatizado de máquinas virtuales con virt-builder
     * Despliegue automatizado de máquinas virtuales usando cloud-init
     * Conexión local no privilegiada a libvirt
     * Conexión remota a libvirt
-    * Migración de máquinas virtuales
-
-8. Bibliografía
-    * https://wiki.archlinux.org/title/Libvirt
+    

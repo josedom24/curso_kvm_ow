@@ -1,75 +1,121 @@
-# Definición XML de una máquina virtual
+# Gestión de máquinas virtuales con virsh
 
-Las características, opciones y dispositivos hardware de una máquina virtual están estructuradas con el lenguajes de marcas XML. De la misma forma las características de los distintos recursos con los que podemos trabajar (redes, pools de almacenamiento, volúmenes) también están definidos con XML.
+En este apartado vamos a usar [virsh](https://libvirt.org/manpages/virsh.html) para gestionar las máquinas virtuales o dominios que hemos creado en los puntos anteriores. 
 
-## Esquema XML de una máquina virtual
-
-Para obtener la definición XML de una máquina virtual, ejecutamos la siguiente instrucción:
+Para obtener ayuda sobre todos los comandos que podemos ejecutar:
 
 ```
-usuario@kvm:~$ virsh dumpxml debian12
+usuario@kvm:~$ virsh --help
 ```
 
-Veamos algunos elementos de la definición:
-
-* El documento XML empieza con la etiqueta `<domain>` donde se indica el tipo de virtualización utilizada para gestionar la máquina y su identificador si la máquina está ejecutándose..
-* El nombre de la máquina se indica con la etiqueta `<name>`.
-* La etiqueta `<currentMemory>` nos indica la memoria asignada actualmente a la máquina. Podemos modificar esta memoria asignada sin reiniciar la máquina hasta el límite indicado por la etiqueta `<memory>`. Por lo tanto, el valor asignado a `<memory>` no puede ser menor que el valor asociado a `<currentMemory>`.
-
-	En este ejemplo, los dos valores son iguales porque al crear la máquina con `virt-install` usamos el parámetro `--memory` y se asigna el valor indicado a los dos parámetros. Más adelante estudiaremos como modificar estos parámetros.
-
-* La vCPU asignadas la encontramos definida en la etiqueta `<vcpu>`.
-* Con la etiqueta `<os>` tenemos información de la arquitectura de la máquina virtualizada, además con las etiquetas `<boot>` indicamos el orden de arranque entre distintos dispositivos.
-* La información de la CPU la encontramos en la etiqueta `<cpu>`.
-
-Veamos un ejemplo hasta aquí:
+Si queremos pedir ayuda de un comando en concreto, por ejemplo el comando `list`, ejecutamos:
 
 ```
-<domain type='kvm' id='1'>
-  <name>debian12</name>
-  <uuid>ee863982-20a4-4e65-9207-a17065bff934</uuid>
-  ...
-  <memory unit='KiB'>1048576</memory>
-  <currentMemory unit='KiB'>1048576</currentMemory>
-  <vcpu placement='static'>1</vcpu>
-  ...
-  <os>
-    <type arch='x86_64' machine='pc-q35-8.2'>hvm</type>
-    <boot dev='hd'/>
-  </os>
-  ...
-  <cpu mode='host-passthrough' check='none' migratable='on'/>
-  ...
+usuario@kvm:~$ virsh list --help
 ```
 
-A continuación nos encontramos la etiqueta `<devices>` donde se definen los distintos dispositivos hardware que forman parte de la máquina. Veamos algunos ejemplos:
-
-* Los discos se definen con la etiqueta `<disk>`. Encontramos información del tipo (en este caso fichero), tipo del fichero (en este caso qcow2), ruta donde se encuentra el fichero,... Es importante señalar que, por defecto, se configura el disco con un controlador **VirtIO** (`bus='virtio`), es decir, es un dispositivo paravirtualizado que nos ofrece mayor rendimiento. Veamos la definición del disco:
+Ya hemos usado el comando `list` para mostrar las máquinas virtuales que tenemos creada:
 
 ```
-    <disk type='file' device='disk'>
-      <driver name='qemu' type='qcow2' discard='unmap'/>
-      <source file='/var/lib/libvirt/images/debian12.qcow2' index='2'/>
-      <backingStore/>
-      <target dev='vda' bus='virtio'/>
-      <alias name='virtio-disk0'/>
-      <address type='pci' domain='0x0000' bus='0x04' slot='0x00' function='0x0'/>
-    </disk>
+usuario@kvm:~$ virsh list --all
+ Id   Nombre    Estado
+----------------------------
+ 2    debian12   ejecutando
 ```
 
-* Las interfaces de red se definen con la etiqueta `<interface>`. Encontramos información como la mac, la red a la que está conectada (en este caso la red `default`),... También observamos que el modelo de la tarjeta es **VirtIO** (`<model type='virtio'/>`), de nuevo se configura un dispositivo paravirtualizado de alto rendimiento.
+**Nota: Podemos referencia una máquina virtual por su nombre o por su id.**
+
+## Ciclo de vida de una máquina virtual
+
+Para apagar de forma adecuada una máquina virtual:
 
 ```
-    <interface type='network'>
-      <mac address='52:54:00:66:e7:6a'/>
-      <source network='default' portid='ead4fb3d-b176-4808-ae6a-6833add52200' bridge='virbr0'/>
-      <target dev='vnet0'/>
-      <model type='virtio'/>
-      <alias name='net0'/>
-      <address type='pci' domain='0x0000' bus='0x01' slot='0x00' function='0x0'/>
-    </interface>
+usuario@kvm:~$ virsh shutdown debian12
+Domain 'debian12' is being shutdown
 ```
 
-* Si nos fijamos en otros dispositivos podremos encontrar la definición del teclado, del ratón, el adaptador gráfico, controladores PCI, CDROM, ...
+Para iniciar una máquina que está detenida:
 
-Iremos estudiando más elementos de la definición XML de una máquina virtual, pero podéis profundizar en el formato en la documentación oficial: [Domain XML format](https://libvirt.org/formatdomain.html).
+```
+usuario@kvm:~$ virsh start debian12
+Domain 'debian12' started
+```
+
+Si la propiedad **autostart** de una maquina está activa, cada vez que se inicie el host, esa máquina se encenderá de forma automática. Para activarlo:
+
+```
+usuario@kvm:~$ virsh autostart debian12
+Domain 'debian12' marked as autostarted
+```
+
+Reiniciamos una máquina virtual, ejecutando:
+
+```
+usuario@kvm:~$ virsh reboot debian12
+Domain 'debian12' is being rebooted
+```
+
+Podemos forzar el apagado de una máquina:
+
+```
+usuario@kvm:~$ virsh destroy debian12
+Domain 'debian12' destroyed
+```
+
+Podemos pausar la ejecución de una máquina
+
+```
+usuario@kvm:~$ virsh suspend debian12
+Domain 'debian12' suspended
+```
+
+Y continuar la ejecución:
+
+```
+usuario@kvm:~$ virsh resume debian12
+Domain 'debian12' resumed
+```
+
+Por último, para eliminar una máquina virtual que esté parada (eliminando los volúmenes asociados):
+
+```
+usuario@kvm:~$ virsh undefine --remove-all-storage  debian12
+```
+
+## Obtener información de la máquina virtual
+
+Todos los comandos de `virsh` que empiezan por *dom* nos permiten obtener información de la máquina. 
+
+Para obtener información de la máquina:
+
+```
+usuario@kvm:~$ virsh dominfo debian12 
+```
+
+Para obtener el estado de la máquina_
+
+```
+usuario@kvm:~$ virsh domstate debian12 
+```
+
+Para obtner la lista de interfaces de red  las direcciones IP de la máquina:
+
+```
+usuario@kvm:~$ virsh domiflist debian12
+usuario@kvm:~$ virsh domifaddr debian12
+```
+
+Obtener los discos que tiene la máquina:
+
+```
+usuario@kvm:~$ virsh domblklist debian12
+```
+
+Para obtener estadísticas en tiempo real sobre CPU, memoria, disco y red.
+
+```
+usuario@kvm:~$ virsh domstats debian12
+```
+
+
+Puedes buscar [información](https://www.libvirt.org/manpages/virsh.html) de más comandos para obtener distinta información de la máquina virtual.

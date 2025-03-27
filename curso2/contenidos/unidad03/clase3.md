@@ -1,121 +1,90 @@
-# Gestión de máquinas virtuales con virsh
+# Características de las máquinas virtuales
 
-En este apartado vamos a usar [virsh](https://libvirt.org/manpages/virsh.html) para gestionar las máquinas virtuales o dominios que hemos creado en los puntos anteriores. 
-
-Para obtener ayuda sobre todos los comandos que podemos ejecutar:
+Después de instalar nuestra primera máquina, podemos comprobar la lista de máquinas ejecutando la siguiente instrucción:
 
 ```
-usuario@kvm:~$ virsh --help
+usuario@kvm:~$ virsh list
+ Id   Name       State
+--------------------------
+ 1    debian12   running
 ```
 
-Si queremos pedir ayuda de un comando en concreto, por ejemplo el comando `list`, ejecutamos:
+Sie estamos trabajando en un sistema con entorno gráfico podemos usar la herramienta `virt-viewer` para conectarno  a la consola de la máquina:
 
 ```
-usuario@kvm:~$ virsh list --help
+usuario@kvm:~$ virt-viewer debian12
 ```
 
-Ya hemos usado el comando `list` para mostrar las máquinas virtuales que tenemos creada:
+## Red
+
+Como comentábamos en el punto anterior, la máquina que hemos creado se conecta, por defecto, a la red `default`. Esta red es de tipo NAT, y comprobamos que la máquina ha recibido una IP de forma dinámica y que su puerta de enlace corresponde a la dirección IP `192.168.122.1`, que corresponde con el host, el servidor DNS corresponde a la misma IP y comprobamos que tiene resolución y acceso a internet:
 
 ```
-usuario@kvm:~$ virsh list --all
- Id   Nombre    Estado
-----------------------------
- 2    debian12   ejecutando
+usuario@debian12:~$ ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host noprefixroute 
+       valid_lft forever preferred_lft forever
+2: enp1s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 52:54:00:66:e7:6a brd ff:ff:ff:ff:ff:ff
+    inet 192.168.122.151/24 brd 192.168.122.255 scope global dynamic enp1s0
+       valid_lft 3581sec preferred_lft 3581sec
+    inet6 fe80::5054:ff:fe66:e76a/64 scope link 
+       valid_lft forever preferred_lft forever
+
+usuario@debian12:~$ ip r
+default via 192.168.122.1 dev enp1s0 
+192.168.122.0/24 dev enp1s0 proto kernel scope link src 192.168.122.151 
+
+usuario@debian12:~$ cat /etc/resolv.conf 
+nameserver 192.168.122.1
 ```
 
-**Nota: Podemos referencia una máquina virtual por su nombre o por su id.**
+## Recursos hardware
 
-## Ciclo de vida de una máquina virtual
-
-Para apagar de forma adecuada una máquina virtual:
+Podemos comprobar que la máquina tiene un disco de 10 Gb y de memoria RAM 1Gb:
 
 ```
-usuario@kvm:~$ virsh shutdown debian12
-Domain 'debian12' is being shutdown
+usuario@debian12:~$ lsblk
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+sr0     11:0    1 1024M  0 rom  
+vda    254:0    0   10G  0 disk 
+├─vda1 254:1    0    9G  0 part /
+├─vda2 254:2    0    1K  0 part 
+└─vda5 254:5    0  975M  0 part [SWAP]
+
+usuario@debian12:~$ free -h
+               total       usado       libre  compartido   búf/caché   disponible
+Mem:           960Mi       203Mi       782Mi       4,5Mi        93Mi       757Mi
+Inter:         974Mi          0B       974Mi
 ```
 
-Para iniciar una máquina que está detenida:
+## Almacenamiento
+
+Un **Pool de almacenamiento** es un recurso de almacenamiento. Lo más usual es tener pools de almacenamiento que sean locales, por ejemplo un directorio. Pode efecto tenemos el un pool llamado `default`, que corresponde con el directorio `/usr/lib/libvirt/images` y donde se guardarán los ficheros correspondientes a las imágenes de disco.
+
+Podemos ver los pools de almacenamiento, que tenemos creado, ejecutando:
 
 ```
-usuario@kvm:~$ virsh start debian12
-Domain 'debian12' started
-```
-
-Si la propiedad **autostart** de una maquina está activa, cada vez que se inicie el host, esa máquina se encenderá de forma automática. Para activarlo:
-
-```
-usuario@kvm:~$ virsh autostart debian12
-Domain 'debian12' marked as autostarted
-```
-
-Reiniciamos una máquina virtual, ejecutando:
+usuario@kvm:~$ virsh pool-list 
+ Name     State    Autostart
+------------------------------
+ default   active   yes
 
 ```
-usuario@kvm:~$ virsh reboot debian12
-Domain 'debian12' is being rebooted
-```
 
-Podemos forzar el apagado de una máquina:
+Un **volumen** es un medio de almacenamiento que podemos crear en un pool de almacenamiento en kvm. Si el pool de almacenamiento es de tipo *dir*, entonces el volumen será un fichero de imagen.
 
-```
-usuario@kvm:~$ virsh destroy debian12
-Domain 'debian12' destroyed
-```
-
-Podemos pausar la ejecución de una máquina
+Veamos el volumen que se ha creado el pool `default`:
 
 ```
-usuario@kvm:~$ virsh suspend debian12
-Domain 'debian12' suspended
-```
-
-Y continuar la ejecución:
-
-```
-usuario@kvm:~$ virsh resume debian12
-Domain 'debian12' resumed
-```
-
-Por último, para eliminar una máquina virtual que esté parada (eliminando los volúmenes asociados):
+usuario@kvm:~$ virsh vol-list default
+ Name                               Path
+----------------------------------------------------------------------------------------------
+ debian-12.10.0-amd64-netinst.iso   /var/lib/libvirt/images/debian-12.10.0-amd64-netinst.iso
+ debian12.qcow2                     /var/lib/libvirt/images/debian12.qcow2
 
 ```
-usuario@kvm:~$ virsh undefine --remove-all-storage  debian12
-```
-
-## Obtener información de la máquina virtual
-
-Todos los comandos de `virsh` que empiezan por *dom* nos permiten obtener información de la máquina. 
-
-Para obtener información de la máquina:
-
-```
-usuario@kvm:~$ virsh dominfo debian12 
-```
-
-Para obtener el estado de la máquina_
-
-```
-usuario@kvm:~$ virsh domstate debian12 
-```
-
-Para obtner la lista de interfaces de red  las direcciones IP de la máquina:
-
-```
-usuario@kvm:~$ virsh domiflist debian12
-usuario@kvm:~$ virsh domifaddr debian12
-```
-
-Obtener los discos que tiene la máquina:
-
-```
-usuario@kvm:~$ virsh domblklist debian12
-```
-
-Para obtener estadísticas en tiempo real sobre CPU, memoria, disco y red.
-
-```
-usuario@kvm:~$ virsh domstats debian12
-```
-
-
-Puedes buscar [información](https://www.libvirt.org/manpages/virsh.html) de más comandos para obtener distinta información de la máquina virtual.
+En todos estos conceptos sobre almacenamiento profundizaremos en el módulo correspondiente.

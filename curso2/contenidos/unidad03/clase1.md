@@ -1,59 +1,76 @@
-# Creación de máquinas virtuales con virt-install
+# Definición de un dominio con virsh
 
-Antes de crear nuestra primera máquina virtual, vamos a definir el concepto de **dominio**. En libvirt, un **dominio (domain)** es una instancia de una máquina virtual.
+En `virsh`, las máquinas virtuales se gestionan como **dominios**. Un dominio es una instancia de una máquina virtual administrada por libvirt, con una configuración definida en un archivo XML.  
 
-Vamos a crear las máquinas virtuales o dominios con la aplicación `virt-install`. Lo primero que tenemos que hacer es instalar el paquete `virtinst`, que además de este programa, tiene otras utilidades que iremos usando a los largo del curso.
+## Creación de un dominio con virsh
+Para definir una máquina virtual con `virsh`, primero se crea un archivo XML con la configuración del dominio. Este archivo describe aspectos como la cantidad de CPU, memoria, almacenamiento y red.  
 
-```
-usuario@kvm:~$ sudo apt install virtinst
-```
-
-## Creación de nuestra primera máquina virtual.
-
-Vamos a crear una máquina con las siguientes características: se va a llamar `debian12`, se va a usar una ISO de la distribución GNU/Linux Debian 12, la variante de sistema operativo podemos poner `debian12`, el tamaño del disco será de 10 GB, la memoria RAM será de 1 GB y le vamos a asignar 1 vCPU. No vamos a indicar la red a la que se conecta ya que, por defecto, se conectará a la red predefinida `default`.
-
-Tenemos que tener en cuenta dos cosas:
-
-1. La red `default` debe estar activa.
-2. Hemos bajado una imagen ISO para la instalación del sistema operativo y la tenemos guardado en el directorio `/var/lib/libvirt/images`.
-
-Para crear la nueva máquina con esas características, ejecutamos con usuario sin privilegios:
+Hemos copiado al directorio `/var/lib/libvirt/images` ela imagen ISO del sistema operativo que queremos instalar y vamos a crear un fichero de imagen de disco en el pool de almacenamiento `default`, este fichero corresponderá al disco de la máquina virtual. Aunque posteriormente estudiaremos el apartado de almacenamiento con profundidad, en este momento ejecutamos la siguiente instrucción para crear un disco de 10G:
 
 ```
-usuario@kvm:~$ virt-install --connect qemu:///system \
-			    --virt-type kvm \
-			    --name debian12 \
-			    --cdrom /var/lib/libvirt/images/debian-12.10.0-amd64-netinst.iso \
-			    --os-variant debian12 \
-			    --disk size=10 \
-			    --memory 1024 \
-			    --vcpus 1
-```			 
+usuario@kvm:~$ virsh vol-create-as default mi-vm.qcow2 --format qcow2 10G 
+```
 
-La información que tenemos que proporcionar a `virt-install` para la creación de la nueva máquina virtual será la siguiente:
+El archivo XML con el que vamos a trabajar se llama `dominio.xml` y tiene el siguiente contenido:
 
-* El nombre de la máquina virtual (parámetro `--name`).
-* El tipo de virtualización (parámetro `--virt-type`). en nuestro caso será `kvm`.
-* En nuestro caso vamos a realizar una instalación desde un fichero ISO, por lo que tendremos que indicar que la nueva máquina tendrá un CDROM con la ISO que indiquemos (parámetro `--cdrom`).
-* La variante del sistema operativo que vamos a utilizar (parámetro `--os-variant`). La variante del sistema operativo sirve para realizar una configuración por defecto de la máquina dependiendo del sistema que vamos a instalar. Para obtener la lista de variantes de sistemas operativos, podemos ejecutar la siguiente instrucción:
+```xml
+<domain type='kvm'>
+  <name>mi-vm</name>
+  <memory unit='MiB'>2048</memory>
+  <vcpu placement='static'>2</vcpu>
+  <os>
+    <type arch='x86_64' machine='pc-q35-6.2'>hvm</type>
+    <boot dev='cdrom'/>
+    <boot dev='hd'/>
+  </os>
+  <devices>
+    <disk type='file' device='disk'>
+      <driver name='qemu' type='qcow2'/>
+      <source file='/var/lib/libvirt/images/mi-vm.qcow2'/>
+      <target dev='vda' bus='virtio'/>
+    </disk>
+    <disk type='file' device='cdrom'>
+      <driver name='qemu' type='raw'/>
+      <source file='/var/lib/libvirt/images/debian-12.10.0-amd64-netinst.iso' index='1'/>
+      <target dev='sda' bus='sata'/>
+      <readonly/>
+    </disk>
+    <interface type='network'>
+      <source network='default'/>
+      <model type='virtio'/>
+    </interface>
+    <graphics type='spice' autoport='yes'/>
+  </devices>
+</domain>
+```
 
-    ```
-    usuario@kvm:~$ virt-install --os-variant list
-    ```
+Hemos definido una máquina virtual con las siguientes características:
 
-    Si quieres más información sobre las variantes puedes instalar el paquete `libosinfo-bin` y ejecutar la siguiente instrucción:
+1. La máquina se llama `mi-mv`.
+2. Tiene 2G de RAM y 2 vcpu.
+3. El orden de arranque de dispositivo es, primer el CDROM y luego el disco duro.
+4. Tiene dos dispositivos de almacenamiento: el disco principal que corresponde al fichero que hemos creado anteriormente y un CDROM que corresponde a la imagen ISO del sistema que vamos a instalar.
+5. Tiene una tarjeta de red conectada a la red `default`.
+6. Tiene una consola gráfica para que nos podamos conectar usando la aplicación `virt-viewer`.
 
-    ```
-    usuario@kvm:~$ sudo apt install libosinfo-bin
-    usuario@kvm:~$ osinfo-query os
-    ```
-* El tamaño del disco (parámetro `--disk size`). Se creará un fichero con la imagen del disco que se guardará en `/var/lib/libvirt/images`.
-* La cantidad de memoria RAM (parámetro `--memory`).
-* La cantidad de vCPU asignadas a la máquina (parámetro `--vcpus`).
+## Definir e iniciar un dominio con virsh  
 
-Podemos indicar muchos más parámetros a la hora de crear la nueva máquina. Puedes obtener toda la información en la [documentación oficial](https://github.com/virt-manager/virt-manager/blob/main/man/virt-install.rst) de la aplicación. Iremos usando, a lo largo del curso, diferentes parámetros de esta herramienta.
+Una vez creado el archivo XML, se usa el siguiente comando para **definir** la máquina virtual en libvirt:  
 
-A continuación, se iniciará la máquina y se abrirá la aplicación `virt-viewer` que nos permitirá conectarnos por VNC/SPICE a la máquina para que realicemos la instalación:
+```
+usuario@kvm:~$ virsh define dominio.xml
+```
+Esto registra el dominio, pero no lo inicia. Para iniciarlo, usa:  
+```
+usuario@kvm:~$ virsh start mi-vm
+```
+Y para acceder a él podemos usar la aplicación `virt-viewer`:
 
-![virt-install](img/virt-install1.png)
+usuario@kvm:~$ virt-viewer mi-vm
+
+Si se desea crear un dominio de manera temporal (no persistente), se puede usar:  
+```
+usuario@kvm:~$ virsh create dominio.xml
+```
+Este dominio existirá solo hasta que se apague.
 

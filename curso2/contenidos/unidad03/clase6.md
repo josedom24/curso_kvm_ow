@@ -1,61 +1,100 @@
-# Acceso a la máquina virtual usando la consola serie
+# Modificación de la definición de una máquina virtual
 
-Hasta ahora, hemos accedido con `virt-viewer` a las máquinas virtuales desde la consola gráfica usando **SPICE** o **VNC**, que proporcionan una experiencia similar a tener un monitor conectado a la máquina virtual. 
+La configuración de una máquina virtual en `libvirt` se define mediante un documento XML que describe todos sus atributos y recursos asignados. Este archivo especifica parámetros esenciales como el nombre, el UUID, la cantidad de memoria y vCPUs, los dispositivos de almacenamiento y red, la configuración de entrada/salida, el hipervisor utilizado y otras propiedades avanzadas. 
 
-* **SPICE**: Protocolo optimizado para gráficos, permite aceleración, copiar/pegar, audio, redirección de USB.
-* **VNC**: Protocolo de acceso remoto gráfico, más simple pero sin integración con el SO. Menos eficiente que SPICE.
+Podemos modificar esta configuración de dos maneras:  
 
-Sin embargo, en algunos escenarios, puede ser más conveniente o incluso necesario acceder a la máquina virtual mediante **una consola serie**.  Este modo de acceso es en modo texto, no necesita entorno gráfico, ideal para administración remota y sistemas sin interfaz de usuario.
+1. **Edición manual del XML:** Usando `virsh edit <nombre_vm>`, que abre el archivo XML en un editor de texto. Este método permite realizar cualquier cambio, pero requiere cuidado para mantener una sintaxis válida. Una vez guardado, `libvirt` valida el archivo antes de aplicar los cambios.
+2. **Uso de comandos específicos de `virsh`:** Permiten modificar parámetros individuales sin necesidad de editar directamente el XML, lo que reduce el riesgo de errores.  
 
-## ¿Para qué es necesario el acceso serie a una máquina KVM?
+* **Cambios dinámicos (en caliente):** Aplicables sin detener la máquina virtual, como la asignación de vCPUs adicionales (si el hipervisor lo permite) o la conexión de discos y redes.  
+* **Cambios persistentes:** Afectan la definición almacenada de la máquina virtual y permanecen tras un reinicio.  
+* **Cambios que requieren apagado:** Algunas modificaciones estructurales, como la asignación de memoria fija o cambios en el tipo de bus de almacenamiento, requieren detener la máquina antes de aplicarse.  
+* **Cambios que requieren reinicio:** Algunas modificaciones, como la actualización de ciertos parámetros de CPU o la modificación de controladores de dispositivos, solo se activan después de un reinicio de la máquina virtual.  
+ 
+Veamos algunos ejemplos:
 
-El acceso a través de **una consola serie** es útil en los siguientes casos:  
+## Modificar el nombre de una máquina virtual
 
-* **Servidores sin interfaz gráfica**: En entornos donde no hay un escritorio disponible (como servidores), el acceso por SPICE o VNC no es viable, pero una consola serie permite administrar el sistema de forma eficiente.  
-* **Recuperación de sistemas**: Si la máquina virtual no arranca correctamente o hay problemas con los controladores gráficos, la consola serie permite acceder al sistema sin depender de una interfaz gráfica.  
-* **Administración remota y automatización**: Algunas herramientas de gestión remota pueden acceder más fácilmente a la consola serie que a una interfaz gráfica, lo que facilita la automatización de tareas.  
-* **Menor consumo de recursos**: Una consola serie consume **mucho menos** CPU y memoria que SPICE o VNC, lo que la hace ideal para máquinas virtuales con pocos recursos.  
-
-## Dispositivo de hardware 
-
-Para poder acceder a una máquina virtual mediante consola serie, la máquina debe tener configurado un **puerto serie virtual**, que en KVM se representa como **virtio-serial** o un dispositivo `ttyS0`. 
+En este caso la modificación la vamos a realizar con el comando `virsh domrename`, que modificará internamente la definición XML. Este cambio requiere que la máquina esté parada.
 
 ```
-usuario@kvm:~$ virsh dumpxml debian12
+usuario@kvm:~$ virsh domrename debian12 maquina_linux
+Domain 'debian12' XML configuration edited.
+```
+
+## Modificar la asignación de vCPU
+
+Suponemos que la máquina está parada. Comprobamos el número de vCPU asignadas a la máquina:
+
+```
+usuario@kvm:~$ virsh vcpucount maquina_linux
+```
+
+Podemos editar la configuración XML y cambiar el valor de la etiqueta `<vcpu>`:
+
+```
+usuario@kvm:~$ virsh edit maquina_linux
 ...
-<serial type='pty'>
-      <source path='/dev/pts/0'/>
-      <target type='isa-serial' port='0'>
-        <model name='isa-serial'/>
-      </target>
-      <alias name='serial0'/>
-    </serial>
-    <console type='pty' tty='/dev/pts/0'>
-      <source path='/dev/pts/0'/>
-      <target type='serial' port='0'/>
-      <alias name='serial0'/>
-    </console>
+  <vcpu placement='static'>2</vcpu>
 ...
 ```
 
-## Configuración del sistema operativo
-
-Dentro de la máquina virtual (Linux), se debe iniciar el servicio que permite la conexión a la consola serie:  
+Y volvemos a comprobar la información de la máquina:
 
 ```
-$ sudo systemctl enable --now getty@ttyS0
+usuario@kvm:~$ virsh vcpucount maquina_linux
 ```
 
-* **`getty`** (abreviatura de "get TTY") es el proceso encargado de gestionar una terminal de login en Linux.  
-* **`ttyS0`** es el primer puerto serie en un sistema Linux.  
-
-Por lo tanto estamos lanzando un **proceso de login en la consola serie**, lo que permite conectarte a la máquina a través de un puerto serie o una consola virtual en KVM/QEMU.
+También podemos modificar este parámetro usando la siguiente instrucción que modifica directamente la definición XML:
 
 ```
-usuario@kvm:~$ virsh console debian12
-Connected to domain 'debian12'
-Escape character is ^] (Ctrl + ])
+usuario@kvm:~$ virsh setvcpus mi-vm 4 --config
+```
 
-debian login: 
+La parámetro `--config` modifica la configuración persistente de la máquina virtual para que el cambio se mantenga tras un reinicio.
+
+Si la máquina está funcionando (**modifcación en caliente**) podemos usar la instrucción:
+
+```
+usuario@kvm:~$ virsh setvcpus mi-vm 2 --live --config
+```
+
+El parámetro `--live` aplica el cambio solo en la ejecución actual de la máquina virtual. Si indicamos el parámetro `--config` el cambio se mantendrá después del reinicio.
+
+
+## Modificar la asignación de memoria RAM
+
+Volvemos a suponer que la máquina está parada. Podemos editar la configuración XML y modificar las dos etiquetas relacionadas con la memoria:
+
+* `<memory>`: Valor máximo de RAM que podemos asignar a la máquina "en caliente" (funcionando).
+* `<currentMemory>`: Cantidad de memoria asignada a la máquina.
+
+Por ejemplo, dejamos la asignación de memoria en un 1 Gb, y cambiamos la memoria máxima a 3 Gb:
+
+```
+usuario@kvm:~$ virsh edit maquina_linux
+...
+  <memory unit='KiB'>3145728</memory>
+  <currentMemory unit='KiB'>1048576</currentMemory>
+...
+```
+
+Podemos comprobar el cambio:
+
+```
+usuario@kvm:~$ virsh dominfo maquina_linux
+...
+Memoria máxima: 3145728 KiB
+Memoria utilizada: 1048576 KiB
+...
+```
+
+Ahora iniciamos la máquina y podemos cambiar "en caliente" la memoria de la máquina hasta un máximo de 3 Gb, para ello vamos a usar el comando `virsh setmem`.
+
+```
+usuario@kvm:~$ virsh start maquina_linux
+usuario@kvm:~$ virsh setmem maquina_linux 2048M --live --config
+usuario@kvm:~$ virsh dominfo maquina_linux
 ```
 

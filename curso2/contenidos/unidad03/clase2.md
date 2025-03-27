@@ -1,90 +1,61 @@
-# Características de las máquinas virtuales
+# Creación de máquinas virtuales con virt-install
 
-Después de instalar nuestra primera máquina, podemos comprobar la lista de máquinas ejecutando la siguiente instrucción:
+En el punto anterior hemos definido un dominio desde su definición XML, esto nos aporta la posibilidad de ajustar lo máximo posible la configuración de la máquina, además nos facilita la creación de máquinas virtuales de forma automatizada.
 
-```
-usuario@kvm:~$ virsh list
- Id   Name       State
---------------------------
- 1    debian12   running
-```
+Sin embargo, como hemos visto tenemos que crear nosotros mismos la imagen de disco y tenemos que conocer muy bien la estructura CML de configuración de la máquina. 
 
-Sie estamos trabajando en un sistema con entorno gráfico podemos usar la herramienta `virt-viewer` para conectarno  a la consola de la máquina:
+En este apartado, vamos a crear las máquinas virtuales o dominios con la aplicación `virt-install`, que nos facilita la creación e instalación de las máquinas. Lo primero que tenemos que hacer es instalar el paquete `virtinst`, que además de este programa, tiene otras utilidades que iremos usando a los largo del curso.
 
 ```
-usuario@kvm:~$ virt-viewer debian12
+usuario@kvm:~$ sudo apt install virtinst
 ```
 
-## Red
+## Creación de nuestra primera máquina virtual.
 
-Como comentábamos en el punto anterior, la máquina que hemos creado se conecta, por defecto, a la red `default`. Esta red es de tipo NAT, y comprobamos que la máquina ha recibido una IP de forma dinámica y que su puerta de enlace corresponde a la dirección IP `192.168.122.1`, que corresponde con el host, el servidor DNS corresponde a la misma IP y comprobamos que tiene resolución y acceso a internet:
+Vamos a crear una máquina con las siguientes características: se va a llamar `debian12`, se va a usar una ISO de la distribución GNU/Linux Debian 12, la variante de sistema operativo podemos poner `debian12`, el tamaño del disco será de 10 GB, la memoria RAM será de 1 GB y le vamos a asignar 1 vCPU. No vamos a indicar la red a la que se conecta ya que, por defecto, se conectará a la red predefinida `default`.
 
-```
-usuario@debian12:~$ ip a
-1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
-    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-    inet 127.0.0.1/8 scope host lo
-       valid_lft forever preferred_lft forever
-    inet6 ::1/128 scope host noprefixroute 
-       valid_lft forever preferred_lft forever
-2: enp1s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
-    link/ether 52:54:00:66:e7:6a brd ff:ff:ff:ff:ff:ff
-    inet 192.168.122.151/24 brd 192.168.122.255 scope global dynamic enp1s0
-       valid_lft 3581sec preferred_lft 3581sec
-    inet6 fe80::5054:ff:fe66:e76a/64 scope link 
-       valid_lft forever preferred_lft forever
+Tenemos que tener en cuenta dos cosas:
 
-usuario@debian12:~$ ip r
-default via 192.168.122.1 dev enp1s0 
-192.168.122.0/24 dev enp1s0 proto kernel scope link src 192.168.122.151 
+1. La red `default` debe estar activa.
+2. Hemos bajado una imagen ISO para la instalación del sistema operativo y la tenemos guardado en el directorio `/var/lib/libvirt/images`.
 
-usuario@debian12:~$ cat /etc/resolv.conf 
-nameserver 192.168.122.1
-```
-
-## Recursos hardware
-
-Podemos comprobar que la máquina tiene un disco de 10 Gb y de memoria RAM 1Gb:
+Para crear la nueva máquina con esas características, ejecutamos con usuario sin privilegios:
 
 ```
-usuario@debian12:~$ lsblk
-NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
-sr0     11:0    1 1024M  0 rom  
-vda    254:0    0   10G  0 disk 
-├─vda1 254:1    0    9G  0 part /
-├─vda2 254:2    0    1K  0 part 
-└─vda5 254:5    0  975M  0 part [SWAP]
+usuario@kvm:~$ virt-install --connect qemu:///system \
+			    --virt-type kvm \
+			    --name debian12 \
+			    --cdrom /var/lib/libvirt/images/debian-12.10.0-amd64-netinst.iso \
+			    --os-variant debian12 \
+			    --disk size=10 \
+			    --memory 1024 \
+			    --vcpus 1
+```			 
 
-usuario@debian12:~$ free -h
-               total       usado       libre  compartido   búf/caché   disponible
-Mem:           960Mi       203Mi       782Mi       4,5Mi        93Mi       757Mi
-Inter:         974Mi          0B       974Mi
-```
+La información que tenemos que proporcionar a `virt-install` para la creación de la nueva máquina virtual será la siguiente:
 
-## Almacenamiento
+* El nombre de la máquina virtual (parámetro `--name`).
+* El tipo de virtualización (parámetro `--virt-type`). en nuestro caso será `kvm`.
+* En nuestro caso vamos a realizar una instalación desde un fichero ISO, por lo que tendremos que indicar que la nueva máquina tendrá un CDROM con la ISO que indiquemos (parámetro `--cdrom`).
+* La variante del sistema operativo que vamos a utilizar (parámetro `--os-variant`). La variante del sistema operativo sirve para realizar una configuración por defecto de la máquina dependiendo del sistema que vamos a instalar. Para obtener la lista de variantes de sistemas operativos, podemos ejecutar la siguiente instrucción:
 
-Un **Pool de almacenamiento** es un recurso de almacenamiento. Lo más usual es tener pools de almacenamiento que sean locales, por ejemplo un directorio. Pode efecto tenemos el un pool llamado `default`, que corresponde con el directorio `/usr/lib/libvirt/images` y donde se guardarán los ficheros correspondientes a las imágenes de disco.
+    ```
+    usuario@kvm:~$ virt-install --os-variant list
+    ```
 
-Podemos ver los pools de almacenamiento, que tenemos creado, ejecutando:
+    Si quieres más información sobre las variantes puedes instalar el paquete `libosinfo-bin` y ejecutar la siguiente instrucción:
 
-```
-usuario@kvm:~$ virsh pool-list 
- Name     State    Autostart
-------------------------------
- default   active   yes
+    ```
+    usuario@kvm:~$ sudo apt install libosinfo-bin
+    usuario@kvm:~$ osinfo-query os
+    ```
+* El tamaño del disco (parámetro `--disk size`). Se creará un fichero con la imagen del disco que se guardará en `/var/lib/libvirt/images`.
+* La cantidad de memoria RAM (parámetro `--memory`).
+* La cantidad de vCPU asignadas a la máquina (parámetro `--vcpus`).
 
-```
+Podemos indicar muchos más parámetros a la hora de crear la nueva máquina. Puedes obtener toda la información en la [documentación oficial](https://github.com/virt-manager/virt-manager/blob/main/man/virt-install.rst) de la aplicación. Iremos usando, a lo largo del curso, diferentes parámetros de esta herramienta.
 
-Un **volumen** es un medio de almacenamiento que podemos crear en un pool de almacenamiento en kvm. Si el pool de almacenamiento es de tipo *dir*, entonces el volumen será un fichero de imagen.
+A continuación, se iniciará la máquina y se abrirá la aplicación `virt-viewer` que nos permitirá conectarnos por VNC/SPICE a la máquina para que realicemos la instalación:
 
-Veamos el volumen que se ha creado el pool `default`:
+![virt-install](img/virt-install1.png)
 
-```
-usuario@kvm:~$ virsh vol-list default
- Name                               Path
-----------------------------------------------------------------------------------------------
- debian-12.10.0-amd64-netinst.iso   /var/lib/libvirt/images/debian-12.10.0-amd64-netinst.iso
- debian12.qcow2                     /var/lib/libvirt/images/debian12.qcow2
-
-```
-En todos estos conceptos sobre almacenamiento profundizaremos en el módulo correspondiente.
