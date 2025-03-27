@@ -26,14 +26,12 @@ Si el estado estuviera en inactivo, para iniciarla, ejecutaríamos:
 
 ```
 usuario@kvm:~$ virsh net-start default 
-La red default se ha iniciado
 ```
 
 Si fuera necesario, es recomendable activar la propiedad de **Incio autómatico**, para que se inicie de forma automática después de reiniciar el host, para ello:
 
 ```
 usuario@kvm:~$ virsh net-autostart default
-La red default ha sido marcada para iniciarse automáticamente
 ```
 
 Aunque estudiaremos la redes con profundidad en el módulo correspondiente, podemos señalar que las máquinas virtuales que se conecten a esta red, tendrán las siguientes características:
@@ -47,4 +45,21 @@ Por defecto, las nuevas máquinas que creemos se conectarán a esta red.
 
 ## Almacenamiento disponible
 
-Estudiaremos en profundidad el almacenamiento con el que podemos trabajar en el módulo correspondiente. En este momento, indicar que los ficheros correspondientes a las imágenes de discos de las nuevas máquinas virtuales que creemos se guardarán, por defecto, en el directorio `/var/lib/libvirt/images`.
+Las imágenes de discos de las nuevas máquinas virtuales que creemos se guardarán, por defecto, en el directorio `/var/lib/libvirt/images`.
+
+Un **Pool de almacenamiento** es un recurso de almacenamiento. Lo más usual es tener pools de almacenamiento que sean locales, por ejemplo un directorio.
+
+Antes de empezar a trabajar con las máquinas virtuales vamos a crear un pool de almacenamiento que llamaremos `default`, que será de tipo *directorio* y que corresponderá al directorio que hemos indicado. Para crear este pool, ejecutaremos:
+
+```
+usuario@kvm:~$ virsh pool-define-as default dir --target /var/lib/libvirt/images
+```
+
+A continuación lo iniciamos y lo configuramos para que se autoinicie después de un reinicio:
+
+```
+usuario@kvm:~$ virsh pool-start default 
+usuario@kvm:~$ virsh pool-autostart default 
+```
+
+Estudiaremos en profundidad el almacenamiento con el que podemos trabajar en el módulo correspondiente. 
