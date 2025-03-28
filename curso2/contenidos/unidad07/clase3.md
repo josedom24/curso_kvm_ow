@@ -13,7 +13,7 @@ Su función principal es leer **datos de configuración** desde diversas fuentes
 * Ejecución de comandos personalizados.
 * Configuración de particiones y almacenamiento.
 
-## configuración de cloud-init
+## Configuración de cloud-init
 
 En la [documentación](https://cloudinit.readthedocs.io/en/latest/) de `cloud-init` puedes ver todas las configuraciones que podemos realizar, para este ejercicio vamos a realizar una ejemplo sencillo. Para indicar la configuración se suele usar un fichero con formato YAML conocido como `cloud-config`.Creamos un fichero `cloud.yaml` con el siguiente contenido:
 
@@ -42,7 +42,19 @@ Con este fichero se van a hacer tres configuraciones en la máquina: se cambia s
 
 ## Descargar de la imagen cloud
 
-Descargamos la imagen cloud y la guardamos en el directorio de trabajo:
+La mayoría de las distribuciones Linux nos ofrecen un respositorio de descargas de imágenes cloud:
+
+* Ubuntu Cloud Images: cloud-images.ubuntu.com
+* Debian Cloud Images: cloud.debian.org/images/cloud/
+* Fedora Cloud Images: alt.fedoraproject.org/cloud/
+* CentOS Cloud Images: cloud.centos.org/centos/
+* AlmaLinux Cloud Images: repo.almalinux.org/cloud/
+* Rocky Linux Cloud Images: dl.rockylinux.org/pub/rocky/
+* openSUSE Cloud Images: download.opensuse.org/repositories/Cloud:/Images:/
+* Arch Linux Cloud Images (comunidad): gitlab.archlinux.org/archlinux/arch-boxes
+* Amazon Linux Cloud Images: cdn.amazonlinux.com/os-images/latest/
+
+Nostros vamos a trabajar con una imagen cloud de Ubuntu. Descargamos la imagen cloud y la guardamos en el directorio de trabajo:
 
 ```
 usuario@kvm:~$ wget https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img

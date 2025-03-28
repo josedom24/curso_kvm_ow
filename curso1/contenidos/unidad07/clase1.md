@@ -36,3 +36,5 @@ $ sudo systemctl enable --now getty@ttyS0
 Por lo tanto estamos lanzando un **proceso de login en la consola serie**, lo que permite conectarte a la máquina a través de un puerto serie o una consola virtual en KVM/QEMU.
 
 ![serie](img/serie2.png)
+
+Para salir de la consola serie tenemos que pulsar las teclas: `CTRL + ALT GR + ]`.

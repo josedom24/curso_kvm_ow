@@ -59,3 +59,4 @@ Escape character is ^] (Ctrl + ])
 debian login: 
 ```
 
+Para salir de la consola serie tenemos que pulsar las teclas: `CTRL + ALT GR + ]`.

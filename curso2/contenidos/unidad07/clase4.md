@@ -41,56 +41,93 @@ usuario@kvm:~$ virsh pool-autostart default
 
 ## Creación de una imagen local
 
-Podemos cualquier estrategia de las que hemos estudiado para crear una maquina virtual. En este caso, vamos a usar `virt-builder` para crear una máquina muy liviana con la distribución `cirros`:
+Podemos cualquier estrategia de las que hemos estudiado para crear una maquina virtual. En este caso, vamos a usar una imagen cloud de Debian:
 
-usuario@kvm:~$ sudo virt-builder cirros-0.3.5 \
-                --format qcow2 \
-                --output /home/usuario/.local/share/libvirt/images/cirros.qcow2 \
+```
+usuario@kvm:~$ wget http://cloud.debian.org/images/cloud/bookworm/latest/debian-12-generic-amd64.qcow2 -O /home/usuario/.local/share/libvirt/images/debian12-cloud.qcow2
+```
 
-sudo chown usuario: /home/usuario/.local/share/libvirt/images/cirros.qcow2             
 
 ## Creación de la máquina virtual
 
-La imagen `cirros` se suelen utilizar en entornos cloud para hacer comprobaciones por lo tanto la mejor manera de configurar es usar `cloud-init`. En este caso usamos el fichero `cloud.yaml`:
+Vamos a usar `cloud-init` para la configuración de la máquina. En este caso usamos el fichero `cloud.yaml`:
 
 ```yaml
 #cloud-config
-seña a los usuarios creados
+
+# Configuramos el nombre de la máquina
+hostname: debian-usuario
+
+
+# Cambia las contraseña a los usuarios creados
 chpasswd:
   expire: False
   users:
     - name: root
       password: asdasd
       type: text
+    - name: debian
+      password: asdasd
+      type: text
 ```
 
+Y creamos la nueva máquina en nuestro entorno local:
+
+```
 usuario@kvm:~$ virt-install --connect qemu:///session \
                             --virt-type kvm \
-                            --name cirros-usuario \
-                            --disk path=/home/usuario/.local/share/libvirt/images/cirros.qcow2 \
-                            --os-variant cirros0.3.5 \
-                            --memory 512 \
+                            --name debian-usuario \
+                            --disk path=/home/usuario/.local/share/libvirt/images/debian12-cloud.qcow2 \
+                            --os-variant debian12 \
+                            --memory 1024 \
                             --vcpus 1 \
                             --import \
-                            --cloud-init user-data=cloud.yaml \
+                            --cloud-init user-data=./cloud.yaml \
                             --noautoconsole
+```
 
+A continuación accedemos a la máquina con una conexión serie:
 
-# ip a
-1: lo: <LOOPBACK,UP,LOWER_UP> mtu 16436 qdisc noqueue 
+```
+usuario@kvm:~$ virsh console debian-usuario
+```
+
+Y podemos comprobar que la máquina virtual se conecta a la red de usuario de QEMU ([SLIRP](https://wiki.qemu.org/Documentation/Networking#User_Networking_.28SLIRP.29)) que configura la máquina con la dirección IP `10.0.2.15`, su puerta de enlace, que es el anfitrión (la máquina física) es la dirección IP `10.0.2.2` y configura un servidor DNS en la dirección IP `10.0.2.3`. Esta red permite que la máquina tenga acceso a internet, pero no tendrá conectividad con el anfitrión u otras máquinas que creemos.
+
+```
+debian@debian-usuario:~$ ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
     inet 127.0.0.1/8 scope host lo
-    inet6 ::1/128 scope host 
        valid_lft forever preferred_lft forever
-2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast qlen 1000
-    link/ether 52:54:00:64:d6:ed brd ff:ff:ff:ff:ff:ff
-    inet 10.0.2.15/24 brd 10.0.2.255 scope global eth0
-    inet6 fec0::5054:ff:fe64:d6ed/64 scope site dynamic 
-       valid_lft 86241sec preferred_lft 14241sec
-    inet6 fe80::5054:ff:fe64:d6ed/64 scope link 
+    inet6 ::1/128 scope host noprefixroute 
        valid_lft forever preferred_lft forever
-# ip r
-default via 10.0.2.2 dev eth0 
-10.0.2.0/24 dev eth0  src 10.0.2.15 
-# cat /etc/resolv.conf 
+2: enp1s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 52:54:00:ad:25:fc brd ff:ff:ff:ff:ff:ff
+    inet 10.0.2.15/24 metric 100 brd 10.0.2.255 scope global dynamic enp1s0
+       valid_lft 86380sec preferred_lft 86380sec
+    inet6 fec0::5054:ff:fead:25fc/64 scope site dynamic mngtmpaddr noprefixroute 
+       valid_lft 86383sec preferred_lft 14383sec
+    inet6 fe80::5054:ff:fead:25fc/64 scope link 
+       valid_lft forever preferred_lft forever
+
+debian@debian-usuario:~$ ip r
+default via 10.0.2.2 dev enp1s0 proto dhcp src 10.0.2.15 metric 100 
+10.0.2.0/24 dev enp1s0 proto kernel scope link src 10.0.2.15 metric 100 
+10.0.2.2 dev enp1s0 proto dhcp scope link src 10.0.2.15 metric 100 
+10.0.2.3 dev enp1s0 proto dhcp scope link src 10.0.2.15 metric 100 
+
+debian@debian-usuario:~$ cat /etc/resolv.conf 
+...
 nameserver 10.0.2.3
+search .
+```
+
+Para terminar podemos comprobar que se ha creado el volumen que corresponde al disco de la máquina en el grupo de almacenamiento `default` de la conexión no privilegiada.
+
+```
+usuario@kvm:~$ virsh vol-list default
+ Name                   Path
+----------------------------------------------------------------------------------------
+ debian12-cloud.qcow2   /home/usuario/.local/share/libvirt/images/debian12-cloud.qcow2
+```
