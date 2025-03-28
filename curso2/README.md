@@ -6,7 +6,7 @@
 	* [Introducción a QEMU/KVM y libvirt](contenidos/unidad01/clase3.md)
 
 2. Instalación de KVM/libvirt
-    * Preparación del escenario de instalación
+    * [Preparación del escenario de instalación](contenidos/unidad02/clase1.md)
     * [Instalación de QEMU/KVM + libvirt](contenidos/unidad02/clase2.md)
     * [Recursos disponibles en QEMU/KVM + libvirt](contenidos/unidad02/clase3.md)
 
