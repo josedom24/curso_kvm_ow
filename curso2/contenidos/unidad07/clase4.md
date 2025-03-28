@@ -44,7 +44,8 @@ usuario@kvm:~$ virsh pool-autostart default
 Podemos cualquier estrategia de las que hemos estudiado para crear una maquina virtual. En este caso, vamos a usar una imagen cloud de Debian:
 
 ```
-usuario@kvm:~$ wget http://cloud.debian.org/images/cloud/bookworm/latest/debian-12-generic-amd64.qcow2 -O /home/usuario/.local/share/libvirt/images/debian12-cloud.qcow2
+usuario@kvm:~$ wget http://cloud.debian.org/images/cloud/bookworm/latest/debian-12-generic-amd64.qcow2 \
+                    -O /home/usuario/.local/share/libvirt/images/debian12-cloud.qcow2
 ```
 
 
