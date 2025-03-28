@@ -17,6 +17,38 @@ Nos aseguremos que tenemos instalado el siguiente paquete que nos permite trabaj
 apt install bridge-utils
 ```
 
+## Creación de un bridge externo con NetworkManager
+
+**NetworkManager** es una utilidad de gráfica para simplificar el uso de redes en sistemas Linux. Normalmente la tenemos instaladas con sistemas Linux con entornos gráficos como Gnome. Junto a esa utilidad tenemos otra que se puede ejecutar con el comando `nm-connection-editor`, y que se llama **Configuración de redes**:
+
+![Network Manager](img/networkmanager1.png)
+
+Si lo ejecutamos accedemos a la siguiente pantalla:
+
+![Network Manager](img/networkmanager2.png)
+
+Donde vemos la conexión de red cableada (o de wifi) que tenemos y los bridge virtuales que se han creado cuando hemos estado trabajando con las redes en virt-manager. Pulsando el botón **+**, podemos de alta nueva conexión. Añadiremos una conexión de tipo **Puente**:
+
+![Network Manager](img/networkmanager3.png)
+
+Y podemos indicar el nombre de la conexión, el nombre del puente que estamos creando, y a continuación vamos a añadirle una conexión al bridge que será la interfaz de red física del host que está actualmente conectada al exterior.
+
+![Network Manager](img/networkmanager4.png)
+
+Añadimos un conexión **Cableada** que será la interfaz física del host (en mi caso `enp1s0`):
+
+![Network Manager](img/networkmanager5.png)
+
+![Network Manager](img/networkmanager6.png)
+
+Finalmente borramos la conexión cableada que tenemos actualmente:
+
+![Network Manager](img/networkmanager7.png)
+
+Y en unos segundos, se conectará de forma automática a la conexión **Puente Externo**:
+
+![Network Manager](img/networkmanager8.png) 
+
 ## Creación de un bridge externo con ifupdown
 
 Si estamos trabajando en un servidor con Linux Debian instalado y no tenemos instalado NetworkManager, la configuración se hará directamente en el fichero de configuración de red `/etc/network/intefaces`:
@@ -42,26 +74,6 @@ ifdown enp1s0
 systemctl restart networking.service
 ```
 
-Y comprobamos:
-
-```
-ip a
-...
-2: enp1s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast master br0 state UP group default qlen 1000
-    link/ether 52:54:00:22:d7:3f brd ff:ff:ff:ff:ff:ff
-3: br0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
-    link/ether 92:d8:69:79:60:69 brd ff:ff:ff:ff:ff:ff
-    inet 192.168.121.169/24 brd 192.168.121.255 scope global dynamic br0
-       valid_lft 3595sec preferred_lft 3595sec
-```
-
-Podemos comprobar los puentes que tenemos creados y las interfaces que están conectados a él, ejecutando la siguiente instrucción:
-
-```
-brctl show
-bridge name	bridge id		STP enabled	interfaces
-br0		8000.7eb448933f70	no		enp1s0
-```
 
 ## Creación de un bridge externo con netplan
 
@@ -84,4 +96,27 @@ Y reiniciamos la red ejecutando:
 
 ```
 sudo netplan apply
+```
+
+## Comproabación de funcionamiento
+
+Independientemente de la opción que hayamos escogido, ubnave realizada la configuración podemos comprobar si se ha creado un bridge `br0` que ha tomado el direccionamiento adecuado y que la interfaz de nuestro ordenador esta conectado a él:
+
+```
+ip a
+...
+2: enp1s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast master br0 state UP group default qlen 1000
+    link/ether 52:54:00:22:d7:3f brd ff:ff:ff:ff:ff:ff
+3: br0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000
+    link/ether 92:d8:69:79:60:69 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.121.169/24 brd 192.168.121.255 scope global dynamic br0
+       valid_lft 3595sec preferred_lft 3595sec
+```
+
+Podemos comprobar los puentes que tenemos creados y las interfaces que están conectados a él, ejecutando la siguiente instrucción:
+
+```
+brctl show
+bridge name	bridge id		STP enabled	interfaces
+br0		8000.7eb448933f70	no		enp1s0
 ```
