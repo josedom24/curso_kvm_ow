@@ -44,9 +44,3 @@ Los snapshots pueden ser a nivel de almacenamiento (ej. LVM, ZFS) o a nivel de i
 ## Aprovisionamiento ligero (Thin Provisioning)
 El aprovisionamiento ligero permite asignar espacio de almacenamiento de manera dinámica según sea necesario, en lugar de reservarlo completamente desde el principio. Esto optimiza el uso del espacio en disco. El formato **qcow2** soporta aprovisionamiento ligero, mientras que **raw** no lo hace.
 
-## Migraciones de máquinas virtuales
-Una funcionalidad importante en entornos de virtualización es la posibilidad de migrar máquinas virtuales de un host a otro. Existen distintos tipos de migración, y el almacenamiento juega un papel clave en cada caso:
-
-* **Migración en caliente (live migration)**: Permite mover una máquina virtual en ejecución sin interrumpir su funcionamiento. Para esto, es necesario que el almacenamiento sea **compartido** entre los hosts de origen y destino. Esto se logra mediante almacenamiento en red como **NFS, iSCSI, ...**.
-* **Migración en frío (cold migration)**: La máquina virtual está apagada durante la migración. En este caso, el almacenamiento no necesita ser compartido, ya que la imagen del disco puede copiarse de un host a otro antes de reiniciar la máquina en el nuevo servidor.
-
