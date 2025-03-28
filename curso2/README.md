@@ -50,6 +50,6 @@
     * [Creación de máquinas virtuales por red](contenidos/unidad07/clase1.md)
     * [Despliegue automatizado de máquinas virtuales con virt-builder](contenidos/unidad07/clase2.md)
     * [Despliegue automatizado de máquinas virtuales usando cloud-init](contenidos/unidad07/clase3.md)
-    * Conexión local no privilegiada a libvirt
-    * Conexión remota a libvirt
+    * [Conexión local no privilegiada a libvirt](contenidos/unidad07/clase4.md)
+    * [Conexión remota a libvirt](contenidos/unidad07/clase5.md)
     
