@@ -2,7 +2,7 @@
 
 Pode defecto, podemos ver que **virt-manager** tiene configurado una conexión local privilegiada que se llama **QEMU/KVM**. 
 
-Con la opción **Archivo->Nueva conexión...** podemos dar de alta una nueva conexión.
+Con la opción **Archivo->Añadir conexión...** podemos dar de alta una nueva conexión.
 
 Si pulsamos con el botón derecho del ratón sobre la conexión QEMU/KVM, además de distintas opciones, como *Nueva*, *Desconectar*,..., encontramos la opción **Detalles** (esta opción también se puede elegir en el menú **Editar -> Detalle de la conexión**):
 
@@ -30,17 +30,17 @@ Esta red es de tipo **NAT** y sus características son las siguientes:
 
 ## Almacenamiento disponible
 
-Otro elemento que podemos gestionar son los grupos de almacenamiento que tenemos en la conexión. Por defecto tenemos un grupo llamado `default`, donde se guardaban las imágenes de discos. En un primer momento cada grupo corresponde a un directorio de nuestro sistema de fichero. El grupo `default` corresponde al directorio `/var/lib/libvirt/images` que es el directorio donde se guardarán los ficheros correspondientes a las imágenes de los discos de las máquinas virtuales.
+Otro elemento que podemos gestionar son los grupos de almacenamiento que tenemos en la conexión. Por defecto tenemos un grupo llamado `default`, donde se guardan las imágenes de discos. En un primer momento cada grupo corresponde a un directorio de nuestro sistema de fichero. El grupo `default` corresponde al directorio `/var/lib/libvirt/images` que es el directorio donde se guardarán los ficheros correspondientes a las imágenes de los discos de las máquinas virtuales.
 
 ### Creación de un nuevo grupo de almacenamiento
 
-Para que **virt-manager** acceda a los ficheros de nuestro sistema de fichero tenemos que crear grupos de almacenamiento. Por ejemplo, para que podamos acceder a los ficheros iso que utilizaremos para la instalación de las máquinas virtuales, vamos a crear un nuevo grupo que llamaremos `isos` que corresponda, por ejemplo, al directorio `~/Descargas/isos`. Para realizar esta operación:
+Para que **virt-manager** acceda a los ficheros de nuestro sistema de fichero tenemos que crear grupos de almacenamiento. Por ejemplo, para que podamos acceder a los ficheros ISO que utilizaremos para la instalación de las máquinas virtuales, vamos a crear un nuevo grupo que llamaremos `isos` que corresponda, por ejemplo, al directorio `~/Descargas/isos`. Para realizar esta operación:
 
 1. Pulsamos el botón de añadir grupo:
 
     ![img](img/recursos2.png)
 
-2. Indicamos un nombre, el tipo de grupo, en nuestro caso **dir: Directorio del Sistema de Archivos** (podemos comprobar que en realidad un grupo de almacenamiento puede ser otro tipo de elemento según el tipo de almacenamiento que estemos utilizando) y el directorio al que vamos a acceder.
+2. Indicamos un nombre, el tipo de grupo, en nuestro caso elegimos **dir: Directorio del Sistema de Archivos** (estudiaremos posteriormente los distintos tipos de grupos de almacenamiento) y el directorio al que vamos a acceder.
 
     ![img](img/recursos3.png)
 
