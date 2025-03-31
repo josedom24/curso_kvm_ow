@@ -1,13 +1,13 @@
 # Introducción al almacenamiento en virt-manager
 
-El almacenamiento es un aspecto fundamental en la virtualización, ya que permite gestionar el espacio en disco de las máquinas virtuales. En virt-manager, el almacenamiento se organiza en **grupos de almacenamiento (storage pools)** y **volúmenes de almacenamiento (storage volumes)**. 
+El almacenamiento es un aspecto fundamental en la virtualización, ya que permite gestionar el espacio en disco de las máquinas virtuales. En **virt-manager**, el almacenamiento se organiza en **grupos de almacenamiento (storage pools)** y **volúmenes de almacenamiento (storage volumes)**. 
 
 ## Grupos de almacenamiento (Storage Pools)
-Los grupos de almacenamiento en virt-manager son espacios lógicos donde se almacenan las imágenes de disco de las máquinas virtuales. 
+Los grupos de almacenamiento en **virt-manager** son espacios lógicos donde se almacenan las imágenes de disco de las máquinas virtuales. 
 
 ![tipos](img/tipos.png)
 
-Como podemos ver, existen diferentes tipos de almacenamiento compatibles con virt-manager, que se pueden clasificar en dos categorías principales:
+Como podemos ver, existen diferentes tipos de almacenamiento compatibles con **virt-manager**, que se pueden clasificar en dos categorías principales:
 
 * **Almacenamiento basado en dispositivos de bloques**: Estos métodos proporcionan acceso directo a dispositivos de almacenamiento de bloques, como discos físicos o volúmenes lógicos. Algunos ejemplos son:
 

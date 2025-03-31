@@ -35,7 +35,7 @@ A continuación para crear un nuevo volumen a partir de la imagen base, lo cream
 
 ## Creación de la nueva máquina virtual
 
-Por último, usando virt-manager, durante el asistente de creación de la máquina, elegimos la opción **Instalación manual**, ya que no vamos a usar una imagen ISO:
+Por último, usando **virt-manager**, durante el asistente de creación de la máquina, elegimos la opción **Instalación manual**, ya que no vamos a usar una imagen ISO:
 
 ![volumen](img/enlazada4.png)
 

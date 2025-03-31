@@ -6,7 +6,7 @@ Sin embargo, en este apartado vamos a aprender a crear máquinas virtuales conec
 
 ## Crear máquinas virtuales conectada a una red existente
 
-Desde virt-manager, durante el asistente de creación de la máquina, el el último paso que llamamos **Resumen y selección de red**, podemos escoger la red a la que nos vamos a conectar:
+Desde **virt-manager**, durante el asistente de creación de la máquina, el el último paso que llamamos **Resumen y selección de red**, podemos escoger la red a la que nos vamos a conectar:
 
 ![configuración](img/configuracion1.png)
 
@@ -20,7 +20,7 @@ La última opción sería conectar la máquina al exterior compartiendo la inter
 
 ## Añadir nuevas interfaces de red a máquinas virtuales
 
-Desde virt-manager elegimos la opción **Añadir nuevo hardware** en la vista detalle de la máquina y podemos añadir una nueva conexión indicando la red, el puente al que se tiene que conectar o a la interfaz que va a utilizar para conectarse al exterior:
+Desde **virt-manager** elegimos la opción **Añadir nuevo hardware** en la vista detalle de la máquina y podemos añadir una nueva conexión indicando la red, el puente al que se tiene que conectar o a la interfaz que va a utilizar para conectarse al exterior:
 
 ![configuración](img/configuracion4.png)
 
@@ -28,7 +28,7 @@ También podemos modificar en cualquier momento a la red o al puente al que esta
 
 ![configuración](img/configuracion5.png)
 
-Para eliminar la interfaz de red desde virt-manager simplemente pulsaríamos con el botón derecho sobre el dispositivo de red en la vista detalle, y pulsaríamos sobre **Eliminar Hardware**.
+Para eliminar la interfaz de red desde **virt-manager** simplemente pulsaríamos con el botón derecho sobre el dispositivo de red en la vista detalle, y pulsaríamos sobre **Eliminar Hardware**.
 
 
 

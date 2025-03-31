@@ -1,6 +1,6 @@
 # Conexión remota a libvirt
 
-En virt-manager podemos crear una conexión que nos permita acceder al demonio libvirt que se está ejecutando en un servidor remoto.
+En **virt-manager** podemos crear una conexión que nos permita acceder al demonio libvirt que se está ejecutando en un servidor remoto.
 
 Este método permite administrar un hipervisor QEMU/KVM en otro equipo a través de la red. Se usa en entornos de gestión centralizada o administración remota. Se pueden usar varios protocolos para el acceso, pero el más común es ssh.
 
@@ -12,7 +12,7 @@ Se va producir una conexión ssh entre la máquina cliente y el servidor donde s
 
 Vamos a partir del siguiente escenario:
 
-* Máquina **cliente** donde tenemos instalado virt-manager y vamos a conectarnos a una máquina remota.
+* Máquina **cliente** donde tenemos instalado **virt-manager** y vamos a conectarnos a una máquina remota.
 * Maquina **servidor** donde se ejecuta el demonio de libvirt. El usuario de esta máquina se llama `usuario`.
 
 Para poder acceder por ssh al servidor remoto sin que nos pida contraseña es necesario otro método de autentificación. En este caso vamos a usar el método de calaves ssh, para ello realizamos los siguientes pasos:
@@ -41,7 +41,7 @@ Para poder acceder por ssh al servidor remoto sin que nos pida contraseña es ne
 
 ## Configuración de virt-manager para una conexión remota
 
-Desde virt-manager podemos crear una nueva conexión remota, eligiendo la opción **Archivo - Añadir conexión...**, eligiendo como **Hipervisor** la opción **QEMU/KVM** y eligiendo la opción **Conectar a anfitrión remoto por SSH** indicando el usuario y el nombre o dirección ip del servidor.
+Desde **virt-manager** podemos crear una nueva conexión remota, eligiendo la opción **Archivo - Añadir conexión...**, eligiendo como **Hipervisor** la opción **QEMU/KVM** y eligiendo la opción **Conectar a anfitrión remoto por SSH** indicando el usuario y el nombre o dirección ip del servidor.
 
 El usuario que indicamos será al que hemos copiado nuestra clave pública. Además si es un usuario sin privilegio deberá pertenecer al grupo `libvirt` en el servidor para poder gestionar recursos virtualizados en el modo privilegiado.
 

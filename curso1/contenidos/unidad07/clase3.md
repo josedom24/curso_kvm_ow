@@ -6,7 +6,7 @@ En este apartado vamos a comprobar que un usuario sin privilegio puede crear sus
 
 ## Configuración de virt-manager para una conexión no privilegiada
 
-Desde virt-manager podemos crear una nueva conexión no privilegiada, eligiendo la opción **Archivo - Añadir conexión...** y eligiendo como **Hipervisor** la opción **QEMU/LMV sesión de usuario**.
+Desde **virt-manager** podemos crear una nueva conexión no privilegiada, eligiendo la opción **Archivo - Añadir conexión...** y eligiendo como **Hipervisor** la opción **QEMU/LMV sesión de usuario**.
 
 ![usuario](img/usuario1.png)
 

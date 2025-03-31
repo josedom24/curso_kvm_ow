@@ -19,7 +19,7 @@ Una vez creado, observamos que está iniciado y que tiene marcada como activa la
 
 ![pool](img/pool3.png)
 
-Por último, recordar que desde virt-manager podemos ver la definición XML de los recursos con los que trabajamos:
+Por último, recordar que desde **virt-manager** podemos ver la definición XML de los recursos con los que trabajamos:
 
 ![pool](img/pool4.png)
 

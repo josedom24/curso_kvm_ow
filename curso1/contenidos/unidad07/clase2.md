@@ -1,6 +1,6 @@
 # Creación de máquinas virtuales por red
 
-virt-manager permite instalar sistemas operativos en máquinas virtuales utilizando imágenes de instalación alojadas en servidores accesibles por red mediante HTTP, FTP o NFS. Este método es útil cuando no se quiere descargar manualmente una ISO o cuando se tiene un repositorio centralizado de imágenes.
+**virt-manager** permite instalar sistemas operativos en máquinas virtuales utilizando imágenes de instalación alojadas en servidores accesibles por red mediante HTTP, FTP o NFS. Este método es útil cuando no se quiere descargar manualmente una ISO o cuando se tiene un repositorio centralizado de imágenes.
 
 Muchas distribuciones Linux nos ofrecen repositorios de instalación que son accesible desde distintas URL:
 

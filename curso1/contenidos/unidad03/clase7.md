@@ -1,6 +1,6 @@
 # Acceso a las máquinas virtuales desde el exterior
 
-Una vez que hemos creado las máquinas en virt-manager podemos acceder a ellas utilizando la consola, pero es posible acceder a ellas utilizando otros protocolos específicos de acceso remoto, que suelen ser más eficientes para el trabajo con las máquinas.
+Una vez que hemos creado las máquinas en **virt-manager** podemos acceder a ellas utilizando la consola, pero es posible acceder a ellas utilizando otros protocolos específicos de acceso remoto, que suelen ser más eficientes para el trabajo con las máquinas.
 
 ## Acceso por ssh a las máquinas Linux
 

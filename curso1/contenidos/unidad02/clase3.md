@@ -1,6 +1,6 @@
 # Conexión local privilegiada a libvirt con virt-manager
 
-Pode defecto, podemos ver que virt-manager tiene configurado una conexión local privilegiada que se llama **QEMU/KVM**. 
+Pode defecto, podemos ver que **virt-manager** tiene configurado una conexión local privilegiada que se llama **QEMU/KVM**. 
 
 Con la opción **Archivo->Nueva conexión...** podemos dar de alta una nueva conexión.
 
@@ -34,7 +34,7 @@ Otro elemento que podemos gestionar son los grupos de almacenamiento que tenemos
 
 ### Creación de un nuevo grupo de almacenamiento
 
-Para que virt-manager acceda a los ficheros de nuestro sistema de fichero tenemos que crear grupos de almacenamiento. Por ejemplo, para que podamos acceder a los ficheros iso que utilizaremos para la instalación de las máquinas virtuales, vamos a crear un nuevo grupo que llamaremos `isos` que corresponda, por ejemplo, al directorio `~/Descargas/isos`. Para realizar esta operación:
+Para que **virt-manager** acceda a los ficheros de nuestro sistema de fichero tenemos que crear grupos de almacenamiento. Por ejemplo, para que podamos acceder a los ficheros iso que utilizaremos para la instalación de las máquinas virtuales, vamos a crear un nuevo grupo que llamaremos `isos` que corresponda, por ejemplo, al directorio `~/Descargas/isos`. Para realizar esta operación:
 
 1. Pulsamos el botón de añadir grupo:
 

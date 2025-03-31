@@ -36,7 +36,7 @@ Una vez creado, observamos que está iniciado y que tiene marcada como activa la
 
 ![network](img/network3.png)
 
-Por último, recordar que desde virt-manager podemos ver la definición XML de los recursos con los que trabajamos.
+Por último, recordar que desde **virt-manager** podemos ver la definición XML de los recursos con los que trabajamos.
 
 ![network](img/network4.png)
 
@@ -80,4 +80,4 @@ Por último podremos ver la definición XML de esta red.
 
 ## Definición de redes puentes
 
-Con virt-manager no podemos crear redes puentes como veíamos anteriormente con las redes privadas. Sin embargo, en la configuración de las tarjetas de red de las máquinas virtuales, podemos indicar que no se conecten una red privada, configurado el puente externo al que estará conectada o indicando el dispositivo físico que se va a utilizar.
+Con **virt-manager** no podemos crear redes puentes como veíamos anteriormente con las redes privadas. Sin embargo, en la configuración de las tarjetas de red de las máquinas virtuales, podemos indicar que no se conecten una red privada, configurado el puente externo al que estará conectada o indicando el dispositivo físico que se va a utilizar.
