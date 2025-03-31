@@ -6,7 +6,7 @@ Antes de empezar la creación de la nueva máquina, hemos copiado en el grupo de
 
 ![virt-manager](img/linux1.png)
 
-Para crear una nueva máquina virtual con virt-manager podemos escoger la opción de menú **Archivo -> Nueva máquina virtual**, o el botón del menú:
+Para crear una nueva máquina virtual con **virt-manager** podemos escoger la opción de menú **Archivo -> Nueva máquina virtual**, o el botón del menú:
 
 ![virt-manager](img/linux2.png)
 
