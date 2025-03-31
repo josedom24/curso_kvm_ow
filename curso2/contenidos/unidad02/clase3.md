@@ -1,4 +1,4 @@
-# Recursos disponibles en QEMU/KVM + libvirt
+# Conexión local privilegiada a libvirt
 
 En este curso vamos a trabajar realizando conexiones locales privilegiadas, por lo tanto si queremos ver todas las máquinas creadas en el sistema debemos ejecutar:
 

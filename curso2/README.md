@@ -8,7 +8,7 @@
 2. Instalación de KVM/libvirt
     * [Preparación del escenario de instalación](contenidos/unidad02/clase1.md)
     * [Instalación de QEMU/KVM + libvirt](contenidos/unidad02/clase2.md)
-    * [Recursos disponibles en QEMU/KVM + libvirt](contenidos/unidad02/clase3.md)
+    * [Conexión local privilegiada a libvirt](contenidos/unidad02/clase3.md)
 
 3. Creación de máquinas virtuales
     * [Definición de un dominio con virsh](contenidos/unidad03/clase1.md)
