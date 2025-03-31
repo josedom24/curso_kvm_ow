@@ -8,8 +8,7 @@
 2. Introducción a virt-manager
     * [Preparación del escenario de instalación](contenidos/unidad02/clase1.md)
     * [Instalación de virt-manager](contenidos/unidad02/clase2.md)
-    * [Tipos de conexiones a libvirt](contenidos/unidad02/clase3.md)
-    * [Recursos disponibles en virt-manager](contenidos/unidad02/clase4.md)
+    * [Conexión local privilegiada a libvirt con virt-manager](contenidos/unidad02/clase3.md)
 
 3. Creación de máquinas virtuales con virt-manager
     * [Creación de máquinas virtuales Linux](contenidos/unidad03/clase1.md)
