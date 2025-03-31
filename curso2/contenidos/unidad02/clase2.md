@@ -19,21 +19,6 @@ Using API: QEMU 10.0.0
 Running hypervisor: QEMU 8.2.2
 ```
 
-## Tipos de conexiones a libvirt
-
-libvirt proporciona varios mecanismos para conectarse a un hipervisor QEMU/KVM:
-
-* **Conexión local no privilegiada a libvirt**: Esta conexión permite a un usuario sin privilegios gestionar máquinas virtuales en su propio entorno sin necesidad de permisos de root. En este modo los usuarios sin privilegios pueden gestionar máquinas virtuales, pero no tienen acceso a características avanzadas, por ejemplo la gestión de redes virtuales.
-
-    * URL de conexión: `qemu:///session`.
-
-* **Conexión local privilegiada a libvirt**: Este método permite a un usuario con permisos de superusuario administrar todas las máquinas virtuales del sistema. Es el modo más común en servidores o entornos de producción.
-
-    * URL de conexión: `qemu:///system`.
-
-* **Conexión remota a libvirt**: Este método permite administrar un hipervisor QEMU/KVM en otro equipo a través de la red. Se usa en entornos de gestión centralizada o administración remota. Se pueden usar varios protocolos para el acceso, pero el más común es ssh.
-
-    * URL de conexión: `qemu+ssh://<usuario>@<dirección  máquina remota>/system`.
 
 ## Ejemplos de conexión a libvirt 
 
@@ -45,7 +30,7 @@ Con un usuario sin privilegios ejecutamos:
 usuario@kvm:~$ virsh list
 ```
 
-Estaríamos haciendo una conexión local con un usuario no privilegiado (estaríamos conectando con la URI `qemu:///session`) y estaríamos mostrando las máquinas virtuales de este usuario.
+Estaríamos haciendo una **conexión local con un usuario no privilegiado** (estaríamos conectando con la URI `qemu:///session`) y estaríamos mostrando las máquinas virtuales de este usuario.
 
 Si por el contrario, como `root` ejecutamos:
 
@@ -53,7 +38,7 @@ Si por el contrario, como `root` ejecutamos:
 root@kvm:~# virsh list
 ```
 
-Estaríamos haciendo una conexión local privilegiada (estaríamos conectando con la URI `qemu:///system`) y mostraríamos las máquinas virtuales del sistema.
+Estaríamos haciendo una **conexión local privilegiada** (estaríamos conectando con la URI `qemu:///system`) y mostraríamos las máquinas virtuales del sistema.
 
 Si queremos que un usuario sin privilegios pueda hacer conexiones privilegiadas, el usuario debe pertenecer el grupo `libvirt`. Para realizar esta comprobación ejecutamos la siguiente instrucción con nuestro usuario sin privilegio:
 
