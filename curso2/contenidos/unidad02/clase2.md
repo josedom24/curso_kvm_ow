@@ -40,13 +40,7 @@ root@kvm:~# virsh list
 
 Estaríamos haciendo una **conexión local privilegiada** (estaríamos conectando con la URI `qemu:///system`) y mostraríamos las máquinas virtuales del sistema.
 
-Si queremos que un usuario sin privilegios pueda hacer conexiones privilegiadas, el usuario debe pertenecer el grupo `libvirt`. Para realizar esta comprobación ejecutamos la siguiente instrucción con nuestro usuario sin privilegio:
-
-```
-usuario@kvm:~$ groups
-```
-
-Y comprobamos que en la lista de grupos aparece `libvirt`. Si no pertenece a dicho grupo lo añadimos:
+Si queremos que un usuario sin privilegios pueda hacer conexiones privilegiadas, el usuario debe pertenecer el grupo `libvirt`, para ello ejecutamos:
 
 ```
 usuario@kvm:~$ sudo usermod -aG libvirt $USER
