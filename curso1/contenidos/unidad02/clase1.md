@@ -30,7 +30,7 @@ Dependiendo de la cantidad de memoria RAM, espacio de disco duro y CPU que tenga
 
 * Por ejemplo, desde el punto de vista de la RAM: si virtualizamos una máquina virtual Linux sin entorno gráfico, podemos asignarle 512Mb, si tiene entorno gráfico ya tendríamos que usar 1 o 2GB, si virtualizamos una máquina Windows al menos tendremos que asignar 2Gb de RAM.
 * Desde el punto de vista del almacenamiento: Este factor no es tan importante, pero tenemos que pensar que hay que almacenar las ISO para la instalación de las máquinas y los discos duros de las máquinas virtuales. 
-* Al crear máquinas virtuales o contenedores podremos asignarle cores virtuales de CPU, por lo que aumentará el rendimiento si asignamos a nuestra máquina virtual suficientes núcleos de CPU.
+* Al crear máquinas virtuales podremos asignarle cores virtuales de CPU, por lo que aumentará el rendimiento si asignamos a nuestra máquina virtual suficientes núcleos de CPU.
 Por todo lo explicado a continuación la configuración recomendada para la máquina virtual sería:
 
 * **8 Gb de RAM**
