@@ -27,7 +27,7 @@ Si lo ejecutamos accedemos a la siguiente pantalla:
 
 ![Network Manager](img/networkmanager2.png)
 
-Donde vemos la conexión de red cableada (o de wifi) que tenemos y los bridge virtuales que se han creado cuando hemos estado trabajando con las redes en virt-manager. Pulsando el botón **+**, podemos de alta nueva conexión. Añadiremos una conexión de tipo **Puente**:
+Donde vemos la conexión de red cableada (o de wifi) que tenemos y los bridge virtuales que se han creado cuando hemos estado trabajando con las redes privadas. Pulsando el botón **+**, podemos de alta nueva conexión. Añadiremos una conexión de tipo **Puente**:
 
 ![Network Manager](img/networkmanager3.png)
 

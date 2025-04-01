@@ -1,6 +1,6 @@
 # Creación de un puente externo
 
-Un bridge externo es un bridge virtual que estará conectado al router de la red local. El bridge se creará en el servidor donde estamos virtualizando (host). El host estará conectado a este bridge para tener conectividad al exterior. Veamos un esquema:
+Un puente externo es un bridge virtual que estará conectado al router de la red local. El bridge se creará en el servidor donde estamos virtualizando (host). El host estará conectado a este bridge para tener conectividad al exterior. Veamos un esquema:
 
 ![bridge externo](img/red_bridge_externo.drawio.png)
 
@@ -13,7 +13,7 @@ Un bridge externo es un bridge virtual que estará conectado al router de la red
 
 ## Creación de un bridge externo con NetworkManager
 
-**NetworkManager** es una utilidad de gráfica para simplificar el uso de redes en sistemas Linux. Normalmente la tenemos instaladas con sistemas Linux con entornos gráficos como Gnome. Junto a esa utilidad tenemos otra que se puede ejecutar con el comando `nm-connection-editor`, y que se llama **Configuración de redes**:
+**NetworkManager** es una utilidad gráfica para simplificar el uso de redes en sistemas Linux. Normalmente la tenemos instaladas con sistemas Linux con entornos gráficos como Gnome. Junto a esa utilidad tenemos otra que se puede ejecutar con el comando `nm-connection-editor`, y que se llama **Configuración de redes**:
 
 ![Network Manager](img/networkmanager1.png)
 
@@ -21,7 +21,7 @@ Si lo ejecutamos accedemos a la siguiente pantalla:
 
 ![Network Manager](img/networkmanager2.png)
 
-Donde vemos la conexión de red cableada (o de wifi) que tenemos y los bridge virtuales que se han creado cuando hemos estado trabajando con las redes en **virt-manager**. Pulsando el botón **+**, podemos de alta nueva conexión. Añadiremos una conexión de tipo **Puente**:
+Donde vemos la conexión de red cableada (o de wifi) que tenemos y los bridge virtuales que se han creado cuando hemos estado trabajando con las redes privadas en **virt-manager**. Pulsando el botón **+**, podemos de alta nueva conexión. Añadiremos una conexión de tipo **Puente**:
 
 ![Network Manager](img/networkmanager3.png)
 
