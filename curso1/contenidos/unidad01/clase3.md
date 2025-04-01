@@ -59,6 +59,6 @@ libvirt proporciona varios mecanismos para conectarse a un hipervisor QEMU/KVM:
 
     * URL de conexión: `qemu:///system`.
 
-* **Conexión remota a libvirt**: Este método permite administrar un hipervisor QEMU/KVM en otro equipo a través de la red. Se usa en entornos de gestión centralizada o administración remota. Se pueden usar varios protocolos para el acceso, pero el más común es ssh.
+* **Conexión remota a libvirt**: Este método permite administrar un hipervisor QEMU/KVM en otro equipo a través de la red. Se usa en entornos de gestión centralizada o administración remota. Se pueden usar varios protocolos para el acceso, pero el más común es SSH.
 
     * URL de conexión: `qemu+ssh://<usuario>@<dirección  máquina remota>/system`.

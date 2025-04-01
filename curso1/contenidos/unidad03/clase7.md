@@ -2,9 +2,9 @@
 
 Una vez que hemos creado las máquinas en **virt-manager** podemos acceder a ellas utilizando la consola, pero es posible acceder a ellas utilizando otros protocolos específicos de acceso remoto, que suelen ser más eficientes para el trabajo con las máquinas.
 
-## Acceso por ssh a las máquinas Linux
+## Acceso por SSH a las máquinas Linux
 
-El protocolo más habitual para trabajar con máquinas Linux es ssh. Podemos instalar el servidor ssh durante la instalación del sistema operativo. Si no lo hemos hecho, podríamos instalarlo en distribuciones Debian/Ubuntu ejecutando:
+El protocolo más habitual para trabajar con máquinas Linux es SSH. Podemos instalar el servidor SSH durante la instalación del sistema operativo. Si no lo hemos hecho, podríamos instalarlo en distribuciones Debian/Ubuntu ejecutando:
 
     apt install ssh
 
@@ -12,7 +12,7 @@ Una vez que sabemos la ip de la máquina:
 
 ![acceso](img/detalles9.png)
 
-Desde nuestro equipo podemos acceder a esta máquina por ssh indicando el nombre de usuario y la ip:
+Desde nuestro equipo podemos acceder a esta máquina por SSH indicando el nombre de usuario y la ip:
 
 ![acceso](img/acceso1.png)
 
