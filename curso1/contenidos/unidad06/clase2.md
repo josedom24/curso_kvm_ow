@@ -13,7 +13,7 @@ Tenemos las siguientes opciones:
 
 ## Definición de redes virtuales de tipo NAT
 
-Recordamos que una red de tipo NAT es un Red Virtual Privada, las máquinas virtual tendrán un direccionamiento privado y se nos proporciona un mecanismo de **router/nat** para que tengan conectividad al exterior.
+Recordamos que una red de tipo NAT es un Red Virtual Privada, las máquinas virtual tendrán un direccionamiento privado y se nos proporciona un mecanismo de router/nat para que tengan conectividad al exterior.
 
 Pulsamos sobre el botón de añadir una nueva red, indicamos el **Nombre** y en el **Modo** elegimos **NAT**. La opción **Reenviar a:** permite seleccionar la interfaz física del sistema anfitrión a través de la cual se enviará el tráfico de la red virtual. Nos ofrece dos opciones:
 
@@ -24,15 +24,15 @@ A continuación terminamos la configuración:
 
 * **Configuración IPv4**: 
     * Elegimos la opción de **Habilitar IPv4**, indicando la dirección de **Red** con la que vamos a trabajar. La primera dirección será la dirección IP del anfitrión en esta red y la puerta de enlace de las máquinas virtuales conectadas a esta red.
-    * Elegimos la opción de ***Habilitar DHCPv4**, indicando el rango de direcciones que va a repartir el servidor DHCP. normalmente las redes de tipo NAT tienen habilitado el servidor DHCP.
-* **Configuración IPv6**: Si queremos trabajar con IPv6 podemos seleccionar la opción **Habilitar IPv6**, pode defecto está deshabilitada.
-* **Nombre de dominio DNS**: Esta opción permiten definir cómo se asignará el dominio a las máquinas virtuales conectadas a esa red. 
+    * Elegimos la opción de ***Habilitar DHCPv4**, indicando el rango de direcciones que va a repartir el servidor DHCP. Normalmente las redes de tipo NAT tienen habilitado el servidor DHCP.
+* **Configuración IPv6**: Si queremos trabajar con IPv6 podemos seleccionar la opción **Habilitar IPv6**, por defecto está deshabilitada.
+* **Nombre de dominio DNS**: Esta opción permite definir cómo se asignará el dominio a las máquinas virtuales conectadas a esa red. 
     * **Usar nombre de red**: El nombre de la red virtual se usará como el dominio DNS.
     * **Personalizado**: Podemos indicar el nombre de dominio que se va a utilizar.
 
 ![network](img/network2.png)
 
-Una vez creado, observamos que está iniciado y que tiene marcada como activa la propiedad de **Autoiniciar**. Además observamos que el nombre del bridge lo ha asignado de forma automática:
+Una vez creada, observamos que está iniciada y que tiene marcada como activa la propiedad de **Autoiniciar**. Además observamos que el nombre del bridge lo ha asignado de forma automática:
 
 ![network](img/network3.png)
 
@@ -50,7 +50,7 @@ Pulsamos sobre el botón de añadir una nueva red, indicamos el **Nombre**, en e
 
 * **Configuración IPv4**: 
     * Elegimos la opción de **Habilitar IPv4**, indicando la dirección de **Red** con la que vamos a trabajar. La primera dirección será la dirección IP del anfitrión en esta red y la puerta de enlace de las máquinas virtuales conectadas a esta red.
-    * En este caso y según nuestras necesidades podemos habilitar o no el servidor DHCP (No vamos a habilitar el servidor DHCP para realizar un ejercicio posteriormente).
+    * En este caso y según nuestras necesidades podemos habilitar o no el servidor DHCP (no vamos a habilitar el servidor DHCP para realizar un ejercicio posteriormente).
 * **Configuración IPv6**: Si queremos trabajar con IPv6 podemos seleccionar la opción **Habilitar IPv6**.
 * **Nombre de dominio DNS**: Esta opción permiten definir cómo se asignará el dominio a las máquinas virtuales conectadas a esa red, funciona de la misma manera que en las redes de tipo NAT.
     
@@ -70,7 +70,7 @@ Para crear una Red Virtual muy Aislada, seguimos el mismo procedimiento que la a
 
 ![network](img/network8.png)
 
-Al terminar la creación, la red estará iniciada y se habrá configurado la opción de **Auotiniciar**. Además podremos ver el nombre del bridge que se ha creado.
+Al terminar la creación, la red estará iniciada y se habrá configurado la opción de **Autoiniciar**. Además podremos ver el nombre del bridge que se ha creado.
 
 ![network](img/network9.png)
 
@@ -80,4 +80,4 @@ Por último podremos ver la definición XML de esta red.
 
 ## Definición de redes puentes
 
-Con **virt-manager** no podemos crear redes puentes como veíamos anteriormente con las redes privadas. Sin embargo, en la configuración de las tarjetas de red de las máquinas virtuales, podemos indicar que no se conecten una red privada, configurado el puente externo al que estará conectada o indicando el dispositivo físico que se va a utilizar.
+Con **virt-manager** no podemos crear redes puentes como veíamos anteriormente con las redes privadas. Sin embargo, en la configuración de las tarjetas de red de las máquinas virtuales, podemos indicar que no se conecten a una red privada, configurado el puente externo al que estará conectada o indicando el dispositivo físico que se va a utilizar para la conexión al exterior.
