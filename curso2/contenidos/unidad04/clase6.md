@@ -63,32 +63,50 @@ usuario@ubuntu:~$ virsh vol-list pool-disk
 Otra estrategia es crear la partición en el dispositivo de bloque y posteriormente refrescamos el pool de almacenamiento.
 Ahora crearemos una partición en el disco manualmente y luego actualizaremos el pool.
 
-1. Usamos `fdisk` para crear la partición:
-   ```
-   usuario@ubuntu:~$ sudo fdisk /dev/vdb
-   ```
-   * Presionamos `n` para crear una nueva partición.
-   * Seleccionamos `p` para una partición primaria.
-   * Elegimos la partición `2`.
-   * Eleigmos el bloque de inicio, dejamos el valor por defecto.
-   * Definimos el tamaño (por ejemplo, `+8G` para 8GB).
-   * Guardamos los cambios con `w`.
+Usamos `parted` para crear una partición de 5GB:
 
-2. Refrescamos el pool en Libvirt para reconocer la nueva partición:
-   ```
-   usuario@ubuntu:~$ virsh pool-refresh pool-disk
-   ```
+```
+usuario@ubuntu:~$ sudo parted /dev/vdb print
+...
+Número  Inicio  Fin     Tamaño  Sistema de archivos  Nombre   Banderas
+ 1      17,4kB  10,7GB  10,7GB                       primary
 
-3. Verificamos que el nuevo volumen aparezca:
-   ```sh
-   usuario@ubuntu:~$ virsh vol-list pool-disk
-   ```
+usuario@ubuntu:~$ sudo parted /dev/vdb mkpart primary ext4 10700MiB 15700MiB
+```
+
+
+Refrescamos el pool en Libvirt para reconocer la nueva partición:
+```
+usuario@ubuntu:~$ virsh pool-refresh pool-disk
+```
+
+Verificamos que el nuevo volumen aparezca:
+```
+usuario@ubuntu:~$ virsh vol-list pool-disk 
+ Name   Path
+-------------------
+ vdb1   /dev/vdb1
+ vdb2   /dev/vdb2
+```
+
+Y comprobamos el espacio que queda en el pool de almacenamiento:
+
+```
+usuario@ubuntu:~$ virsh pool-info pool-disk 
+Name:           pool-disk
+UUID:           5dd18d82-1e29-4c01-a1c2-260b3e0d591a
+State:          running
+Persistent:     yes
+Autostart:      no
+Capacity:       20,00 GiB
+Allocation:     14,88 GiB
+```
 
 ## Crear una máquina virtual con los volúmens
 
 Usaremos `virt-install` para crear una máquina virtual utilizando los volúmenes creados.
 
-```sh
+```
 virt-install \
   --name maquina-disco \
   --memory 2048 \
