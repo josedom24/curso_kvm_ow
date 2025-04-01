@@ -18,3 +18,5 @@ Vamos a crear un nuevo volumen en el grupo que hemos creado en el apartado anter
 * **Capacidad**: Indicamos el tamaño del volumen. Por defecto, si usamos el formato qcow2 obtendremos la característica de aprovisionamiento ligero, el tamaño indicado será el que ve la máquina virtual, pero no lo que se ocupa realmente en el disco del host. Si elegimos la opción **Pre-asignar el tamaño completo del volumen ahora**, se perderá esa característica y se ocupara el disco la capacidad total elegida.
 
 ![volumen](img/volumen2.png)
+
+CREAR EL VOL2 De TIPO RAW
