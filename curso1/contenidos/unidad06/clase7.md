@@ -29,7 +29,7 @@ Para ello tenemos que hacer los siguientes pasos:
 A continuación ejecutamos la siguiente instrucción para  aplica los cambios:
 
 ```
-sudo systecl -p
+sudo sysctl -p
 ```
 
 4. Configuramos iptables para realizar NAT. Además queremos que las reglas de cortafuegos que configuremos sean permanentes. Para  ello, lo primero instalamos los paquetes necesario:
