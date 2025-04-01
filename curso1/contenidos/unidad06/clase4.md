@@ -6,7 +6,7 @@ Sin embargo, en este apartado vamos a aprender a crear máquinas virtuales conec
 
 ## Crear máquinas virtuales conectada a una red existente
 
-Desde **virt-manager**, durante el asistente de creación de la máquina, el el último paso que llamamos **Resumen y selección de red**, podemos escoger la red a la que nos vamos a conectar:
+Desde **virt-manager**, durante el asistente de creación de la máquina, el el último paso que se llama **Resumen y selección de red**, podemos escoger la red a la que nos vamos a conectar:
 
 ![configuración](img/configuracion1.png)
 

@@ -16,7 +16,7 @@ Para ello tenemos que hacer los siguientes pasos:
 
     Está máquina accede al exterior por la interfaz conectada a `red-nat`, en el ejemplo `enp7s0`.
 
-2. Completamos la configuración de la máquina Windows. Configuramos su puerta de enlace que será la Máquina Linux, es decir la dirección `172.22.0.2` e indicamos un servidor DNS.
+2. Completamos la configuración de la máquina Windows. Configuramos su puerta de enlace que será la máquina Linux, es decir la dirección `172.22.0.2` e indicamos un servidor DNS.
 
     ![ejemplo3](img/ejemplo3_3.png)
 
