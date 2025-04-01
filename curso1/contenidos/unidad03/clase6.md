@@ -36,7 +36,7 @@ También podemos comprobar el modelo del procesador, el tamaño de la memoria y 
 
 La instalación de Windows 11, es similar a la que hemos visto anteriormente con Windows 10, pero teniendo en cuenta algunas consideraciones:
 
-* Evidentemente necesitamos guardar la imagen iso de Windows 11 en el grupo de almacenamiento **isos**, es decir, en el directorio `~/Descargas/isos`.
+* Evidentemente necesitamos guardar la imagen ISO de Windows 11 en el grupo de almacenamiento **isos**, es decir, en el directorio `~/Descargas/isos`.
 
     ![win11](img/windows_11_1.png)
 
