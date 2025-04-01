@@ -1,10 +1,10 @@
 # Creación de máquinas virtuales Windows (2ª parte)
 
-Una vez que hemos realizado la instalación del sistema operativo, podemos comprobar que la máquina no tiene acceso a internet, ya que tenemos que cargar los drivers de la tarjeta de red VirtIO que hemos configurado:
-
 ## Configuración de la red
 
-Como indicábamos anteriormente, también hemos escogido el controlador VirtIO para la tarjeta de red. Una vez realizada la configuración tendremos que instalar los drivers adecuados para que funcione la tarjeta de red. Para ello, actualizamos el controlador del dispositivo **Controladora Ethernet** en el **Administrador de dispositivos**:
+Una vez que hemos realizado la instalación del sistema operativo, podemos comprobar que la máquina no tiene acceso a internet, ya que tenemos que cargar los drivers de la tarjeta de red VirtIO que hemos configurado.
+
+Para ello, actualizamos el controlador del dispositivo **Controladora Ethernet** en el **Administrador de dispositivos**:
 
 ![virt-manager](img/windows10.png)
 
@@ -14,10 +14,10 @@ Y escogemos la unidad del CDROM donde hemos montado los drivers VirtIO y elegimo
 
 ## Configuración de otros elementos hardware de la máquina
 
-Usando el mismo procedimiento configuramos los drivers de los elementos hardware que no están dando alguna indicación de error en la configuración:
+Usando el mismo procedimiento, configuramos los drivers de los elementos hardware que nos están dando alguna indicación de error en la configuración:
 
 * Controladora simple de comunicaciones PCI, que corresponde a un dispositivo **VirtIO Serial Driver**, que es un controlador de comunicaciones serie.
-* Dispositivo PCI, que corresponde a un dispositivo **VirtIO Balloon Driver**, que es un controlador que permite la gestión dinámica de la memoria en máquinas virtuales bajo KVM/QEMU.
+* Dispositivo PCI, que corresponde a un dispositivo **VirtIO Balloon Driver**, que es un controlador que permite la gestión dinámica de la memoria en máquinas virtuales QEMU/KVM.
 
 ## Características de las máquina Windows que hemos creado
 
@@ -25,7 +25,7 @@ Podemos comprobar que nuestra máquina se ha conectado a la red privada de tipo 
 
 ![virt-manager](img/windows12.png)
 
-Además podemos comprobar que tenemos acceso a internet.
+Además, podemos comprobar que tenemos acceso a internet.
 
 También podemos comprobar el modelo del procesador, el tamaño de la memoria y otros datos en la opción **Sistema**:
 
@@ -44,6 +44,6 @@ La instalación de Windows 11, es similar a la que hemos visto anteriormente con
 
     ![win11](img/windows_11_2.png)
 
-* Para la instalación de Windows 11 es necesario que este conectado a internet. Por lo tanto **no vamos a modificar** la configuración de la tarjeta de red para indicar que sea de tipo virtio. El cambio lo haremos posteriormente a la instalación y evidentemente, tendremos que cargar el driver de la tarjeta de red desde la iso de los drivers virtio.
+* Para la instalación de Windows 11 es necesario que este conectado a internet. Por lo tanto **no vamos a modificar** la configuración de la tarjeta de red para indicar que sea de tipo VirtIO. El cambio lo haremos posteriormente a la instalación y evidentemente, tendremos que cargar el driver de la tarjeta de red desde la ISO de los drivers VirtIO.
 
 
