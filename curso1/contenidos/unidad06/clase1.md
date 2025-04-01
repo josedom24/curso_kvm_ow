@@ -15,7 +15,7 @@ La clasificación dependerá de la configuración que hagamos a la **Red Virtual
 
 ### Redes Virtuales de tipo NAT
 
-Es un Red Virtual Privada, las máquinas virtual tendrán un direccionamiento privado y se nos proporciona un mecanismo de **router/nat** para que tengan conectividad al exterior.
+Es un Red Virtual Privada, las máquinas virtuales tendrán un direccionamiento privado y se nos proporciona un mecanismo de **router/nat** para que tengan conectividad al exterior.
 
 ![red_nat](img/red_nat.drawio.png)
 
@@ -26,12 +26,12 @@ La red `default` con la que hemos trabajado es de este tipo. Veamos sus caracter
 * En el host también se configura un **servidor DNS** que es el que se configura en las máquinas virtuales.
 * El host hace la función de **router/nat** de tal manera que las máquinas virtuales tienen conectividad al exterior, usando la dirección IP de la interfaz de red del host que está conectada al exterior.
 
-Existen otros mecanismos para que las máquinas virtuales tengan acceso al exterior:
+Además del modo NAT, existen otros mecanismos para que las máquinas virtuales tengan acceso al exterior:
 
 * **Modo bridge**: Donde se usan rutas de encaminamiento en el host. En este modo hay que configurar con rutas estáticas los elementos de enrutamiento de la red local para que funcione de manera adecuada.
 * **Modo abierto**: Similar a la anterior, excepto que no se añaden reglas de firewall para asegurar que cualquier tráfico pase o no. Se asume que, o bien no son necesarias, o bien se configuran fuera del ámbito de libvirt.
 
-En este curso vamos a trabajar con Redes Virtuales de tipo NAT.
+En este curso vamos a trabajar con **Redes Virtuales de tipo NAT**.
 
 ### Redes Virtuales aisladas (Isolated)
 
@@ -53,7 +53,7 @@ En este tipo de red se suele configurar la red de las máquinas virtuales de for
 
 ### Redes Puente (Públicas) conectadas a un bridge externo
 
-En este caso necesitamos crear un bridge virtual (normalmente llamado `br0`) al que conectaremos la máquina física y las máquinas virtuales. En este caso las máquinas virtuales estarán en la misma red red que el host y estarán conectadas directamente al router de esta red, tomando la configuración dhcp (si la hubiera) del mismo modo que la toma el host.
+En este caso necesitamos crear un bridge virtual (normalmente llamado `br0`) al que conectaremos la máquina física y las máquinas virtuales. En este caso las máquinas virtuales estarán en la misma red que el host y estarán conectadas directamente al router de esta red, tomando la configuración DHCP (si la hubiera) del mismo modo que la toma el host.
 
 ![red_bridge](img/red_bridge.drawio.png)
 
