@@ -21,8 +21,7 @@ Podemos crear una instantánea con la máquina en ejecución o con la máquina p
 
 ![instantanea](img/instantanea3.png)
 
-
-Si hemos tenido un problema en nuestra máquina y hemos eliminado nuestra carpeta importante, podemos recuperar la instantánea y volver al estado anterior.
+Si hemos tenido un problema en nuestra máquina, por ejemplo hemos eliminado nuestra carpeta importante, podemos recuperar la instantánea y volver al estado anterior.
 
 ![instantanea](img/instantanea4.png)
 
