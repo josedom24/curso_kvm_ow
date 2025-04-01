@@ -33,3 +33,6 @@ CREAR NUEVA IMAGEN DISCO QCOW2
 
 ![volumen](img/volumen2.png)
 
+Podemos comprobar los volúmenes que hemos creado en el grupo de almacenamiento `vm-images`:
+
+CREAR NUEVA IMAGEN
