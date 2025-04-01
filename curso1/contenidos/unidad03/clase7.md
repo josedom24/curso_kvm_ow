@@ -6,9 +6,9 @@ Una vez que hemos creado las máquinas en **virt-manager** podemos acceder a ell
 
 El protocolo más habitual para trabajar con máquinas Linux es SSH. Podemos instalar el servidor SSH durante la instalación del sistema operativo. Si no lo hemos hecho, podríamos instalarlo en distribuciones Debian/Ubuntu ejecutando:
 
-    apt install ssh
+    usuario@debian:~$ sudo apt install ssh
 
-Una vez que sabemos la ip de la máquina:
+Una vez que sabemos la dirección IP de la máquina:
 
 ![acceso](img/detalles9.png)
 
@@ -26,7 +26,7 @@ Hay que indicar que las versiones más sencillas como Windows 10 Home no tienen 
 
 ![acceso](img/acceso2.png)
 
-A continuación, configuramos el cliente remmina con una nueva conexión, indicando la ip de la máquina, el usuario y la contraseña y la resolución de pantalla:
+A continuación, configuramos el cliente remmina con una nueva conexión, indicando la dirección IP de la máquina, el usuario y la contraseña y la resolución de pantalla:
 
 ![acceso](img/acceso3.png)
 

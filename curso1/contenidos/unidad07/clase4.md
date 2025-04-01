@@ -41,7 +41,7 @@ Para poder acceder por SSH al servidor remoto sin que nos pida contraseña es ne
 
 ## Configuración de virt-manager para una conexión remota
 
-Desde **virt-manager** podemos crear una nueva conexión remota, eligiendo la opción **Archivo - Añadir conexión...**, eligiendo como **Hipervisor** la opción **QEMU/KVM** y eligiendo la opción **Conectar a anfitrión remoto por SSH** indicando el usuario y el nombre o dirección ip del servidor.
+Desde **virt-manager** podemos crear una nueva conexión remota, eligiendo la opción **Archivo - Añadir conexión...**, eligiendo como **Hipervisor** la opción **QEMU/KVM** y eligiendo la opción **Conectar a anfitrión remoto por SSH** indicando el usuario y el nombre o dirección IP del servidor.
 
 El usuario que indicamos será al que hemos copiado nuestra clave pública. Además si es un usuario sin privilegio deberá pertenecer al grupo `libvirt` en el servidor para poder gestionar recursos virtualizados en el modo privilegiado.
 
