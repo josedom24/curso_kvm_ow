@@ -16,20 +16,20 @@ Una vez creada la máquina, la eliminamos **sin borrar la imagen de disco**:
 
 Aunque no es necesario eliminar la máquina virtual, si es necesario asegurarse de que la imagen base no se va a modificar.
 
-## Creación de imágenes de disco con backing store
+## Creación de imágenes de disco a partir de una imagen base
 
 A continuación vamos a crear un nuevo volumen a partir de la imagen base que hemos creado en el punto anterior. Hay que tener en cuenta lo siguiente:
 
-* El nuevo volumen no puede más pequeño que la imagen base.
+* El nuevo volumen no puede ser más pequeño que la imagen base.
 * El nuevo volumen puede tener más tamaño que la imagen base, pero al iniciar la máquina habrá que redimensionar el tamaño del sistema de ficheros, que será igual al tamaño del sistema de ficheros de la imagen base.
 
-Para no complicar la creación de volúmenes con backing store vamos a indicar el tamaño del nuevo volumen igual al de la imagen base.
+Para no complicar la creación de volúmenes a partir de imágenes base, vamos a indicar el tamaño del nuevo volumen igual al de la imagen base.
 
 Podemos comprobar el tamaño de la imagen base, accediendo a la lista de volúmenes:
 
 ![enlazada](img/enlazada2.png)
 
-A continuación para crear un nuevo volumen a partir de la imagen base, lo creamos indicando el fichero de la imagen base en la opción **Almacenamiento de copias de seguridad**:
+A continuación, para crear un nuevo volumen a partir de la imagen base, lo creamos indicando el fichero de la imagen base en la opción **Almacenamiento de copias de seguridad**:
 
 ![enlazada](img/enlazada3.png)
 
