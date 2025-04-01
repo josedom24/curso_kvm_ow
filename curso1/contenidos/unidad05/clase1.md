@@ -12,7 +12,7 @@ Si pulsamos sobre el botón **Detalles...** podemos cambiar el nombre del nuevo 
 
 ![clonación](img/clonacion2.png)
 
-Si no escogemos el disco de la máquina virtual se producirá una clonación donde no se crea una copia del disco, sino que la nueva VM utilizará el mismo archivo de disco que la máquina original. Como ventaj podemos indicar  que no se ocupa espacio adicional, ya que ambas máquinas comparten el mismo almacenamiento. Sin embargo, los cambios que se produzcan en una máquina se reflejaran en la otra, además si las dos máquinas escriben al mismo tiempo pueden generar corrupción de datos en el disco. Sólo es recomendables en escenario particulares, por ejemplo trabajando con cluster de máquinas.
+Si no escogemos el disco de la máquina virtual se producirá una clonación donde no se crea una copia del disco, sino que la nueva máquina virtual utilizará el mismo archivo de disco que la máquina original. Como ventaja podemos indicar  que no se ocupa espacio adicional, ya que ambas máquinas comparten el mismo almacenamiento. Sin embargo, los cambios que se produzcan en una máquina se reflejaran en la otra, además si las dos máquinas escriben al mismo tiempo pueden generar corrupción de datos en el disco. Sólo es recomendables en escenario particulares, por ejemplo trabajando con cluster de máquinas.
 
 ![clonación](img/clonacion3.png)
 
