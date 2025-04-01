@@ -12,7 +12,7 @@ Una vez que sabemos la dirección IP de la máquina:
 
 ![acceso](img/detalles9.png)
 
-Desde nuestro equipo podemos acceder a esta máquina por SSH indicando el nombre de usuario y la ip:
+Desde nuestro equipo podemos acceder a esta máquina por SSH indicando el nombre de usuario y la dirección IP de la máquina virtual:
 
 ![acceso](img/acceso1.png)
 
@@ -22,7 +22,7 @@ Normalmente para acceder a las máquinas Windows usamos el protocolo RDP (Remote
 
 En este ejemplo voy a usar el cliente Remmina.
 
-Hay que indicar que las versiones más sencillas como Windows 10 Home no tienen la posibilidad del acceso remoto, por lo tanto, vamos a utilizar una versión Windows 10 Pro. Lo primero que tenemos que hacer es configurar Windows para permitir el acceso remoto. Para ello elegimos Inicio > Configuración  > Sistema > Escritorio remoto y activa Habilitar escritorio remoto.
+Hay que indicar que las versiones más sencillas como *Windows 10 Home* no tienen la posibilidad del acceso remoto, por lo tanto, vamos a utilizar una versión *Windows 10 Pro*. Lo primero que tenemos que hacer es configurar Windows para permitir el acceso remoto. Para ello elegimos **Inicio > Configuración  > Sistema > Escritorio remoto** y activa **Habilitar escritorio remoto**.
 
 ![acceso](img/acceso2.png)
 
