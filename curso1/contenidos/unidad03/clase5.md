@@ -6,7 +6,7 @@ En este caso, el proyecto Fedora proporciona controladores de dispositivos de so
 
 ## ISO de los controladores de dispositivo VirtIO para Windows
 
-Podemos bajar la última versión de los drivers VirtIO para Windows en el siguiente [enlace](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.iso) y copiar la ISO C También hemos copiado a ese directorio una ISO para la instalación de Windows 10.
+Podemos bajar la última versión de los drivers VirtIO para Windows en el siguiente [enlace](https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.iso). Y copiamos las imágenes ISO de los drivers VirtIO y de la instalación de Windows 10 en el grupo de almacenamiento `isos`:
 
 ![virt-manager](img/windows1.png)
 
