@@ -61,3 +61,5 @@ usuario@kvm:~$ virsh -c qemu+ssh://jose@192.168.100.1/system list --all
  -    win10-docker        shut off
  -    win11               shut off
 ```
+
+VIRT-VIEWER conexión remota

@@ -26,7 +26,7 @@ usuario@kvm:~$ virt-install --connect qemu:///system \
 			    --os-variant debian12 \
 			    --disk size=10 \
 			    --memory 1024 \
-			    --vcpus 1
+			    --vcpus 2
 ```			 
 
 La información que tenemos que proporcionar a `virt-install` para la creación de la nueva máquina virtual será la siguiente:

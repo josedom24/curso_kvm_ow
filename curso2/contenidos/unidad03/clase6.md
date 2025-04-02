@@ -49,7 +49,7 @@ usuario@kvm:~$ virsh vcpucount maquina_linux
 También podemos modificar este parámetro usando la siguiente instrucción que modifica directamente la definición XML:
 
 ```
-usuario@kvm:~$ virsh setvcpus mi-vm 4 --config
+usuario@kvm:~$ virsh setvcpus maquina_linux 4 --config
 ```
 
 La parámetro `--config` modifica la configuración persistente de la máquina virtual para que el cambio se mantenga tras un reinicio.
@@ -57,7 +57,7 @@ La parámetro `--config` modifica la configuración persistente de la máquina v
 Si la máquina está funcionando (**modifcación en caliente**) podemos usar la instrucción:
 
 ```
-usuario@kvm:~$ virsh setvcpus mi-vm 2 --live --config
+usuario@kvm:~$ virsh setvcpus maquina_linux 2 --live --config
 ```
 
 El parámetro `--live` aplica el cambio solo en la ejecución actual de la máquina virtual. Si indicamos el parámetro `--config` el cambio se mantendrá después del reinicio.

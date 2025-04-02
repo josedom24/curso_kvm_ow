@@ -43,7 +43,7 @@ usuario@kvm:~$ virsh dumpxml debian12
 Dentro de la máquina virtual (Linux), se debe iniciar el servicio que permite la conexión a la consola serie:  
 
 ```
-$ sudo systemctl enable --now getty@ttyS0
+usuario@debian12:~$ sudo systemctl enable --now getty@ttyS0
 ```
 
 * **`getty`** (abreviatura de "get TTY") es el proceso encargado de gestionar una terminal de login en Linux.  
