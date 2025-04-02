@@ -23,16 +23,14 @@ Vamos a crear un nuevo volumen en el grupo que hemos creado en el apartado anter
 
 Vamos a crear un volumen con formato raw de 10 GB llamado `nuevodisco.img`. Este volumen tendrá asignado el tamaño completo. Lo utilizaremos en el siguiente apartado.
 
-IMAGEN CREACIÓN DISCO RAW
+![volumen](img/volumen2.png)
 
 ### Creación de volúmenes qcow2
 
 En el siguiente apartado también vamos a utilizar dos volúmenes que vamos a crear a continuación con formato qcow2 de 1 GB. Se llamarán `disco1.qcow2` y `disco2.qcow2`. Recordamos que estos ficheros no ocuparán el tamaño completo, irán aumentando el tamaño de forma dinámica.
 
-CREAR NUEVA IMAGEN DISCO QCOW2
-
-![volumen](img/volumen2.png)
+![volumen](img/volumen3.png)
 
 Podemos comprobar los volúmenes que hemos creado en el grupo de almacenamiento `vm-images`:
 
-CREAR NUEVA IMAGEN
+![volumen](img/volumen4.png)
