@@ -79,7 +79,7 @@ Domain 'debian12' resumed
 Por último, para eliminar una máquina virtual que esté parada (eliminando los volúmenes asociados):
 
 ```
-usuario@kvm:~$ virsh undefine --remove-all-storage  debian12
+usuario@kvm:~$ virsh undefine --remove-all-storage debian12
 ```
 
 ## Obtener información de la máquina virtual

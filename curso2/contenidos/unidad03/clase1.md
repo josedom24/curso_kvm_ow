@@ -77,3 +77,9 @@ usuario@kvm:~$ virsh create dominio.xml
 ```
 Este dominio existirá solo hasta que se apague.
 
+Podríamos realizar la instalación del sistema, pero en este momento paramos la máquina virtual, y la eliminimos junto a su disco:
+
+```
+usuario@kvm:~$ virsh destroy mi-vm
+usuario@kvm:~$ virsh undefine --remove-all-storage mi-vm
+```
