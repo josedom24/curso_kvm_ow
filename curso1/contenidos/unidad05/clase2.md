@@ -8,7 +8,7 @@ Esta técnica es especialmente útil en entornos donde se necesitan múltiples m
 
 ## Creación de la imagen base
 
-Para crear la imagen base, creamos una nueva máquina virtual. Según nuestras necesidades instalaremos el software y realizaremos la configuración necesaria, teniendo en cuenta que las nuevas máquinas creadas tendrán la misma configuración que ella.
+Para crear la imagen base, creamos una nueva máquina virtual. Según nuestras necesidades instalaremos el software y realizaremos la configuración necesaria, teniendo en cuenta que las nuevas máquinas creadas tendrán la misma configuración que ella. en nuestro caso hemos creado una imagen base con el sistema operativo Ubuntu 24.04.
 
 Una vez creada la máquina, la eliminamos **sin borrar la imagen de disco**:
 
