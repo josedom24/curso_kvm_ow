@@ -85,4 +85,4 @@ usuario@kvm:~$ virsh vol-list default
  debian12.qcow2                     /var/lib/libvirt/images/debian12.qcow2
 
 ```
-En todos estos conceptos sobre almacenamiento profundizaremos en el módulo correspondiente.
+Los conceptos sobre almacenamiento lo estudiaremos con profundiad en el módulo correspondiente.
