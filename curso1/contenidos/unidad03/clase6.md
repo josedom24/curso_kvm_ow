@@ -44,6 +44,6 @@ La instalación de Windows 11, es similar a la que hemos visto anteriormente con
 
     ![win11](img/windows_11_2.png)
 
-* Para la instalación de Windows 11 es necesario que este conectado a internet. Por lo tanto **no vamos a modificar** la configuración de la tarjeta de red para indicar que sea de tipo VirtIO. El cambio lo haremos posteriormente a la instalación y evidentemente, tendremos que cargar el driver de la tarjeta de red desde la ISO de los drivers VirtIO.
+* Durante la instalación del sistema, tendremos que cargar los controladores VirtIO para que se detecte el disco duro, al igual que hicimos en Windows 10. Pero además, para la instalación del sistema es necesario que estar conectado a internet, por lo tanto durante el proceso de instalación, también tendremos que cargar los drivers VirtIO de la tarjeta de red para que se tenga conectividad.
 
 
