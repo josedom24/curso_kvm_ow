@@ -5,7 +5,7 @@ En `virsh`, las máquinas virtuales se gestionan como **dominios**. Un dominio e
 ## Creación de un dominio con virsh
 Para definir una máquina virtual con `virsh`, primero se crea un archivo XML con la configuración del dominio. Este archivo describe aspectos como la cantidad de CPU, memoria, almacenamiento y red.  
 
-Hemos copiado al directorio `/var/lib/libvirt/images` ela imagen ISO del sistema operativo que queremos instalar y vamos a crear un fichero de imagen de disco en el pool de almacenamiento `default`, este fichero corresponderá al disco de la máquina virtual. Aunque posteriormente estudiaremos el apartado de almacenamiento con profundidad, en este momento ejecutamos la siguiente instrucción para crear un disco de 10G:
+Hemos copiado al directorio `/var/lib/libvirt/images` la imagen ISO del sistema operativo que queremos instalar y vamos a crear un fichero de imagen de disco en el pool de almacenamiento `default`, este fichero corresponderá al disco de la máquina virtual. Aunque posteriormente estudiaremos el apartado de almacenamiento con profundidad, en este momento ejecutamos la siguiente instrucción para crear un disco de 10G:
 
 ```
 usuario@kvm:~$ virsh vol-create-as default mi-vm.qcow2 --format qcow2 10G 
