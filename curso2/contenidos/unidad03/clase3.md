@@ -63,9 +63,7 @@ Inter:         974Mi          0B       974Mi
 
 ## Almacenamiento
 
-Un **Pool de almacenamiento** es un recurso de almacenamiento. Lo más usual es tener pools de almacenamiento que sean locales, por ejemplo un directorio. Pode efecto tenemos el un pool llamado `default`, que corresponde con el directorio `/usr/lib/libvirt/images` y donde se guardarán los ficheros correspondientes a las imágenes de disco.
-
-Podemos ver los pools de almacenamiento, que tenemos creado, ejecutando:
+Un **Pool de almacenamiento** es un recurso de almacenamiento. Lo más usual es tener pools de almacenamiento que sean locales, por ejemplo un directorio. Hemos creado un pool llamado `default`, que corresponde con el directorio `/usr/lib/libvirt/images` y donde se guardarán los ficheros correspondientes a las imágenes de disco. Podemos ver los pools de almacenamiento, que tenemos creados, ejecutando:
 
 ```
 usuario@kvm:~$ virsh pool-list 
