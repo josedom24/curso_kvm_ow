@@ -21,7 +21,7 @@ En este caso partimos de que hemos configurado el puente externo `br0`, donde es
 
 ![ejercicio1](img/ejemplo1_3.png)
 
-Volvemos a iniciar la máquina, y comprobamos que ha tomado otra dirección IP pero con el mismo direccionamiento:
+Volvemos a iniciar la máquina, y comprobamos que al tener la misma dirección MAC ha tomado la misma dirección IP pero con el mismo direccionamiento:
 
 ![ejercicio1](img/ejemplo1_4.png)
 
