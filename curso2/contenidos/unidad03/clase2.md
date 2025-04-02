@@ -4,11 +4,8 @@ En el punto anterior hemos definido un dominio desde su definición XML, esto no
 
 Sin embargo, como hemos visto tenemos que crear nosotros mismos la imagen de disco y tenemos que conocer muy bien la estructura XML de configuración de la máquina. 
 
-En este apartado, vamos a crear las máquinas virtuales o dominios con la aplicación `virt-install`, que nos facilita la creación e instalación de las máquinas. Lo primero que tenemos que hacer es instalar el paquete `virtinst`, que además de este programa, tiene otras utilidades que iremos usando a los largo del curso.
+En este apartado, vamos a crear las máquinas virtuales o dominios con la aplicación `virt-install`, que nos facilita la creación e instalación de las máquinas. Para usar esta aplicación es neceario instalar el paquete `virtinst`, que ya instalamos en el apartado anterior para trabajar con `virt-viewer`.
 
-```
-usuario@kvm:~$ sudo apt install virtinst
-```
 
 ## Creación de nuestra primera máquina virtual.
 
