@@ -51,13 +51,13 @@ En este tipo de red se suele configurar la red de las máquinas virtuales de for
 
 ## Redes Puente (Públicas)
 
-### Redes Puente (Públicas) conectadas a un bridge externo
+### Redes puente conectadas a un bridge externo
 
 En este caso necesitamos crear un bridge virtual (normalmente llamado `br0`) al que conectaremos la máquina física y las máquinas virtuales. En este caso las máquinas virtuales estarán en la misma red que el host y estarán conectadas directamente al router de esta red, tomando la configuración DHCP (si la hubiera) del mismo modo que la toma el host.
 
 ![red_bridge](img/red_bridge.drawio.png)
 
-### Redes Puente compartiendo la interfaz física del host
+### Redes puente compartiendo la interfaz física del host
 
 En este caso vamos a usar una conexión macvtap, que nos permite conectarnos a la red física directamente a través de una interfaz física del host (sin usar un dispositivo bridge). Al igual que con la red anterior, las máquinas virtuales estarán conectados directamente a la red física, por lo que sus direcciones IP estarán todas en la subred de la red física. Existe una una limitación en la implementación de macvtap: estas conexiones no permiten la comunicación directa entre el host y los invitados.
 

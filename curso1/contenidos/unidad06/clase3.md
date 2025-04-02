@@ -45,17 +45,6 @@ Y en unos segundos, se conectará de forma automática a la conexión **Puente E
 
 Comprobamos la configuración de red del host, ejecutando desde el terminal:
 
-```
-$ ip a
-
-ip a
-2: enp1s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel master br0 state UP group default qlen 1000
-    link/ether 52:54:00:03:8c:8f brd ff:ff:ff:ff:ff:ff
-...
-7: br0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default qlen 1000
-    link/ether 4e:34:25:6e:1b:84 brd ff:ff:ff:ff:ff:ff
-    inet 192.168.100.200/24 brd 192.168.100.255 scope global dynamic noprefixroute br0
-...
-```
+![Network Manager](img/networkmanager9.png) 
 
 Comprobamos que la interfaz física `enp1s0` no tiene dirección IP, ya que está conectada al bridge. La interfaz de red `br0` representa la conexión del bridge que ha tomado una dirección IP del servidor DHCP de la red local (esta dirección IP será diferente a la que tenía anteriormente la interfaz física).
