@@ -23,6 +23,6 @@ En este caso partimos de que hemos configurado el puente externo `br0`, donde es
 
 Volvemos a iniciar la máquina, y comprobamos que al tener la misma dirección MAC ha tomado la misma dirección IP pero con el mismo direccionamiento:
 
-![ejercicio1](img/ejemplo1_4.png)
+![ejercicio1](img/ejemplo1_2.png)
 
 Desde el host o desde cualquier otra máquina conectada a esta red, se podrá hacer una conexión a la máquina virtual sin ningún problema.
