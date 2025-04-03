@@ -25,7 +25,7 @@ Al igual que las máquinas virtuales, los pools de almacenamiento se definen por
 
 **Nota: Para profundizar en el formato XML que define los Pools de Almacenamiento puedes consultar la documentación oficial: [Storage pool and volume XML format](https://libvirt.org/formatstorage.html).**
 
-Sin embargo, vamos a usar otro comando que nos permite indicar la información del nuevo pool por medio de parámetros. Vamos a crear un nuevo pool que vamos a llamar `mv-images`, de tipo **dir** y cuyo directorio será `/srv/images`. Supongamos que hemos añadido más almacenamiento al host y que hemos montado el disco en el directorio `/srv/images` y queremos guardar las imágenes de disco en esa nueva localización. Para crear el nuevo pool, de forma persistente ejecutamos:
+Sin embargo, vamos a usar otro comando para crear pools de almacenamiento, que nos permite indicar la información del nuevo pool por medio de parámetros. Vamos a crear un nuevo pool que vamos a llamar `mv-images`, de tipo **dir** y cuyo directorio será `/srv/images`. Supongamos que hemos añadido más almacenamiento al host y que hemos montado el disco en el directorio `/srv/images` y queremos guardar las imágenes de disco en esa nueva localización. Para crear el nuevo pool, de forma persistente ejecutamos:
 
 ```
 usuario@kvm:~$ virsh pool-define-as vm-images dir --target /srv/images
@@ -62,9 +62,9 @@ usuario@kvm:~$ virsh pool-list
  Nombre      Estado   Inicio automático
 -----------------------------------------
  default     activo   si
-  vm-images   activo   si
+ vm-images   activo   si
 
-virsh pool-info vm-images 
+usuario@kvm:~$ virsh pool-info vm-images 
 Nombre:         vm-images
 UUID:           a9eb290a-9973-47ea-b616-0907a5df8ea2
 Estado:         ejecutando
