@@ -58,7 +58,7 @@ total 10485760
 -rw------- 1 root root 10737418240 abr  3 07:17 nuevodisco.img
 ```
 
-Podemos listar los volumenes que hemos creado en el pool `vm-images`:
+Podemos listar los volúmenes que hemos creado en el pool `vm-images`:
 
 ```
 usuario@kvm:~$ virsh vol-list vm-images
