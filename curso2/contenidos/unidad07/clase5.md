@@ -12,10 +12,10 @@ Se va producir una conexión ssh entre la máquina cliente y el servidor donde s
 
 Vamos a partir del siguiente escenario:
 
-* Máquina **cliente** donde tenemos instalado virt-manager y vamos a conectarnos a una máquina remota.
+* Máquina **cliente** donde tenemos instalado `virsh` y vamos a conectarnos a una máquina remota.
 * Maquina **servidor** donde se ejecuta el demonio de libvirt. El usuario de esta máquina se llama `usuario`.
 
-Para poder acceder por ssh al servidor remoto sin que nos pida contraseña es necesario otro método de autentificación. En este caso vamos a usar el método de calaves ssh, para ello realizamos los siguientes pasos:
+Para poder acceder por ssh al servidor remoto sin que nos pida contraseña es necesario otro método de autentificación. En este caso vamos a usar el método de claves ssh, para ello realizamos los siguientes pasos:
 
 1. En la máquina cliente, con un usuario sin privilegios, generamos un par de claves ssh, una pública y otra privada, para ello:
 

@@ -39,17 +39,17 @@ Hemos añadido la siguiente configuración:
 
 Se inicia el programa `virt-viewer` y podemos comenzar la instalación, hasta que llegamos a la pantalla donde tenemos que escoger el disco duro donde vamos a realizar la instalación.
 
-![virt-manager](img/windows7.png)
+![windows](img/windows7.png)
 
 Como vemos no se puede detectar el disco duro, ya que Windows no puede reconocer inicialmente el controlador VirtIO. Vamos a cargar los controladores de dispositivo VirtIO que necesitamos del CDROM que hemos montado:
 
 Elegimos la opción *Cargar contr.*, le damos a *Examinar* y elegimos del CDROM donde tenemos los drivers VirtIO la carpeta de nuestra arquitectura (*amd64*) y la versión de Windows.
 
-![virt-manager](img/windows8.png)
+![windows](img/windows8.png)
 
 Y ya podemos continuar con la instalación de Windows porque ya detecta el disco duro:
 
-![virt-manager](img/windows9.png)
+![windows](img/windows9.png)
 
 ## Configuración de los drivers VirtIO
 
@@ -63,22 +63,26 @@ Una vez que hemos realizado la instalación del sistema operativo, podemos compr
 
 La instalación de Windows 11, es similar a la que hemos visto anteriormente con Windows 10, pero teniendo en cuenta algunas consideraciones:
 
-* Evidentemente necesitamos guardar la imagen ISO de Windows 11 en el directoriod e imágenes.
-* Cuando indicamos como variante de sistema operativo la opción *win11*, se va a configurar la máquina virtual con los elementos hardware necesarios para la instalación de este sistema operativo. En particular, se añade un dispositivo TPM. El TPM (Trusted Platform Module) es un chip de seguridad que se encuentra en la placa base de los ordenadores modernos. Su función principal es proporcionar un entorno seguro para almacenar claves de cifrado, credenciales y otros datos sensibles. Microsoft exige TPM versión 2.0 como requisito obligatorio para la instalación de Windows 11 debido a motivos de seguridad. En virt-manager se puede emular el chip TPM para que el sistema invitado (por ejemplo, Windows 11) lo detecte y pueda instalarse sin problemas.
-* Para la instalación de Windows 11 es necesario que este conectado a internet. Por lo tanto **no vamos a modificar** la configuración de la tarjeta de red para indicar que sea de tipo virtio. El cambio lo haremos posteriormente a la instalación y evidentemente, tendremos que cargar el driver de la tarjeta de red desde la iso de los drivers virtio.
+* Evidentemente necesitamos guardar la imagen ISO de Windows 11 en el directorio de imágenes.
+* Cuando indicamos como variante de sistema operativo la opción *win11*, se va a configurar la máquina virtual con los elementos hardware necesarios para la instalación de este sistema operativo. En particular, se añade un dispositivo TPM. El TPM (Trusted Platform Module) es un chip de seguridad que se encuentra en la placa base de los ordenadores modernos. Su función principal es proporcionar un entorno seguro para almacenar claves de cifrado, credenciales y otros datos sensibles. Microsoft exige TPM versión 2.0 como requisito obligatorio para la instalación de Windows 11 debido a motivos de seguridad. En KVM/libvirt se puede emular el chip TPM para que el sistema invitado (por ejemplo, Windows 11) lo detecte y pueda instalarse sin problemas.
+* Durante la instalación del sistema, tendremos que cargar los controladores VirtIO para que se detecte el disco duro, al igual que hicimos en Windows 10. Pero además, para la instalación del sistema es necesario que estar conectado a internet, por lo tanto durante el proceso de instalación, también tendremos que cargar los drivers VirtIO de la tarjeta de red para que se tenga conectividad.
+* La instrucción que vamos a usar para la instalación sería:
 
-La instrucción que vamos a usar para la instalación sería:
+	```
+	usuario@kvm:~$ virt-install --connect qemu:///system \
+				                --virt-type kvm \
+				                --name windows11 \
+				                --cdrom /var/lib/libvirt/images/Win11_24H2_Spanish_x64.iso \
+				                --os-variant win11 \
+				                --disk size=40,bus=virtio \
+				                --disk /var/lib/libvirt/images/virtio-win-0.1.266.iso,device=cdrom \
+				                --network=default,model=virtio \
+				                --memory 4096 \
+				                --vcpus 2
+	```
 
-```
-usuario@kvm:~$ virt-install --connect qemu:///system \
-			                --virt-type kvm \
-			                --name windows11 \
-			                --cdrom /var/lib/libvirt/images/Win11_24H2_Spanish_x64.iso \
-			                --os-variant win11 \
-			                --disk size=40,bus=virtio \
-			                --disk /var/lib/libvirt/images/virtio-win-0.1.266.iso,device=cdrom \
-			                --network=default,model=virtio \
-			                --memory 4096 \
-			                --vcpus 2
-```
+* Al configurar la máquina Windows 11 se va a usar UEFI en lugar de BIOS. En este caso, se le asigna un archivo de NVRAM que actúa como memoria persistente para almacenar configuraciones de arranque y otros parámetros. **NVRAM (Non-Volatile Random Access Memory)** es una memoria no volátil que almacena configuraciones del firmware UEFI, como variables de arranque y configuraciones específicas del sistema. Cuando intentas eliminar una máquina virtual con `virsh undefine`, libvirt protege el archivo NVRAM para evitar pérdidas accidentales. Por eso, necesitas usar la opción `--nvram` para eliminarlo junto con la máquina virtual o `--keep-nvram` si quieres conservarlo.
 
+	```
+	usuario@kvm:~$ virsh undefine windows11 --nvram
+	```
