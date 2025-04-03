@@ -32,7 +32,11 @@ usuario@kvm:~$ virsh pool-refresh vm-images
 
 Y comprobamos que ya tenemos el volumen creado ejecutando: 
 ```
-usuario@kvm:~$ virsh vol-list vm-images`.
+usuario@kvm:~$ virsh vol-list vm-images
+ Name             Path
+----------------------------------------------
+ disco1.qcow2     /srv/images/disco1.qcow2
+ nuevodisco.img   /srv/images/nuevodisco.img
 ```
 
 La herramienta `qemu-img` es muy potente y nos permite realizar muchas operaciones: redimensionar el fichero de imagen, convertir entre formatos de imágenes, crear imágenes a a partir de imágenes base, crear instantáneas de imágenes, ... Utilizaremos algunas de estas funciones en apartados posteriores del curso.
