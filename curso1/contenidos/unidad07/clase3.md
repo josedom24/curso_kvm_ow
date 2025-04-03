@@ -6,7 +6,7 @@ En este apartado vamos a comprobar que un usuario sin privilegio puede crear sus
 
 ## Configuración de virt-manager para una conexión no privilegiada
 
-Desde **virt-manager** podemos crear una nueva conexión no privilegiada, eligiendo la opción **Archivo - Añadir conexión...** y eligiendo como **Hipervisor** la opción **QEMU/LMV sesión de usuario**.
+Desde **virt-manager** podemos crear una nueva conexión no privilegiada, eligiendo la opción **Archivo - Añadir conexión...** y eligiendo como **Hipervisor** la opción **QEMU/KMV sesión de usuario**.
 
 ![usuario](img/usuario1.png)
 
@@ -16,7 +16,7 @@ Si seleccionamos la conexión que acabamos de añadir y escogemos la opción **D
 
     ![usuario](img/usuario2.png)
 
-* Tenemos un grupo de almacenamiento llamado `default` de tipo directorio, donde observamos que los ficheros de imágenes de discos de las máquinas virtuales se guardarán en un directorio edl usuario. En mi caso que uso el usuario llamado `usuario` este directorio sería: `/home/usuario/.local/share/libvirt/images`.
+* Tenemos un grupo de almacenamiento llamado `default` de tipo directorio, donde observamos que los ficheros de imágenes de discos de las máquinas virtuales se guardarán en un directorio del usuario. En mi caso que uso el usuario llamado `usuario` este directorio sería: `/home/usuario/.local/share/libvirt/images`.
 
     ![usuario](img/usuario3.png)
 

@@ -28,7 +28,7 @@ $ sudo systemctl enable --now getty@ttyS0
 * **`getty`** (abreviatura de "get TTY") es el proceso encargado de gestionar una terminal de login en Linux.  
 * **`ttyS0`** es el primer puerto serie en un sistema Linux.  
 
-Por lo tanto estamos lanzando un **proceso de login en la consola serie**, lo que permite conectarte a la máquina a través de un puerto serie o una consola virtual en KVM/QEMU. Desde `virt-manager` elegimos la opción: **Vista - Consolas - Serie 1**.
+Por lo tanto estamos lanzando un **proceso de login en la consola serie**, lo que permite conectarte a la máquina a través de un puerto serie o una consola virtual en KVM/QEMU. Desde **virt-manager** elegimos la opción: **Vista - Consolas - Serie 1**.
 
 ![serie](img/serie2.png)
 
