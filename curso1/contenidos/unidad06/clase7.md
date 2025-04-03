@@ -20,7 +20,7 @@ Para ello tenemos que realizar los siguientes pasos:
 
     ![ejemplo3](img/ejemplo3_3.png)
 
-3. Configuramos en la máquina Linux el **IP forwarding** que permite reenvíar paquetes entre interfaces de red. Para hacerlo permanente, editamos el archivo `/etc/sysctl.conf` y descomentamos la línea:
+3. Configuramos en la máquina Linux el **IP forwarding** que permite reenviar paquetes entre interfaces de red. Para hacerlo permanente, editamos el archivo `/etc/sysctl.conf` y descomentamos la línea:
 
 ```
 #net.ipv4.ip_forward=1
