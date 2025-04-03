@@ -28,10 +28,12 @@
     * [Gestión de volúmenes de almacenamiento con virsh](contenidos/unidad04/clase3.md)
     * [Gestión de volúmenes de almacenamiento con herramientas específicas](contenidos/unidad04/clase4.md)
     * [Trabajar con volúmenes en las máquinas virtuales](contenidos/unidad04/clase5.md)
+    * Redimensión de discos en máquinas virtuales 
     * Uso de un pool de almacenamiento de tipo disk
 
 5. Clonación e instantáneas de maquinas virtuales
     * [Clonación de máquinas virtuales](contenidos/unidad05/clase1.md)
+    * Clonación de volúmenes
     * [Plantillas de máquinas virtuales](contenidos/unidad05/clase2.md)
     * [Clonación a partir de plantillas](contenidos/unidad05/clase3.md)
     * [Instantáneas de máquinas virtuales](contenidos/unidad05/clase4.md)
@@ -53,4 +55,5 @@
     * [Despliegue automatizado de máquinas virtuales usando cloud-init](contenidos/unidad07/clase3.md)
     * [Conexión local no privilegiada a libvirt](contenidos/unidad07/clase4.md)
     * [Conexión remota a libvirt](contenidos/unidad07/clase5.md)
+    * Copia de seguridad de máquinas virtuales
     

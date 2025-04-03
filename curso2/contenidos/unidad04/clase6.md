@@ -1,129 +1,95 @@
-# Uso de un pool de almacenamiento de tipo disk
+# Redimensión de discos en máquinas virtuales
 
-En este apartado, aprenderemos a trabajar con un pool de almacenamiento de tipo `disk`.
+En este apartado vamos a aumentar el tamaño del volumen que hemos añadido a la máquina Linux, por lo que la máquina verá un disco más grande, pero hay que recordar que también tendremos que redimensionar el sistemas de ficheros.
 
-* Un pool de tipo `disk` en libvirt permite gestionar un disco físico como un recurso de almacenamiento, facilitando la creación y administración de volúmenes para máquinas virtuales.
-* En un pool de tipo `disk`, un volumen es una partición del disco físico, que puede usarse como disco virtual para máquinas virtuales.
+Para realizar la redimensión tenemos dos alternativas: o usar la API de libvirt usando `virsh` o usar herramientas especificas, en este caso `qemu-img`.
 
- Supondremos que tenemos un disco de 20GB sin formatear conectado a nuestro host que es accesible con el dispositivo de bloque `/dev/vdb`.
+## Redimensión de discos en máquinas virtuales sin ejecución
 
-## Creación del pool de almacenamiento
+Para redimensionar el volumen de una máquina que este parada, podemos usar `virsh`:
 
-Primero, debemos identificar el disco que usaremos. Ejecutamos:
 ```
-usuario@ubuntu:~$ lsblk
+usuario@kvm:~$ virsh vol-resize disco1.qcow2 3G --pool vm-images
+```
+
+O podemos usar `qemu-img`, se ejecuta con un usuario con privilegios o con `sudo`:
+
+```
+usuario@kvm:~$ sudo qemu-img resize /srv/images/disco1.qcow2 3G
+```
+
+## Redimensión de discos en máquinas virtuales en ejecución
+
+Para hacer la redimensión "en caliente", con la máquina encendida, podemos obtener información de los discos conectados a una máquina:
+
+```
+usuario@kvm:~$ virsh domblklist debian12
+ Target   Source
+--------------------------------------------------
+ vda      /var/lib/libvirt/images/debian12.qcow2
+ vdb      /srv/images/disco1.qcow2
+```
+
+Y continuación redimensionamos el disco deseado:
+
+```
+usuario@kvm:~$ virsh blockresize debian12 /srv/images/disco1.qcow2 3G
+```
+
+Podemos comprobar que se ha producido la redimensión en el disco de la máquina. Accedemos a la máquina y hacemos la comprobación:
+
+```
+usuario@debian:~$ lsblk
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
 ...
-vdb    253:16   0    20G  0 disk
-```
-Supongamos que el disco aparece como `/dev/vdb`. Lo primero es preparar el disco creando una tabla de particiones:
-
-```
-usuario@ubuntu:~$ sudo parted /dev/vdb -- mklabel gpt
+vdb    254:16   0    3G  0 disk 
 ```
 
-Creamos el pool de almacenamiento llamado `pool-disk` con el siguiente comando:
-```
-usuario@ubuntu:~$ virsh pool-define-as pool-disk disk --source-dev /dev/vdb --source-format gpt --target /dev
-```
-* El parámetro `--device-dev` especifica la ruta del dispositivo de almacenamiento. 
-* El parámetro `--target` es el directorio donde se crean los dispositivos de bloque correspondientes a las particiones.
-* El parámetro `--source-format` especifica el tipo de tabla de partición.
-
-
-Y ya podemos iniciar y configuramos el pool para que se active automáticamente al inicio:
-```
-usuario@ubuntu:~$ virsh pool-start pool-disk
-usuario@ubuntu:~$ virsh pool-autostart pool-disk
-```
-
-Verificamos que el pool esté activo:
-```
-usuario@ubuntu:~$ virsh pool-list --all
-```
-
-## Creación de volúmenes
-
-Como indicados los volúmenes en un pool de tipo `disk` serán particiones del disco. Podemos crear estas particiones usando la API de libvirt, por ejemplo con `virsh` o con herramientas específicas.
-
-### Crear un volumen virsh
-
-Crearemos un volumen de 10GB dentro del pool `pool-disk`:
-```
-usuario@ubuntu:~$ virsh vol-create-as pool-disk vdb1 10G
-```
-
-Verificamos que el volumen se haya creado correctamente:
+El disco ahora tiene 3GB, pero el sistema de archivo sigue teniendo 1Gb:
 
 ```
-usuario@ubuntu:~$ virsh vol-list pool-disk
-```
-
-### Crear un volumen con herramientas
-
-Otra estrategia es crear la partición en el dispositivo de bloque y posteriormente refrescamos el pool de almacenamiento.
-Ahora crearemos una partición en el disco manualmente y luego actualizaremos el pool.
-
-Usamos `parted` para crear una partición de 5GB:
-
-```
-usuario@ubuntu:~$ sudo parted /dev/vdb print
+usuario@debian:~$ df -h
+S.ficheros     Tamaño Usados  Disp Uso% Montado en
 ...
-Número  Inicio  Fin     Tamaño  Sistema de archivos  Nombre   Banderas
- 1      17,4kB  10,7GB  10,7GB                       primary
-
-usuario@ubuntu:~$ sudo parted /dev/vdb mkpart primary ext4 10700MiB 15700MiB
+/dev/vdb         974M    24K  907M   1% /mnt
 ```
 
-
-Refrescamos el pool en Libvirt para reconocer la nueva partición:
-```
-usuario@ubuntu:~$ virsh pool-refresh pool-disk
-```
-
-Verificamos que el nuevo volumen aparezca:
-```
-usuario@ubuntu:~$ virsh vol-list pool-disk 
- Name   Path
--------------------
- vdb1   /dev/vdb1
- vdb2   /dev/vdb2
-```
-
-Y comprobamos el espacio que queda en el pool de almacenamiento:
+Desmontamos el disco (es necesario porque esta formateado con `ext4`, con otros sistemas de ficheros no sería necesario el desmontaje), y lo redimensionamos:
 
 ```
-usuario@ubuntu:~$ virsh pool-info pool-disk 
-Name:           pool-disk
-UUID:           5dd18d82-1e29-4c01-a1c2-260b3e0d591a
-State:          running
-Persistent:     yes
-Autostart:      no
-Capacity:       20,00 GiB
-Allocation:     14,88 GiB
+usuario@debian:~$ sudo umount /mnt
+usuario@debian:~$ sudo e2fsck -f /dev/vdb
+usuario@debian:~$ sudo resize2fs /dev/vdb
+usuario@debian:~$ sudo mount /dev/vdb /mnt
+usuario@debian:~$ df -h
+S.ficheros     Tamaño Usados  Disp Uso% Montado en
+...
+/dev/vdb         3,0G    24K  2,8G   1% /mnt
 ```
 
-## Crear una máquina virtual con los volúmens
+## Redimensión del sistema de ficheros de una imagen de disco
 
-Usaremos `virt-install` para crear una máquina virtual utilizando los volúmenes creados.
+Otra alternativa para redimensionar el sistema de fichero de una imagen es usar la herramienta [virt-resize](https://libguestfs.org/virt-resize.1.html). `virt-resize` no trabaja sobre imágenes de discos de máquinas que se estén ejecutando, además no puede redimensionar sobre el mismo fichero de la imagen, por lo que vamos a hacer una copia del mismo. Para utilizar esta herramienta vamos a instalar el siguiente paquete:
 
 ```
-virt-install \
-  --name maquina-disco \
-  --memory 2048 \
-  --vcpus 2 \
-  --disk vol=pool-disk/vdb1,format=raw \
-  --disk path=/dev/vdb2,device=disk \
-  --cdrom /var/lib/libvirt/images/ubuntu.iso \
-  --os-type linux \
-  --os-variant ubuntu22.04 \
-  --network network=default \
-  --graphics vnc
+usuario@kvm:~$ sudo apt install guestfs-tools
 ```
 
-Explicación de los parámetros:
-- `--disk vol=pool-disk/vol1,format=raw`: Usa el primer volumen de 10GB.
-- `--disk path=/dev/vdb2,device=disk`: Usa la partición creada manualmente.
-- `--cdrom`: Especifica la imagen ISO de instalación.
-- `--network network=default`: Usa la red predeterminada de Libvirt.
-- `--graphics vnc`: Activa la consola gráfica VNC.
+Lo primero es para la máquina virtual:
 
+```
+usuario@kvm:~$ virsh shutdown debian12
+```
+
+Antes de usar `virt-resize`, debemos crear un disco destino donde se va gaurdar el disco redimensionado:
+```
+usuario@kvm:~$ sudo qemu-img create -f qcow2 /srv/images/nuevo_disco1.qcow2 4G
+```
+Y posteriormente vamos a redimensionar el sistema de archivo con `virt-resize` y el parámetro `--expand`. Se creará un nuevo volumen que posteriormente sustituiremos por el original:
+
+```
+usuario@kvm:~$ sudo virt-resize --expand /dev/vdb disco1.qcow2 nuevo_disco1.qcow2
+usuario@kvm:~$ sudo mv /srv/images/nuevo_disco.qcow2 /srv/images/disco1.qcow2 
+```
+
+Iniciamos de nuevo la máquina y comprobamos si el disco y el sistema de archivos se ha redimensionado.
