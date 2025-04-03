@@ -30,7 +30,7 @@ El funcionamiento de la herramienta es el siguiente:
     * Hemos indicado el hostname de la máquina (parámetro `--hostname`).
     * Hemos cambiado la contraseña del usuario `root` con `--root-password`. Tenemos distintos métodos para realizar el cambio y no indicar implícitamente la contraseña en la instrucción.
     * Con el parámetro `--run-command` podemos ejecutar comandos en la imagen. En este caso, hemos configurado el teclado en español y hemos modificado el fichero `/etc/network/interface` con el nombre que se le asigna a la interfaz de red (`enp1s0` en ves de `ens2`).
-    * Con el parámetro `--firstboot-command` se configura instrucciones que se ejecutarán en el primer arranque de la máquina. En este caso, creamos el usuario `usuario` sin contraseña y obligamos a cambiarla la primera vez que accedamos con él, reconfiguramos el servidor ssh para que se generen las claves ssh del host y habilitamos la salida por el puerto serie.
+    * Con el parámetro `--firstboot-command` se configura instrucciones que se ejecutarán en el primer arranque de la máquina. En este caso, creamos el usuario `usuario` sin contraseña y obligamos a cambiarla la primera vez que accedamos con él, reconfiguramos el servidor SSH para que se generen las claves SSH del host y habilitamos la salida por el puerto serie.
 
 En la documentación de la herramienta puedes encontrar muchas más opciones. Una vez terminada la ejecución de esta instrucción tenemos creado la imagen del disco en ` /var/lib/libvirt/images/mi_debian12.qcow2`.
 
@@ -67,7 +67,7 @@ New password:
 Retype new password: 
 ```
 
-También podemos conectarnos por ssh a esta máquina:
+También podemos conectarnos por SSH a esta máquina:
 
 ```
 usuario@kvm:~$ virsh domifaddr debian12-builder 
