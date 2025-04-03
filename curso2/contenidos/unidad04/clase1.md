@@ -1,13 +1,13 @@
 # Introducción al almacenamiento en KVM/libvirt
 
-El almacenamiento es un aspecto fundamental en la virtualización, ya que permite gestionar el espacio en disco de las máquinas virtuales. En virt-manager, el almacenamiento se organiza en **grupos o ppols de almacenamiento (storage pools)** y **volúmenes de almacenamiento (storage volumes)**.
+El almacenamiento es un aspecto fundamental en la virtualización, ya que permite gestionar el espacio en disco de las máquinas virtuales. En KVM/libvirt, el almacenamiento se organiza en **grupos o pools de almacenamiento (storage pools)** y **volúmenes de almacenamiento (storage volumes)**.
 
 * **Pools de Almacenamiento**: Es una fuente de almacenamiento, una cantidad de almacenamiento que el administrador del host ha configurado para su uso por las máquinas virtuales. 
 * **Volúmenes**: Los pools de almacenamiento se dividen en volúmenes. Cada uno de estos volúmenes lo utilizaran las máquinas virtuales como discos (dispositivos de bloques). 
 
 ## Pools de almacenamiento
 
-Los pools de almacenamiento en son espacios lógicos donde se almacenan las imágenes de disco de las máquinas virtuales. Existen diferentes tipos de almacenamiento compatibles con KVM/libvirt, que se pueden clasificar en dos categorías principales:
+Los pools de almacenamiento son espacios lógicos donde se almacenan las imágenes de disco de las máquinas virtuales. Existen diferentes tipos de almacenamiento compatibles con KVM/libvirt, que se pueden clasificar en dos categorías principales:
 
 * **Almacenamiento basado en dispositivos de bloques**: Estos métodos proporcionan acceso directo a dispositivos de almacenamiento de bloques, como discos físicos o volúmenes lógicos. Algunos ejemplos son:
 
@@ -22,7 +22,7 @@ Los pools de almacenamiento en son espacios lógicos donde se almacenan las imá
     * **nfs**: Sistema de fichero compartido en red desde un servidor NFS.
     * **glusterfs**: Sistema distribuido de almacenamiento en red.
 
-Hemos puestos algunos ejemplos de tipo de almacenamiento, pero en la [documentación](https://libvirt.org/storage.html) de libvirt puedes encontrar más fuentes de almacenamiento.
+Hemos puestos algunos ejemplos de tipo de almacenamiento, pero en la [documentación](https://libvirt.org/storage.html) de libvirt puedes encontrar todas las fuentes de almacenamiento.
 
 ## Volúmenes de almacenamiento (Storage Volumes)
 
@@ -32,6 +32,8 @@ Los volúmenes son las unidades individuales de almacenamiento dentro de un pool
     * **qcow2**: formato QEMU copy-on-write. Al crearse sólo se ocupa el espacio que se está ocupando con los datos (aprovisionamiento ligero), el fichero irá creciendo cuando escribamos en el él. Acepta instantáneas o snapshots. Es menos eficiente en cuanto al acceso.
     * **vdi, vmdk,...**: formatos de otros sistemas de virtualización.
 * En el caso del tipo **logical** estos volúmenes serán volúmenes lógicos LVM.
+* En el caso de tipo **disk** los volúmenes serán particiones de un disco.
+* ...
 
 Tenemos dos enfoques para gestionar los volúmenes:
 
