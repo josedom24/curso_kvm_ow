@@ -100,7 +100,7 @@ Capacity:       20,00 GiB
 Allocation:     14,88 GiB
 ```
 
-## Crear una máquina virtual con los volúmenes
+## Crear una máquina virtual con los volúmenes que hemos creado
 
 Usaremos `virt-install` para crear una máquina virtual utilizando los volúmenes creados.
 
