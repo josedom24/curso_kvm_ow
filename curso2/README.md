@@ -29,7 +29,7 @@
     * [Gestión de volúmenes de almacenamiento con herramientas específicas](contenidos/unidad04/clase4.md)
     * [Trabajar con volúmenes en las máquinas virtuales](contenidos/unidad04/clase5.md)
     * [Redimensión de discos en máquinas virtuales](contenidos/unidad04/clase6.md)
-    * Uso de un pool de almacenamiento de tipo disk
+    * [Uso de un pool de almacenamiento de tipo disk](contenidos/unidad04/clase7.md)
 
 5. Clonación e instantáneas de maquinas virtuales
     * [Clonación de máquinas virtuales](contenidos/unidad05/clase1.md)
