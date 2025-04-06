@@ -31,14 +31,20 @@ Los volúmenes son las unidades individuales de almacenamiento dentro de un pool
     * **raw**:  el formato raw es una imagen binaria sencilla de la imagen del disco. Se ocupa todo el espacio que hayamos indicado al crearla. El acceso es más eficiente. No soporta ni snapshots ni aprovisionamiento ligero.
     * **qcow2**: formato QEMU copy-on-write. Al crearse sólo se ocupa el espacio que se está ocupando con los datos (aprovisionamiento ligero), el fichero irá creciendo cuando escribamos en el él. Acepta instantáneas o snapshots. Es menos eficiente en cuanto al acceso.
     * **vdi, vmdk,...**: formatos de otros sistemas de virtualización.
-* En el caso del tipo **logical** estos volúmenes serán volúmenes lógicos LVM.
 * En el caso de tipo **disk** los volúmenes serán particiones de un disco.
+* En el caso del tipo **logical** estos volúmenes serán volúmenes lógicos LVM.
 * ...
 
 Tenemos dos enfoques para gestionar los volúmenes:
 
-* Usar **la API de libvirt**, es decir, usar herramientas como `virsh` para gestionar los volúmenes. En este caso, si creamos un volumen en un pool de tipo **dir**, estaríamos creando un fichero de imagen de disco. Del mismo modo, si lo creamos en un pool de tipo **logical** estaríamos creando un volumen lógico LVM.
-* Utilizar herramientas específicas para crear los medios de almacenamiento y posteriormente **refrescar** el pool para que añada el nuevo volumen. Ejemplo: podemos usar la herramienta `qemu-img` para la creación de un fichero de imagen de disco y posteriormente actualizaremos el pool de tipo **dir** para añadir el nuevo volumen que corresponde al fichero que hemos creado. Otro ejemplo: usar la línea de comandos de LVM, creando un volumen lógico con el comando `lvcreate` y posteriormente actualizamos el pool de tipo **logical** para añadir el nuevo volumen.
+* Usar **la API de libvirt**, es decir, usar herramientas como `virsh` para gestionar los volúmenes. Veamos algunos ejemplos:
+    * Si creamos un volumen en un pool de tipo **dir**, estaríamos creando un fichero de imagen de disco. 
+    * Si creamos un volumen en un pool de tipo **disk** estaríamos creando particiones.
+    * Si creamos un volumen en un pool de tipo **logical** estaríamos creando un volumen lógico LVM.
+* Utilizar herramientas específicas para crear los medios de almacenamiento y posteriormente **refrescar** el pool para que añada el nuevo volumen. Ejemplos:
+    * Podemos usar la herramienta `qemu-img` para la creación de un fichero de imagen de disco y posteriormente actualizaremos el pool de tipo **dir** para añadir el nuevo volumen que corresponde al fichero que hemos creado. 
+    * Podemos usar herramientas como `fdisk` o `parted` para crear particiones y luego refrescamos el pool de tipo **disk** para añadir un nuevo volumen.
+    * Podemos usar la línea de comandos de LVM, creando un volumen lógico con el comando `lvcreate` y posteriormente actualizamos el pool de tipo **logical** para añadir el nuevo volumen.
 
 Si estamos trabajando localmente en un servidor donde tenemos QEMU/KVM + libvirt instalado, no hay muchas diferencias de usar una y otra opción. El uso de la API de libvirt puede ser más interesante si estamos conectados a la API de libvirt de forma remota, ya que al gestionar los volúmenes estaríamos gestionando los recursos de almacenamiento (ficheros, volúmenes lógicos,...) sin necesidad de acceder al servidor y crearlos con herramientas específicas.
 

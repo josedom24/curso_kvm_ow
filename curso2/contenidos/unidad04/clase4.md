@@ -41,4 +41,7 @@ usuario@kvm:~$ virsh vol-list vm-images
 
 La herramienta `qemu-img` es muy potente y nos permite realizar muchas operaciones: redimensionar el fichero de imagen, convertir entre formatos de imágenes, crear imágenes a a partir de imágenes base, crear instantáneas de imágenes, ... Utilizaremos algunas de estas funciones en apartados posteriores del curso.
 
-**Nota: Si estuviéramos trabajando con otro tipo de pool de almacenamiento, tendíamos que usar herramientas especificas para gestionar los medios de almacenamientos adecuados. Por ejemplo, si estuviéramos trabajando con un pool de tipo *logical*, usaríamos las herramientas de comando de LVM para crear y gestionar los volúmenes lógicos que se corresponderían con los volúmenes de este tipo de pool.**
+Si estuviéramos trabajando con otro tipo de pool de almacenamiento, tendíamos que usar herramientas especificas para gestionar los medios de almacenamientos adecuados. Por ejemplo:
+
+* Si estuviéramos trabajando con un pool de tipo **disk**, usaríamos herramientas como `fdisk` o `parted` para crear y gestionar las particiones que se corresponderían con los volúmenes de este tipo de pool.
+* Si estuviéramos trabajando con un pool de tipo **logical**, usaríamos las herramientas de comando de LVM para crear y gestionar los volúmenes lógicos que se corresponderían con los volúmenes de este tipo de pool.

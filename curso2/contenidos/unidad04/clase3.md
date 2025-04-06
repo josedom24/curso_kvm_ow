@@ -72,5 +72,8 @@ usuario@kvm:~$ virsh vol-delete nuevodisco.img vm-images
 
 Tenemos a nuestra disposición más operaciones sobre los volúmenes, estudiaremos algunas de ellas en apartados posteriores: `vol-clone`: para clonar el volumen, `vol-resize`: para redimensionar, `vol-download`: para descargar el volumen en un fichero, `vol-upload`: para cargar información a un volumen desde un fichero,...
 
-**Nota: Hay que recordar que todas estas operaciones se realizan sobre volúmenes, y por tanto el medio de almacenamiento que gestionan dependerán del tipo del pool con el que estemos trabajando. De esta forma, un `vol-create-as` en un pool de tipo *logical* crearía un volumen lógico LVM.**
+Hay que recordar que todas estas operaciones se realizan sobre volúmenes, y por tanto el medio de almacenamiento que gestionan dependerán del tipo del pool con el que estemos trabajando. De esta forma, por ejemplo:
+
+* Si usamos `vol-create-as` en un pool de tipo **disk** crearía una partición en un disco.
+* Si usamos `vol-create-as` en un pool de tipo **logical** crearía un volumen lógico LVM.
 
