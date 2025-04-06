@@ -106,6 +106,7 @@ Usaremos `virt-install` para crear una máquina virtual utilizando los volúmene
 
 ```
 usuario@kvm:~$ virt-install --connect qemu:///system \
+                            --virt-type kvm \
                             --name maquina-disco \
                             --cdrom /var/lib/libvirt/images/debian-12.10.0-amd64-netinst.iso \
                             --os-variant debian12 \

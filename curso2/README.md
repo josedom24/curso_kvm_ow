@@ -33,7 +33,6 @@
 
 5. Clonación e instantáneas de maquinas virtuales
     * [Clonación de máquinas virtuales](contenidos/unidad05/clase1.md)
-    * Clonación de volúmenes
     * [Plantillas de máquinas virtuales](contenidos/unidad05/clase2.md)
     * [Clonación a partir de plantillas](contenidos/unidad05/clase3.md)
     * [Instantáneas de máquinas virtuales](contenidos/unidad05/clase4.md)
