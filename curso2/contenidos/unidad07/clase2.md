@@ -1,8 +1,8 @@
 # Despliegue automatizado de máquinas virtuales con virt-builder
 
-[`virt-builder`](https://libguestfs.org/virt-builder.1.html) es una herramienta para un rápido despliegue de nuevas máquinas virtuales. Además nos permite personalizar estas máquinas a través de plantillas de sistemas operativos editables, ahorrándonos el tiempo de hacer una instalación del sistema desde cero.
+[`virt-builder`](https://libguestfs.org/virt-builder.1.html) es una herramienta para despliegues rápidos de nuevas máquinas virtuales. Además nos permite personalizar estas máquinas a través de plantillas de sistemas operativos editables, ahorrándonos el tiempo de hacer una instalación del sistema desde cero.
 
-P?ara usar esta aplicación debemos instalar el paquete `libguestfs-tools` que ya lo habíamos instalado para trabajar con otras aplicaciones.
+Para usar esta aplicación debemos instalar el paquete `libguestfs-tools` que ya lo habíamos instalado para trabajar con otras aplicaciones.
 
 ## Creación de imágenes con virt-builder
 
