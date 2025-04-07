@@ -24,7 +24,7 @@ usuario@kvm:~$ virt-install --connect qemu:///system \
 			                --cdrom /var/lib/libvirt/images/Win10_22H2_Spanish_x64v1.iso \
 			                --os-variant win10 \
 			                --disk size=40,bus=virtio \
-			                --disk /var/lib/libvirt/images/virtio-win-0.1.266.iso,device=cdrom \
+			                --disk /var/lib/libvirt/images/virtio-win.iso,device=cdrom \
 			                --network=default,model=virtio \
 			                --memory 2048 \
 			                --vcpus 2
@@ -32,7 +32,7 @@ usuario@kvm:~$ virt-install --connect qemu:///system \
 Hemos añadido la siguiente configuración:
 
 * `--disk size=40,bus=virtio`: En la declaración del disco indicamos el controlador VirtIO.
-* `--disk /var/lib/libvirt/images/virtio-win-0.1.266.iso,device=cdrom`: Añadimos un segundo CDROM con la imagen ISO de los drivers VirtIO, usamos el parámetro `device=cdrom`.
+* `--disk /var/lib/libvirt/images/virtio-win.iso,device=cdrom`: Añadimos un segundo CDROM con la imagen ISO de los drivers VirtIO, usamos el parámetro `device=cdrom`.
 * `--network=default,model=virtio`: De la misma manera, indicamos el modelo de tarjeta de red como VirtIO.
 
 ## Comenzamos la instalación
@@ -75,7 +75,7 @@ La instalación de Windows 11, es similar a la que hemos visto anteriormente con
 				                --cdrom /var/lib/libvirt/images/Win11_24H2_Spanish_x64.iso \
 				                --os-variant win11 \
 				                --disk size=40,bus=virtio \
-				                --disk /var/lib/libvirt/images/virtio-win-0.1.266.iso,device=cdrom \
+				                --disk /var/lib/libvirt/images/virtio-win.iso,device=cdrom \
 				                --network=default,model=virtio \
 				                --memory 4096 \
 				                --vcpus 2
