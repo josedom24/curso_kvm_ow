@@ -58,9 +58,9 @@ En este último ejemplo modificamos la configuración de las interfaces de red d
 
     ![ejemplo](img/ejemplo2_13.png)
 
-Y finalmente comprobamos que tenemos conectividad entre las máquinas pero no tenemos conectividad con el exterior.
+* Y finalmente comprobamos que tenemos conectividad entre las máquinas pero no tenemos conectividad con el exterior.
 
-![ejemplo](img/ejemplo2_14.png)
-![ejemplo](img/ejemplo2_15.png)
+    ![ejemplo](img/ejemplo2_14.png)
+    ![ejemplo](img/ejemplo2_15.png)
 
 
