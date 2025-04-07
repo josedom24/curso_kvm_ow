@@ -2,7 +2,7 @@
 
 ## Redes puente compartiendo la interfaz física del host
 
-En este primer ejemplo, vamos a parir del siguiente escenario:
+En este primer ejemplo, vamos a partir del siguiente escenario:
 
 * No tenemos creado un puente externo `br0` como hemos visto anteriormente. Por lo tanto la interfaz del host, que en este caso se llama `enp1s0` está conectada directamente a la red local del host. Para poder compartir una interfaz física usando un dispositivo macvtap no debe estar conectado aun puente externo.
 * El host está conectado a un red con direccionamiento `192.168.100.0/24`, la puerta de enlace y el servidor DNS es la dirección `192.168.100.1`. Existe un servidor DHCP que configura de manera dinámica los equipos conectados a esta red.
