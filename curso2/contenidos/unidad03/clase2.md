@@ -31,6 +31,7 @@ usuario@kvm:~$ virt-install --connect qemu:///system \
 
 La información que tenemos que proporcionar a `virt-install` para la creación de la nueva máquina virtual será la siguiente:
 
+* Con el parámetro `--connect` indicamos el tipo de conexión que vamos a realizar. En realidad no haría falta ponerlo porque tenemos definida la variable de entorno `LIBVIRT_DEFAULT_URI`.
 * El nombre de la máquina virtual (parámetro `--name`).
 * El tipo de virtualización (parámetro `--virt-type`). en nuestro caso será `kvm`.
 * En nuestro caso vamos a realizar una instalación desde un fichero ISO, por lo que tendremos que indicar que la nueva máquina tendrá un CDROM con la ISO que indiquemos (parámetro `--cdrom`).
