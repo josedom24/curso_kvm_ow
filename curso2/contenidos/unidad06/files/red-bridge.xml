@@ -1,0 +1,5 @@
+<network>
+  <name>red_bridge</name>
+  <forward mode="bridge"/>
+  <bridge name="br0"/>
+</network>

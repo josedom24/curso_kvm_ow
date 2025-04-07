@@ -1,4 +1,4 @@
-# Creación de un Puente Externo con Linux Bridge
+# Creación de un puente externo con Linux Bridge
 
 Un bridge externo es un bridge virtual que estará conectado al router de la red local. El bridge se creará en el servidor donde estamos virtualizando (host). El host estará conectado a este bridge para tener conectividad al exterior. Veamos un esquema:
 
@@ -10,12 +10,6 @@ Un bridge externo es un bridge virtual que estará conectado al router de la red
 * Posteriormente veremos como podemos conectar las máquinas virtuales a este bridge de tal manera que tomaran direcciones IP en el mismo direccionamiento que el host.
 
 **Nota: Si conectamos al bridge una interfaz de tipo wifi podemos tener problemas de conectividad. No todas las tarjetas inalámbricas permiten la conexión a puentes virtuales.**
-
-Nos aseguremos que tenemos instalado el siguiente paquete que nos permite trabajar con Linux Bridge:
-
-```
-apt install bridge-utils
-```
 
 ## Creación de un bridge externo con NetworkManager
 
@@ -51,7 +45,7 @@ Y en unos segundos, se conectará de forma automática a la conexión **Puente E
 
 ## Creación de un bridge externo con ifupdown
 
-Si estamos trabajando en un servidor con Linux Debian instalado y no tenemos instalado NetworkManager, la configuración se hará directamente en el fichero de configuración de red `/etc/network/intefaces`:
+Si estamos trabajando en un servidor con Linux Debian instalado y no tenemos instalado NetworkManager, la configuración se hará directamente en el fichero de configuración de red `/etc/network/intefaces`. Vamos a suponer que la interfaz del equipo es `enp1s0`:
 
 ```
 auto lo
@@ -70,8 +64,8 @@ Donde vemos como hemos configurado la interfaz física `enp1s0` de tipo `manual`
 Finalmente, reiniciamos la red como superusuario:
 
 ```
-ifdown enp1s0
-systemctl restart networking.service
+usuario@kvm~$ sudo ifdown enp1s0
+usuario@kvm~$ sudo systemctl restart networking.service
 ```
 
 
@@ -95,15 +89,15 @@ network:
 Y reiniciamos la red ejecutando:
 
 ```
-sudo netplan apply
+usuario@kvm~$ sudo netplan apply
 ```
 
-## Comproabación de funcionamiento
+## Comprobación de funcionamiento
 
-Independientemente de la opción que hayamos escogido, ubnave realizada la configuración podemos comprobar si se ha creado un bridge `br0` que ha tomado el direccionamiento adecuado y que la interfaz de nuestro ordenador esta conectado a él:
+Independientemente de la opción que hayamos escogido, una vez realizada la configuración podemos comprobar si se ha creado un bridge `br0` que ha tomado el direccionamiento adecuado y que la interfaz de nuestro ordenador esta conectado a él:
 
 ```
-ip a
+usuario@kvm~$ ip a
 ...
 2: enp1s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast master br0 state UP group default qlen 1000
     link/ether 52:54:00:22:d7:3f brd ff:ff:ff:ff:ff:ff
@@ -116,7 +110,7 @@ ip a
 Podemos comprobar los puentes que tenemos creados y las interfaces que están conectados a él, ejecutando la siguiente instrucción:
 
 ```
-brctl show
+usuario@kvm~$ sudo brctl show
 bridge name	bridge id		STP enabled	interfaces
 br0		8000.7eb448933f70	no		enp1s0
 ```

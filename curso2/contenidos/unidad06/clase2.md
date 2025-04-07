@@ -1,19 +1,19 @@
-# Definición de Redes Virtuales (Privadas)
+# Definición de redes virtuales privadas
 
 Las redes que gestiona libvirt se definen con el formato XML. Puedes profundizar en el formato XML con los que se definen las redes consultando el documento [Network XML format](https://libvirt.org/formatnetwork.html). 
 
-## Definición de Redes Virtuales de tipo NAT
+## Definición de redes virtuales de tipo NAT
 
-La red `default` con la que hemos trabajado es de este tipo. La configuración de la red `default` la podemos encontrar en el fichero `/usr/share/libvirt/networks/default.xml`:
+La red `default` con la que hemos trabajado es de este tipo. La configuración de la red `default` la podemos encontrar en el fichero `/usr/share/libvirt/networks/default.xml`. A partir de ese fichero podemos crear la definición de otra red de tipo NAT, por ejemplo guardamos en el fichero `red-nat.xml` el siguiente contenido:
 
 ```xml
 <network>
-  <name>default</name>
-  <bridge name='virbr0'/>
+  <name>red_nat</name>
+  <bridge name='virbr1'/>
   <forward/>
-  <ip address='192.168.122.1' netmask='255.255.255.0'>
+  <ip address='192.168.101.1' netmask='255.255.255.0'>
     <dhcp>
-      <range start='192.168.122.2' end='192.168.122.254'/>
+      <range start='192.168.101.2' end='192.168.101.254'/>
     </dhcp>
   </ip>
 </network>
@@ -29,30 +29,28 @@ Veamos las etiquetas:
 * `<ip>`: Donde se indica la dirección IP y la mascara de red de la dirección del host en la red. Es decir, el host está conectado al bridge virtual con esa dirección.
 	* `<dhcp>`: **Este elemento es optativo**. Si queremos tener un servidor DHCP configurado en el host lo configuramos en esta etiqueta, por ejemplo poniendo el rango en la etiqueta `<range>`. 
 	
-## Definición de Redes Virtuales Aisladas
+## Definición de redes virtuales aisladas
 
-La definición de una Red Virtual Aislada es igual a la de tipo NAT, pero quitando la etiqueta `<forward>` para deshabilitar la característica de que el host haga router/nat. La definición podría quedar de este modo:
+La definición de una Red Virtual Aislada es igual a la de tipo NAT, pero quitando la etiqueta `<forward>` para deshabilitar la característica de que el host haga router/nat. La definición la guardamos en el fichero `red-aislada.xml`, y podría quedar de este modo:
 
 ```xml
 <network>
   <name>red_aislada</name>
-  <bridge name='virbr1'/>
-  <ip address='192.168.123.1' netmask='255.255.255.0'>
-    <dhcp>
-      <range start='192.168.123.2' end='192.168.123.254'/>
-    </dhcp>
-  </ip>
+  <bridge name='virbr2'/>
+  <ip address='192.168.102.1' netmask='255.255.255.0'/>
 </network>
 ```
 
-## Definición de Redes Virtuales muy Aisladas
+En este caso hemos quitado la etiqueta `<dhcp>` por lo que no tendríamos un servidor DHCP para configurar de forma dinámica las interfaces de red de las máquinas virtuales.
+
+## Definición de redes virtuales muy aisladas
  
-Son similares a la anterior, pero el host no se conecta a la red. Por lo tanto no tenemos ni servidor DNS, ni DHCP. Al crear este tipo de red, simplemente se creara un bridge virtual donde se conectarán las máquinas virtuales, que se configurarán de forma estática su direccionamiento. Por lo tanto la definición será:
+Son similares a la anterior, pero el host no se conecta a la red. Por lo tanto no tenemos ni servidor DNS, ni DHCP. Al crear este tipo de red, simplemente se creara un bridge virtual donde se conectarán las máquinas virtuales, que se configurarán de forma estática su direccionamiento. Por lo tanto la definición la guardamos en el fichero `red-muy-aislada.xml`:
 
 ```xml
 <network>
   <name>red_muy_aislada</name>
-  <bridge name='virbr2'/>
+  <bridge name='virbr3'/>
 </network>
 ```
 

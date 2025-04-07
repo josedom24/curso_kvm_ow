@@ -1,38 +1,21 @@
-# Gestión de Redes Virtuales
+# Gestión de redes virtuales privadas
 
 En este apartado vamos  a estudiar como trabajar con las redes virtuales con `virsh`.
 
 Podemos ver las redes que tenemos definidas ejecutando:
 
 ```
-virsh -c qemu:///system net-list --all
- Nombre    Estado   Inicio automático   Persistente
------------------------------------------------------
- default   activo   si                  si
+usuario@kvm~$ virsh net-list --all
 ```
 
 Utilizamos la opción `--all` para listar las redes iniciadas y paradas.
 
-Las redes se crean a partir de su definición XML que tenemos guardado en un fichero. En este caso tenemos el fichero `red-nat.xml`, donde tenemos la definición de una red virtual de tipo NAT, con el siguiente contenido:
-
-```xml
-<network>
-  <name>red_nat</name>
-  <bridge name='virbr1'/>
-  <forward/>
-  <ip address='192.168.123.1' netmask='255.255.255.0'>
-    <dhcp>
-      <range start='192.168.123.2' end='192.168.123.254'/>
-    </dhcp>
-  </ip>
-</network>
-```
+Las redes se crean a partir de su definición XML que tenemos guardado en un fichero. En este caso tenemos el fichero `red-nat.xml`, donde tenemos la definición de una red virtual de tipo NAT.
 
 Para crear la nueva red, ejecutamos:
 
 ```
-virsh -c qemu:///system net-define red-nat.xml
-La red red_nat se encuentra definida desde red-nat.xml
+usuario@kvm~$ virsh net-define red-nat.xml
 ```
 
 Si utilizamos el comando `virsh create` estaríamos creando la red de forma temporal, no persistente.
@@ -40,33 +23,25 @@ Si utilizamos el comando `virsh create` estaríamos creando la red de forma temp
 La red no se puede utilizar hasta que no se inicie, para ello:
 
 ```
-virsh -c qemu:///system net-start red_nat
-La red red_nat se ha iniciado
+usuario@kvm~$ virsh net-start red_nat
 ```
 
 Si vamos a usar esta red con mucha frecuencia es recomendable activar la propiedad de autoiniciar para que se inicie de forma automática al iniciar el host. Para ello:
 
 ```
-virsh -c qemu:///system net-autostart red_nat
-La red red_nat ha sido marcada para iniciarse automáticamente
+usuario@kvm~$ virsh net-autostart red_nat
 ```
 
 Podemos obtener información de la red ejecutando:
 
 ```
-virsh -c qemu:///system net-info red_nat
-Nombre:         red_nat
-UUID:           af756f61-9ffd-44d0-850f-90a75db773c1
-Activar:        si
-Persistente:    si
-Autoinicio:     si
-Puente:         virbr1
+usuario@kvm~$ virsh net-info red_nat
 ```
 
-Al iniciar podemos comprobar que se ha creado el bridge virtual y una nueva interfaz de red en el host.
+Al iniciar podemos comprobar que se ha creado el bridge virtual y una nueva interfaz de red en el host. Para ello instalamos el paquete `bridge-utils` para poder usar el comando `brctl`:
 
 ```
-sudo brctl show
+usuario@kvm~$ sudo brctl show
 bridge name	bridge id		STP enabled	interfaces
 virbr0		8000.525400aea33d	yes		
 virbr1		8000.5254002daec2	yes	
@@ -83,7 +58,7 @@ ip a
        valid_lft forever preferred_lft forever
 5: virbr1: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default qlen 1000
     link/ether 52:54:00:2d:ae:c2 brd ff:ff:ff:ff:ff:ff
-    inet 192.168.123.1/24 brd 192.168.123.255 scope global virbr1
+    inet 192.168.101.1/24 brd 192.168.101.255 scope global virbr1
        valid_lft forever preferred_lft forever
 ```
 
@@ -92,45 +67,17 @@ Podemos considerar que la interfaz de red del bridge virtual corresponde a la co
 Para ver la definición XML de la red que hemos creado, ejecutamos:
 
 ```
-virsh -c qemu:///system net-dumpxml red_nat
+usuario@kvm~$ virsh net-dumpxml red_nat
 ```
 
-Podemos crear también una red muy aislada de la que tenemos guardada la definición XML en el fichero `red-muy-aislada.xml`, con el contenido:
-
-```xml
-<network>
-  <name>red_muy_aislada</name>
-  <bridge name='virbr2'/>
-</network>
+De forma similar podemos crear la red aislada y la muy aislada cuyas definiciones creamos en el apartado anterior. Finalmente tendríamos varios puentes creado en el host:
 ```
-
-Y si la creamos y la iniciamos:
-
-```
-virsh -c qemu:///system net-define red-muy-aislada.xml
-La red red_muy_aislada se encuentra definida desde red-muy-aislada.xml
-
-virsh -c qemu:///system net-start red_muy_aislada
-La red red_muy_aislada se ha iniciado
-```
-
-Comprobamos que se ha creado el bridge virtual. 
-
-```
-sudo brctl show
+usuario@kvm~$ sudo brctl show
 bridge name	bridge id		STP enabled	interfaces
 virbr0		8000.525400aea33d	yes		
 virbr1		8000.5254002daec2	yes		
 virbr2		8000.525400d51f31	yes
-```
-
-Pero al ser una red muy aislada, el host no está conectado al bridge, y por lo tanto no tiene dirección IP asignada:
-
-```
-ip a
-...
-6: virbr2: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default qlen 1000
-    link/ether 52:54:00:d5:1f:31 brd ff:ff:ff:ff:ff:
+virbr3		8000.525400f1d203	yes
 ```
 
 Finalmente indicar que para parar una red utilizamos el comando `virsh net-stop` y para eliminarla el comando `virsh undefined`.

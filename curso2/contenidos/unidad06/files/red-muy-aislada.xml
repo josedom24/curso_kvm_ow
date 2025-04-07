@@ -1,0 +1,4 @@
+<network>
+  <name>red_muy_aislada</name>
+  <bridge name='virbr3'/>
+</network>
