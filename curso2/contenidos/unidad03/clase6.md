@@ -20,7 +20,6 @@ En este caso la modificación la vamos a realizar con el comando `virsh domrenam
 
 ```
 usuario@kvm:~$ virsh domrename debian12 maquina_linux
-Domain 'debian12' XML configuration edited.
 ```
 
 ## Modificar la asignación de vCPU
