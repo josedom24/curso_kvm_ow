@@ -46,7 +46,7 @@
     * [Configuración de red en las máquinas virtuales](contenidos/unidad06/clase6.md)
     * [Ejemplo 1: Trabajando con redes puentes públicas](contenidos/unidad06/clase7.md)
     * [Ejemplo 2: Trabajando con redes virtuales privadas](contenidos/unidad06/clase8.md)
-    * Ejemplo 3: Configuración de un router/NAT
+    * [Ejemplo 3: Configuración de un router/NAT](contenidos/unidad06/clase9.md)
 
 7. Temas adicionales
     * [Creación de máquinas virtuales por red](contenidos/unidad07/clase1.md)
