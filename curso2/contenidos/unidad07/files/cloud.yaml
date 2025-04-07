@@ -1,0 +1,18 @@
+#cloud-config
+
+# Configuramos el nombre de la máquina
+hostname: ubuntu-vm
+
+# Actualiza los paquetes
+package_update: true
+package_upgrade: true
+# Cambia las contraseña a los usuarios creados
+chpasswd:
+  expire: False
+  users:
+    - name: root
+      password: newpassword
+      type: text
+    - name: ubuntu
+      password: asdasd
+      type: text

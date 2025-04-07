@@ -1,0 +1,16 @@
+#cloud-config
+
+# Configuramos el nombre de la máquina
+hostname: debian-usuario
+
+
+# Cambia las contraseña a los usuarios creados
+chpasswd:
+  expire: False
+  users:
+    - name: root
+      password: asdasd
+      type: text
+    - name: debian
+      password: asdasd
+      type: text

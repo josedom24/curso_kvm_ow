@@ -51,7 +51,7 @@ usuario@kvm:~$ wget http://cloud.debian.org/images/cloud/bookworm/latest/debian-
 
 ## Creación de la máquina virtual
 
-Vamos a usar `cloud-init` para la configuración de la máquina. En este caso usamos el fichero `cloud.yaml`:
+Vamos a usar `cloud-init` para la configuración de la máquina. En este caso usamos el fichero `cloud-debian.yaml`:
 
 ```yaml
 #cloud-config
@@ -83,7 +83,7 @@ usuario@kvm:~$ virt-install --connect qemu:///session \
                             --memory 1024 \
                             --vcpus 1 \
                             --import \
-                            --cloud-init user-data=./cloud.yaml \
+                            --cloud-init user-data=./cloud-debian.yaml \
                             --noautoconsole
 ```
 

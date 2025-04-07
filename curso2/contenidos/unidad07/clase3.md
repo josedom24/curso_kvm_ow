@@ -38,23 +38,23 @@ chpasswd:
       type: text
 ```
 
-Con este fichero se van a hacer tres configuraciones en la máquina: se cambia su nombre,. se actualizan los paquetes y finalmente se cambian las contraseñas de los usuarios `root` y `ubuntu`. Usamos el ususario `ubuntu` porque vamos a usar una imagen cloud de Ubuntu que suelen tener preconfigurados un usuario llamado `ubuntu`.
+Con este fichero se van a hacer tres configuraciones en la máquina: se cambia su nombre,. se actualizan los paquetes y finalmente se cambian las contraseñas de los usuarios `root` y `ubuntu`. Usamos el usuario `ubuntu` porque vamos a usar una imagen cloud de Ubuntu que suelen tener preconfigurados un usuario llamado `ubuntu`.
 
 ## Descargar de la imagen cloud
 
-La mayoría de las distribuciones Linux nos ofrecen un respositorio de descargas de imágenes cloud:
+La mayoría de las distribuciones Linux nos ofrecen un repositorio de descargas de imágenes cloud:
 
-* Ubuntu Cloud Images: cloud-images.ubuntu.com
-* Debian Cloud Images: cloud.debian.org/images/cloud/
-* Fedora Cloud Images: alt.fedoraproject.org/cloud/
-* CentOS Cloud Images: cloud.centos.org/centos/
-* AlmaLinux Cloud Images: repo.almalinux.org/cloud/
-* Rocky Linux Cloud Images: dl.rockylinux.org/pub/rocky/
-* openSUSE Cloud Images: download.opensuse.org/repositories/Cloud:/Images:/
-* Arch Linux Cloud Images (comunidad): gitlab.archlinux.org/archlinux/arch-boxes
-* Amazon Linux Cloud Images: cdn.amazonlinux.com/os-images/latest/
+* Ubuntu Cloud Images: https://cloud-images.ubuntu.com
+* Debian Cloud Images: https://cloud.debian.org/images/cloud/
+* Fedora Cloud Images: https://alt.fedoraproject.org/cloud/
+* CentOS Cloud Images: https://cloud.centos.org/centos/
+* AlmaLinux Cloud Images: https://repo.almalinux.org/cloud/
+* Rocky Linux Cloud Images: https://dl.rockylinux.org/pub/rocky/
+* openSUSE Cloud Images: https://download.opensuse.org/repositories/Cloud:/Images:/
+* Arch Linux Cloud Images (comunidad): https://gitlab.archlinux.org/archlinux/arch-boxes
+* Amazon Linux Cloud Images: https://cdn.amazonlinux.com/os-images/latest/
 
-Nostros vamos a trabajar con una imagen cloud de Ubuntu. Descargamos la imagen cloud y la guardamos en el directorio de trabajo:
+Nosotros vamos a trabajar con una imagen cloud de Ubuntu. Descargamos la imagen cloud y la guardamos en el directorio de trabajo:
 
 ```
 usuario@kvm:~$ wget https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img
@@ -70,7 +70,7 @@ usuario@kvm:~$ cd /var/lib/libvirt/images
 usuario@kvm:~$ sudo qemu-img create -f qcow2 -b noble-server-cloudimg-amd64.img -F qcow2 ubuntu2404.qcow2
 ```
 
-Y si queremos podemos redimensionarla, ya que al ejecutar la máquina por primera vez con la imagen cloud el sistema operativo de redimensionará al tamaño del disco:
+Y si queremos podemos cambiarle el tamaño, ya que al ejecutar la máquina por primera vez con la imagen cloud el sistema operativo de redimensionará al tamaño del disco:
 
 ```
 usuario@kvm:~$ sudo qemu-img resize ubuntu2404.qcow2 20G
