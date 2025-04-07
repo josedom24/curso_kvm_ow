@@ -64,4 +64,4 @@ usuario@debian:~$ sudo iptables-save > /etc/iptables/rules.v4
 
 5. Finalmente podemos comprobar que la máquina Windows ya tiene conectividad con el exterior y puede resolver nombres por el DNS:
 
-    PING
+    ![ejemplo3](img/ejemplo3_4.png)
