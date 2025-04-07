@@ -24,7 +24,7 @@ A continuación terminamos la configuración:
 
 * **Configuración IPv4**: 
     * Elegimos la opción de **Habilitar IPv4**, indicando la dirección de **Red** con la que vamos a trabajar. La primera dirección será la dirección IP del anfitrión en esta red y la puerta de enlace de las máquinas virtuales conectadas a esta red.
-    * Elegimos la opción de ***Habilitar DHCPv4**, indicando el rango de direcciones que va a repartir el servidor DHCP. Normalmente las redes de tipo NAT tienen habilitado el servidor DHCP.
+    * Elegimos la opción de **Habilitar DHCPv4**, indicando el rango de direcciones que va a repartir el servidor DHCP. Normalmente las redes de tipo NAT tienen habilitado el servidor DHCP.
 * **Configuración IPv6**: Si queremos trabajar con IPv6 podemos seleccionar la opción **Habilitar IPv6**, por defecto está deshabilitada.
 * **Nombre de dominio DNS**: Esta opción permite definir cómo se asignará el dominio a las máquinas virtuales conectadas a esa red. 
     * **Usar nombre de red**: El nombre de la red virtual se usará como el dominio DNS.
