@@ -31,49 +31,42 @@ Para apagar de forma adecuada una máquina virtual:
 
 ```
 usuario@kvm:~$ virsh shutdown debian12
-Domain 'debian12' is being shutdown
 ```
 
 Para iniciar una máquina que está detenida:
 
 ```
 usuario@kvm:~$ virsh start debian12
-Domain 'debian12' started
 ```
 
 Si la propiedad **autostart** de una maquina está activa, cada vez que se inicie el host, esa máquina se encenderá de forma automática. Para activarlo:
 
 ```
 usuario@kvm:~$ virsh autostart debian12
-Domain 'debian12' marked as autostarted
 ```
 
 Reiniciamos una máquina virtual, ejecutando:
 
 ```
 usuario@kvm:~$ virsh reboot debian12
-Domain 'debian12' is being rebooted
 ```
 
 Podemos forzar el apagado de una máquina:
 
 ```
 usuario@kvm:~$ virsh destroy debian12
-Domain 'debian12' destroyed
 ```
 
 Podemos pausar la ejecución de una máquina
 
 ```
 usuario@kvm:~$ virsh suspend debian12
-Domain 'debian12' suspended
 ```
 
 Y continuar la ejecución:
 
 ```
 usuario@kvm:~$ virsh resume debian12
-Domain 'debian12' resumed
 ```
 
 Por último, para eliminar una máquina virtual que esté parada (eliminando los volúmenes asociados):
