@@ -42,6 +42,8 @@ Aunque el soporte de virtIO está incluido de forma nativa en Linux, otros siste
 * **API libvirt**: Proporciona interfaces programáticas para interactuar con los recursos de virtualización. Está disponible en varios lenguajes de programación como Python, C, y Perl, lo que facilita la automatización y la integración con otras herramientas y sistemas.
 * **Formato XML**: Libvirt utiliza un formato XML para describir la configuración de máquinas virtuales, redes, almacenamiento, y otros recursos virtualizados. Esto permite definir máquinas virtuales de manera estructurada y estandarizada, facilitando la interoperabilidad entre diferentes herramientas y plataformas.
 
+![libvirt](img/Libvirtsupport.svg)
+
 ### Herramientas y aplicaciones de libvirt
 
 Existen varias herramientas que permiten gestionar y automatizar entornos virtualizados utilizando libvirt:
