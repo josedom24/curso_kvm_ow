@@ -50,7 +50,7 @@ Existen varias herramientas que permiten gestionar y automatizar entornos virtua
 
 * **`virsh`**: Es una herramienta de línea de comandos que ofrece una interfaz interactiva para gestionar máquinas virtuales y recursos asociados. Permite iniciar, detener, pausar y gestionar las máquinas virtuales, así como configurar redes y almacenamiento.
   
-  * **virt-manager**: Es una aplicación gráfica basada en GTK+ que proporciona una interfaz visual para crear, administrar y monitorear máquinas virtuales. Facilita la creación y configuración de máquinas virtuales mediante un asistente, y permite interactuar con ellas a través de una consola gráfica.
+* **virt-manager**: Es una aplicación gráfica basada en GTK+ que proporciona una interfaz visual para crear, administrar y monitorear máquinas virtuales. Facilita la creación y configuración de máquinas virtuales mediante un asistente, y permite interactuar con ellas a través de una consola gráfica.
 
 * **virtinst**: Un conjunto de herramientas que incluye comandos como `virt-install`, `virt-clone`, y `virt-xml`. Estas herramientas permiten automatizar la creación y clonación de máquinas virtuales, así como gestionar configuraciones avanzadas a través de XML.
 
