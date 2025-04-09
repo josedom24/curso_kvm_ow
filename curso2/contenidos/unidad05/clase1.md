@@ -4,7 +4,7 @@ La clonación de una máquina virtual copia la configuración XML de la máquina
 
 La clonación nos permite crear nuevas máquinas de forma muy sencilla, sin necesidad de pasar por el proceso de instalación desde una imagen ISO.
 
-Para realizar la clonación vamos a partir de una máquina virtual que esté apagada.
+Para realizar la clonación vamos a partir de una **máquina virtual que esté apagada**.
 
 ## Uso de virt-clone para realizar la clonación
 
@@ -14,7 +14,7 @@ Vamos a usar la aplicación `virt-clone` para realizar la clonación. Puedes pro
 usuario@kvm:~$ virt-clone --connect=qemu:///system --original debian12 --auto-clone
 ```
 
-Es la forma más sencilla, se crea una nueva máquina. El parámetro `--auto-clone` asigna automáticamente:
+Con el parámetro `--connect` indicamos el tipo de conexión que vamos a realizar. En realidad no haría falta ponerlo porque tenemos definida la variable de entorno `LIBVIRT_DEFAULT_URI`. Es la forma más sencilla, se crea una nueva máquina. El parámetro `--auto-clone` asigna automáticamente:
 
 * Un nuevo **nombre** para la máquina virtual clonada si no se especifica uno.
 * Nuevas **direcciones MAC** para las interfaces de red para evitar conflictos en la red.
