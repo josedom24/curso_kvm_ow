@@ -3,7 +3,7 @@
 En este apartado, aprenderemos a trabajar con un pool de almacenamiento de tipo **disk**.
 
 * Un pool de tipo **disk** en libvirt permite gestionar un disco físico como un recurso de almacenamiento, facilitando la creación y administración de volúmenes para máquinas virtuales.
-* En un pool de tipo **disk**, un volumen es una partición del disco físico, que puede usarse como disco virtual para las máquinas virtuales.
+* En un pool de tipo **disk**, un volumen es una partición del disco físico (dispositivo de bloque), que puede usarse como disco virtual para las máquinas virtuales.
 
  Supondremos que tenemos un disco de 20GB sin formatear conectado a nuestro host que corresponde al dispositivo de bloque `/dev/vdb`.
 
