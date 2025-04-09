@@ -6,18 +6,18 @@ En apartados anterior creamos un volumen de 10 GB llamado `nuevodisco.img`. Vamo
 
 ```
 usuario@kvm:~$ virt-install --virt-type kvm \
-			 --name otro_debian12 \
-			 --cdrom /var/lib/libvirt/images/debian-12.10.0-amd64-netinst.iso \
-			 --os-variant debian12 \
-			 --disk vol=vm_images/nuevodisco.img \
-			 --memory 2048 \
-			 --vcpus 2
+                            --name otro_debian12 \
+                            --cdrom /var/lib/libvirt/images/debian-12.10.0-amd64-netinst.iso \
+                            --os-variant debian12 \
+                            --disk vol=vm-images/nuevodisco.img \
+                            --memory 2048 \
+                            --vcpus 2
 ```			 
 
 Tenemos varias opciones para indicar el volumen:
 
-* `--disk vol=vm_images/nuevodisco.img`, es la opción que hemos usado, con ella indicamos el volumen usando el formato `pool/volumen`. 
-* `--disk path=/srv/images/nuevodisco.img`: Donde indicamos directamente la ruta donde se encuentra el fichero de imagen de disco.
+* `--disk vol=vm-images/nuevodisco.img`, es la opción que hemos usado, con ella indicamos el volumen usando el formato `pool/volumen`. 
+* `--disk path=/srv/images/nuevodisco.img`: Donde indicamos directamente la ruta donde se encuentra el fichero de imagen de disco. Es importante entender, que no es necesario que el fichero de imagen de disco que utilicemos este guardado en un pool, simplemente ha de ser accesible por libvirt. Los pool de almacenamiento, simplemente nos ofrecen un mecanismo para gestionar de forma más eficiente los volúmenes de almacenamiento.
 * `--pool vm-images,size=10`: En este caso no se reutiliza el volumen que tenemos creado, sino que se crearía un nuevo volumen de 10GB en el pool indicado.
 
 Indicar que podríamos añadir más parámetros `--disk` para añadir más discos a la máquina virtual.
@@ -35,8 +35,8 @@ usuario@kvm:~$ virsh attach-disk debian12 /srv/images/disco1.qcow2 vdb --driver=
 Donde indicamos los siguientes parámetros:
 
 * El nombre de la máquina.
-* El path del fichero de imagen
-* El dispositivo de bloque que se va a crear
+* El path del fichero de imagen.
+* El dispositivo de bloque que se va a crear.
 * El driver con el parámetro `--driver=qemu`.
 * El tipo que será un disco, con `--type disk`.
 * El formato de la imagen que se va a añadir, con `--subdriver qcow2`.

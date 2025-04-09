@@ -30,7 +30,7 @@ usuario@kvm:~$ virsh domblklist debian12
  vdb      /srv/images/disco1.qcow2
 ```
 
-Y continuación redimensionamos el disco deseado:
+Y a continuación, redimensionamos el disco deseado:
 
 ```
 usuario@kvm:~$ virsh blockresize debian12 /srv/images/disco1.qcow2 3G
@@ -81,15 +81,15 @@ Lo primero es para la máquina virtual:
 usuario@kvm:~$ virsh shutdown debian12
 ```
 
-Antes de usar `virt-resize`, debemos crear un disco destino donde se va gaurdar el disco redimensionado:
+Vamos a redimensionar el disco raíz de la máquina Linuix que tiene 10 Gb de tamaño virtual. Antes de usar `virt-resize`, debemos crear un disco destino donde se va gaurdar el disco redimensionado:
 ```
-usuario@kvm:~$ sudo qemu-img create -f qcow2 /srv/images/nuevo_disco1.qcow2 4G
+usuario@kvm:~$ sudo qemu-img create -f qcow2 /var/lib/libvirt/images/nuevo_disco.qcow2 15G
 ```
-Y posteriormente vamos a redimensionar el sistema de archivo con `virt-resize` y el parámetro `--expand`. Se creará un nuevo volumen que posteriormente sustituiremos por el original:
+Y posteriormente vamos a redimensionar el sistema de archivo de la partición `/dev/sda1` con `virt-resize` y el parámetro `--expand`. Se creará un nuevo volumen que posteriormente sustituiremos por el original:
 
 ```
-usuario@kvm:~$ sudo virt-resize --expand /dev/vdb disco1.qcow2 nuevo_disco1.qcow2
-usuario@kvm:~$ sudo mv /srv/images/nuevo_disco.qcow2 /srv/images/disco1.qcow2 
+usuario@kvm:~$ sudo virt-resize --expand /dev/sda1 /var/lib/libvirt/images/debian12.qcow2 /var/lib/libvirt/images/nuevo_disco.qcow2
+usuario@kvm:~$ sudo mv /var/lib/libvirt/images/nuevo_disco.qcow2 /var/lib/libvirt/images/debian12.qcow2 
 ```
 
 Iniciamos de nuevo la máquina y comprobamos si el disco y el sistema de archivos se ha redimensionado.

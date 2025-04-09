@@ -39,7 +39,7 @@ usuario@kvm:~$ virsh vol-list vm-images
  nuevodisco.img   /srv/images/nuevodisco.img
 ```
 
-La herramienta `qemu-img` es muy potente y nos permite realizar muchas operaciones: redimensionar el fichero de imagen, convertir entre formatos de imágenes, crear imágenes a a partir de imágenes base, crear instantáneas de imágenes, ... Utilizaremos algunas de estas funciones en apartados posteriores del curso.
+La herramienta `qemu-img` es muy potente y nos permite realizar muchas operaciones: redimensionar el fichero de imagen, convertir entre formatos de imágenes, crear imágenes a partir de una una imagen base, crear instantáneas de imágenes, ... Utilizaremos algunas de estas funciones en apartados posteriores del curso.
 
 Si estuviéramos trabajando con otro tipo de pool de almacenamiento, tendíamos que usar herramientas especificas para gestionar los medios de almacenamientos adecuados. Por ejemplo:
 

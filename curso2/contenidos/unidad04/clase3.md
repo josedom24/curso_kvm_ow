@@ -18,7 +18,7 @@ usuario@kvm:~$ $ virsh vol-list default
 
 Podemos comprobar que los volúmenes listados se corresponden con ficheros que se encuentran en el directorio del pool `default` (`/var/lib/libvirt/images`).
 
-Al estar utilizando el formato de imagen `qcow2`, obtenemos la característica de aprovisionamiento ligero, el fichero tiene un tamaño virtual (el que hemos indicado en su creación y el que verá la máquina virtual que lo utilice) y el espacio ocupado en el disco del host (que irá creciendo conforme vayamos guardando información en la imagen). Podemos ver esta característica ejecutando la siguiente instrucción:
+Los ficheros de imágenes de discos que utilizan el formato `qcow2` tienen la característica de aprovisionamiento ligero, el fichero tiene un tamaño virtual (el que hemos indicado en su creación y el que verá la máquina virtual que lo utilice) y el espacio ocupado en el disco del host (que irá creciendo conforme vayamos guardando información en la imagen). Podemos ver esta característica ejecutando la siguiente instrucción:
 
 ```
 usuario@kvm:~$ virsh vol-list default --details
@@ -38,7 +38,7 @@ Capacity:       10,00 GiB
 Allocation:     2,47 GiB
 ```
 
-De la misma forma que los pools, los volúmenes están definidos en libvirt con el formato XML. Para ver la definición XML del volumen `vol.qcow2` del pool `default`, podemos ejecutar `virsh vol-dumpxml vol.qcow2 default`. A partir de un fichero XML con la definición de un nuevo volumen, podríamos crearlo con el comando `virsh vol-create`. **Nota: En este caso no existe el comandos `virsh vol-define`, ya que los volúmenes no se pueden crear temporalmente.**
+De la misma forma que los pools, los volúmenes están definidos en libvirt con el formato XML. Para ver la definición XML del volumen `debian12.qcow2` del pool `default`, podemos ejecutar `virsh vol-dumpxml debian12.qcow2 default`. A partir de un fichero XML con la definición de un nuevo volumen, podríamos crearlo con el comando `virsh vol-create`. **Nota: En este caso no existe el comandos `virsh vol-define`, ya que los volúmenes no se pueden crear temporalmente.**
 
 **Nota: Para profundizar en el formato XML que define los volúmenes puedes consultar la documentación oficial: [Storage pool and volume XML format](https://libvirt.org/formatstorage.html).**
 
@@ -58,10 +58,10 @@ total 10485760
 -rw------- 1 root root 10737418240 abr  3 07:17 nuevodisco.img
 ```
 
-Podemos listar los volúmenes que hemos creado en el pool `vm-images`:
+Podemos listar los volúmenes que hemos creado en el pool `vm-images`, y comprobar que no tenemos la característica de aprovisionamiento ligero al estar usando el formato `raw`:
 
 ```
-usuario@kvm:~$ virsh vol-list vm-images
+usuario@kvm:~$ virsh vol-list vm-images --details
 ```
 
 Para borrar el volumen, ejecutamos:
@@ -70,10 +70,15 @@ Para borrar el volumen, ejecutamos:
 usuario@kvm:~$ virsh vol-delete nuevodisco.img vm-images
 ```
 
-Tenemos a nuestra disposición más operaciones sobre los volúmenes, estudiaremos algunas de ellas en apartados posteriores: `vol-clone`: para clonar el volumen, `vol-resize`: para redimensionar, `vol-download`: para descargar el volumen en un fichero, `vol-upload`: para cargar información a un volumen desde un fichero,...
+Tenemos a nuestra disposición más operaciones sobre los volúmenes, estudiaremos algunas de ellas en apartados posteriores: 
+
+* `vol-clone`: para clonar el volumen.
+* `vol-resize`: para redimensionar volúmenes.
+* `vol-download`: para descargar el contenido de un volumen de almacenamiento y guardarlo en un fichero local.
+* `vol-upload`: para cargar información a un volumen desde un fichero.
 
 Hay que recordar que todas estas operaciones se realizan sobre volúmenes, y por tanto el medio de almacenamiento que gestionan dependerán del tipo del pool con el que estemos trabajando. De esta forma, por ejemplo:
 
-* Si usamos `vol-create-as` en un pool de tipo **disk** crearía una partición en un disco.
-* Si usamos `vol-create-as` en un pool de tipo **logical** crearía un volumen lógico LVM.
+* Si usamos `vol-create-as` en un pool de tipo **disk** se crearía una partición en un disco.
+* Si usamos `vol-create-as` en un pool de tipo **logical** se crearía un volumen lógico LVM.
 
