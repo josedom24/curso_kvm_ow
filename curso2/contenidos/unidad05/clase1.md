@@ -39,8 +39,11 @@ usuario@kvm:~$ virt-install --connect qemu:///system \
                             --os-variant debian12 \
                             --disk vol=default/vol_debian12_clon.qcow2 \
                             --memory 2048 \
-                            --vcpus 2
+                            --vcpus 2 \
+                            --import                             
 ```
+
+Usamos la opción `--import` para que no te pida que indique el medio de instalación, simplemente va a usar el volumen indicado como disco de la máquina virtual.
 
 ## Las máquinas virtuales clonadas son iguales a las originales
 

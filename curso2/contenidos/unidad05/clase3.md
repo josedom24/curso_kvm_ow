@@ -83,9 +83,6 @@ usuario@kvm:~$ virt-install --connect qemu:///system \
                             --import
 ```		
 
-Usamos la opción `--import` para que no te pida que indique el medio de instalación, simplemente va a usar el volumen indicado como disco de la máquina virtual.
-
-
 ### Creación de la nueva máquina a partir de la imagen con backing store con virt-clone
 
 Una vez que tenemos creado el volumen basada en el imagen base de la plantilla, podemos crear un nuevo clon con `virt-clone`, para ello ejecutamos:
