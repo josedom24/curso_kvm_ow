@@ -5,7 +5,8 @@
 En apartados anterior creamos un volumen de 10 GB llamado `nuevodisco.img`. Vamos a crear una nueva máquina virtual que tenga como disco duro este volumen, para ello ejecutamos la siguiente instrucción: 
 
 ```
-usuario@kvm:~$ virt-install --virt-type kvm \
+usuario@kvm:~$ virt-install --connect qemu:///system \
+                            --virt-type kvm \
                             --name otro_debian12 \
                             --cdrom /var/lib/libvirt/images/debian-12.10.0-amd64-netinst.iso \
                             --os-variant debian12 \
