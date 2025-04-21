@@ -14,7 +14,7 @@ Una vez tengamos una plantilla, tendremos dos manera de crear las nuevas máquin
 Tendríamos que realizar los siguientes pasos:
 
 1. Crear e instalar un nueva máquina virtual e instalarle todo el software necesario. A partir de esa máquina vamos a crear la plantilla.
-2. Vamos a generalizar la imagen, es decir, vamos a eliminar toda la información que debería ser única en una máquina (el machine ID, claves SSH de host, hostname, logs y cachés,...). De tal forma, que las máquinas clonadas, regenerarán esta información de forma única al iniciarlas. En máquinas Linux vamos a usar la utilidad `virt-sysprep` (wa necesario instalar el paquete `libguestfs-tools`), para máquinas Windows podemos usar los mecanismos propios de generalización que posee: [sysprep](https://docs.microsoft.com/es-es/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation?view=windows-11).
+2. Vamos a generalizar la imagen, es decir, vamos a eliminar toda la información que debería ser única en una máquina (el machine ID, claves SSH de host, hostname, logs y cachés,...). De tal forma, que las máquinas clonadas, regenerarán esta información de forma única al iniciarlas. En máquinas Linux vamos a usar la utilidad `virt-sysprep` (es necesario instalar el paquete `libguestfs-tools`), para máquinas Windows podemos usar los mecanismos propios de generalización que posee: [sysprep](https://docs.microsoft.com/es-es/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation?view=windows-11).
     
     [`virt-sysprep`](https://libguestfs.org/virt-sysprep.1.html) puede trabajar con un fichero de imagen, usando la opción `-a`, pero en nuestro caso vamos indicarle una máquina virtual, usando el parámetro `-d`.
 
@@ -29,25 +29,25 @@ Tendríamos que realizar los siguientes pasos:
 3. Reducir el tamaño de la imagen con [`virt-sparsify`](https://libguestfs.org/virt-sparsify.1.html), compactamos la imagen (elimina bloques vacíos y reduce el tamaño en disco) y ahorramos espacio:
 
     ```
-    usuario@kvm:~$  sudo virt-sparsify --compress /var/lib/libvirt/images/plantilla-debian12.qcow2 /var/lib/libvirt/images/plantilla-debian12-comprimida.qcow2
+    usuario@kvm:~$ sudo virt-sparsify --compress /var/lib/libvirt/images/debian12.qcow2 /var/lib/libvirt/images/plantilla-debian12-comprimida.qcow2
     ```
 
     Y reemplazamos la imagen por la nueva comprimida:
 
     ```
-    usuario@kvm:~$ sudo mv /var/lib/libvirt/images/plantilla-debian12-comprimida.qcow2 /var/lib/libvirt/images/plantilla-debian12.qcow2
+    usuario@kvm:~$ sudo mv /var/lib/libvirt/images/plantilla-debian12-comprimida.qcow2 /var/lib/libvirt/images/debian12.qcow2
     ```
 
 4. Evitar ejecutar está máquina de nuevo, ya que la generalización que hemos hecho se perdería. Para conseguirlo vamos a **configurar la imagen original de solo lectura**, de esta manera al intentar ejecutar la plantilla nos dará un error. Para ello como superusuario:
 
     ```
-    usuario@kvm:~$ sudo chmod 444 /var/lib/libvirt/images/plantilla-debian12.qcow2
+    usuario@kvm:~$ sudo chmod 444 /var/lib/libvirt/images/debian12.qcow2
     ```
 
     Además, vamos a cambiar el nombre a la máquina para recordar que es un plantilla:
 
     ```
-    usuario@kvm:~$ virsh domrename denian12 plantilla-denian12
+    usuario@kvm:~$ virsh domrename debian12 plantilla-debian12
     ```
 
 En cualquier momento podemos cambiar la configuración de la plantilla. Todas las nuevas máquinas clonadas a partir de ella tendrán la misma configuración. Ya tenemos la plantilla lista para ser clonada. Lo veremos en los siguientes apartados.

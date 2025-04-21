@@ -31,13 +31,13 @@ usuario@kvm:~$ virt-clone --connect=qemu:///system --original debian12 --name de
 Otra estrategia para crear una nueva máquina virtual clonada a a partir de otra, es usar el comando `virsh vol-clone` para clonar el volumen de la máquina original y posteriormente crear una nueva máquina virtual con el volumen clonado.
 
 ```
-usuario@kvm:~$ virsh vol-clone debian12.qcow2 vol_debian12_clon.qcow2 --pool default
+usuario@kvm:~$ virsh vol-clone debian12.qcow2 nueva-debian12.qcow2 --pool default
 
 usuario@kvm:~$ virt-install --connect qemu:///system \
                             --virt-type kvm \
-                            --name debian12-clone \
+                            --name nueva-debian12 \
                             --os-variant debian12 \
-                            --disk vol=default/vol_debian12_clon.qcow2 \
+                            --disk vol=default/nueva-debian12.qcow2 \
                             --memory 2048 \
                             --vcpus 2 \
                             --import                             
