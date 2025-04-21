@@ -10,6 +10,8 @@ usuario@kvm~$ virsh net-list --all
 
 Utilizamos la opción `--all` para listar las redes iniciadas y paradas.
 
+## Creación de redes
+
 Las redes se crean a partir de su definición XML que tenemos guardado en un fichero. En este caso tenemos el fichero `red-nat.xml`, donde tenemos la definición de una red virtual de tipo NAT.
 
 Para crear la nueva red, ejecutamos:
@@ -18,7 +20,9 @@ Para crear la nueva red, ejecutamos:
 usuario@kvm~$ virsh net-define red-nat.xml
 ```
 
-Si utilizamos el comando `virsh create` estaríamos creando la red de forma temporal, no persistente.
+Si utilizamos el comando `virsh net-create` estaríamos creando la red de forma temporal, no persistente.
+
+## Gestión de redes
 
 La red no se puede utilizar hasta que no se inicie, para ello:
 
@@ -50,7 +54,7 @@ virbr1		8000.5254002daec2	yes
 En el host, el bridge virtual aparece como una interfaz de red:
 
 ```
-ip a
+usuario@kvm~$ ip a
 ...
 4: virbr0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default qlen 1000
     link/ether 52:54:00:ae:a3:3d brd ff:ff:ff:ff:ff:ff
@@ -80,4 +84,16 @@ virbr2		8000.525400d51f31	yes
 virbr3		8000.525400f1d203	yes
 ```
 
-Finalmente indicar que para parar una red utilizamos el comando `virsh net-stop` y para eliminarla el comando `virsh undefined`.
+Finalmente indicar que para parar una red utilizamos el comando `virsh net-stop` y para eliminarla el comando `virsh net-undefined`.
+
+## Consulta de las concesiones DHCP
+
+Si tenemos una máquina virtual que ha tomado una configuración dinámica a partir del servidor DHCP de una red privada, podemos obtener información de las concesiones de ese servidor DHCP ejecutando la siguiente instrucción:
+
+```
+usuario@kvm~$ virsh net-dhcp-leases default
+ Expiry Time           MAC address         Protocol   IP address           Hostname             Client ID or DUID
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+ 2025-xx-xx 19:16:33   52:54:00:13:88:94   ipv4       192.168.122.223/24   plantilla-debian12   ff:00:13:88:94:00:01:00:01:2f:99:28:12:52:54:00:00:66:be
+```
+
