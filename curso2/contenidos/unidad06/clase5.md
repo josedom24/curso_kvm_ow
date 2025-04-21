@@ -17,7 +17,7 @@ La configuración la tenemos en el fichero `red-bridge.xml`, con el contenido:
 </network>
 ```
 
-* El modo de salida (etiqueta `zforward>`) se indica como `bridge`.
+* El modo de salida (etiqueta `forward>`) se indica como `bridge`.
 * Y en la etiqueta `bridge` se pone el nombre del bridge virtual que estamos usando.
 
 Para crear esta nueva red, ejecutamos:
