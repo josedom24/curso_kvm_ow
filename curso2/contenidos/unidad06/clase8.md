@@ -7,7 +7,8 @@ En este apartado vamos a configurar las dos máquinas con la que estamos trabaja
 En primer lugar vamos a cambiar la configuración de la máquina Linux para conectarla a la red de tipo NAT llamada `red-nat` que hemos creado anteriormente (recordamos que el direccionamiento que pusimos para esta red es `192.168.101.0/24`). De la misma manera que en el apartado anterior, desconectamos la la interfaz de red de la red actual y la conectamos a la nueva red (recuerda que este cambio no se puede hacer con la máquina funcionando, si lo hacemos tendrá efecto tras un reinicio):
 
 ```
-usuario@kvm~$ virsh detach-interface debian12 bridge --mac 52:54:00:0c:06:2a --persistent 
+usuario@kvm~$ virsh domiflist debian12
+usuario@kvm~$ virsh detach-interface debian12 network --mac xx:xx:xx:xx:xx:xx --persistent 
 usuario@kvm~$ virsh attach-interface debian12 network red_nat --model virtio --persistent
 ```
 
@@ -30,7 +31,7 @@ A continuación, vamos a conectar las dos máquinas a la red aislada llamada `re
 * Vamos a modificar la configuración de la máquina Linux para conectarla a la red aislada, y posteriormente configuramos la interfaz de red de forma estática con el direccionamiento que habíamos configurado en la red `red-aislada` que era `192.168.102.0/24`, tenemos que recordar que en esta red está conectada el host con la dirección `192.168.102.1`.
 
     ```
-    usuario@kvm~$ virsh detach-interface debian12 bridge --mac 52:54:00:0c:06:2a --persistent 
+    usuario@kvm~$ virsh detach-interface debian12 network --mac xx:xx:xx:xx:xx:xx --persistent 
     usuario@kvm~$ virsh attach-interface debian12 network red_aislada --model virtio --persistent
     ```
 
@@ -41,7 +42,7 @@ A continuación, vamos a conectar las dos máquinas a la red aislada llamada `re
 * Realizamos la misma operación en la máquina Windows. Además deshabilitamos el cortafuegos para que nos permita hacer las posteriores comprobaciones:
 
     ```
-    usuario@kvm~$ virsh detach-interface win10 bridge --mac db:11:cc:b5:f4:20 --persistent 
+    usuario@kvm~$ virsh detach-interface win10 network --mac xx:xx:xx:xx:xx:xx --persistent 
     usuario@kvm~$ virsh attach-interface win10 network red_aislada --model virtio --persistent
     ```
     
@@ -66,7 +67,7 @@ En este último ejemplo modificamos la configuración de las interfaces de red d
 *  Modificamos la configuración de la máquina Linux para conectarla a la red muy aislada, y configuramos la interfaz de red de forma estática con el direccionamiento que hemos indicado:
 
     ```
-    usuario@kvm~$ virsh detach-interface debian12 bridge --mac 52:54:00:0c:06:2a --persistent 
+    usuario@kvm~$ virsh detach-interface debian12 network --mac xx:xx:xx:xx:xx:xx --persistent 
     usuario@kvm~$ virsh attach-interface debian12 network red_muy_aislada --model virtio --persistent
     ```
 
@@ -77,7 +78,7 @@ En este último ejemplo modificamos la configuración de las interfaces de red d
 * En la máquina Windows hacemos la misma operación:
 
     ```
-    usuario@kvm~$ virsh detach-interface win10 bridge --mac db:11:cc:b5:f4:20 --persistent 
+    usuario@kvm~$ virsh detach-interface win10 network --mac xx:xx:xx:xx:xx:xx --persistent 
     usuario@kvm~$ virsh attach-interface win10 network red_muy_aislada --model virtio --persistent
     ```
 
