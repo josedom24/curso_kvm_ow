@@ -14,13 +14,38 @@ Para ello tenemos que realizar los siguientes pasos:
 
     Realizamos la configuración de la nueva interface de red en el fichero `/etc/network/interfaces`:
 
-    CONFIGURACIÓN DE RED
+    ```
+    allow-hotplug enp1s0
+    iface enp1s0 inet static
+        address 172.22.0.2/24
+    
+    allow-hotplug enp7s0
+    iface enp7s0 inet dhcp  
+    ```
 
     Y comprobamos el direccionamiento de la máquina Linux:
 
-    IP A
+    ```
+    usuario@debian12:~$ sudo systemctl restart networking.service 
+    usuario@debian12:~$ ip a
+    ...
+    4: enp1s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+        link/ether 52:54:00:ce:bf:4e brd ff:ff:ff:ff:ff:ff
+        inet 172.22.0.2/24 brd 192.168.102.255 scope global enp1s0
+    ...
+    5: enp7s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 52:54:00:b5:42:82 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.101.41/24 brd 192.168.101.255 scope global dynamic enp7s0
 
-    Está máquina accede al exterior por la interfaz conectada a `red-nat`, en el ejemplo `enp7s0`.
+    ```
+
+    Está máquina accede al exterior por la interfaz conectada a `red-nat`, en el ejemplo `enp7s0`:
+
+    ```
+    usuario@debian12:~$ ip r
+    default via 192.168.101.1 dev enp7s0 
+    ...
+    ```
 
 2. Completamos la configuración de la máquina Windows. Configuramos su puerta de enlace que será la máquina Linux, es decir la dirección `172.22.0.2` e indicamos un servidor DNS.
  
