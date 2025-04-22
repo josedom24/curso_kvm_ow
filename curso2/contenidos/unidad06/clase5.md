@@ -1,8 +1,8 @@
 # Gestión de redes puentes públicas
 
-En este apartado vamos  a estudiar como trabajar con las redes puentes.
+En este apartado vamos a estudiar como trabajar con las redes puentes.
 
-## Gestión de Redes Puentes conectadas a un bridge externo con virsh
+## Gestión de redes puentes conectadas a un bridge externo con virsh
 
 Partimos de que en el host tenemos creado un bridge virtual (que se suele llamar `br0`) al que está conectado el host. Las máquinas virtuales se conectarán en ese bridge y tomarán configuración de red de la misma red a la que está conectada el host. La definición quedaría de la siguiente manera.
 

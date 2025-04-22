@@ -76,6 +76,7 @@ Si tenemos un sistema que tenga `netplan`, por ejemplo Ubuntu, vamos a configura
 ```
 network:
   version: 2
+  renderer: NetworkManager
   ethernets:
     enp1s0:
       dhcp4: no
