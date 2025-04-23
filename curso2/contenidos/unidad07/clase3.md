@@ -7,11 +7,13 @@ Las **imágenes cloud** son discos base preconfigurados, optimizados para ser ut
 `cloud-init` es un conjunto de scripts y herramientas que permiten la personalización automática de instancias o máquinas virtuales en su primer arranque. Originalmente desarrollado para entornos en la nube como OpenStack, AWS y Azure, `cloud-init` se ha convertido en una solución estándar para la inicialización de sistemas operativos en cualquier entorno virtualizado.
 
 Su función principal es leer **datos de configuración** desde diversas fuentes y aplicarlos al sistema operativo en el arranque inicial. Esto permite realizar tareas como:
+
 * Configuración de red.
 * Creación de usuarios y claves SSH.
 * Instalación de paquetes.
 * Ejecución de comandos personalizados.
 * Configuración de particiones y almacenamiento.
+* ...
 
 ## Configuración de cloud-init
 

@@ -15,7 +15,7 @@ Vamos a partir del siguiente escenario:
 * Máquina **cliente** donde tenemos instalado `virsh` y vamos a conectarnos a una máquina remota.
 * Maquina **servidor** donde se ejecuta el demonio de libvirt. El usuario de esta máquina se llama `usuario`.
 
-Para poder acceder por SSH al servidor remoto sin que nos pida contraseña es necesario otro método de autentificación. En este caso vamos a usar el método de claves SSH, para ello realizamos los siguientes pasos:
+Para poder acceder por SSH al servidor remoto sin que nos pida contraseña es necesario otro método de autentificación. En este caso vamos a usar claves SSH para realizar la autentificación, para ello realizamos los siguientes pasos:
 
 1. En la máquina cliente, con un usuario sin privilegios, generamos un par de claves SSH, una pública y otra privada, para ello:
 
@@ -48,18 +48,12 @@ El usuario que indicamos será al que hemos copiado nuestra clave pública. Adem
 Si el servidor al que hemos conectado tenía ya creadas máquinas virtuales la podremos ver en la nueva conexión. Además todas las operaciones que hagamos en esta conexión se realizarán en el servidor remoto.
 
 ```
-usuario@kvm:~$ virsh -c qemu+ssh://jose@192.168.100.1/system list --all
- Id   Name                State
-------------------------------------
- 1    kvm                 running
- -    24_04               shut off
- -    bookworm_default    shut off
- -    debian12            shut off
- -    minikube            shut off
- -    rmarkdown_default   shut off
- -    win10               shut off
- -    win10-docker        shut off
- -    win11               shut off
+usuario@kvm:~$ virsh -c qemu+ssh://usuario@<dirección del servidor>/system list --all
 ```
 
-VIRT-VIEWER conexión remota
+Si queremos conectarnos a una máquina remota podemos usar `virt-viewer`:
+
+```
+usuario@kvm:~$ virt-viewer --connect=qemu+ssh://usuario@<dirección del servidor>/system <nombre_máquina_virtual>
+```
+

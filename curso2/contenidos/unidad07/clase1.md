@@ -15,9 +15,9 @@ Para que una URL sea válida como fuente de instalación en red, debe contener u
 
 ## Instalación en red con virt-install
 
-Para realizar este tipo de instalación con `virt-install`vamos a indicar la URL de instalación en el parámetro `--location`. 
+Para realizar este tipo de instalación con `virt-install` vamos a indicar la URL de instalación en el parámetro `--location`. 
 
-Además suponiendo que estamos trabajando en un sistema donde tenemos entorno gráfico, vamos a realizar la instalación conectándonos por la consola serie. Para ello:
+Además suponiendo que estamos trabajando en un sistema donde no tenemos entorno gráfico, vamos a realizar la instalación conectándonos por la consola serie. Para ello:
 
 * Indicamos que no tenemos consola gráfica, pero si consola serie: `--graphics none --console pty,target_type=serial`.
 * Pasamos parámetros al kernel del sistema operativo para que envíe la salida por la consola serie: `--extra-args="console=ttyS0,115200n8"`.

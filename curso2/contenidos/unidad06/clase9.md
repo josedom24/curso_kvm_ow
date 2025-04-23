@@ -66,7 +66,7 @@ usuario@debian:~$ sudo sysctl -p
 4. Configuramos `iptables` para realizar NAT. Además queremos que las reglas de cortafuegos que configuremos sean permanentes. Para  ello, instalamos los paquetes necesarios:
 
 ```
-usuario@debian:~$ sudo apt install iptables iptables-persistent
+usuario@debian:~$ ls
 ```
 
 A continuación creamos la regla de NAT con iptables:
