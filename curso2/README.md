@@ -54,5 +54,5 @@
     * [Despliegue automatizado de máquinas virtuales usando cloud-init](contenidos/unidad07/clase3.md)
     * [Conexión local no privilegiada a libvirt](contenidos/unidad07/clase4.md)
     * [Conexión remota a libvirt](contenidos/unidad07/clase5.md)
-    * Copia de seguridad de máquinas virtuales
+    * [Copia de seguridad de máquinas virtuales](contenidos/unidad07/clase6.md)
     
