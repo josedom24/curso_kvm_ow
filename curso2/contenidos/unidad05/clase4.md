@@ -1,5 +1,23 @@
 # Instantáneas de máquinas virtuales
-Un **snapshot (instantánea)** nos posibilita guardar el estado de una máquina virtual en un determinado momento. Se guarda el estado del disco y el estado de la memoria. De esta forma en el futuro puedo volver a un estado anterior de la misma. No todos los formatos y medios de almacenamiento nos posibilitan esta características. Un fichero de imagen de disco con formato `qcow2` si nos permite la realización de instantáneas.
+
+Una instantánea (snapshot) nos ofrece la funcionalidad muy útil de guardar el estado de una máquina virtual (MV) en un momento dado, permitiendo volver a ese estado más adelante. 
+
+Tipos de instantáneas:
+
+* Instantáneas en caliente (live snapshots): 
+    * Se realizan con la máquina virtual encendida. 
+    * Se guarda el estado de la memoria RAM (estado en ejecución), del disco (estado del sistema de archivos) y el estado del dispositivo.
+    * Permiten volver exactamente al mismo punto de ejecución.
+    * Requieren que el almacenamiento permita esta funcionalidad, por ejemplo con ficheros de imágenes de disco requiere el formato qcow2.
+    * Son más complejas y pueden causar un pequeño impacto en el rendimiento mientras se crean, ya que se pausa la máquina virtual.
+* Instantáneas en frío (offline snapshots):
+    * Se hacen con la máquina virtual detenida.
+    * Solo se guarda el estado del disco (y la configuración XML si se indica).
+    * No se guarda el contenido de la memoria RAM.    
+    * Son más rápidas y seguras de hacer, porque no hay riesgo de inconsistencia.
+    * También requiere que el almacenamiento acepte los snapshots.
+
+## Ejemplo de instantánea
 
 ## Gestión de instantáneas con virsh
 
