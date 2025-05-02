@@ -23,4 +23,4 @@ A continuación, indicamos la URL correspondiente al repositorio de instalación
 
 ![red](img/red2.png)
 
-Terminamos de configuración la máquina virtual que estamos creando y al arrancarse podremos realizar la instalación del sistema operativo sin necesidad de habernos descargado la imagen ISO.
+Terminamos la configuración de la máquina virtual que estamos creando y al iniciarse podremos realizar la instalación del sistema operativo sin necesidad de habernos descargado la imagen ISO.
