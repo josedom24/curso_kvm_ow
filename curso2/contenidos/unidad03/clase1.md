@@ -64,7 +64,7 @@ Esto registra el dominio, pero no lo inicia. Para iniciarlo, usa:
 ```
 usuario@kvm:~$ virsh start mi-vm
 ```
-Y para acceder a él podemos usar la aplicación `virt-viewer`, despues de instalar el paquete `virtinst`:
+Y para acceder a él podemos usar la aplicación `virt-viewer`, después de instalar el paquete `virtinst`:
 
 ```
 usuario@kvm:~$ sudo apt install virtinst
@@ -77,7 +77,7 @@ usuario@kvm:~$ virsh create dominio.xml
 ```
 Este dominio existirá solo hasta que se apague.
 
-Podríamos realizar la instalación del sistema, pero en este momento paramos la máquina virtual, y la eliminimos junto a su disco:
+Podríamos realizar la instalación del sistema, pero en este momento paramos la máquina virtual, y la eliminamos junto a su disco:
 
 ```
 usuario@kvm:~$ virsh destroy mi-vm

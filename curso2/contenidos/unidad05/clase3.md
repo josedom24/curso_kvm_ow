@@ -12,11 +12,11 @@ Recuerda que puedes usar el parámetro `--file` para indicar el nombre del fiche
 
 ## Clonación enlazada a partir de plantillas
 
-En este tipo de clonación la imagen de la máquina clonada utiliza la imagen de la plantilla como imagen base (**backing store**) en modo de sólo lectura, en la imagen de la nueva máquina sólo se guardan los cambios del sistema de archivo. Requiere menos espacio en disco, pero no puede ejecutarse sin acceso a la imagen de plantilla base. 
+En este tipo de clonación la imagen de la máquina clonada utiliza la imagen de la plantilla como imagen base (**backing store**) en modo de solo lectura, en la imagen de la nueva máquina solo se guardan los cambios del sistema de archivo. Requiere menos espacio en disco, pero no puede ejecutarse sin acceso a la imagen de plantilla base. 
 
 El mecanismo es un poco más complejo, tenemos que realizar dos pasos:
 
-1. Creación del nuevo volumen a a partir de la imagen base de la plantilla (**backing store**).
+1. Creación del nuevo volumen a partir de la imagen base de la plantilla (**backing store**).
 2. Creación de la nueva máquina usando `virt-install` o `virt-clone`.
 
 ### Creación de imágenes de disco con backing store
@@ -28,7 +28,7 @@ A continuación vamos a crear un nuevo volumen a partir de la imagen base que he
 
 Para no complicar la creación de volúmenes con backing store vamos a indicar el tamaño del nuevo volumen igual al de la imagen base. C
 
-Para asegurarnos de crear un volumen del mismo tamaño que la imagen base vamos comprobar su tamaño:
+Para asegurarnos de crear un volumen del mismo tamaño que la imagen base vamos a comprobar su tamaño:
 ```
 usuario@kvm:~$ virsh domblkinfo plantilla-debian12 vda --human
 ```
@@ -94,7 +94,7 @@ usuario@kvm:~$ virt-install --connect qemu:///system \
 
 ### Creación de la nueva máquina a partir de la imagen con backing store con virt-clone
 
-Una vez que tenemos creado el volumen basada en el imagen base de la plantilla, podemos crear un nuevo clon con `virt-clone`, para ello ejecutamos:
+Una vez que tenemos creado el volumen basado en la imagen base de la plantilla, podemos crear un nuevo clon con `virt-clone`, para ello ejecutamos:
 
 ```
 usuario@kvm:~$ virt-clone --connect=qemu:///system --original plantilla-debian12 --name otra-debian12 --file /var/lib/libvirt/images/debian12-backing.qcow2 --preserve-data

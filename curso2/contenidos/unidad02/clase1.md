@@ -31,7 +31,7 @@ Para activar la virtualización anidada en **VirtualBox**, siga estos pasos:
 
 ### Virtualización anidada en KVM/QEMU
 
-Normalmente la virtualización anidada esta activada, pero en la creación de la máquina virtual es necesario especificar que use la CPU del host. Esto es fundamental para que la máquina virtual pueda acceder a las extensiones de virtualización de la CPU del host de forma correcta, aprovechando la virtualización anidada.
+Normalmente, la virtualización anidada está activada, pero en la creación de la máquina virtual es necesario especificar que use la CPU del host. Esto es fundamental para que la máquina virtual pueda acceder a las extensiones de virtualización de la CPU del host de forma correcta, aprovechando la virtualización anidada.
 
 Al crear una máquina virtual en KVM, especialmente si se planea habilitar virtualización anidada, es recomendable utilizar el modelo de CPU de tipo **host-passthrough**.
 

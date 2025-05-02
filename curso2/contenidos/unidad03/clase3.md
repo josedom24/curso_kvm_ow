@@ -9,7 +9,7 @@ usuario@kvm:~$ virsh list
  1    debian12   running
 ```
 
-Sie estamos trabajando en un sistema con entorno gráfico podemos usar la herramienta `virt-viewer` para conectarno  a la consola de la máquina:
+Si estamos trabajando en un sistema con entorno gráfico podemos usar la herramienta `virt-viewer` para conectarnos  a la consola de la máquina:
 
 ```
 usuario@kvm:~$ virt-viewer debian12
@@ -85,4 +85,4 @@ usuario@kvm:~$ virsh vol-list default
  debian12.qcow2                     /var/lib/libvirt/images/debian12.qcow2
 
 ```
-Los conceptos sobre almacenamiento lo estudiaremos con profundiad en el módulo correspondiente.
+Los conceptos sobre almacenamiento lo estudiaremos con profundidad en el módulo correspondiente.

@@ -63,9 +63,9 @@ Una vez que hemos realizado la instalación del sistema operativo, podemos compr
 
 La instalación de Windows 11, es similar a la que hemos visto anteriormente con Windows 10, pero teniendo en cuenta algunas consideraciones:
 
-* Evidentemente necesitamos guardar la imagen ISO de Windows 11 en el directorio de imágenes.
+* Evidentemente, necesitamos guardar la imagen ISO de Windows 11 en el directorio de imágenes.
 * Cuando indicamos como variante de sistema operativo la opción *win11*, se va a configurar la máquina virtual con los elementos hardware necesarios para la instalación de este sistema operativo. En particular, se añade un dispositivo TPM. El TPM (Trusted Platform Module) es un chip de seguridad que se encuentra en la placa base de los ordenadores modernos. Su función principal es proporcionar un entorno seguro para almacenar claves de cifrado, credenciales y otros datos sensibles. Microsoft exige TPM versión 2.0 como requisito obligatorio para la instalación de Windows 11 debido a motivos de seguridad. En KVM/libvirt se puede emular el chip TPM para que el sistema invitado (por ejemplo, Windows 11) lo detecte y pueda instalarse sin problemas.
-* Durante la instalación del sistema, tendremos que cargar los controladores VirtIO para que se detecte el disco duro, al igual que hicimos en Windows 10. Pero además, para la instalación del sistema es necesario que estar conectado a internet, por lo tanto durante el proceso de instalación, también tendremos que cargar los drivers VirtIO de la tarjeta de red para que se tenga conectividad.
+* Durante la instalación del sistema, tendremos que cargar los controladores VirtIO para que se detecte el disco duro, al igual que hicimos en Windows 10. Pero además, para la instalación del sistema es necesario que estar conectado a internet, por lo tanto, durante el proceso de instalación, también tendremos que cargar los drivers VirtIO de la tarjeta de red para que se tenga conectividad.
 * La instrucción que vamos a usar para la instalación sería:
 
 	```

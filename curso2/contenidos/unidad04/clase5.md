@@ -2,7 +2,7 @@
 
 ## Creación de máquinas virtuales usando volúmenes existentes
 
-En apartados anterior creamos un volumen de 10 GB llamado `nuevodisco.img`. Vamos a crear una nueva máquina virtual que tenga como disco duro este volumen, para ello ejecutamos la siguiente instrucción: 
+En apartados anteriores creamos un volumen de 10 GB llamado `nuevodisco.img`. Vamos a crear una nueva máquina virtual que tenga como disco duro este volumen, para ello ejecutamos la siguiente instrucción: 
 
 ```
 usuario@kvm:~$ virt-install --connect qemu:///system \
@@ -25,9 +25,9 @@ Indicar que podríamos añadir más parámetros `--disk` para añadir más disco
 
 ## Añadir nuevos discos a máquinas virtuales
 
-Para añadir un disco a una máquina virtual, vamos a modificar su definición XML. Podríamos usar `virsh edit` e incluir la definición XML del nuevo disco. Sin embargo, vamos a usar un comando de `virsh` que nos facilita la operación de añadir un nuevo disco y por tanto, la modificación de la definición XML de la máquina. Hay que indicar que esta modificación se puede hacer "en caliente", con la máquina funcionando.
+Para añadir un disco a una máquina virtual, vamos a modificar su definición XML. Podríamos usar `virsh edit` e incluir la definición XML del nuevo disco. Sin embargo, vamos a usar un comando de `virsh` que nos facilita la operación de añadir un nuevo disco y, por tanto, la modificación de la definición XML de la máquina. Hay que indicar que esta modificación se puede hacer "en caliente", con la máquina funcionando.
 
-Por lo tanto, vamos añadir el volumen `disco1.qcow2` que creamos en el apartado anterior, a nuestra máquina Linux, ejecutamos:
+Por lo tanto, vamos a añadir el volumen `disco1.qcow2` que creamos en el apartado anterior, a nuestra máquina Linux, ejecutamos:
 
 ```
 usuario@kvm:~$ virsh attach-disk debian12 /srv/images/disco1.qcow2 vdb --driver=qemu --type disk --subdriver qcow2 --persistent

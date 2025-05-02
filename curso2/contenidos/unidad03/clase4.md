@@ -23,7 +23,7 @@ usuario@kvm:~$ virsh list --all
  2    debian12   ejecutando
 ```
 
-**Nota: Podemos referencia una máquina virtual por su nombre o por su id.**
+**Nota: Podemos referenciar una máquina virtual por su nombre o por su id.**
 
 ## Ciclo de vida de una máquina virtual
 
@@ -39,7 +39,7 @@ Para iniciar una máquina que está detenida:
 usuario@kvm:~$ virsh start debian12
 ```
 
-Si la propiedad **autostart** de una maquina está activa, cada vez que se inicie el host, esa máquina se encenderá de forma automática. Para activarlo:
+Si la propiedad **autostart** de una máquina está activa, cada vez que se inicie el host, esa máquina se encenderá de forma automática. Para activarlo:
 
 ```
 usuario@kvm:~$ virsh autostart debian12
@@ -85,13 +85,13 @@ Para obtener información de la máquina:
 usuario@kvm:~$ virsh dominfo debian12 
 ```
 
-Para obtener el estado de la máquina_
+Para obtener el estado de la máquina:
 
 ```
 usuario@kvm:~$ virsh domstate debian12 
 ```
 
-Para obtner la lista de interfaces de red  las direcciones IP de la máquina:
+Para obtener la lista de interfaces de red  las direcciones IP de la máquina:
 
 ```
 usuario@kvm:~$ virsh domiflist debian12

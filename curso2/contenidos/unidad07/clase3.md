@@ -17,7 +17,7 @@ Su función principal es leer **datos de configuración** desde diversas fuentes
 
 ## Configuración de cloud-init
 
-En la [documentación](https://cloudinit.readthedocs.io/en/latest/) de `cloud-init` puedes ver todas las configuraciones que podemos realizar, para este ejercicio vamos a realizar una ejemplo sencillo. Para indicar la configuración se suele usar un fichero con formato YAML conocido como `cloud-config`.Creamos un fichero `cloud.yaml` con el siguiente contenido:
+En la [documentación](https://cloudinit.readthedocs.io/en/latest/) de `cloud-init` puedes ver todas las configuraciones que podemos realizar, para este ejercicio vamos a realizar un ejemplo sencillo. Para indicar la configuración se suele usar un fichero con formato YAML conocido como `cloud-config`. Creamos un fichero `cloud.yaml` con el siguiente contenido:
 
 ```yaml
 #cloud-config
@@ -40,7 +40,7 @@ chpasswd:
       type: text
 ```
 
-Con este fichero se van a hacer tres configuraciones en la máquina: se cambia su nombre,. se actualizan los paquetes y finalmente se cambian las contraseñas de los usuarios `root` y `ubuntu`. Usamos el usuario `ubuntu` porque vamos a usar una imagen cloud de Ubuntu que suelen tener preconfigurados un usuario llamado `ubuntu`.
+Con este fichero se van a hacer tres configuraciones en la máquina: se cambia su nombre, se actualizan los paquetes y finalmente, se cambian las contraseñas de los usuarios `root` y `ubuntu`. Usamos el usuario `ubuntu` porque vamos a usar una imagen cloud de Ubuntu que suelen tener preconfigurados un usuario llamado `ubuntu`.
 
 ## Descargar de la imagen cloud
 
@@ -72,7 +72,7 @@ usuario@kvm:~$ cd /var/lib/libvirt/images
 usuario@kvm:~$ sudo qemu-img create -f qcow2 -b noble-server-cloudimg-amd64.img -F qcow2 ubuntu2404.qcow2
 ```
 
-Y si queremos podemos cambiarle el tamaño, ya que al ejecutar la máquina por primera vez con la imagen cloud el sistema operativo de redimensionará al tamaño del disco:
+Y si queremos podemos cambiarle el tamaño, ya que al ejecutar la máquina por primera vez con la imagen cloud el sistema operativo se redimensionará al tamaño del disco:
 
 ```
 usuario@kvm:~$ sudo qemu-img resize ubuntu2404.qcow2 20G

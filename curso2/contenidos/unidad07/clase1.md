@@ -11,13 +11,13 @@ Muchas distribuciones Linux nos ofrecen repositorios de instalación que son acc
 * **Fedora**: https://download.fedoraproject.org/pub/fedora/linux/releases/41/Everything/x86_64/os/
 * **Arch Linux**: http://mirror.rackspace.com/archlinux/iso/latest/
 
-Para que una URL sea válida como fuente de instalación en red, debe contener una estructura específica con los archivos esenciales para el arranque y la instalación: el kernel del instalación, la imagen del disco RAM inicial que contiene el sistema mínimo necesario para comenzar la instalación,...
+Para que una URL sea válida como fuente de instalación en red, debe contener una estructura específica con los archivos esenciales para el arranque y la instalación: el kernel de la instalación, la imagen del disco RAM inicial que contiene el sistema mínimo necesario para comenzar la instalación,...
 
 ## Instalación en red con virt-install
 
 Para realizar este tipo de instalación con `virt-install` vamos a indicar la URL de instalación en el parámetro `--location`. 
 
-Además suponiendo que estamos trabajando en un sistema donde no tenemos entorno gráfico, vamos a realizar la instalación conectándonos por la consola serie. Para ello:
+Además, suponiendo que estamos trabajando en un sistema donde no tenemos entorno gráfico, vamos a realizar la instalación conectándonos por la consola serie. Para ello:
 
 * Indicamos que no tenemos consola gráfica, pero si consola serie: `--graphics none --console pty,target_type=serial`.
 * Pasamos parámetros al kernel del sistema operativo para que envíe la salida por la consola serie: `--extra-args="console=ttyS0,115200n8"`.

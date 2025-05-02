@@ -1,12 +1,12 @@
 # Redimensión de discos en máquinas virtuales
 
-En este apartado vamos a aumentar el tamaño del volumen que hemos añadido a la máquina Linux, por lo que la máquina verá un disco más grande, pero hay que recordar que también tendremos que redimensionar el sistemas de ficheros.
+En este apartado vamos a aumentar el tamaño del volumen que hemos añadido a la máquina Linux, por lo que la máquina verá un disco más grande, pero hay que recordar que también tendremos que redimensionar el sistema de ficheros.
 
-Para realizar la redimensión tenemos dos alternativas: o usar la API de libvirt usando `virsh` o usar herramientas especificas, en este caso `qemu-img`.
+Para realizar la redimensión tenemos dos alternativas: o usar la API de libvirt usando `virsh` o usar herramientas específicas, en este caso `qemu-img`.
 
 ## Redimensión de discos en máquinas virtuales sin ejecución
 
-Para redimensionar el volumen de una máquina que este parada, podemos usar `virsh`:
+Para redimensionar el volumen de una máquina que esté parada, podemos usar `virsh`:
 
 ```
 usuario@kvm:~$ virsh vol-resize disco1.qcow2 3G --pool vm-images
@@ -54,7 +54,7 @@ S.ficheros     Tamaño Usados  Disp Uso% Montado en
 /dev/vdb         974M    24K  907M   1% /mnt
 ```
 
-Desmontamos el disco (es necesario porque esta formateado con `ext4`, con otros sistemas de ficheros no sería necesario el desmontaje), y lo redimensionamos:
+Desmontamos el disco (es necesario porque está formateado con `ext4`, con otros sistemas de ficheros no sería necesario el desmontaje), y lo redimensionamos:
 
 ```
 usuario@debian:~$ sudo umount /mnt
@@ -81,7 +81,7 @@ Lo primero es para la máquina virtual:
 usuario@kvm:~$ virsh shutdown debian12
 ```
 
-Vamos a redimensionar el disco raíz de la máquina Linuix que tiene 10 Gb de tamaño virtual. Antes de usar `virt-resize`, debemos crear un disco destino donde se va gaurdar el disco redimensionado:
+Vamos a redimensionar el disco raíz de la máquina Linux que tiene 10 Gb de tamaño virtual. Antes de usar `virt-resize`, debemos crear un disco destino donde se va a guardar el disco redimensionado:
 ```
 usuario@kvm:~$ sudo qemu-img create -f qcow2 /var/lib/libvirt/images/nuevo_disco.qcow2 15G
 ```

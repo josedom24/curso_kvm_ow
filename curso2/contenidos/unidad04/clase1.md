@@ -3,7 +3,7 @@
 El almacenamiento es un aspecto fundamental en la virtualización, ya que permite gestionar el espacio en disco de las máquinas virtuales. En KVM/libvirt, el almacenamiento se organiza en **grupos o pools de almacenamiento (storage pools)** y **volúmenes de almacenamiento (storage volumes)**.
 
 * **Pools de Almacenamiento**: Es una fuente de almacenamiento, una cantidad de almacenamiento que el administrador del host ha configurado para su uso por las máquinas virtuales. 
-* **Volúmenes**: Los pools de almacenamiento se dividen en volúmenes. Cada uno de estos volúmenes lo utilizaran las máquinas virtuales como discos (dispositivos de bloques). 
+* **Volúmenes**: Los pools de almacenamiento se dividen en volúmenes. Cada uno de estos volúmenes lo utilizarán las máquinas virtuales como discos (dispositivos de bloques). 
 
 ## Pools de almacenamiento
 
@@ -22,14 +22,14 @@ Los pools de almacenamiento son espacios lógicos donde se almacenan las imágen
     * **nfs**: Sistema de fichero compartido en red desde un servidor NFS.
     * **glusterfs**: Sistema distribuido de almacenamiento en red.
 
-Hemos puestos algunos ejemplos de tipo de almacenamiento, pero en la [documentación](https://libvirt.org/storage.html) de libvirt puedes encontrar todas las fuentes de almacenamiento.
+Hemos puesto algunos ejemplos de tipo de almacenamiento, pero en la [documentación](https://libvirt.org/storage.html) de libvirt puedes encontrar todas las fuentes de almacenamiento.
 
 ## Volúmenes de almacenamiento (Storage Volumes)
 
 Los volúmenes son las unidades individuales de almacenamiento dentro de un pool. Según el tipo del pool de almacenamiento con el que estemos trabajando, el volumen corresponderá a elementos diferentes:
 * En el caso del tipo **dir**, estos volúmenes corresponden a ficheros de imagen de disco. Los formatos de imagen de disco más utilizados son:
     * **raw**:  el formato raw es una imagen binaria sencilla de la imagen del disco. Se ocupa todo el espacio que hayamos indicado al crearla. El acceso es más eficiente. No soporta ni snapshots ni aprovisionamiento ligero.
-    * **qcow2**: formato QEMU copy-on-write. Al crearse sólo se ocupa el espacio que se está ocupando con los datos (aprovisionamiento ligero), el fichero irá creciendo cuando escribamos en el él. Acepta instantáneas o snapshots. Es menos eficiente en cuanto al acceso.
+    * **qcow2**: formato QEMU copy-on-write. Al crearse solo se ocupa el espacio que se está ocupando con los datos (aprovisionamiento ligero), el fichero irá creciendo cuando escribamos en él. Acepta instantáneas o snapshots. Es menos eficiente en cuanto al acceso.
     * **vdi, vmdk,...**: formatos de otros sistemas de virtualización.
 * En el caso de tipo **disk** los volúmenes serán particiones de un disco.
 * En el caso del tipo **logical** estos volúmenes serán volúmenes lógicos LVM.

@@ -1,6 +1,6 @@
 # Definición XML de una máquina virtual
 
-Las características, opciones y dispositivos hardware de una máquina virtual están estructuradas con el lenguajes de marcas XML. De la misma forma las características de los distintos recursos con los que podemos trabajar (redes, pools de almacenamiento, volúmenes) también están definidos con XML.
+Las características, opciones y dispositivos hardware de una máquina virtual están estructuradas con el lenguaje de marcas XML. De la misma forma las características de los distintos recursos con los que podemos trabajar (redes, pools de almacenamiento, volúmenes) también están definidos con XML.
 
 ## Esquema XML de una máquina virtual
 
@@ -12,7 +12,7 @@ usuario@kvm:~$ virsh dumpxml debian12
 
 Veamos algunos elementos de la definición:
 
-* El documento XML empieza con la etiqueta `<domain>` donde se indica el tipo de virtualización utilizada para gestionar la máquina y su identificador si la máquina está ejecutándose..
+* El documento XML empieza con la etiqueta `<domain>` donde se indica el tipo de virtualización utilizada para gestionar la máquina y su identificador si la máquina está ejecutándose.
 * El nombre de la máquina se indica con la etiqueta `<name>`.
 * La etiqueta `<currentMemory>` nos indica la memoria asignada actualmente a la máquina. Podemos modificar esta memoria asignada sin reiniciar la máquina hasta el límite indicado por la etiqueta `<memory>`. Por lo tanto, el valor asignado a `<memory>` no puede ser menor que el valor asociado a `<currentMemory>`.
 
@@ -44,7 +44,7 @@ Veamos un ejemplo hasta aquí:
 
 A continuación nos encontramos la etiqueta `<devices>` donde se definen los distintos dispositivos hardware que forman parte de la máquina. Veamos algunos ejemplos:
 
-* Los discos se definen con la etiqueta `<disk>`. Encontramos información del tipo (en este caso fichero), tipo del fichero (en este caso qcow2), ruta donde se encuentra el fichero,... Es importante señalar que, por defecto, se configura el disco con un controlador **VirtIO** (`bus='virtio`), es decir, es un dispositivo paravirtualizado que nos ofrece mayor rendimiento. Veamos la definición del disco:
+* Los discos se definen con la etiqueta `<disk>`. Encontramos información del tipo (en este caso fichero), tipo del fichero (en este caso qcow2), ruta donde se encuentra el fichero,... Es importante señalar que, por defecto, se configura el disco con un controlador **VirtIO** (`bus='virtio'`), es decir, es un dispositivo paravirtualizado que nos ofrece mayor rendimiento. Veamos la definición del disco:
 
 ```
     <disk type='file' device='disk'>

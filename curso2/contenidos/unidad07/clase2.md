@@ -1,6 +1,6 @@
 # Despliegue automatizado de máquinas virtuales con virt-builder
 
-[`virt-builder`](https://libguestfs.org/virt-builder.1.html) es una herramienta para despliegues rápidos de nuevas máquinas virtuales. Además nos permite personalizar estas máquinas a través de plantillas de sistemas operativos editables, ahorrándonos el tiempo de hacer una instalación del sistema desde cero.
+[`virt-builder`](https://libguestfs.org/virt-builder.1.html) es una herramienta para despliegues rápidos de nuevas máquinas virtuales. Además, nos permite personalizar estas máquinas a través de plantillas de sistemas operativos editables, ahorrándonos el tiempo de hacer una instalación del sistema desde cero.
 
 Para usar esta aplicación debemos instalar el paquete `libguestfs-tools` que ya lo habíamos instalado para trabajar con otras aplicaciones.
 
@@ -29,14 +29,14 @@ El funcionamiento de la herramienta es el siguiente:
 * A continuación ha modificado la configuración de la imagen, aunque toda la configuración que hemos indicado no es imprescindible, hemos realizado los siguientes cambios:
     * Hemos indicado el hostname de la máquina (parámetro `--hostname`).
     * Hemos cambiado la contraseña del usuario `root` con `--root-password`. Tenemos distintos métodos para realizar el cambio y no indicar implícitamente la contraseña en la instrucción.
-    * Con el parámetro `--run-command` podemos ejecutar comandos en la imagen. En este caso, hemos configurado el teclado en español y hemos modificado el fichero `/etc/network/interface` con el nombre que se le asigna a la interfaz de red (`enp1s0` en ves de `ens2`).
+    * Con el parámetro `--run-command` podemos ejecutar comandos en la imagen. En este caso, hemos configurado el teclado en español y hemos modificado el fichero `/etc/network/interface` con el nombre que se le asigna a la interfaz de red (`enp1s0` en vez de `ens2`).
     * Con el parámetro `--firstboot-command` se configura instrucciones que se ejecutarán en el primer arranque de la máquina. En este caso, creamos el usuario `usuario` sin contraseña y obligamos a cambiarla la primera vez que accedamos con él, reconfiguramos el servidor SSH para que se generen las claves SSH del host y habilitamos la salida por el puerto serie.
 
 En la [documentación](https://libguestfs.org/virt-builder.1.html) de la herramienta puedes encontrar muchas más opciones. Una vez terminada la ejecución de esta instrucción tenemos creado la imagen del disco en ` /var/lib/libvirt/images/mi_debian12.qcow2`.
 
 ## Creación de la máquina virtual con virt-install
 
-Vamos a crear una máquina virtual con `virt-install` que use la imagen que hemos creado en el apartado anterior. Vamos a suponer que estamos en un servidor sin entorno gráfico y por tanto vamos a acceder a la máquina usando el puerto serie. Para crear la máquina:
+Vamos a crear una máquina virtual con `virt-install` que use la imagen que hemos creado en el apartado anterior. Vamos a suponer que estamos en un servidor sin entorno gráfico y, por tanto, vamos a acceder a la máquina usando el puerto serie. Para crear la máquina:
 
 ```
 usuario@kvm:~$ virt-install --connect qemu:///system \

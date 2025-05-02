@@ -6,7 +6,7 @@ Este método permite administrar un hipervisor QEMU/KVM en otro equipo a través
 
 Para realizar este tipo de conexión usaremos la siguiente URI: `qemu+ssh://<usuario>@<dirección_IP_máquina_remota>/system`.
 
-Se va a realizar una conexión SSH entre la máquina cliente y el servidor donde se ejecuta libvirt. Por lo tanto, hay que configurar las máquinas para que el usuario de la máquina "cliente" pueda acceder por SSH al servidor remoto con el usuario `usuario`, sin que sé le pida la contraseña.
+Se va a realizar una conexión SSH entre la máquina cliente y el servidor donde se ejecuta libvirt. Por lo tanto, hay que configurar las máquinas para que el usuario de la máquina "cliente" pueda acceder por SSH al servidor remoto con el usuario `usuario`, sin que se le pida la contraseña.
 
 ## Configuración de SSH para el acceso sin contraseñas
 

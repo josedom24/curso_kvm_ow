@@ -4,7 +4,7 @@ En este apartado vamos a configurar las dos máquinas con la que estamos trabaja
 
 ## Trabajando con la red de tipo NAT
 
-En primer lugar vamos a cambiar la configuración de la máquina Linux para conectarla a la red de tipo NAT llamada `red-nat` que hemos creado anteriormente (recordamos que el direccionamiento que pusimos para esta red es `192.168.101.0/24`). De la misma manera que en el apartado anterior, desconectamos la la interfaz de red de la red actual y la conectamos a la nueva red (recuerda que este cambio no se puede hacer con la máquina funcionando, si lo hacemos tendrá efecto tras un reinicio):
+En primer lugar, vamos a cambiar la configuración de la máquina Linux para conectarla a la red de tipo NAT llamada `red-nat` que hemos creado anteriormente (recordamos que el direccionamiento que pusimos para esta red es `192.168.101.0/24`). De la misma manera que en el apartado anterior, desconectamos la interfaz de red de la red actual y la conectamos a la nueva red (recuerda que este cambio no se puede hacer con la máquina funcionando, si lo hacemos tendrá efecto tras un reinicio):
 
 ```
 usuario@kvm~$ virsh domiflist debian12
@@ -62,7 +62,7 @@ A continuación, vamos a conectar las dos máquinas a la red aislada llamada `re
     ...
     ```
 
-* Realizamos la misma operación en la máquina Windows. Además deshabilitamos el cortafuegos para que nos permita hacer las posteriores comprobaciones:
+* Realizamos la misma operación en la máquina Windows. Además, deshabilitamos el cortafuegos para que nos permita hacer las posteriores comprobaciones:
 
     ```
     usuario@kvm~$ virsh detach-interface windows10 network --mac xx:xx:xx:xx:xx:xx --persistent 
@@ -134,7 +134,7 @@ En este último ejemplo modificamos la configuración de las interfaces de red d
 
     ![ejemplo](img/ejemplo2_13.png)
 
-* Y finalmente comprobamos que tenemos conectividad entre las máquinas pero no tenemos conectividad con el exterior.
+* Y finalmente comprobamos que tenemos conectividad entre las máquinas, pero no tenemos conectividad con el exterior.
 
     ```
     usuario@debian12:~$ ping 172.22.0.3

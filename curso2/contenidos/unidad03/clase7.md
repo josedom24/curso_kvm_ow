@@ -49,7 +49,7 @@ usuario@debian12:~$ sudo systemctl enable --now getty@ttyS0
 * **`getty`** (abreviatura de "get TTY") es el proceso encargado de gestionar una terminal de login en Linux.  
 * **`ttyS0`** es el primer puerto serie en un sistema Linux.  
 
-Por lo tanto estamos lanzando un **proceso de login en la consola serie**, lo que permite conectarte a la máquina a través de un puerto serie o una consola virtual en KVM/QEMU.
+Por lo tanto, estamos lanzando un **proceso de login en la consola serie**, lo que permite conectarte a la máquina a través de un puerto serie o una consola virtual en KVM/QEMU.
 
 ```
 usuario@kvm:~$ virsh console debian12

@@ -1,6 +1,6 @@
 # Acceso a las máquinas virtuales desde el exterior
 
-Una vez que hemos creado las máquinas con `virt-install` podemos acceder a ellas utilizando la aplicación `virt-viewer`. Sin emabargo, es posible acceder a ellas utilizando otros protocolos específicos de acceso remoto, que suelen ser más eficientes para el trabajo con las máquinas.
+Una vez que hemos creado las máquinas con `virt-install` podemos acceder a ellas utilizando la aplicación `virt-viewer`. Sin embargo, es posible acceder a ellas utilizando otros protocolos específicos de acceso remoto, que suelen ser más eficientes para el trabajo con las máquinas.
 
 ## Acceso por SSH a las máquinas Linux
 
@@ -21,7 +21,7 @@ virsh domifaddr debian12
 
 ```
 
-Desde nuestro equipo podemos acceder a esta máquina por SSH indicando el nombre de usuario y la ip:
+Desde nuestro equipo podemos acceder a esta máquina por SSH indicando el nombre de usuario y la IP:
 
 ```
 usuario@kvm:~$ ssh usuario@192.168.122.59
@@ -29,7 +29,7 @@ usuario@kvm:~$ ssh usuario@192.168.122.59
 
 ## Acceso por RDP a una máquina Windows
 
-Normalmente para acceder a las máquinas Windows usamos el protocolo RDP (Remote Desktop Protocol). Para acceder necesitamos usar un cliente RDP. Por ejemplo, en sistemas Linux puedes usar [Remmina](https://remmina.org/), si lo haces desde un sistema Windows puedes usar "Conexión a Escritorio remoto".
+Normalmente, para acceder a las máquinas Windows usamos el protocolo RDP (Remote Desktop Protocol). Para acceder necesitamos usar un cliente RDP. Por ejemplo, en sistemas Linux puedes usar [Remmina](https://remmina.org/), si lo haces desde un sistema Windows puedes usar "Conexión a Escritorio remoto".
 
 En este ejemplo voy a usar el cliente Remmina.
 

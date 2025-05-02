@@ -28,7 +28,7 @@ usuario@kvm:~$ virt-clone --connect=qemu:///system --original debian12 --name de
 
 ## Uso de virsh para realizar la clonación
 
-Otra estrategia para crear una nueva máquina virtual clonada a a partir de otra, es usar el comando `virsh vol-clone` para clonar el volumen de la máquina original y posteriormente crear una nueva máquina virtual con el volumen clonado.
+Otra estrategia para crear una nueva máquina virtual clonada a partir de otra, es usar el comando `virsh vol-clone` para clonar el volumen de la máquina original y posteriormente crear una nueva máquina virtual con el volumen clonado.
 
 ```
 usuario@kvm:~$ virsh vol-clone debian12.qcow2 nueva-debian12.qcow2 --pool default
@@ -49,4 +49,4 @@ Usamos la opción `--import` para que no te pida que indique el medio de instala
 
 La máquina clon que hemos creado es igual a la original. La nueva máquina contiene identificadores que deberían ser únicos (como el machine ID, claves SSH de host, hostname, ...).
 Podemos acceder a la máquina y cambiar el fichero `/etc/hostname` para cambiar el nombre de la máquina, pero todavía tendríamos mucha información repetida entre las dos máquinas. 
-Por lo tanto no vamos a realizar la clonación de esta manera. En el siguiente apartado vamos a aprender a crear **plantillas de máquinas virtuales** que nos permiten realizar la clonación de forma adecuada.
+Por lo tanto, no vamos a realizar la clonación de esta manera. En el siguiente apartado vamos a aprender a crear **plantillas de máquinas virtuales** que nos permiten realizar la clonación de forma adecuada.

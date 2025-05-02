@@ -4,12 +4,12 @@ En el punto anterior hemos definido un dominio desde su definición XML, esto no
 
 Sin embargo, como hemos visto tenemos que crear nosotros mismos la imagen de disco y tenemos que conocer muy bien la estructura XML de configuración de la máquina. 
 
-En este apartado, vamos a crear las máquinas virtuales o dominios con la aplicación `virt-install`, que nos facilita la creación e instalación de las máquinas. Para usar esta aplicación es neceario instalar el paquete `virtinst`, que ya instalamos en el apartado anterior para trabajar con `virt-viewer`.
+En este apartado, vamos a crear las máquinas virtuales o dominios con la aplicación `virt-install`, que nos facilita la creación e instalación de las máquinas. Para usar esta aplicación es necesario instalar el paquete `virtinst`, que ya instalamos en el apartado anterior para trabajar con `virt-viewer`.
 
 
 ## Creación de nuestra primera máquina virtual.
 
-Vamos a crear una máquina con las siguientes características: se va a llamar `debian12`, se va a usar una ISO de la distribución GNU/Linux Debian 12, la variante de sistema operativo podemos poner `debian12`, el tamaño del disco será de 10 GB, la memoria RAM será de 1 GB y le vamos a asignar 1 vCPU. No vamos a indicar la red a la que se conecta ya que, por defecto, se conectará a la red predefinida `default`.
+Vamos a crear una máquina con las siguientes características: se va a llamar `debian12`, se va a usar una ISO de la distribución GNU/Linux Debian 12, la variante de sistema operativo podemos poner `debian12`, el tamaño del disco será de 10 GB, la memoria RAM será de 1 GB y le vamos a asignar 1 vCPU. No vamos a indicar la red a la que se conecta, ya que, por defecto, se conectará a la red predefinida `default`.
 
 Tenemos que tener en cuenta dos cosas:
 
@@ -33,7 +33,7 @@ La información que tenemos que proporcionar a `virt-install` para la creación 
 
 * Con el parámetro `--connect` indicamos el tipo de conexión que vamos a realizar. En realidad no haría falta ponerlo porque tenemos definida la variable de entorno `LIBVIRT_DEFAULT_URI`.
 * El nombre de la máquina virtual (parámetro `--name`).
-* El tipo de virtualización (parámetro `--virt-type`). en nuestro caso será `kvm`.
+* El tipo de virtualización (parámetro `--virt-type`). En nuestro caso será `kvm`.
 * En nuestro caso vamos a realizar una instalación desde un fichero ISO, por lo que tendremos que indicar que la nueva máquina tendrá un CDROM con la ISO que indiquemos (parámetro `--cdrom`).
 * La variante del sistema operativo que vamos a utilizar (parámetro `--os-variant`). La variante del sistema operativo sirve para realizar una configuración por defecto de la máquina dependiendo del sistema que vamos a instalar. Para obtener la lista de variantes de sistemas operativos, podemos ejecutar la siguiente instrucción:
 

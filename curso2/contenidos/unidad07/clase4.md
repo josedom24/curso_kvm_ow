@@ -1,10 +1,10 @@
 # Conexión local no privilegiada a libvirt
 
-Durante todo el curso hemos hecho uso de la conexión privilegiada a libvirt y por tanto es el superusuario el que ha gestionado los recursos virtualizados.
+Durante todo el curso hemos hecho uso de la conexión privilegiada a libvirt y, por tanto, es el superusuario el que ha gestionado los recursos virtualizados.
 
 En este apartado vamos a comprobar que un usuario sin privilegio puede crear sus máquinas virtuales. Para ello realizará una conexión local a libvirt usando la URI `qemu:///session`. En este modo de conexión, el usuario no tiene permisos para crear conexiones de red, por lo que se limita su uso de la red no privilegiada de QEMU ([SLIRP](https://wiki.qemu.org/Documentation/Networking#User_Networking_.28SLIRP.29)) que es útil para casos simples, pero que tiene bajo rendimiento y es poco configurable. 
 
-Vamos asegurarnos que la variable de entorno `LIBVIRT_DEFAULT_URI` no la tenemos definida:
+Vamos a asegurarnos que la variable de entorno `LIBVIRT_DEFAULT_URI` no la tenemos definida:
 
 ```
 usuario@kvm:~$ unset LIBVIRT_DEFAULT_URI
@@ -41,7 +41,7 @@ usuario@kvm:~$ virsh pool-autostart default
 
 ## Creación de una imagen local
 
-Podemos cualquier estrategia de las que hemos estudiado para crear una maquina virtual. En este caso, vamos a usar una imagen cloud de Debian:
+Podemos cualquier estrategia de las que hemos estudiado para crear una máquina virtual. En este caso, vamos a usar una imagen cloud de Debian:
 
 ```
 usuario@kvm:~$ wget http://cloud.debian.org/images/cloud/bookworm/latest/debian-12-generic-amd64.qcow2 \

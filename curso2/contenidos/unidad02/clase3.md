@@ -1,6 +1,6 @@
 # Conexión local privilegiada a libvirt
 
-En este curso vamos a trabajar realizando conexiones locales privilegiadas, por lo tanto si queremos ver todas las máquinas creadas en el sistema debemos ejecutar:
+En este curso vamos a trabajar realizando conexiones locales privilegiadas, por lo tanto, si queremos ver todas las máquinas creadas en el sistema debemos ejecutar:
 
 ```
 usuario@kvm:~$ export LIBVIRT_DEFAULT_URI='qemu:///system'
@@ -28,7 +28,7 @@ Si el estado estuviera en inactivo, para iniciarla, ejecutaríamos:
 usuario@kvm:~$ virsh net-start default 
 ```
 
-Si fuera necesario, es recomendable activar la propiedad de **Incio autómatico**, para que se inicie de forma automática después de reiniciar el host, para ello:
+Si fuera necesario, es recomendable activar la propiedad de **Inicio automático**, para que se inicie de forma automática después de reiniciar el host, para ello:
 
 ```
 usuario@kvm:~$ virsh net-autostart default

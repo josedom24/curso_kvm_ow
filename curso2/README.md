@@ -1,6 +1,6 @@
 # Curso: Profundización a la virtualización con KVM/libvirt
 
-1. Introducción a a la virtualización con KVM/libvirt
+1. Introducción a la virtualización con KVM/libvirt
     * [¿Qué es la virtualización?](contenidos/unidad01/clase1.md)
 	* [Tipos de virtualización](contenidos/unidad01/clase2.md)
 	* [Introducción a QEMU/KVM y libvirt](contenidos/unidad01/clase3.md)
@@ -31,7 +31,7 @@
     * [Redimensión de discos en máquinas virtuales](contenidos/unidad04/clase6.md)
     * [Uso de un pool de almacenamiento de tipo disk](contenidos/unidad04/clase7.md)
 
-5. Clonación e instantáneas de maquinas virtuales
+5. Clonación e instantáneas de máquinas virtuales
     * [Clonación de máquinas virtuales](contenidos/unidad05/clase1.md)
     * [Plantillas de máquinas virtuales](contenidos/unidad05/clase2.md)
     * [Clonación a partir de plantillas](contenidos/unidad05/clase3.md)

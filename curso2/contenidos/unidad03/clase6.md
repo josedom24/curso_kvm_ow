@@ -51,9 +51,9 @@ También podemos modificar este parámetro usando la siguiente instrucción que 
 usuario@kvm:~$ virsh setvcpus maquina_linux 4 --config
 ```
 
-La parámetro `--config` modifica la configuración persistente de la máquina virtual para que el cambio se mantenga tras un reinicio.
+El parámetro `--config` modifica la configuración persistente de la máquina virtual para que el cambio se mantenga tras un reinicio.
 
-Si la máquina está funcionando (**modifcación en caliente**) podemos usar la instrucción:
+Si la máquina está funcionando (**modificación en caliente**) podemos usar la instrucción:
 
 ```
 usuario@kvm:~$ virsh setvcpus maquina_linux 2 --live --config

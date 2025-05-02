@@ -28,7 +28,7 @@ Para superar las limitaciones de la virtualización completa, **KVM** admite el 
 * **virtio-net**: Interfaz de red paravirtualizada que mejora la velocidad de la red entre el host y la máquina virtual.
 * **virtio-scsi**: Adaptador SCSI paravirtualizado para la gestión de dispositivos de almacenamiento.
 * **virtio-blk**: Controlador paravirtualizado para discos duros virtuales.
-* **virtio-balloon**: Controlador utilizado en la virtualización para gestionar dinámicamente la memoria asignada a una máquina virtual (VM) sin la necesidad de reiniciar o interrumpir su funcionamiento.
+* **virtio-balloon**: Controlador utilizado en la virtualización para gestionar dinámicamente la memoria asignada a una máquina virtual sin la necesidad de reiniciar o interrumpir su funcionamiento.
 
 Aunque el soporte de virtIO está incluido de forma nativa en Linux, otros sistemas operativos, como Windows, requieren la instalación manual de los controladores adecuados.
 

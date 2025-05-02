@@ -39,13 +39,13 @@ Ahora debemos iniciar el pool:
 usuario@kvm:~$ virsh pool-start vm-images 
 ```
 
-Y si lo deseamos lo podemos auto iniciar, para que en el reinicio del host vuelva a estar activo:
+Y si lo deseamos lo podemos autoiniciar, para que en el reinicio del host vuelva a estar activo:
 
 ```
 usuario@kvm:~$ virsh pool-autostart vm-images 
 ```
 
-Finalmente vemos la lista de pool y pedimos información del nuevo pool:
+Finalmente, vemos la lista de pool y pedimos información del nuevo pool:
 
 ```
 usuario@kvm:~$ virsh pool-list

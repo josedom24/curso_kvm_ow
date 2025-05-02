@@ -1,6 +1,6 @@
 # Copia de seguridad de máquinas virtuales
 
-La realización de copias de seguridad de máquinas virtuales es una tarea esencial en cualquier entorno de virtualización que busque garantizar la disponibilidad y recuperación de datos ante fallos, errores humanos o tareas de mantenimiento. En el caso de entornos basados en KVM/libvirt , una copia de seguridad completa de una máquina virtual debe incluir tanto **la definición XML de la máquina virtual como sus imágenes de disco**, ya que ambas partes son necesarias para restaurar una máquina virtual de forma fiel y funcional.
+La realización de copias de seguridad de máquinas virtuales es una tarea esencial en cualquier entorno de virtualización que busque garantizar la disponibilidad y recuperación de datos ante fallos, errores humanos o tareas de mantenimiento. En el caso de entornos basados en KVM/libvirt, una copia de seguridad completa de una máquina virtual debe incluir tanto **la definición XML de la máquina virtual como sus imágenes de disco**, ya que ambas partes son necesarias para restaurar una máquina virtual de forma fiel y funcional.
 
 En este apartado vamos a mostrar cómo realizar una copia de seguridad de una máquina virtual ubicada en un servidor remoto, y cómo restaurarla en nuestro host local utilizando únicamente herramientas integradas en libvirt, sin depender de soluciones de terceros.
 
@@ -9,7 +9,7 @@ En este apartado vamos a mostrar cómo realizar una copia de seguridad de una m�
 * Para restaurar la máquina virtual a partir de la definición XML utilizaremos `virsh define`.
 * Y restauraremos la imagen de disco usando `virsh vol-upload`.
 
-## Ejemplo de copia se seguridad
+## Ejemplo de copia de seguridad
 
 Vamos a realizar una copia de seguridad de la máquina `alpine` del servidor remoto y la vamos a restaurar en nuestro servidor local. Para ello realizaremos los siguientes pasos:
 
@@ -28,7 +28,7 @@ Vamos a realizar una copia de seguridad de la máquina `alpine` del servidor rem
      vda      /var/lib/libvirt/images/alpine.qcow2
     ```
 
-3. Realizamos la copia del fichero de imagen de disco de la máquina virtual. En este ejemplo concreto el volumen que vamos a copiar esta en un pool de almacenamiento llamado `images`. Podemos ver el volumen ejecutando:
+3. Realizamos la copia del fichero de imagen de disco de la máquina virtual. En este ejemplo concreto el volumen que vamos a copiar está en un pool de almacenamiento llamado `images`. Podemos ver el volumen ejecutando:
 
     ```
     usuario@kvm:~$  virsh -c qemu+ssh://jose@192.168.100.1/system vol-list images
@@ -41,7 +41,7 @@ Vamos a realizar una copia de seguridad de la máquina `alpine` del servidor rem
     
     Podríamos guardar los dos ficheros que hemos generado: `alpine.xml` y `alpine-copia.qcow2` y estaríamos respaldando nuestra máquina virtual.
 
-4. Ahora vamos a restaurar en nuestro servidor la máquina que acabamos de guardar. Vamos a segurarnos de que estamos trabajando con la conexión privilegiada (`export LIBVIRT_DEFAULT_URI='qemu:///system'`). Además para no tener que cambiar la definición de la máquina virtual vamos a copiar el fichero de imagen de disco con el mismo nombre. Para ello vamos a definir la máquina a partir del fichero XML y posteriormente vamos a recuperar la imagen de disco:
+4. Ahora vamos a restaurar en nuestro servidor la máquina que acabamos de guardar. Vamos a asegurarnos de que estamos trabajando con la conexión privilegiada (`export LIBVIRT_DEFAULT_URI='qemu:///system'`). Además, para no tener que cambiar la definición de la máquina virtual vamos a copiar el fichero de imagen de disco con el mismo nombre. Para ello vamos a definir la máquina a partir del fichero XML y posteriormente vamos a recuperar la imagen de disco:
 
     ```
     usuario@kvm:~$ virsh define alpine.xml

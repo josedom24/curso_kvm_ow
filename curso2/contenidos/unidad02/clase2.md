@@ -7,7 +7,7 @@ usuario@kvm:~$ sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients
 ```
 
 * `qemu-kvm`: Virtualización con KVM.
-* `libvirt-daemon-system`: Servicio libvirtd para gestionar VMs.
+* `libvirt-daemon-system`: Servicio libvirtd para gestionar máquinas virtuales.
 * `libvirt-clients`: Herramientas como `virsh` y `virt-install`.
 
 Podemos obtener las versiones de las aplicaciones que hemos instalado (en mi caso en una distribución Linux Ubuntu 24.04) ejecutando:
@@ -32,7 +32,7 @@ usuario@kvm:~$ virsh list
 
 Estaríamos haciendo una **conexión local con un usuario no privilegiado** (estaríamos conectando con la URI `qemu:///session`) y estaríamos mostrando las máquinas virtuales de este usuario.
 
-Si por el contrario, como `root` ejecutamos:
+Si, por el contrario, como `root` ejecutamos:
 
 ```
 root@kvm:~# virsh list

@@ -2,7 +2,7 @@
 
 ## Definición de virtualización
 
-La **virtualización** es una tecnología que permite la abstracción de los recursos físicos de un sistema para ejecutar múltiples entornos virtuales en un mismo hardware. Se basa en la creación de máquinas virtuales (VM) que operan de manera aislada entre sí, permitiendo una mejor utilización de los recursos y una mayor flexibilidad en la gestión de sistemas informáticos.
+La **virtualización** es una tecnología que permite la abstracción de los recursos físicos de un sistema para ejecutar múltiples entornos virtuales en un mismo hardware. Se basa en la creación de máquinas virtuales que operan de manera aislada entre sí, permitiendo una mejor utilización de los recursos y una mayor flexibilidad en la gestión de sistemas informáticos.
 
 ## Aplicaciones de la virtualización en entornos avanzados
 

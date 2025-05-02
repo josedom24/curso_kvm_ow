@@ -74,7 +74,7 @@ Para ver la definición XML de la red que hemos creado, ejecutamos:
 usuario@kvm~$ virsh net-dumpxml red_nat
 ```
 
-De forma similar podemos crear la red aislada y la muy aislada cuyas definiciones creamos en el apartado anterior. Finalmente tendríamos varios puentes creado en el host:
+De forma similar podemos crear la red aislada y la muy aislada cuyas definiciones creamos en el apartado anterior. Finalmente, tendríamos varios puentes creados en el host:
 ```
 usuario@kvm~$ sudo brctl show
 bridge name	bridge id		STP enabled	interfaces
@@ -84,7 +84,7 @@ virbr2		8000.525400d51f31	yes
 virbr3		8000.525400f1d203	yes
 ```
 
-Finalmente indicar que para parar una red utilizamos el comando `virsh net-stop` y para eliminarla el comando `virsh net-undefined`.
+Finalmente, indicar que para parar una red utilizamos el comando `virsh net-stop` y para eliminarla el comando `virsh net-undefined`.
 
 ## Consulta de las concesiones DHCP
 
