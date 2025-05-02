@@ -12,7 +12,7 @@ Podemos bajar la última versión de los drivers VirtIO para Windows en el sigui
 
 ## Creación de la máquina virtual
 
-Creamos la nueva máquina virtual Windows, teniendo en cuenta los siguiente:
+Creamos la nueva máquina virtual Windows, teniendo en cuenta lo siguiente:
 
 * Elegimos una imagen ISO para instalar una versión de Windows y seleccionamos la variante del sistema operativo que estamos instalando.
 * Configuramos la CPU y la RAM para tener recursos suficientes.

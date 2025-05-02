@@ -18,7 +18,7 @@ Desde nuestro equipo podemos acceder a esta máquina por SSH indicando el nombre
 
 ## Acceso por RDP a una máquina Windows
 
-Normalmente para acceder a las máquinas Windows usamos el protocolo RDP (Remote Desktop Protocol). Para acceder necesitamos usar un cliente RDP. Por ejemplo, en sistemas Linux puedes usar [Remmina](https://remmina.org/), si lo haces desde un sistema Windows puedes usar "Conexión a Escritorio remoto".
+Normalmente, para acceder a las máquinas Windows usamos el protocolo RDP (Remote Desktop Protocol). Para acceder necesitamos usar un cliente RDP. Por ejemplo, en sistemas Linux puedes usar [Remmina](https://remmina.org/), si lo haces desde un sistema Windows puedes usar "Conexión a Escritorio remoto".
 
 En este ejemplo voy a usar el cliente Remmina.
 

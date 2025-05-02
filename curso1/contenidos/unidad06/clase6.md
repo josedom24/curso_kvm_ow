@@ -4,7 +4,7 @@ En este apartado vamos a configurar las dos máquinas con la que estamos trabaja
 
 ## Trabajando con la red de tipo NAT
 
-En primer lugar vamos a cambiar la configuración de la máquina Linux para conectarla a la red de tipo NAT llamada `red-nat` que hemos creado anteriormente (recordamos que el direccionamiento que pusimos para esta red es `192.168.101.0/24`). Para ello, modificamos la configuración del dispositivo de red de la máquina (recuerda que este cambio no se puede hacer con la máquina funcionando, si lo hacemos tendrá efecto tras un reinicio):
+En primer lugar, vamos a cambiar la configuración de la máquina Linux para conectarla a la red de tipo NAT llamada `red-nat` que hemos creado anteriormente (recordamos que el direccionamiento que pusimos para esta red es `192.168.101.0/24`). Para ello, modificamos la configuración del dispositivo de red de la máquina (recuerda que este cambio no se puede hacer con la máquina funcionando, si lo hacemos tendrá efecto tras un reinicio):
 
 ![ejemplo](img/ejemplo2_1.png)
 
@@ -24,7 +24,7 @@ A continuación, vamos a conectar las dos máquinas a la red aislada llamada `re
 
     ![ejemplo](img/ejemplo2_4.png)
 
-* Realizamos la misma operación en la máquina Windows. Además deshabilitamos el cortafuegos para que nos permita hacer las posteriores comprobaciones:
+* Realizamos la misma operación en la máquina Windows. Además, deshabilitamos el cortafuegos para que nos permita hacer las posteriores comprobaciones:
 
     ![ejemplo](img/ejemplo2_5.png)
     
@@ -58,7 +58,7 @@ En este último ejemplo modificamos la configuración de las interfaces de red d
 
     ![ejemplo](img/ejemplo2_13.png)
 
-* Y finalmente comprobamos que tenemos conectividad entre las máquinas pero no tenemos conectividad con el exterior.
+* Y finalmente comprobamos que tenemos conectividad entre las máquinas, pero no tenemos conectividad con el exterior.
 
     ![ejemplo](img/ejemplo2_14.png)
     ![ejemplo](img/ejemplo2_15.png)

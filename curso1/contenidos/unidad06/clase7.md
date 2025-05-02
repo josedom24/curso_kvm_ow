@@ -1,6 +1,6 @@
 # Ejemplo 3: Configuración de un router/NAT
 
-Partiendo del último ejemplo del apartado anterior, queremos configurar la máquina Linux para que que funcione como router y realice NAT para que la máquina Windows que está conectada a una red interna tenga conectividad con el exterior. El esquema sería el siguiente:
+Partiendo del último ejemplo del apartado anterior, queremos configurar la máquina Linux para que funcione como router y realice NAT para que la máquina Windows que está conectada a una red interna tenga conectividad con el exterior. El esquema sería el siguiente:
 
 ![router](img/router.png)
 
@@ -32,7 +32,7 @@ A continuación ejecutamos la siguiente instrucción para  aplica los cambios:
 usuario@debian:~$ sudo sysctl -p
 ```
 
-4. Configuramos `iptables` para realizar NAT. Además queremos que las reglas de cortafuegos que configuremos sean permanentes. Para  ello, instalamos los paquetes necesarios:
+4. Configuramos `iptables` para realizar NAT. Además, queremos que las reglas de cortafuegos que configuremos sean permanentes. Para  ello, instalamos los paquetes necesarios:
 
 ```
 usuario@debian:~$ sudo apt install iptables iptables-persistent
@@ -56,6 +56,6 @@ Para que la regla sea permanente después de un reinicio, la guardamos con la si
 usuario@debian:~$ sudo iptables-save > /etc/iptables/rules.v4
 ```
 
-5. Finalmente podemos comprobar que la máquina Windows ya tiene conectividad con el exterior y puede resolver nombres por el DNS:
+5. Finalmente, podemos comprobar que la máquina Windows ya tiene conectividad con el exterior y puede resolver nombres por el DNS:
 
     ![ejemplo3](img/ejemplo3_4.png)

@@ -1,6 +1,6 @@
 # Instantáneas de máquinas virtuales
 
-Una instantánea (snapshot) nos posibilita guardar el estado de una máquina virtual en un determinado momento. Se guarda el estado del disco y el estado de la memoria. De esta forma en el futuro puedo volver a un estado anterior de la misma. No todos los formatos y medios de almacenamiento nos posibilitan esta características. Un fichero de imagen de disco con formato `qcow2` si nos permite la realización de instantáneas.
+Una instantánea (snapshot) nos posibilita guardar el estado de una máquina virtual en un determinado momento. Se guarda el estado del disco y el estado de la memoria. De esta forma en el futuro puedo volver a un estado anterior de la misma. No todos los formatos y medios de almacenamiento nos posibilitan estas características. Un fichero de imagen de disco con formato `qcow2` sí nos permite la realización de instantáneas.
 
 Hemos hecho un cambio significativo en nuestra máquina (en el ejemplo hemos creado una carpeta). 
 
@@ -10,7 +10,7 @@ Ahora es el momento de crear una instantánea, de esta manera podremos volver a 
 
 ![instantanea](img/instantanea2.png)
 
-Tenemos botones para las opción más comunes:
+Tenemos botones para las opciones más comunes:
 
 * **Botón 1**: Crear instantánea.
 * **Botón 2**: Volver al estado de la instantánea seleccionada.

@@ -1,6 +1,6 @@
 # Conexión local no privilegiada a libvirt
 
-Durante todo el curso hemos hecho uso de la conexión privilegiada a libvirt y por tanto es el superusuario el que ha gestionado los recursos virtualizados.
+Durante todo el curso hemos hecho uso de la conexión privilegiada a libvirt y, por tanto, es el superusuario el que ha gestionado los recursos virtualizados.
 
 En este apartado vamos a comprobar que un usuario sin privilegio puede crear sus máquinas virtuales. Para ello realizará una conexión local a libvirt usando la URI `qemu:///session`. En este modo de conexión, el usuario no tiene permisos para crear conexiones de red, por lo que se limita su uso de la red no privilegiada de QEMU ([SLIRP](https://wiki.qemu.org/Documentation/Networking#User_Networking_.28SLIRP.29)) que es útil para casos simples, pero que tiene bajo rendimiento y es poco configurable. 
 
@@ -24,7 +24,7 @@ Si seleccionamos la conexión que acabamos de añadir y escogemos la opción **D
 
 El procedimiento para crear una nueva máquina virtual es similar al descrito en apartados anteriores a este apartado, teniendo en cuenta los siguientes aspectos:
 
-* Aunque nos da la opción de conectar la máquina virtual a un puente externo a conectarla al exterior compartiendo una interfaz física (macvtap), sólo  podemos conectarla a la red de usuario, opción **Modo usuario de creación de redes**.
+* Aunque nos da la opción de conectar la máquina virtual a un puente externo a conectarla al exterior compartiendo una interfaz física (macvtap), solo  podemos conectarla a la red de usuario, opción **Modo usuario de creación de redes**.
 
     ![usuario](img/usuario4.png)
 

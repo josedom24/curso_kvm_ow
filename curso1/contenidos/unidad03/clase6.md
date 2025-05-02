@@ -19,7 +19,7 @@ Usando el mismo procedimiento, configuramos los drivers de los elementos hardwar
 * Controladora simple de comunicaciones PCI, que corresponde a un dispositivo **VirtIO Serial Driver**, que es un controlador de comunicaciones serie.
 * Dispositivo PCI, que corresponde a un dispositivo **VirtIO Balloon Driver**, que es un controlador que permite la gestión dinámica de la memoria en máquinas virtuales QEMU/KVM.
 
-## Características de las máquina Windows que hemos creado
+## Características de la máquina Windows que hemos creado
 
 Podemos comprobar que nuestra máquina se ha conectado a la red privada de tipo NAT llamada `default`, recibiendo una dirección IP dinámica con la siguiente configuración. Para ver la configuración: **Configuración - Red e Internet - Estado - Propiedades**:
 
@@ -36,14 +36,14 @@ También podemos comprobar el modelo del procesador, el tamaño de la memoria y 
 
 La instalación de Windows 11, es similar a la que hemos visto anteriormente con Windows 10, pero teniendo en cuenta algunas consideraciones:
 
-* Evidentemente necesitamos guardar la imagen ISO de Windows 11 en el grupo de almacenamiento **isos**, es decir, en el directorio `~/Descargas/isos`.
+* Evidentemente, necesitamos guardar la imagen ISO de Windows 11 en el grupo de almacenamiento **isos**, es decir, en el directorio `~/Descargas/isos`.
 
     ![win11](img/windows_11_1.png)
 
-* Cuando se detecta o elegimos la variante *Microsfot Windows 11*, **virt-manager** va a configurar la máquina virtual con los elementos hardware necesarios para la instalación de este sistema operativo. En particular, se añade un dispositivo TPM. El TPM (Trusted Platform Module) es un chip de seguridad que se encuentra en la placa base de los ordenadores modernos. Su función principal es proporcionar un entorno seguro para almacenar claves de cifrado, credenciales y otros datos sensibles. Microsoft exige TPM versión 2.0 como requisito obligatorio para la instalación de Windows 11 debido a motivos de seguridad. En **virt-manager** se puede emular el chip TPM para que el sistema invitado (por ejemplo, Windows 11) lo detecte y pueda instalarse sin problemas.
+* Cuando se detecta o elegimos la variante *Microsoft Windows 11*, **virt-manager** va a configurar la máquina virtual con los elementos hardware necesarios para la instalación de este sistema operativo. En particular, se añade un dispositivo TPM. El TPM (Trusted Platform Module) es un chip de seguridad que se encuentra en la placa base de los ordenadores modernos. Su función principal es proporcionar un entorno seguro para almacenar claves de cifrado, credenciales y otros datos sensibles. Microsoft exige TPM versión 2.0 como requisito obligatorio para la instalación de Windows 11 debido a motivos de seguridad. En **virt-manager** se puede emular el chip TPM para que el sistema invitado (por ejemplo, Windows 11) lo detecte y pueda instalarse sin problemas.
 
     ![win11](img/windows_11_2.png)
 
-* Durante la instalación del sistema, tendremos que cargar los controladores VirtIO para que se detecte el disco duro, al igual que hicimos en Windows 10. Pero además, para la instalación del sistema es necesario que estar conectado a internet, por lo tanto durante el proceso de instalación, también tendremos que cargar los drivers VirtIO de la tarjeta de red para que se tenga conectividad.
+* Durante la instalación del sistema, tendremos que cargar los controladores VirtIO para que se detecte el disco duro, al igual que hicimos en Windows 10. Pero además, para la instalación del sistema es necesario que estar conectado a internet, por lo tanto, durante el proceso de instalación, también tendremos que cargar los drivers VirtIO de la tarjeta de red para que se tenga conectividad.
 
 

@@ -39,7 +39,7 @@ En este paso, habilitamos el almacenamiento para la nueva máquina, indicando el
 
 ## Resumen y selección de red
 
-Por último, aparece un resumen de las características de la máquina que vamos a crear. Además, podemos indicar el nombre y seleccionar la red a la que queremos que se conecte (en nuestro caso, la red de tipo NAT `default`). Si la red no está activa, nos dará la opción de activarla. Ademas podemos elegir una opción para *Personalizar la configuración antes de instalar*. 
+Por último, aparece un resumen de las características de la máquina que vamos a crear. Además, podemos indicar el nombre y seleccionar la red a la que queremos que se conecte (en nuestro caso, la red de tipo NAT `default`). Si la red no está activa, nos dará la opción de activarla. Además, podemos elegir una opción para *Personalizar la configuración antes de instalar*. 
 
 ![virt-manager](img/linux7.png)
 

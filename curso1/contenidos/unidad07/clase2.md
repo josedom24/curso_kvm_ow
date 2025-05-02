@@ -11,7 +11,7 @@ Muchas distribuciones Linux nos ofrecen repositorios de instalación que son acc
 * **Fedora**: https://download.fedoraproject.org/pub/fedora/linux/releases/41/Everything/x86_64/os/
 * **Arch Linux**: http://mirror.rackspace.com/archlinux/iso/latest/
 
-Para que una URL sea válida como fuente de instalación en red, debe contener una estructura específica con los archivos esenciales para el arranque y la instalación: el kernel del instalación, la imagen del disco RAM inicial que contiene el sistema mínimo necesario para comenzar la instalación,...
+Para que una URL sea válida como fuente de instalación en red, debe contener una estructura específica con los archivos esenciales para el arranque y la instalación: el kernel de la instalación, la imagen del disco RAM inicial que contiene el sistema mínimo necesario para comenzar la instalación,...
 
 ## Instalación en red con virt-manager
 

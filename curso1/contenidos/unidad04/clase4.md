@@ -7,7 +7,7 @@ En el apartado anterior creamos un volumen de 10 GB llamado `nuevodisco.img`. Va
 ![volumen](img/volumen5.png)
 
 * En este caso el volumen utilizado estará en el nuevo grupo de almacenamiento `vm-images` que hemos creado, por defecto los discos de las máquinas se crean en el grupo `default`.
-* El rendimiento de acceso a esta máquina será mayor que si usáramos una imagen con formato qcow2 ya que los discos con formato raw tienen asignados desde su creación todo el espacio necesario.
+* El rendimiento de acceso a esta máquina será mayor que si usáramos una imagen con formato qcow2, ya que los discos con formato raw tienen asignados desde su creación todo el espacio necesario.
 
 ## Añadir nuevos discos a máquinas virtuales
 

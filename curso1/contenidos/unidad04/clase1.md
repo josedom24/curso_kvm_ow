@@ -30,8 +30,8 @@ Los volúmenes son las unidades individuales de almacenamiento dentro de un grup
 
 En este curso vamos a trabajar con grupos de almacenamiento de tipo **dir**, por lo que los volúmenes corresponderán a ficheros de imágenes de disco. Los formatos de imagen de disco más utilizados son:
 
-* **raw**: Imagen de disco sin procesar, ofrece mejor rendimiento pero ocupa todo el espacio asignado desde el inicio.
-* **qcow2**: Formato QEMU copy-on-write. Al crearse sólo se ocupa el espacio que se está ocupando con los datos (aprovisionamiento ligero), el fichero irá creciendo cuando escribamos en él. Acepta instantáneas o snapshots. Es menos eficiente en cuanto al acceso.
+* **raw**: Imagen de disco sin procesar, ofrece mejor rendimiento, pero ocupa todo el espacio asignado desde el inicio.
+* **qcow2**: Formato QEMU copy-on-write. Al crearse solo se ocupa el espacio que se está ocupando con los datos (aprovisionamiento ligero), el fichero irá creciendo cuando escribamos en él. Acepta instantáneas o snapshots. Es menos eficiente en cuanto al acceso.
 
 ## Snapshots
 Los snapshots permiten capturar el estado de una máquina virtual en un momento determinado. Esto resulta útil para:

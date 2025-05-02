@@ -27,7 +27,7 @@ Finalmente, accedemos desde un navegador en `https://<IP_DEL_SERVIDOR>:9090/`
 * Crear nuevas máquinas virtuales con opciones de almacenamiento y red.  
 * Administrar discos, snapshots y configuraciones de las máquinas virtuales.  
 * Iniciar, detener, reiniciar y eliminar máquinas virtuales.  
-* Conectar a la consola de una VM sin necesidad de **virt-manager**.  
+* Conectar a la consola de una máquina virtual sin necesidad de **virt-manager**.  
 * Gestionar redes y puentes virtuales (bridges) para las máquinas virtuales.  
 * Monitorizar el uso de CPU, RAM y almacenamiento de las máquinas virtuales.  
 
@@ -38,7 +38,7 @@ Cuando accedemos a la página de Cockpit y después de autentificarnos con nuest
 ![cockpit](img/cockpit1.png)
 
 Como vemos tenemos acceso a la gestión de nuestras máquinas virtuales. Vemos como además de encender o apagar las máquinas, podemos ejecutar distintas acciones y crear o importar nuevas máquinas.
-Además podemos gestionar y crear nuestros grupos de almacenamiento:
+Además, podemos gestionar y crear nuestros grupos de almacenamiento:
 
 ![cockpit](img/cockpit2.png)
 

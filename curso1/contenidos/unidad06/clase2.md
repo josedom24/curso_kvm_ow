@@ -13,7 +13,7 @@ Tenemos las siguientes opciones:
 
 ## Definición de redes virtuales de tipo NAT
 
-Recordamos que una red de tipo NAT es un Red Virtual Privada, las máquinas virtual tendrán un direccionamiento privado y se nos proporciona un mecanismo de router/nat para que tengan conectividad al exterior.
+Recordamos que una red de tipo NAT es una Red Virtual Privada, las máquinas virtuales tendrán un direccionamiento privado y se nos proporciona un mecanismo de router/nat para que tengan conectividad al exterior.
 
 Pulsamos sobre el botón de añadir una nueva red, indicamos el **Nombre** y en el **Modo** elegimos **NAT**. La opción **Reenviar a:** permite seleccionar la interfaz física del sistema anfitrión a través de la cual se enviará el tráfico de la red virtual. Nos ofrece dos opciones:
 
@@ -24,7 +24,7 @@ A continuación terminamos la configuración:
 
 * **Configuración IPv4**: 
     * Elegimos la opción de **Habilitar IPv4**, indicando la dirección de **Red** con la que vamos a trabajar. La primera dirección será la dirección IP del anfitrión en esta red y la puerta de enlace de las máquinas virtuales conectadas a esta red.
-    * Elegimos la opción de **Habilitar DHCPv4**, indicando el rango de direcciones que va a repartir el servidor DHCP. Normalmente las redes de tipo NAT tienen habilitado el servidor DHCP.
+    * Elegimos la opción de **Habilitar DHCPv4**, indicando el rango de direcciones que va a repartir el servidor DHCP. Normalmente, las redes de tipo NAT tienen habilitado el servidor DHCP.
 * **Configuración IPv6**: Si queremos trabajar con IPv6 podemos seleccionar la opción **Habilitar IPv6**, por defecto está deshabilitada.
 * **Nombre de dominio DNS**: Esta opción permite definir cómo se asignará el dominio a las máquinas virtuales conectadas a esa red. 
     * **Usar nombre de red**: El nombre de la red virtual se usará como el dominio DNS.
@@ -32,7 +32,7 @@ A continuación terminamos la configuración:
 
 ![network](img/network2.png)
 
-Una vez creada, observamos que está iniciada y que tiene marcada como activa la propiedad de **Autoiniciar**. Además observamos que el nombre del bridge lo ha asignado de forma automática:
+Una vez creada, observamos que está iniciada y que tiene marcada como activa la propiedad de **Autoiniciar**. Además, observamos que el nombre del bridge lo ha asignado de forma automática:
 
 ![network](img/network3.png)
 
@@ -56,7 +56,7 @@ Pulsamos sobre el botón de añadir una nueva red, indicamos el **Nombre**, en e
     
 ![network](img/network5.png)
 
-De la misma manera que en las redes de tipo NAT, podemos comprobar que al crear la red estará iniciada y se habrá escogido la opción de **Auotoiniciar**. Además se habrá creado otro bridge para gestionar esta red.
+De la misma manera que en las redes de tipo NAT, podemos comprobar que al crear la red estará iniciada y se habrá escogido la opción de **Auotoiniciar**. Además, se habrá creado otro bridge para gestionar esta red.
 
 ![network](img/network6.png)
 
@@ -66,11 +66,11 @@ También podemos ver la definición XML de la red:
 
 ## Definición de redes virtuales muy aisladas
 
-Para crear una Red Virtual muy Aislada, seguimos el mismo procedimiento que la anterior, pero en este caso, no elegimos la opción de **Habilitar IPv4**. Por lo tanto se creará un nuevo bridge donde se conectarán las máquinas virtuales, pero el anfitrión no estará conectado a esta red.
+Para crear una Red Virtual muy Aislada, seguimos el mismo procedimiento que la anterior, pero en este caso, no elegimos la opción de **Habilitar IPv4**. Por lo tanto, se creará un nuevo bridge donde se conectarán las máquinas virtuales, pero el anfitrión no estará conectado a esta red.
 
 ![network](img/network8.png)
 
-Al terminar la creación, la red estará iniciada y se habrá configurado la opción de **Autoiniciar**. Además podremos ver el nombre del bridge que se ha creado.
+Al terminar la creación, la red estará iniciada y se habrá configurado la opción de **Autoiniciar**. Además, podremos ver el nombre del bridge que se ha creado.
 
 ![network](img/network9.png)
 

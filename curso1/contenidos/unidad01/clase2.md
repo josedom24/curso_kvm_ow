@@ -32,7 +32,7 @@ En la paravirtualización, el hipervisor no emula completamente el hardware, sin
 La paravirtualización ofrece **mayor rendimiento** que la virtualización completa tradicional sin soporte de hardware, ya que reduce la sobrecarga de emulación. Sin embargo, con la llegada de las extensiones de virtualización en CPU (Intel VT-x y AMD-V), la diferencia de rendimiento ha disminuido, y en muchos casos se prefiere la virtualización completa con dispositivos paravirtualizados (**VirtIO**).  
 
 * **Ejemplos de paravirtualización pura:**  
-    * **Xen (modo paravirtualizado, PV)**: Necesita un kernel modificado en la VM.  
+    * **Xen (modo paravirtualizado, PV)**: Necesita un kernel modificado en la máquina virtual.  
     * **IBM z/VM**: Usa paravirtualización en entornos mainframe.  
 * **Ejemplos de hipervisores con soporte de paravirtualización (vía drivers paravirtualizados):**  
     * **VMware ESXi** (usando VMware Tools para mejorar el rendimiento).  
@@ -41,7 +41,7 @@ La paravirtualización ofrece **mayor rendimiento** que la virtualización compl
 
 ## Virtualización ligera
 
-O también llamada **virtualización a nivel de sistema operativo**, o **virtualización basada en contenedores**. Es un método de virtualización en el que, sobre el núcleo del sistema operativo se ejecuta una capa de virtualización que permite que existan múltiples instancias aisladas de espacios de usuario. A cada espacio de usuario aislado lo llamamos **contenedor**. Por lo tanto, un contenedor es un conjunto de procesos aislados, que se ejecutan en un servidor, y que acceden a un sistema de ficheros propio, tienen una configuración red propio y accede a los recursos del host (memoria y CPU).
+O también llamada **virtualización a nivel de sistema operativo**, o **virtualización basada en contenedores**. Es un método de virtualización en el que, sobre el núcleo del sistema operativo se ejecuta una capa de virtualización que permite que existan múltiples instancias aisladas de espacios de usuario. A cada espacio de usuario aislado lo llamamos **contenedor**. Por lo tanto, un contenedor es un conjunto de procesos aislados, que se ejecutan en un servidor, y que acceden a un sistema de ficheros propio, tienen una configuración red propia y accede a los recursos del host (memoria y CPU).
 Podemos hacer la siguiente clasificación de contenedores:
 
 * **Contenedores de Sistemas**: El uso que se hace de ellos es muy similar al que hacemos sobre una máquina virtual: se accede a ellos (normalmente por SSH), se instalan servicios, se actualizan, ejecutan un conjunto de procesos, ... 

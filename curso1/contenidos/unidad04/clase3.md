@@ -16,8 +16,8 @@ Vamos a crear un nuevo volumen en el grupo que hemos creado en el apartado anter
 
 * El **nombre** del volumen.
 * El **formato**: qcow2 o raw.
-* **Almacenamiento de copias de seguridad**: Nos proporciona la característica de crear volúmenes a partir de un volumen base o imagen base. Sólo es compatible con el formato qcow2. Lo estudiaremos más adelante en el curso. 
-* **Capacidad**: Indicamos el tamaño del volumen. Por defecto, si usamos el formato qcow2 obtendremos la característica de aprovisionamiento ligero, el tamaño indicado será el que ve la máquina virtual, pero no lo que se ocupa realmente en el disco del host. Si elegimos la opción **Pre-asignar el tamaño completo del volumen ahora**, se perderá esa característica y se ocupara el disco la capacidad total elegida.
+* **Almacenamiento de copias de seguridad**: Nos proporciona la característica de crear volúmenes a partir de un volumen base o imagen base. Solo es compatible con el formato qcow2. Lo estudiaremos más adelante en el curso. 
+* **Capacidad**: Indicamos el tamaño del volumen. Por defecto, si usamos el formato qcow2 obtendremos la característica de aprovisionamiento ligero, el tamaño indicado será el que ve la máquina virtual, pero no lo que se ocupa realmente en el disco del host. Si elegimos la opción **Pre-asignar el tamaño completo del volumen ahora**, se perderá esa característica y se ocupará el disco la capacidad total elegida.
 
 ### Creación de volúmenes raw
 

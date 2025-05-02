@@ -4,9 +4,9 @@ Todas las máquinas que hemos creado durante el curso se han conectado de forma 
 
 Sin embargo, en este apartado vamos a aprender a crear máquinas virtuales conectadas a otras redes definidas por el usuario y a añadir interfaces de red a máquinas virtuales ya existentes.
 
-## Crear máquinas virtuales conectada a una red existente
+## Crear máquinas virtuales conectadas a una red existente
 
-Desde **virt-manager**, durante el asistente de creación de la máquina, el el último paso que se llama **Resumen y selección de red**, podemos escoger la red a la que nos vamos a conectar:
+Desde **virt-manager**, durante el asistente de creación de la máquina, el último paso que se llama **Resumen y selección de red**, podemos escoger la red a la que nos vamos a conectar:
 
 ![configuración](img/configuracion1.png)
 
@@ -24,7 +24,7 @@ Desde **virt-manager** elegimos la opción **Añadir nuevo hardware** en la vist
 
 ![configuración](img/configuracion4.png)
 
-También podemos modificar en cualquier momento a la red o al puente al que estamos conectado, modificando la interfaz de red desde la vista detalles:
+También podemos modificar en cualquier momento a la red o al puente al que estamos conectados, modificando la interfaz de red desde la vista detalles:
 
 ![configuración](img/configuracion5.png)
 

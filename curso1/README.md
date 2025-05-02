@@ -1,6 +1,6 @@
 # Curso: Introducción a la virtualización con KVM/libvirt usando virt-manager
 
-1. Introducción a a la virtualización con KVM/libvirt
+1. Introducción a la virtualización con KVM/libvirt
     * [¿Qué es la virtualización?](contenidos/unidad01/clase1.md)
 	* [Tipos de virtualización](contenidos/unidad01/clase2.md)
 	* [Introducción a QEMU/KVM y libvirt](contenidos/unidad01/clase3.md)
@@ -25,7 +25,7 @@
     * [Gestión de volúmenes de almacenamiento](contenidos/unidad04/clase3.md)
     * [Trabajar con volúmenes en las máquinas virtuales](contenidos/unidad04/clase4.md)
 
-5. Clonación e instantáneas de maquinas virtuales
+5. Clonación e instantáneas de máquinas virtuales
     * [Clonación completa de máquinas virtuales](contenidos/unidad05/clase1.md)
     * [Clonación enlazada de máquinas virtuales](contenidos/unidad05/clase2.md)
     * [Instantáneas de máquinas virtuales](contenidos/unidad05/clase3.md)
