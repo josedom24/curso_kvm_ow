@@ -1,6 +1,6 @@
 #  Tipos de virtualización
 
-Según como funcione el Hipervisor podemos clasificar distintas técnicas de virtualización:
+Según como funcione el Hipervisor podemos tener distintas técnicas de virtualización:
 
 ## Emulación
 
