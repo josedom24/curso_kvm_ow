@@ -7,6 +7,8 @@ Podemos modificar esta configuración de dos maneras:
 1. **Edición manual del XML:** Usando `virsh edit <nombre_vm>`, que abre el archivo XML en un editor de texto. Este método permite realizar cualquier cambio, pero requiere cuidado para mantener una sintaxis válida. Una vez guardado, `libvirt` valida el archivo antes de aplicar los cambios.
 2. **Uso de comandos específicos de `virsh`:** Permiten modificar parámetros individuales sin necesidad de editar directamente el XML, lo que reduce el riesgo de errores.  
 
+Podemos realizar distintos tipos de cambios:
+
 * **Cambios dinámicos (en caliente):** Aplicables sin detener la máquina virtual, como la asignación de vCPUs adicionales (si el hipervisor lo permite) o la conexión de discos y redes.  
 * **Cambios persistentes:** Afectan la definición almacenada de la máquina virtual y permanecen tras un reinicio.  
 * **Cambios que requieren apagado:** Algunas modificaciones estructurales, como la asignación de memoria fija o cambios en el tipo de bus de almacenamiento, requieren detener la máquina antes de aplicarse.  
