@@ -26,7 +26,7 @@ Veamos las etiquetas:
 * `<forward>`: Indica que las máquinas virtuales van a tener conectividad con el exterior. Por defecto, si no se indicaba nada, el tipo es **nat**: `<forward mode="nat"/>`. El modo también puede ser:
 	* `router`: Las redes tipo [router](https://wiki.libvirt.org/page/VirtualNetworking#Routed_mode) también dan acceso a las máquinas virtuales al exterior, pero en ese caso no se utiliza el mecanismo de NAT, sino que se usan rutas de encaminamiento en el host.
 	* `open`: Similar a la anterior, excepto que no se añaden reglas de firewall para asegurar que cualquier tráfico sea aceptado. 
-* `<IP>`: Donde se indica la dirección IP y la máscara de red de la dirección del host en la red. Es decir, el host está conectado al bridge virtual con esa dirección.
+* `<ip>`: Donde se indica la dirección IP y la máscara de red de la dirección del host en la red. Es decir, el host está conectado al bridge virtual con esa dirección.
 	* `<dhcp>`: **Este elemento es optativo**. Si queremos tener un servidor DHCP configurado en el host, lo configuramos en esta etiqueta, por ejemplo poniendo el rango en la etiqueta `<range>`. 
 	
 ## Definición de redes virtuales aisladas
