@@ -3,7 +3,7 @@
 Hasta ahora, hemos accedido con `virt-viewer` a las máquinas virtuales desde la consola gráfica usando **SPICE** o **VNC**, que proporcionan una experiencia similar a tener un monitor conectado a la máquina virtual. 
 
 * **SPICE**: Protocolo optimizado para gráficos, permite aceleración, copiar/pegar, audio, redirección de USB.
-* **VNC**: Protocolo de acceso remoto gráfico, más simple pero sin integración con el SO. Menos eficiente que SPICE.
+* **VNC**: Protocolo de acceso remoto gráfico, más simple y menos eficiente que SPICE.
 
 Sin embargo, en algunos escenarios, puede ser más conveniente o incluso necesario acceder a la máquina virtual mediante **una consola serie**.  Este modo de acceso es en modo texto, no necesita entorno gráfico, ideal para administración remota y sistemas sin interfaz de usuario.
 
