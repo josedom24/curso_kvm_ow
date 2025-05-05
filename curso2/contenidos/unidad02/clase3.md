@@ -34,6 +34,12 @@ Si fuera necesario, es recomendable activar la propiedad de **Inicio automático
 usuario@kvm:~$ virsh net-autostart default
 ```
 
+Podemos ver la definición de esta red en formato XML, ejecutando:
+
+```
+usuario@kvm:~$ virsh net-dumpxml default
+```
+
 Aunque estudiaremos la redes con profundidad en el módulo correspondiente, podemos señalar que las máquinas virtuales que se conecten a esta red, tendrán las siguientes características:
 
 * Tomarán una dirección IP de forma dinámica en el rango `192.168.122.2` - `192.168.122.254`. Es decir, existe un servidor DHCP (que se encuentra en el host) asignando de forma dinámica el direccionamiento.
