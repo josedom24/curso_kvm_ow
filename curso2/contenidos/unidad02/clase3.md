@@ -68,4 +68,10 @@ usuario@kvm:~$ virsh pool-start default
 usuario@kvm:~$ virsh pool-autostart default 
 ```
 
+Podemos comprobar que hemos creado el pool, ejecutando:
+
+```
+usuario@kvm:~$ virsh pool-list
+```
+
 Estudiaremos en profundidad el almacenamiento con el que podemos trabajar en el módulo correspondiente. 
