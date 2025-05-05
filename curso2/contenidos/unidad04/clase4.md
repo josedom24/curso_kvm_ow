@@ -1,6 +1,6 @@
 # Gestión de volúmenes de almacenamiento con herramientas específicas
 
-En este apartado vamos a gestionar los volúmenes con herramientas específicas. Es decir, si estamos trabajando con un pool de tipo **dir** y con volúmenes que corresponde a ficheros de imágenes de disco, vamos a trabajar con la herramienta `qemu-img`. Esta potente herramienta nos permite la gestión completa de los ficheros de imágenes de disco.
+En este apartado vamos a gestionar los volúmenes con herramientas específicas. Es decir, si estamos trabajando con un pool de tipo **dir** y con volúmenes que corresponden a ficheros de imágenes de disco, vamos a trabajar con la herramienta `qemu-img`. Esta potente herramienta nos permite la gestión completa de los ficheros de imágenes de disco.
 
 ## Gestión de imágenes de disco con qemu-img
 
