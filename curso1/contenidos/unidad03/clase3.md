@@ -15,4 +15,4 @@ Para elegir las distintas opciones que tenemos para gestionar nuestras máquinas
 * **Clonar**: Crea una nueva máquina a partir de esta.
 * **Migrar**: Nos permite trasladar la máquina a otra máquina que esté ejecutando QEMU/KVM.
 * **Eliminar**: Elimina la definición de la máquina. Nos da la opción de eliminar el volumen de disco asociado.
-* **Abrir**: Abre el "Detalle de la máquina". esta opción también se puede escoger desde el botón **Abrir**, o desde la opción del menú **Editar -> Detalles de la máquina virtual**. Esta opción la estudiaremos en el siguiente punto.
+* **Abrir**: Abre el "Detalle de la máquina". Esta opción también se puede escoger desde el botón **Abrir**, o desde la opción del menú **Editar -> Detalles de la máquina virtual**. Esta opción la estudiaremos en el siguiente punto.
