@@ -20,8 +20,8 @@ Accedemos a una ventana con las siguientes opciones:
     * **Reducir a MV**: Configura la el tamaño de la ventana para que se adapte al la resolución de la máquina virtual.
     * **Escala monitor**: Ofrece distintas opciones para escalar la consola al tamaño de la ventana.
     * **Consolas**: Nos permite elegir a la consola que nos queremos conectar: 
-        * Consola gráfica Spice: es la opción por defecto y se comporta como si estuviéramos accediendo a la máquina usando un monitor, 
-        * Serie 1: Nos conectamos a la máquina usando el puerto serie.
+        * **Consola gráfica Spice**: es la opción por defecto y se comporta como si estuviéramos accediendo a la máquina usando un monitor.
+        * **Serie 1**: Nos conectamos a la máquina usando el puerto serie.
     * **Autoconectar**: Nos permite conectar a la consola de forma automática.
 * **Enviar Tecla**: Combinación de teclas que podemos enviar a la máquina virtual.
 
