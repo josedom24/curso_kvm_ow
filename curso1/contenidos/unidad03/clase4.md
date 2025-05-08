@@ -7,7 +7,9 @@ Accedemos a una ventana con las siguientes opciones:
 ![detalles](img/detalles1.png)
 
 * **Archivo**: Opciones generales: ver el gestor, cerrar la ventana,...
-* **Máquina Virtual**: Opciones para gestionar la máquina.
+* **Máquina Virtual**: Opciones para gestionar la máquina. Además de las opciones que ya hemos estudiado, nos encontramos dos nuevas:
+    * **Captura de pantalla**: Nos permite guardar una imagen de la pantalla actual.
+    * **Redirigir dispositivo USB**: nos permite pasar a la máquina virtual cuelquiera de los dispositivo USB que tenemos conectado al host, por ejemplo una impresora.
 * **Vista**: Nos permite ver las distintas vistas, controlar la ventana de la consola (pantalla completa, escalar, ...). Veamos las vistas:
 	* **Consola**: Accedemos a una consola donde controlamos la máquina virtual. También se accede con el **botón 1**.
 	* **Detalles**: Obtenemos la configuración de la máquina virtual y los dispositivos hardware. Podemos quitar y añadir nuevos dispositivos y hacer las modificaciones necesarias. También se accede con el **botón 2**.
