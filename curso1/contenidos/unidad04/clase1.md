@@ -26,6 +26,7 @@ Como podemos ver, existen diferentes tipos de almacenamiento compatibles con **v
 
 Los volúmenes son las unidades individuales de almacenamiento dentro de un grupo. Según el tipo del grupo de almacenamiento con el que estemos trabajando, el volumen corresponderá a elementos diferentes:
 * En el caso del tipo **dir**, estos volúmenes corresponden a ficheros de imagen de disco. 
+* El el caso del tipo **disk** estos volúmenes serán particiones de un disco.
 * En el caso del tipo **logical** estos volúmenes serán volúmenes lógicos LVM.
 
 En este curso vamos a trabajar con grupos de almacenamiento de tipo **dir**, por lo que los volúmenes corresponderán a ficheros de imágenes de disco. Los formatos de imagen de disco más utilizados son:
