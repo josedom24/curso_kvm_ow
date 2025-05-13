@@ -35,7 +35,7 @@ En este curso vamos a trabajar con grupos de almacenamiento de tipo **dir**, por
 * **qcow2**: Formato QEMU copy-on-write. Al crearse solo se ocupa el espacio que se está ocupando con los datos (aprovisionamiento ligero), el fichero irá creciendo cuando escribamos en él. Acepta instantáneas o snapshots. Es menos eficiente en cuanto al acceso.
 
 ## Snapshots
-Los snapshots permiten capturar el estado de una máquina virtual en un momento determinado. Esto resulta útil para:
+Los snapshots (o instantáneas) permiten capturar el estado de una máquina virtual en un momento determinado. Esto resulta útil para:
 
 * **Recuperación ante fallos**: Volver a un estado anterior en caso de errores.
 * **Pruebas y desarrollo**: Permitir experimentación sin afectar los datos originales.
