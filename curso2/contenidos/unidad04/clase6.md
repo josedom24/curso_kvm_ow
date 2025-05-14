@@ -4,7 +4,7 @@ En este apartado vamos a aumentar el tamaño del volumen que hemos añadido a la
 
 Para realizar la redimensión tenemos dos alternativas: o usar la API de libvirt usando `virsh` o usar herramientas específicas, en este caso `qemu-img`.
 
-## Redimensión de discos en máquinas virtuales sin ejecución
+## Redimensión de discos en máquinas virtuales paradas
 
 Para redimensionar el volumen de una máquina que esté parada, podemos usar `virsh`:
 
