@@ -26,7 +26,7 @@ A continuación vamos a crear un nuevo volumen a partir de la imagen base que he
 * El nuevo volumen no puede ser más pequeño que la imagen base.
 * El nuevo volumen puede tener más tamaño que la imagen base, pero al iniciar la máquina habrá que redimensionar el tamaño del sistema de ficheros, que será igual al tamaño del sistema de ficheros de la imagen base. Como vimos en un apartado anterior, este cambio de tamaño se podría realizar usando `virt-resize`.
 
-Para no complicar la creación de volúmenes con backing store vamos a indicar el tamaño del nuevo volumen igual al de la imagen base. C
+Para no complicar la creación de volúmenes con backing store vamos a indicar el tamaño del nuevo volumen igual al de la imagen base.
 
 Para asegurarnos de crear un volumen del mismo tamaño que la imagen base vamos a comprobar su tamaño:
 ```
