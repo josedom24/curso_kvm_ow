@@ -10,7 +10,7 @@ Para ello tenemos que realizar los siguientes pasos:
 
     ![ejemplo3](img/ejemplo3_1.png)
 
-    Y comprobamos el direccionamiento de la máquina Linux:
+    Si es necesario, reconfiguramos la red con NetworkManager, y comprobamos el direccionamiento de la máquina Linux:
 
     ![ejemplo3](img/ejemplo3_2.png)
 
