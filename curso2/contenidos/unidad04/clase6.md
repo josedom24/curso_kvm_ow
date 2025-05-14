@@ -69,7 +69,7 @@ S.ficheros     Tamaño Usados  Disp Uso% Montado en
 
 ## Redimensión del sistema de ficheros de una imagen de disco
 
-Otra alternativa para redimensionar el sistema de fichero de una imagen es usar la herramienta [virt-resize](https://libguestfs.org/virt-resize.1.html). `virt-resize` no trabaja sobre imágenes de discos de máquinas que se estén ejecutando, además no puede redimensionar sobre el mismo fichero de la imagen, por lo que vamos a hacer una copia del mismo. Para utilizar esta herramienta vamos a instalar el siguiente paquete:
+Otra alternativa para redimensionar el sistema de ficheros de una imagen es usar la herramienta [virt-resize](https://libguestfs.org/virt-resize.1.html). `virt-resize` no trabaja sobre imágenes de discos de máquinas que se estén ejecutando, además no puede redimensionar sobre el mismo fichero de la imagen, por lo que vamos a hacer una copia del mismo. Para utilizar esta herramienta vamos a instalar el siguiente paquete:
 
 ```
 usuario@kvm:~$ sudo apt install guestfs-tools
