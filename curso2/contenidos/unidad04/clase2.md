@@ -4,7 +4,7 @@ Para ver los pools con la herramienta `virsh`, ejecutamos la siguiente instrucci
 
 ```
 usuario@kvm:~$ virsh pool-list 
- Nombre    Estado   Inicio automático
+ Name        State    Autostart
 ---------------------------------------
  default   activo   si
 ```

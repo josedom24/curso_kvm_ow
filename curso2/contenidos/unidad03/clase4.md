@@ -18,7 +18,7 @@ Ya hemos usado el comando `list` para mostrar las máquinas virtuales que tenemo
 
 ```
 usuario@kvm:~$ virsh list --all
- Id   Nombre    Estado
+ Id   Name       State
 ----------------------------
  2    debian12   ejecutando
 ```
