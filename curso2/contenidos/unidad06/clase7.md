@@ -4,7 +4,7 @@
 
 En este primer ejemplo, vamos a partir del siguiente escenario:
 
-* No tenemos creado un puente externo `br0` como hemos visto anteriormente. Por lo tanto, la interfaz del host, que en este caso se llama `enp1s0` está conectada directamente a la red local del host. Para poder compartir una interfaz física usando un dispositivo macvtap no debe estar conectado aún puente externo.
+* No tenemos creado un puente externo `br0` como hemos visto anteriormente. Por lo tanto, la interfaz del host, que en este caso se llama `enp1s0` está conectada directamente a la red local del host. Para poder compartir una interfaz física usando un dispositivo macvtap no debe estar conectado a un puente externo.
 * Hemos definido la red `red_macvtap`:
 
     ```
