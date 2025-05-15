@@ -46,7 +46,7 @@ Vamos a realizar una copia de seguridad de la máquina `alpine` del servidor rem
     ```
     usuario@kvm:~$ virsh define alpine.xml
 
-    usuario@kvm:~$ $ virsh vol-create-as default alpine.qcow2 5G --format qcow2
+    usuario@kvm:~$ virsh vol-create-as default alpine.qcow2 5G --format qcow2
     usuario@kvm:~$ virsh vol-upload --pool default alpine.qcow2 alpine-copia.qcow2
     ```
 
