@@ -9,15 +9,15 @@ Sin embargo, en este apartado vamos a aprender algunas cosas nuevas: a crear má
 Para crear una máquina virtual conectada, por ejemplo, a la red `red_nat`, podemos usar `virt-install`:
 
 ```
-virt-install --connect qemu:///system \
-			 --virt-type kvm \
-			 --name debian12 \
-			 --cdrom /var/lib/libvirt/images/debian-12.10.0-amd64-netinst.iso \
-			 --os-variant debian12 \
-			 --network network=red_nat \
-			 --disk size=10 \
-			 --memory 1024 \
-			 --vcpus 1
+usuario@kvm:~$ virt-install --connect qemu:///system \
+			   --virt-type kvm \
+			   --name debian12 \
+			   --cdrom /var/lib/libvirt/images/debian-12.10.0-amd64-netinst.iso \
+			   --os-variant debian12 \
+			   --network network=red_nat \
+			   --disk size=10 \
+			   --memory 1024 \
+			   --vcpus 1
 ```
 
 * Con la opción `--network network=red_nat` indicamos que la máquina tendrá una interfaz de red conectada a la red cuyo nombre es `red_nat`.
