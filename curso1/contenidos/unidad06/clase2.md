@@ -56,7 +56,7 @@ Pulsamos sobre el botón de añadir una nueva red, indicamos el **Nombre**, en e
     
 ![network](img/network5.png)
 
-De la misma manera que en las redes de tipo NAT, podemos comprobar que al crear la red estará iniciada y se habrá escogido la opción de **Auotoiniciar**. Además, se habrá creado otro bridge para gestionar esta red.
+De la misma manera que en las redes de tipo NAT, podemos comprobar que al crear la red estará iniciada y se habrá escogido la opción de **Autoiniciar**. Además, se habrá creado otro bridge para gestionar esta red.
 
 ![network](img/network6.png)
 
