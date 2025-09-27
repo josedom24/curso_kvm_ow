@@ -20,7 +20,7 @@ Podemos ver las redes creadas, crear nuevas redes, eliminarlas, modificarlas, ..
 
 Esta red es de tipo **NAT** y sus características son las siguientes:
 
-* Las máquinas virtuales conectadas a esta red estarán conectadas a un **red privada** con un direccionamiento privado.
+* Las máquinas virtuales conectadas a esta red estarán conectadas a una **red privada** con un direccionamiento privado.
 * El host será la **puerta de enlace** de las máquinas virtuales conectadas a esta red y se conectará a estas máquinas usando un **brigde virtual**.
 * El host funcionará como un **router** que realizará un proceso de NAT para que las máquinas virtuales tengan acceso al exterior.
 * El host proporciona un **servidor DHCP** que configurará de forma automática las máquinas virtuales que estén conectadas a ella.
